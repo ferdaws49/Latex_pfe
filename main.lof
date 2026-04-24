@@ -9,7 +9,7 @@
 \contentsline {xchapter}{Spécification des besoins}{11}{chapter.2}%
 \contentsline {figure}{\numberline {2.3.1}{\ignorespaces Diagramme de cas d'utilisation globale}}{16}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{ Conception et Environnement Technique}{21}{chapter.3}%
+\contentsline {xchapter}{ Conception et environnement Technique}{21}{chapter.3}%
 \contentsline {figure}{\numberline {3.2.1}{\ignorespaces Logo UML}}{22}{figure.3.2.1}%
 \contentsline {figure}{\numberline {3.2.2}{\ignorespaces logo VsCode}}{22}{figure.3.2.2}%
 \contentsline {figure}{\numberline {3.2.3}{\ignorespaces Logo Figma}}{23}{figure.3.2.3}%
@@ -28,7 +28,7 @@
 \contentsline {figure}{\numberline {3.5.2}{\ignorespaces maquette de l’interface du Responsable Pédagogique}}{31}{figure.caption.16}%
 \contentsline {figure}{\numberline {3.5.3}{\ignorespaces maquette de l'écran de connexion }}{31}{figure.caption.17}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{release 1:"Authentification et gestion des utilisateurs" }{32}{chapter.4}%
+\contentsline {xchapter}{Release 1:"Authentification et gestion des utilisateurs" }{32}{chapter.4}%
 \contentsline {figure}{\numberline {4.2.1}{\ignorespaces Diagramme de cas d'utilisation "inscription"}}{34}{figure.caption.19}%
 \contentsline {figure}{\numberline {4.2.2}{\ignorespaces Diagramme de cas d'utilisation "authentification"}}{36}{figure.caption.20}%
 \contentsline {figure}{\numberline {4.2.3}{\ignorespaces Diagramme de cas d'utilisation "modification du mot de passe"}}{37}{figure.caption.21}%

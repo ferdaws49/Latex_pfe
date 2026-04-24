@@ -59,7 +59,16 @@
 \renewcommand{\headrulewidth}{0.4pt} % Thickness of the header rule line
 \renewcommand{\footrulewidth}{0.4pt} % No footer rule line
 
-
+\makeatletter
+\renewcommand{\numberline}[1]{%
+  \settowidth\@tempdimb{#1}%
+  \ifdim\@tempdima<\@tempdimb
+    \hb@xt@\@tempdimb{#1\hfil}\hspace{0.5em}%
+  \else
+    \hb@xt@\@tempdima{#1\hfil}%
+  \fi
+}
+\makeatother
 %=============document principal ========
 \begin{document}
 \cleardoublepage % Pour commencer une nouvelle page  si nécessaire
