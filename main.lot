@@ -1,0 +1,25 @@
+\babel@toc {french}{}\relax 
+\contentsline {xchapter}{}{x}{Doc-Start}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{Présentation du cadre du projet}{2}{chapter.1}%
+\contentsline {table}{\numberline {1.1}{\ignorespaces Comparaison de la solution proposée avec les solutions}}{6}{table.1.1}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{Spécification des besoins}{11}{chapter.2}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Acteurs du système et leurs rôles}}{12}{table.caption.4}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Besoins fonctionnels de l’acteur « Directeur »}}{13}{table.caption.5}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Besoins fonctionnels de l’acteur « Responsable pédagogique »}}{13}{table.caption.6}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Besoins fonctionnels de l’acteur « Responsable administratif et financier »}}{14}{table.caption.7}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Besoins fonctionnels de l’acteur « Coordinateur des formations »}}{14}{table.caption.8}%
+\contentsline {table}{\numberline {2.6}{\ignorespaces Besoins fonctionnels de l’acteur « Administrateur système »}}{14}{table.caption.9}%
+\contentsline {table}{\numberline {2.7}{\ignorespaces Besoins fonctionnels de l’acteur « Apprenant »}}{15}{table.caption.10}%
+\contentsline {table}{\numberline {2.8}{\ignorespaces Backlog produit}}{17}{table.2.8}%
+\contentsline {table}{\numberline {2.9}{\ignorespaces planification des sprints}}{19}{table.caption.12}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{ Conception et Environnement Technique}{21}{chapter.3}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{release 1:"Authentification et gestion des utilisateurs" }{32}{chapter.4}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Backlog du Sprint 1 – Authentification}}{33}{table.caption.18}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Cas d’utilisation – Inscription et Vérification Email}}{34}{table.4.2}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Cas d’utilisation –Authentification}}{36}{table.4.3}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Backlog - Gestion des utilisateurs}}{54}{table.caption.35}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Cas d’utilisation –Gestion des utilisateurs}}{55}{table.4.6}%

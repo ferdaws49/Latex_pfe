@@ -1,0 +1,95 @@
+%el partie elli men mellouel thot feha le type de document exple article.....
+%ahna bech na3mlou rapport pfe donc nektbou report
+%12pt: taille de police (recommandé)
+%a4paper: type de papier
+\documentclass[12pt,a4paper]{report}
+
+%entre \begin[document] et \end{document} est le contenu principale de la page
+%======creer preambule=====
+%les packages 
+%1. traitement des caractères spéciaux(affichage correcte)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{subcaption}
+\setcounter{secnumdepth}{3}
+  
+ \usepackage[french]{minitoc} %2. yokhrejli mini sommaire mta3 kol chapitre
+%\etocsetnexttocdepth{subsection} %list subsections
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}% geometry package des marges des pages, (tnajem matektebech[] w howa yhotlek les tailles par defaut 
+\usepackage[pdftex]{graphicx} %package des images, option pdftex spécifier que le document sera compilé avec pdfLaTeX
+\usepackage[colorlinks=true, linkcolor=black]{hyperref} %for creating links in the pdf version and other additional pdf attributes, no effect on the printed document
+\usepackage[final]{pdfpages} %est utilisée pour inclure des pages PDF externes dans votre document LaTeX.final les documents ne sont pas cliquable(exple page de garde)
+\usepackage{float} %pour bien positionner les figures(pour forcer a positionner les figures fl blasa elli ena nheb aleha)
+\usepackage{pslatex} % for times new roman,
+
+\usepackage{array} %  pour créer et personnaliser des tableaux dans votre document
+\usepackage{setspace} %pour controler l'espace entre les lignes \onehalfspacing \singlespacing \doublespacing
+\usepackage{enumerate}%listes à numéros
+\usepackage{longtable}%tableaux sur plusieurs pages(des tableaux twel yet9assmou ala des pages)
+\usepackage{multirow}% fusion 2 lignes ou 2 colonnes dans un tableau
+\usepackage{enumitem}%pour des items star fleche etc(tekhtar kifech tr9em el liste - .*....)
+\usepackage{tabularx}
+\usepackage{booktabs} % Pour les règles professionnelles (\toprule, \midrule, \bottomrule)
+\usepackage{array}    % Pour mieux contrôler les colonnes
+\usepackage[table]{xcolor} % Pour les couleurs de fond
+\usepackage[french]{babel}
+\usepackage[font=small,labelfont=bf]{caption}%les caption seront en taille small et gras(figure1, table1) (kol tableau andou titre
+\onehalfspacing % basic elli dima nestamlou , teb3a el package setspace
+
+% Définir la longueur de l'espacement entre les paragraphes
+\setlength{\parskip}{10pt} % Réglez la valeur selon vos préférences(9adeh el espaces bin les paragraphes)
+%-------------------
+%pour choisir un style pour les chapitres
+%https://latex-tutorial.com/fancy-chapters-latex/
+\usepackage[Glenn]{fncychap}
+%\usepackage[Conny]{fncychap}
+%\usepackage[Bjarne]{fncychap}
+
+% ======Configuration des en-têtes et des pieds de page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+%\fancyhead[R]{\rightmark} %pour les sections en haut de l'ntête
+%bech trigel el entête mtae3ek
+\fancyhead[LE,RO]{\nouppercase{\leftmark}}  % Chapter name in the outer side of even and odd pages
+%lorsque vous utilisez \leftmark dans l'en-tête, LaTeX récupère automatiquement le nom du chapitre en cours. De même, lorsque vous utilisez \rightmark, LaTeX récupère le nom de la section en cours. 
+\fancyfoot[LE,RO]{\thepage} % Page number in the outer side of even and odd pages
+
+\renewcommand{\headrulewidth}{0.4pt} % Thickness of the header rule line
+\renewcommand{\footrulewidth}{0.4pt} % No footer rule line
+
+
+%=============document principal ========
+\begin{document}
+\cleardoublepage % Pour commencer une nouvelle page  si nécessaire
+%======pour mettre la page de garde il faut: enlever le commentaire ci dessous====
+\includepdf{pagedegarde.pdf}
+%=========aussi pour la page de remerciment========
+%\input{projet/remerciement.tex}
+\pagenumbering{roman} % Numérotation des pages en chiffres romains
+\input{project/Dédicaces}
+\clearpage
+\input{project/remerciements}
+\clearpage
+\input{project/Résumé}
+\clearpage
+\dominitoc% 9otlou assna3li sommaire khassa b kol chapitre
+\tableofcontents% 9otlou assna3li sommaire globale
+ 
+ \listoffigures% 9otlou assna3li liste figures
+  \listoftables%9otlou assna3li liste de tableaux
+  \mtcaddchapter  %teb3a sommaire sghira bech tzidheli fi kol chapitre
+  %La commande \mtcaddchapter est utilisée avec le package minitoc pour  créer un mini sommaire pour chaque chapitre, affichant les sections et sous-sections qu'il contient.0
+ \clearpage
+ \clearpage
+ \input{project/Acronymes}
+ \clearpage
+ \pagenumbering{arabic}
+\input{project/introduction}
+\input{project/chapitre1}
+\input{project/chapitre2}
+\input{project/chapitre3}
+\input{project/chapitre4}
+
+\end{document}
