@@ -11,8 +11,6 @@
 *.maf
 *.mtc*
 
-# PDF files (optional)
-*.pdf
 
 # OS files
 .DS_Store
