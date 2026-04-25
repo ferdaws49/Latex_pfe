@@ -1,13 +1,14 @@
 \chapter{Spécification des besoins} 
  \minitoc
  \newpage
- 
+ \counterwithin{figure}{chapter}
  \section{Introduction}
- Après avoir posé les bases et défini le cadre général de notre projet,ce deuxième chapitre constitue l'étape charnière de notre projet, dédiée à la compréhension approfondie des enjeux et à l'organisation du développement.Nous commençons par la capture des besoins dans la section \ref{cap:Capture du besoin}, en identifiant les acteurs clés du centre de formation ainsi que leurs attentes concrètes, tant sur le plan des fonctionnalités que de la fiabilité du système. Nous procédons ensuite à la modélisation des besoins dans la section \ref{cap:Modélisation du besoins} pour traduire ces attentes en une structure visuelle claire. Enfin, nous présentons le pilotage du projet avec Scrum dans la section \ref{cap:Pilotage du projet avec Scrum}, qui définit l’organisation des tâches à travers le backlog ainsi que le rythme de développement en sprints, afin de garantir une collaboration fluide et efficace.
+ Après avoir posé les bases et défini le cadre général de notre projet,ce deuxième chapitre constitue l'étape charnière de notre projet, dédiée à la compréhension approfondie des enjeux et à l'organisation du développement. Nous commençons par la capture des besoins dans la section \ref{cap:Capture des besoins}, en identifiant les acteurs clés du centre de formation ainsi que leurs attentes concrètes, tant sur le plan des fonctionnalités que de la fiabilité du système. Nous procédons ensuite à la modélisation des besoins dans la section \ref{cap:Modélisation des besoins} pour traduire ces attentes en une structure visuelle claire. Enfin, nous présentons le pilotage du projet avec Scrum dans la section \ref{cap:Pilotage du projet avec Scrum}, qui définit l’organisation des tâches à travers le backlog ainsi que le rythme de développement en sprints, afin de garantir une collaboration fluide et efficace.
 
 \section{Capture des besoins}
-Cette section identifie les acteurs clés du projet et détaille leurs besoins, tant en termes de fonctionnalités que d'exigences de qualité, afin de comprendre les défis de chaque utilisateur et de concevoir un outil de gestion utile à leur quotidien.
 \label{cap:Capture des besoins}
+Cette section identifie les acteurs clés du projet et détaille leurs besoins, tant en termes de fonctionnalités que d'exigences de qualité, afin de comprendre les défis de chaque utilisateur et de concevoir un outil de gestion utile à leur quotidien.
+
 
 \subsection{Identifications des acteurs}
 Chaque acteur possède des missions et des attentes spécifiques au sein du centre de formation, allant de la direction stratégique au suivi des cours. Le tableau ci-dessous \ref{tab:Acteurs du système et leurs rôles} présente ainsi les profils retenus et leurs rôles respectifs au sein du système.
@@ -24,11 +25,9 @@ Directeur & Décideur stratégique du centre, pilote l'établissement et défini
 \hline
 Responsable Pédagogique & Garant de la qualité des formations, supervise les programmes, les formateurs et le suivi des apprenants\\
 \hline
-Responsable Administratif et Financier & Gère les aspects financiers, la facturation, les paiements et le suivi budgétaire du centre \\
+Responsable Financier & Gère les aspects financiers, la facturation, les paiements et le suivi budgétaire du centre \\
 \hline
-Coordinateur des Formations & Optimise l'organisation logistique en suivant le taux de remplissage des sessions et la disponibilité des ressources \\ 
-\hline
-Administrateur Système & Responsable du bon fonctionnement et de la maintenance de la plateforme, et garant de l’intégrité technique des données importées \\
+Administrateur Système &Assure l’administration globale du système, ainsi que la gestion des utilisateurs et des ressources. Il garantit la sécurité, la fiabilité et la cohérence des données. \\
 \hline
 Apprenant &Consulte ses propres résultats, suit l'avancement de son parcours et gérer ses inscriptions \\
 \hline
@@ -39,10 +38,10 @@ Apprenant &Consulte ses propres résultats, suit l'avancement de son parcours et
 \subsection{Spécifications des besoins fonctionnels}
 Cette section présente les besoins fonctionnels de la plateforme en fonction des différents acteurs, en mettant en évidence les fonctionnalités attendues pour chaque utilisateur selon son rôle. 
 
-\subsubsection{Besoins fonctionnels de l’acteur « Directeur »}
+\textbf{Besoins fonctionnels de l’acteur « Directeur »}
 
 Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Directeur »} présente les besoins du Directeur, orientés vers l’analyse stratégique de l'établissement.
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Directeur »}
 \label{tab:Besoins fonctionnels de l’acteur « Directeur »}
@@ -54,43 +53,56 @@ Vue d'ensemble & Consulter un tableau de bord consolidé regroupant CA, nombre d
 \hline
 Comparaison temporelle  & Comparer les performances du trimestre actuel par rapport au trimestre de l'année précédente\\
 \hline
-Analyse de rentabilité & Identifier les formations les plus rentables vs celles qui coûtent le plus cher.\\
+Analyse de rentabilité & Identifier les formations les plus rentables.\\
 \hline
 \end{tabular}
 \end{table}
 
-\subsubsection{Besoins fonctionnels de l’acteur « Responsable pédagogique »}
- Le tableau\ref{tab:Besoins fonctionnels de l’acteur « Responsable pédagogique »} présente les besoins du Responsable Pédagogique
-\begin{table}[h]
+\textbf{Besoins fonctionnels de l’acteur « Responsable pédagogique »}
+
+\vspace{0.3cm}
+
+Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable pédagogique »} présente les besoins du Responsable Pédagogique.
+
+\begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Responsable pédagogique »}
 \label{tab:Besoins fonctionnels de l’acteur « Responsable pédagogique »}
 \begin{tabular}{|p{4.5cm}| p{11cm}|}
 \hline
 \textbf{Fonctionnalité} & \textbf{Description} \\
+Suivi des apprenants &
+Consulter les informations relatives aux apprenants et suivre leur progression. \\
 \hline
-Suivi des apprenants & Analyse des taux de réussite, d'abandon, de complétion \\
+Analyse des performances &
+Analyser les résultats globaux des apprenants et évaluer leur niveau de réussite. \\
 \hline
-Détection du risque d'abandon & Visualiser la liste des apprenants en difficulté (notes faibles, absences) pour intervenir rapidement. \\
+Suivi des formations &
+Consulter et analyser l’état d’avancement des formations. \\
 \hline
-Évaluation des formateurs & Mesure de la performance individuelle des formateurs\\
+Évaluation des formateurs &
+Évaluer les performances des formateurs à partir des résultats obtenus. \\
 \hline
-Analyse des résultats & Visualiser la moyenne des notes par session, par formation et par formateur\\
+Gestion des sessions de formation &
+Planifier et organiser les sessions de formation. \\
 \hline
-Filtres pédagogiques & Filtré les données par formation, par formateur ou par statut (actif, terminé, annulé)\\
+Consultation des alertes &
+Consulter les alertes liées aux anomalies ou aux situations critiques. \\
 \hline
 \end{tabular}
 \end{table}
 
-\subsubsection{Besoins fonctionnels de l’acteur « Responsable administratif et financier »}
+\textbf{Besoins fonctionnels de l’acteur «financier »}
 
-Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable administratif et financier »} présente les besoins du Responsable Financier
+\vspace{0.3cm}
+
+Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable financier »} présente les besoins du Responsable Financier
 
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Responsable administratif et financier »}
-\label{tab:Besoins fonctionnels de l’acteur « Responsable administratif et financier »}
+\label{tab:Besoins fonctionnels de l’acteur « Responsable financier »}
 \begin{tabular}{|p{4.5cm}| p{11cm}|}
 \hline
 \textbf{Fonctionnalité} & \textbf{Description} \\
@@ -107,30 +119,12 @@ Historisation financière  &  Accéder à l'historique financier d'un apprenant 
 \end{table}
 
 
-\subsubsection{Besoins fonctionnels de l’acteur « Coordinateur des formations »}
+\textbf{Besoins fonctionnels de l’acteur « Administrateur système »}
 
- Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Coordinateur des formations »} présente les besoins du Coordinateur. Bien que ses besoins soient proches du responsable pédagogique, son rôle est plus axé sur la coordination opérationnelle
+\vspace{0.3cm}
 
-\begin{table}[h]
-\centering
-\caption{Besoins fonctionnels de l’acteur « Coordinateur des formations »}
-\label{tab:Besoins fonctionnels de l’acteur « Coordinateur des formations »}
-\begin{tabular}{|p{4.5cm}| p{11cm}|}
-\hline
-\textbf{Fonctionnalité} & \textbf{Description} \\
-\hline
-Taux de remplissage & Voir quelles sessions sont pleines et lesquelles ont encore des places disponibles. \\
-\hline
-Organisation des sessions & Accès aux données sur les sessions de formation et les informations des formateurs\\
-\hline
-Visualisation des effectifs & Consulter la liste des inscrits par session pour préparer les émargements.\\
-\hline
-\end{tabular}
-\end{table}
-
-\subsubsection{Besoins fonctionnels de l’acteur « Administrateur système »}
 Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Administrateur »} présente les besoins de l’Administrateur, centrés sur la gestion des utilisateurs et la maintenance technique du système 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Administrateur système  »}
 \label{tab:Besoins fonctionnels de l’acteur « Administrateur »}
@@ -142,6 +136,8 @@ Gestion des utilisateurs & Création et administration des comptes \\
 \hline
 Gestion des rôles (RBAC) & Attribution des permissions et accès restreints\\
 \hline
+Gestion des ressources  & Ajout et mise à jour des ressources\\
+\hline
  Collecte des données  & Importation manuelle ou automatique des sources (inscriptions, formateurs, etc.)\\
 \hline
 Traitement des données  & Supervision du nettoyage, validation et structuration des données dans le schéma en étoile (pour l’analyse décisionnelle)\\
@@ -151,10 +147,13 @@ Maintenance  & Tests de performance, vérification de la cohérence des calculs 
 \end{tabular}
 \end{table}
 
-\subsubsection{Besoins fonctionnels de l'Apprenant}
+\textbf{Besoins fonctionnels de l'Apprenant}
+
+\vspace{0.3cm}
+
 Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Apprenant »} présente les besoins de l’Apprenant. Bien que la plateforme soit principalement orientée décisionnel pour les responsables, l’intégration d’un espace apprenant permet d’améliorer l’engagement, la transparence et le suivi individuel des performances.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Apprenant »}
 \label{tab:Besoins fonctionnels de l’acteur « Apprenant »}
@@ -166,7 +165,7 @@ Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Apprenant »} présent
 \hline
 Accès aux résultats  & Consulter ses notes et ses évaluations finales de manière sécurisée\\
 \hline
-  Planning et calendrier& Accéder à son emploi du temps personnalisé (dates, lieux, noms des formateurs)\\
+  Planning et calendrier & Accéder à son emploi du temps personnalisé (dates, lieux, noms des formateurs)\\
 \hline
 \end{tabular}
 \end{table}
@@ -204,9 +203,7 @@ Afin d’assurer la protection des données et fournir un service robuste, le re
 
 \section{Modélisation des besoins}
 \label{cap:Modélisation des besoins}
-
-    
-\subsubsection{Diagramme de cas d'utilisation global}
+\subsection{Diagramme de cas d'utilisation global}
 La modélisation des besoins constitue une étape essentielle pour comprendre le fonctionnement du système et la manière dont les différents acteurs interagissent avec ses fonctionnalités. Pour cela, un diagramme de cas d’utilisation global est utilisé afin de représenter de manière synthétique ces interactions et de structurer visuellement les besoins identifiés. Ce diagramme offre une vue d’ensemble claire, facilitant la compréhension des rôles de chaque utilisateur et du flux des actions, tout en préparant efficacement la conception technique à venir.
 
 La figure\ref{fig:diagrammme de cas d'utilisation globale} présente le diagramme de cas d’utilisation global, illustrant de manière synthétique les rôles de chaque acteur et les principales actions possibles dans le système.
@@ -237,7 +234,7 @@ Le bon déroulement et la réussite du projet dépendent d’une répartition ef
 \subsection{Le Backlog du produit}
 Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme sous forme de User Stories comme indiqué par le tableau \ref{tab:backlog_produit}. Chaque User Story décrit une fonctionnalité du point de vue de l’utilisateur final et est classée par priorité  selon la méthode MoSCoW, qui classe les éléments indispensables (Must), importantes (Should), optionnelles (Could) et non prévues pour cette version (Won’t), afin de réaliser d’abord les éléments les plus importants.
  
-
+\small
 \begin{longtable}{|p{1cm}| p{4cm}|p{10cm}| p{1.5cm}|}
 \caption{Backlog produit}
 \label{tab:backlog_produit} \\
@@ -251,7 +248,7 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \endhead
 
 % --- US01 ---
-\multirow{3}{*}{\textbf{1}} & \multirow{3}{*}{\textbf{Login / s'inscrire}} 
+\multirow{3}{*}{\textbf{1}} & \multirow{3}{*}{\textbf{Login /s'inscrire}} 
 & En tant qu'utilisateur, je veux m'authentifier de manière sécurisée pour accéder aux données selon mon rôle & M \\ 
 \cline{3-4}
 & & En tant qu'apprenant, je veux pouvoir créer un compte sur la plateforme afin de m'inscrire à une formation & M \\ 
@@ -259,12 +256,12 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 & & En tant qu'utilisateur, je veux pouvoir réinitialiser mon mot de passe oublié afin de retrouver l'accès à mon espace personnel en toute sécurité & M \\ 
 \hline
 
-\multirow{3}{*}{\textbf{2}} & \multirow{3}{*}{\textbf{Gestion des Utilisateurs \& Accès}} 
-& En tant qu 'administrateur , je veux gérer les utilisateurs (activer, désactiver, modifier) et traiter les inscriptions.. & M \\ 
+\multirow{3}{*}{\textbf{2}} & \multirow{3}{*}{\textbf{Gestion des Utilisateurs}} 
+& En tant qu'administrateur , je veux gérer les utilisateurs (activer, désactiver, modifier) et traiter les inscriptions.. & M \\ 
 \cline{3-4}
-& &En tant qu 'administrateur , je veux attribuer et gérer les rôles et permissions pour contrôler les accès. & M \\ 
+& &En tant qu'administrateur, je veux attribuer et gérer les rôles et permissions pour contrôler les accès. & M \\ 
 \cline{3-4}
-& & En tant qu' administrateur , je veux Modifier et configurer les profils personnels des utilisateurs.. & M \\
+& & En tant qu'administrateur , je veux Modifier et configurer les profils personnels des utilisateurs.. & M \\
 \cline{3-4}
 
 \hline
@@ -272,7 +269,7 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \multirow{4}{*}{\textbf{3}} & \multirow{4}{*}{\textbf{Dashboards}} 
 & En tant que directeur, je veux consulter un dashboard global afin de suivre la performance générale du centre. & M \\ 
 \cline{3-4}
-& & En tant que responsable administratif et financier, je veux consulter un dashboard opérationnel pour suivre les activités quotidiennes. & M \\ 
+& & En tant que responsable financier, je veux consulter un dashboard opérationnel pour suivre les activités quotidiennes. & M \\ 
 \cline{3-4}
 & & En tant que responsable pédagogique, je veux consulter les performances des formations pour évaluer leur efficacité. & M \\
 \cline{3-4}
@@ -283,7 +280,7 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Analyse \& KPIs}} 
 & En tant que Responsable Pédagogique, je veux visualiser les taux de réussite et d'abandon afin d'évaluer la performance des formations & M \\ 
 \cline{3-4}
-& & En tant que responsable administratif et financier, je veux analyser les données financières pour suivre les recettes et les dépenses. & M\\ 
+& & En tant que responsable financier, je veux analyser les données financières pour suivre les recettes et les dépenses. & M\\ 
 \cline{3-4}
 & & En tant que directeur, je veux visualiser les KPIs stratégiques et analyser les performances financières. & M \\ 
 \cline{3-4}
@@ -292,20 +289,20 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 
 % --- US04 ---
 \multirow{1}{*}{\textbf{5}} & \multirow{1}{*}{\textbf{Filtrage avancée}} 
-& En tant qu’utilisateur, je veux appliquer des filtres (période, formation…), afin d’affiner l’analyse & M \\ 
+& En tant que utilisateur, je veux appliquer des filtres (période, formation…), afin d’affiner l’analyse & M \\ 
 
 \hline
 
 % --- US05 ---
 \multirow{2}{*}{\textbf{6}} & \multirow{2}{*}{\textbf{Reporting\& Export}} 
-& En tant que responsable administratif et financier, je veux générer et exporter des rapports pour documenter les activités & M \\ 
+& En tant que responsable financier, je veux générer et exporter des rapports pour documenter les activités & M \\ 
 \cline{3-4}
 & & En tant que directeur, je veux Exporter des rapports pour partager les analyses stratégiques & M \\ 
 \hline
-\multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{Gestion des Formations \& Sessions}} 
-& En tant que coordinateur des formations, je veux Gérer les sessions de formation et le planning pour éviter les conflits & M \\ 
+\multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{Gestion des Formations}} 
+& En tant que responsable pédagogique, je veux gérer les sessions de formation et le planning pour éviter les conflits & M \\ 
 \cline{3-4}
-& & En tant que coordinateur des formations , je veux Affecter des formateurs aux sessions et consulter la liste des participants & M\\ 
+& & En tant que responsable pédagogique , je veux Affecter des formateurs aux sessions et consulter la liste des participants & M\\ 
 \cline{3-4}
 & &  En tant que responsable pédagogique , je veux gérer le planning des sessions et suivre la présence des apprenants. & M \\ 
 \cline{3-4}
@@ -327,7 +324,7 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \multirow{3}{*}{\textbf{10}} & \multirow{3}{*}{\textbf{Innovation}} 
 & En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des élèves en difficulté & C \\ 
 \cline{3-4}
-&&En tant que responsable administratif et financier, je veux prévoir les revenus, afin de planifier le budget. & C \\ 
+&&En tant que responsable financier, je veux prévoir les revenus, afin de planifier le budget. & C \\ 
 \cline{3-4}
 & & En tant que directeur, je veux des capacités d'analyse prédictive (prévision des inscriptions) afin d'anticiper les besoins futurs & C \\ 
 \hline
@@ -341,7 +338,7 @@ Après avoir finalisé et ordonné le backlog produit, nous avons procédé à u
 des durées prévisionnelles de chaque sprint. Suite à une évaluation détaillée de la charge de travail,
 nous avons défini 3 versions principales.
 
-Le tableau 2.9 présente la répartition détaillée de notre planification des sprints, en soulignant:
+Le tableau \ref{tab:release_planning} présente la répartition détaillée de notre planification des sprints, en soulignant:
 
 • La durée estimée de chaque sprint
 • Les principales fonctionnalités à développer
@@ -360,7 +357,7 @@ Le tableau 2.9 présente la répartition détaillée de notre planification des 
 \cline{2-4}
  
 \hline
-\multirow{3}{*}{Release 2} & 3& Gestion des formations et sessions & 14 \\
+\multirow{3}{*}{Release 2} & 3& Gestion multi-domaines (pédagogique, financier, administratif) & 14 \\
 \cline{2-4}
  & 4 & Dashboards (interfaces utilisateurs) & 16 \\
  & 5 & Intégration des données (ETL) & 14 \\
