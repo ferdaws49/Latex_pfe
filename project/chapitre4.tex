@@ -14,8 +14,8 @@ Le section \ref{ sec:Sprint1: «Authentification»} consacré à la sécurisatio
   \label{ sec:Sprint1: «Authentification»}
   Cette section présente les résultats du premier sprint, dédié au développement du module d’authentification de la plateforme. Au cours de ce sprint, les efforts ont été orientés vers la mise en place des fonctionnalités essentielles, notamment l’inscription, la connexion des utilisateurs ainsi que la récupération des mots de passe, tout en intégrant des mécanismes de sécurité basés sur l’authentification et l’autorisation.
   \subsection{Le backlog du sprint 1}
-  dans cette partie, nous présentons le backlog du sprint 1, qui a été élaboré à partir des besoins fonctionnels identifiés pour la fonctionnalité d’authentification. Ce backlog comprend les user stories détaillées, permettant de planifier et de prioriser les tâches à réaliser pendant ce sprint comme le montre le tableau \ref{tab:sprint1_backlog} au-dessous.
-  \begin{table}[H]
+  Dans cette subsection, nous présentons le backlog du sprint 1, qui a été élaboré à partir des besoins fonctionnels identifiés pour la fonctionnalité d’authentification. Ce backlog comprend les user stories détaillées, permettant de planifier et de prioriser les tâches à réaliser pendant ce sprint comme le montre le tableau \ref{tab:sprint1_backlog}.
+  \begin{table}[h!]
 \centering
 \caption{Backlog du Sprint 1 : Authentification}
 \label{tab:sprint1_backlog}
@@ -169,8 +169,8 @@ Scénario de base &
 Scénarios alternatifs & 
 \textbf{Champs vides :}
  Le système affiche un message demandant de remplir tous les champs \\
-& \textbf{Email inexistant :} Le système affiche un message d’erreur et refuse l’authentification \\
-& \textbf{Mot de passe incorrect :} Le système affiche un message d’erreur et permet une nouvelle tentative \\
+& \textbf{Email inexistant:} Le système affiche un message d’erreur et refuse l’authentification \\
+& \textbf{Mot de passe incorrect:} Le système affiche un message d’erreur et permet une nouvelle tentative \\
 & \textbf{Compte non autorisé:} Le système bloque l’accès et affiche un message indiquant que le compte n’est pas autorisé \\
 \hline
 Post-condition & 
@@ -198,6 +198,8 @@ La figure \ref{fig:usecase_password_modification} présente le diagramme de cas 
 Le tableau \ref{tab:password_modification} présente la description textuelle du cas d’utilisation «modification du mot de passe».
 
 \begin{longtable}{|l|p{12cm}|}
+\caption{Cas d’utilisation - Modification du mot de passe}
+\label{tab:password_modification} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
 \hline
@@ -492,7 +494,7 @@ L’interface de connexion dans la Figure \ref{fig:Interface login:état normale
 \newpage
 
 
-\subsubsection{Interface "Réinitialisation du mot de passe"}
+\textbf{Interface "Réinitialisation du mot de passe"}
 
 L’interface illustrée en Figure \ref{cap:Interface de réinitialisation du mot de passe} permet à l'utilisateur de saisir son adresse email pour initier la procédure.
 Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format est incorrect, l'interface de la Figure \ref{cap:Interface de réinitialisation :email invalide} s'affiche.
