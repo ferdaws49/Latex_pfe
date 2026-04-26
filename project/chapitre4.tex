@@ -5,14 +5,16 @@
 \section{Introduction}
   La première 'release' de notre plateforme repose sur des bases fonctionnelles essentielles, mises en place à travers deux sprints stratégiques : l’authentification et la gestion des utilisateurs.
   
- Ce rapport présente de manière structurée le processus de développement adopté pour chaque sprint, en s’appuyant sur le backlog produit et les user stories ayant guidé la conception et l’implémentation des fonctionnalités.
+ Ce chapitre présente de manière structurée le processus de développement adopté pour chaque sprint, en s’appuyant sur le backlog produit et les user stories ayant guidé la conception et l’implémentation des fonctionnalités.
 
 Pour chaque sprint, une analyse des cas d’utilisation est réalisée, suivie d’une phase de conception illustrée par des diagrammes de séquence décrivant les interactions du système. Les résultats sont ensuite présentés à travers des maquettes et interfaces utilisateur.
 
-Le sprint 1 est consacré à la sécurisation de l’accès à la plateforme via un système d’authentification fiable, tandis que le sprint 2 porte sur la gestion des utilisateurs et des rôles. Ensemble, ces deux sprints constituent une base essentielle pour le développement des fonctionnalités analytiques de la plateforme .
+Le section \ref{ sec:Sprint1: «Authentification»} consacré à la sécurisation de l’accès à la plateforme via un système d’authentification fiable, tandis que la section \ref{sec:Sprint2: «Gestion des utilisateurs»} traite de la gestion des utilisateurs et des rôles. Ensemble, ces deux sprints constituent une base essentielle pour le développement des fonctionnalités analytiques de la plateforme.
   \section{Sprint 1: «Authentification»}
+  \label{ sec:Sprint1: «Authentification»}
   Cette section présente les résultats du premier sprint, dédié au développement du module d’authentification de la plateforme. Au cours de ce sprint, les efforts ont été orientés vers la mise en place des fonctionnalités essentielles, notamment l’inscription, la connexion des utilisateurs ainsi que la récupération des mots de passe, tout en intégrant des mécanismes de sécurité basés sur l’authentification et l’autorisation.
   \subsection{Le backlog du sprint 1}
+  dans cette subsection, nous présentons le backlog du sprint 1, qui a été élaboré à partir des besoins fonctionnels identifiés pour la fonctionnalité d’authentification. Ce backlog comprend les user stories détaillées, permettant de planifier et de prioriser les tâches à réaliser pendant ce sprint comme le montre le tableau \ref{tab:sprint1_backlog}.
   \begin{table}[h!]
 \centering
 \caption{Backlog du Sprint 1 – Authentification}
@@ -30,25 +32,27 @@ Le sprint 1 est consacré à la sécurisation de l’accès à la plateforme via
 \hline
 \end{tabular}
 \end{table}
-  Le tableau 4.1 présente le backlog du sprint 1, axé sur la fonctionnalité d'authentification, Il détaille les user stories associées, permettant ainsi de planifier et de prioriser les tâches à réaliser pendant ce sprint.
+  Le tableau \ref{tab:sprint1_backlog} présente le backlog du sprint 1, axé sur la fonctionnalité d'authentification, Il détaille les user stories associées, permettant ainsi de planifier et de prioriser les tâches à réaliser pendant ce sprint.
   \subsection{Analyse}
   Dans cette section, nous proposons une analyse synthétique des cas d’utilisation élaborés durant ce sprint. Chaque cas a été ajusté afin de satisfaire les exigences liées à la gestion de l’authentification au sein de la plateforme.
 
   \textbf{Amélioration du cas d’utilisation « inscription »:} 
   
-  L’inscription représente la première étape pour les apprenants souhaitant accéder à la plateforme. En effet, contrairement aux autres acteurs dont les comptes sont créés par l’administrateur, seuls les apprenants passent par cette étape. La figure 4.2.1 illustre le comportement dynamique de ce processus à travers un diagramme de cas d’utilisation.
+  L’inscription représente la première étape pour les apprenants souhaitant accéder à la plateforme. En effet, contrairement aux autres acteurs dont les comptes sont créés par l’administrateur, seuls les apprenants passent par cette étape. La figure \ref{fig:usecase_inscription} illustre le comportement dynamique de ce processus à travers un diagramme de cas d’utilisation.
   \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{project/images/usecaseinscription.png}
     \caption{Diagramme de cas d'utilisation "inscription"}
     \label{fig:usecase_inscription}
 \end{figure}
-Le tableau 4.2 présente la description textuelle du cas d’utilisation « s’inscrire ».
+Le tableau \ref{tab:inscription_email} présente la description textuelle du cas d’utilisation « s’inscrire ».
 \vspace{0.3cm} % petit espace avant le tableau
 
 \small % optionnel : réduit légèrement la taille du texte du tableau
 \begin{longtable}{|l|p{12cm}|}
-\caption{Cas d’utilisation – Inscription et Vérification Email} \label{tab:inscription_email} \\
+\label{ tab:inscription_email}
+\caption{Cas d’utilisation – Inscription et Vérification Email} 
+\label{tab:inscription_email} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
 \hline
@@ -101,9 +105,9 @@ Scénarios alternatifs &
 \hline
 Post-condition & 
 \begin{itemize}
-    \item L’utilisateur est enregistré dans le système
-    \item Le compte est en statut \textit{En attente de validation}
-    \item Un email de notification est envoyé
+    \item L’utilisateur est enregistré dans le système.
+    \item Le compte est en statut \textit{En attente de validation}.
+    \item Un email de notification est envoyé.
 \end{itemize} \\
 \hline
 \end{longtable}
@@ -113,7 +117,7 @@ Post-condition &
 \textbf{Amélioration du cas d’utilisation « authentification »:}
 
 Une fois les comptes créés et pour les apprenants, leurs demandes d’inscription validées par l’administrateur, les utilisateurs peuvent accéder à la plateforme via la procédure d’authentification.
-La figure 4.2.2 présente le diagramme de cas d’utilisation illustrant le processus de connexion.
+La figure \ref{fig:usecase_login} présente le diagramme de cas d’utilisation illustrant le processus de connexion.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{project/images/usecaserlogin.png}
@@ -121,12 +125,12 @@ La figure 4.2.2 présente le diagramme de cas d’utilisation illustrant le proc
     \label{fig:usecase_login}
 \end{figure}
 
-Le tableau 4.3 présente la description textuelle du cas d’utilisation «Authentification».
+Le tableau \ref{tab:authentification} présente la description textuelle du cas d’utilisation «Authentification».
 \vspace{0.3cm} % petit espace avant le tableau
 
 \small % optionnel : réduit légèrement la taille du texte du tableau
 \begin{longtable}{|l|p{12cm}|}
-\caption{Cas d’utilisation –Authentification} \label{tab:inscription_email} \\
+\caption{Cas d’utilisation –Authentification} \label{tab:authentification} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
 \hline
@@ -184,14 +188,14 @@ Post-condition &
 La fonctionnalité de récupération de mot de passe est essentielle pour permettre aux utilisateurs de réinitialiser leur mot de passe en cas d’oubli.
 Elle comprend la soumission d’une demande de réinitialisation, la réception d’un lien de réinitialisation envoyé par email, l’accès à ce lien sécurisé, ainsi que la définition d’un nouveau mot de passe.
 
-La figure 4.2.3 présente le diagramme de cas d’utilisation expliquant le fonctionnement de la modification du mot de passe.
+La figure \ref{fig:usecase_password_modification} présente le diagramme de cas d’utilisation expliquant le fonctionnement de la modification du mot de passe.
  \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{project/images/passwordmodification.png}
     \caption{Diagramme de cas d'utilisation "modification du mot de passe"}
-    \label{fig:usecase_inscription}
+    \label{fig:usecase_password_modification}
 \end{figure}
-Le tableau 4.4 présente la description textuelle du cas d’utilisation «modification du mot de passe».
+Le tableau \ref{tab:password_modification} présente la description textuelle du cas d’utilisation «modification du mot de passe».
 
 \begin{longtable}{|l|p{12cm}|}
 \hline

@@ -71,6 +71,7 @@ Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable pédagogiq
 \begin{tabular}{|p{4.5cm}| p{11cm}|}
 \hline
 \textbf{Fonctionnalité} & \textbf{Description} \\
+\hline
 Suivi des apprenants &
 Consulter les informations relatives aux apprenants et suivre leur progression. \\
 \hline
@@ -218,14 +219,15 @@ La figure\ref{fig:diagrammme de cas d'utilisation globale} présente le diagramm
 
 \section{Pilotage du projet avec Scrum}
 \label{cap:Pilotage du projet avec Scrum}
+Dans le cadre de la gestion agile du projet, nous avons opté pour la méthodologie Scrum, qui permet une meilleure organisation des tâches et une priorisation progressive des besoins à travers un backlog produit structuré.
 
 \subsection{Équipe et rôle}
 Le bon déroulement et la réussite du projet dépendent d’une répartition efficace des rôles au sein de l’équipe, chacun apportant sa contribution spécifique
 
 \begin{itemize}[label=\textbullet]
-  \item \textbf{Product Owner}: Mme Chouk Taycir 
-  \item \textbf{Scrum Master}: Mme Bayoudhi Leila
-  \item \textbf{Development Team }: Mme Khlifi Mariem, Mme Meraach Ferdois 
+  \item \textbf{Product Owner}: Mme Taycir Chouk
+  \item \textbf{Scrum Master}: Mme Leila Bayoudhi
+  \item \textbf{Development Team }: Mme Mariem khlifi,Mme ferdaws maraach
 \end{itemize}
 
 
@@ -235,7 +237,7 @@ Le bon déroulement et la réussite du projet dépendent d’une répartition ef
 Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme sous forme de User Stories comme indiqué par le tableau \ref{tab:backlog_produit}. Chaque User Story décrit une fonctionnalité du point de vue de l’utilisateur final et est classée par priorité  selon la méthode MoSCoW, qui classe les éléments indispensables (Must), importantes (Should), optionnelles (Could) et non prévues pour cette version (Won’t), afin de réaliser d’abord les éléments les plus importants.
  
 \small
-\begin{longtable}{|p{1cm}| p{4cm}|p{10cm}| p{1.5cm}|}
+\begin{longtable}{|p{1cm}|p{4cm}|p{10cm}|p{1.5cm}|}
 \caption{Backlog produit}
 \label{tab:backlog_produit} \\
 \hline
@@ -247,91 +249,88 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \hline
 \endhead
 
-% --- US01 ---
-\multirow{3}{*}{\textbf{1}} & \multirow{3}{*}{\textbf{Login /s'inscrire}} 
-& En tant qu'utilisateur, je veux m'authentifier de manière sécurisée pour accéder aux données selon mon rôle & M \\ 
+% --- US01 : Authentification ---
+\multirow{3}{*}{\textbf{1}} & \multirow{3}{*}{\textbf{Authentification}}
+& En tant qu'utilisateur, je veux m'authentifier de manière sécurisée pour accéder aux données selon mon rôle. & M \\
 \cline{3-4}
-& & En tant qu'apprenant, je veux pouvoir créer un compte sur la plateforme afin de m'inscrire à une formation & M \\ 
+& & En tant qu'apprenant, je veux pouvoir créer un compte sur la plateforme afin de m'inscrire à une formation. & M \\
 \cline{3-4}
-& & En tant qu'utilisateur, je veux pouvoir réinitialiser mon mot de passe oublié afin de retrouver l'accès à mon espace personnel en toute sécurité & M \\ 
+& & En tant qu'utilisateur, je veux pouvoir réinitialiser mon mot de passe oublié afin de retrouver l'accès à mon espace personnel en toute sécurité. & M \\
 \hline
 
-\multirow{3}{*}{\textbf{2}} & \multirow{3}{*}{\textbf{Gestion des Utilisateurs}} 
-& En tant qu'administrateur , je veux gérer les utilisateurs (activer, désactiver, modifier) et traiter les inscriptions.. & M \\ 
+% --- US02 : Gestion des utilisateurs ---
+\multirow{3}{*}{\textbf{2}} & \multirow{3}{*}{\textbf{Gestion des utilisateurs}}
+& En tant qu'administrateur, je veux gérer les utilisateurs (activer, désactiver, modifier) et traiter les inscriptions. & M \\
 \cline{3-4}
-& &En tant qu'administrateur, je veux attribuer et gérer les rôles et permissions pour contrôler les accès. & M \\ 
+& & En tant qu'administrateur, je veux attribuer et gérer les rôles et permissions pour contrôler les accès. & M \\
 \cline{3-4}
-& & En tant qu'administrateur , je veux Modifier et configurer les profils personnels des utilisateurs.. & M \\
-\cline{3-4}
-
+& & En tant qu'administrateur, je veux modifier et configurer les profils personnels des utilisateurs. & M \\
 \hline
-% --- US02 ---
-\multirow{4}{*}{\textbf{3}} & \multirow{4}{*}{\textbf{Dashboards}} 
-& En tant que directeur, je veux consulter un dashboard global afin de suivre la performance générale du centre. & M \\ 
+
+% --- US03 : Intégration des données ---
+\multirow{4}{*}{\textbf{3}} & \multirow{4}{*}{\textbf{Intégration des données}}
+& En tant qu'administrateur, je veux importer les données brutes (raw data) pour centraliser les informations. & M \\
 \cline{3-4}
-& & En tant que responsable financier, je veux consulter un dashboard opérationnel pour suivre les activités quotidiennes. & M \\ 
+& & En tant qu'administrateur, je souhaite que le système détecte automatiquement les erreurs dans les données importées afin de garantir leur qualité. & M \\
+\cline{3-4}
+& & En tant qu'administrateur, je veux valider ou rejeter les données importées afin que seules les données correctes soient stockées dans la base de données. & M \\
+\cline{3-4}
+& & En tant qu'administrateur, je souhaite charger les données validées dans la base de données afin qu'elles puissent être utilisées pour l'analyse et la production de rapports. & S \\
+\hline
+
+% --- US04 : Gestion multi-domaines ---
+\multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Gestion multi-domaines}}
+& En tant que responsable pédagogique, je veux gérer les activités pédagogiques du centre afin d'assurer le bon déroulement des formations. & M \\
+\cline{3-4}
+& & En tant que responsable financier, je veux gérer les activités financières du centre afin de suivre sa santé financière. & M \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux gérer mon parcours de formation afin de rester informé de ma progression. & S \\
+\hline
+
+% --- US05 : Analyse & KPIs ---
+\multirow{4}{*}{\textbf{5}} & \multirow{4}{*}{\textbf{Analyse \& KPIs}}
+& En tant que responsable pédagogique, je veux visualiser les taux de réussite et d'abandon afin d'évaluer la performance des formations. & M \\
+\cline{3-4}
+& & En tant que responsable financier, je veux analyser les données financières pour suivre les recettes et les dépenses. & M \\
+\cline{3-4}
+& & En tant que directeur, je veux visualiser les KPIs stratégiques et analyser les performances globales du centre. & M \\
+\cline{3-4}
+& & En tant qu'utilisateur, je veux appliquer des filtres (période, formation, formateur...) afin d'affiner mon analyse. & M \\
+\hline
+
+% --- US06 : Modèles prédictifs (IA) ---
+\multirow{3}{*}{\textbf{6}} & \multirow{3}{*}{\textbf{Modèles prédictifs (IA)}}
+& En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des apprenants en difficulté. & C \\
+\cline{3-4}
+& & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
+\cline{3-4}
+& & En tant que directeur, je veux des capacités d'analyse prédictive (prévision des inscriptions) afin d'anticiper les besoins futurs. & C \\
+\hline
+
+% --- US07 : Notifications & Alertes ---
+\multirow{1}{*}{\textbf{7}} & \multirow{1}{*}{\textbf{Notifications \& Alertes}}
+& En tant qu'utilisateur, je veux recevoir des notifications et des alertes filtrées par mon rôle afin de réagir rapidement aux événements importants. & M \\
+\hline
+
+% --- US08 : Dashboards ---
+\multirow{4}{*}{\textbf{8}} & \multirow{4}{*}{\textbf{Dashboards}}
+& En tant que directeur, je veux consulter un dashboard global afin de suivre la performance générale du centre. & M \\
+\cline{3-4}
+& & En tant que responsable financier, je veux consulter un dashboard opérationnel pour suivre les activités quotidiennes. & M \\
 \cline{3-4}
 & & En tant que responsable pédagogique, je veux consulter les performances des formations pour évaluer leur efficacité. & M \\
 \cline{3-4}
 & & En tant qu'apprenant, je veux voir mon espace personnel afin de suivre mes formations et mes progrès. & S \\
 \hline
 
-% --- US03 ---
-\multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Analyse \& KPIs}} 
-& En tant que Responsable Pédagogique, je veux visualiser les taux de réussite et d'abandon afin d'évaluer la performance des formations & M \\ 
+% --- US09 : Export & Reporting ---
+\multirow{2}{*}{\textbf{9}} & \multirow{2}{*}{\textbf{Export \& Reporting}}
+& En tant que responsable financier, je veux générer et exporter des rapports pour documenter les activités du centre. & M \\
 \cline{3-4}
-& & En tant que responsable financier, je veux analyser les données financières pour suivre les recettes et les dépenses. & M\\ 
-\cline{3-4}
-& & En tant que directeur, je veux visualiser les KPIs stratégiques et analyser les performances financières. & M \\ 
-\cline{3-4}
-& & En tant que directeur, je veux comparer les données dans le temps afin d'identifier les tendances. & S \\ 
+& & En tant que directeur, je veux exporter des rapports pour partager les analyses stratégiques. & M \\
 \hline
-
-% --- US04 ---
-\multirow{1}{*}{\textbf{5}} & \multirow{1}{*}{\textbf{Filtrage avancée}} 
-& En tant que utilisateur, je veux appliquer des filtres (période, formation…), afin d’affiner l’analyse & M \\ 
-
-\hline
-
-% --- US05 ---
-\multirow{2}{*}{\textbf{6}} & \multirow{2}{*}{\textbf{Reporting\& Export}} 
-& En tant que responsable financier, je veux générer et exporter des rapports pour documenter les activités & M \\ 
-\cline{3-4}
-& & En tant que directeur, je veux Exporter des rapports pour partager les analyses stratégiques & M \\ 
-\hline
-\multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{Gestion des Formations}} 
-& En tant que responsable pédagogique, je veux gérer les sessions de formation et le planning pour éviter les conflits & M \\ 
-\cline{3-4}
-& & En tant que responsable pédagogique , je veux Affecter des formateurs aux sessions et consulter la liste des participants & M\\ 
-\cline{3-4}
-& &  En tant que responsable pédagogique , je veux gérer le planning des sessions et suivre la présence des apprenants. & M \\ 
-\cline{3-4}
-& & En tant qu'apprenant, je veux Sélectionner des formations, confirmer ou annuler son inscription & S \\ 
-\hline
-\multirow{1}{*}{\textbf{8}} & \multirow{1}{*}{\textbf{Notifications\& alerts}} 
-& En tant qu'utilisateur, je veux recevoir des notifications et des alertes filtrées par mon rôle, afin de réagir rapidement aux événements importants & M \\ 
-
-\hline
-\multirow{4}{*}{\textbf{9}} & \multirow{4}{*}{\textbf{intégration des données}} 
-& En tant qu' admin, je veux importer les données brutes (raw data) pour centraliser les infos. & M \\ 
-\cline{3-4}
-& & En tant qu'administrateur, je souhaite que le système détecte automatiquement les erreurs dans les données importées afin de garantir leur qualité. & M\\ 
-\cline{3-4}
-& & En tant qu'administrateur, je veux valider ou rejeter les données importées afin que seules les données correctes soient stockées dans la base de données. & M \\ 
-\cline{3-4}
-& &  En tant qu'administrateur, je souhaite charger des données validées dans la base de données afin qu'elles puissent être utilisées pour l'analyse et la production de rapports.& S \\ 
-\hline
-\multirow{3}{*}{\textbf{10}} & \multirow{3}{*}{\textbf{Innovation}} 
-& En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des élèves en difficulté & C \\ 
-\cline{3-4}
-&&En tant que responsable financier, je veux prévoir les revenus, afin de planifier le budget. & C \\ 
-\cline{3-4}
-& & En tant que directeur, je veux des capacités d'analyse prédictive (prévision des inscriptions) afin d'anticiper les besoins futurs & C \\ 
-\hline
-
 
 \end{longtable}
-
 
 \subsection{Planification des sprints}
 Après avoir finalisé et ordonné le backlog produit, nous avons procédé à une estimation précise
@@ -343,32 +342,47 @@ Le tableau \ref{tab:release_planning} présente la répartition détaillée de n
 • La durée estimée de chaque sprint
 • Les principales fonctionnalités à développer
 • Les objectifs spécifiques de chaque version
-\begin{table}[h!]
+\begin{table}[H]
 \centering
-\caption{ planification des sprints}
+\caption{Planification des sprints}
 \label{tab:release_planning}
+\begin{adjustbox}{width=\textwidth}
 \begin{tabular}{|c|c|l|c|}
 \hline
-\textbf{Release ID} & \textbf{Sprint} & \textbf{Sprint Name} & \textbf{Estimation (days)} \\
+\textbf{Release ID} & \textbf{Sprint} & \textbf{Nom du Sprint} & \textbf{Estimation (jours)} \\
 \hline
-\multirow{2}{*}{Release 1} & 1 & Authentication \  & 14 \\
-\cline{2-4}
- & 2 & gestion utilisateurs  & 7 \\
-\cline{2-4}
- 
-\hline
-\multirow{3}{*}{Release 2} & 3& Gestion multi-domaines (pédagogique, financier, administratif) & 14 \\
-\cline{2-4}
- & 4 & Dashboards (interfaces utilisateurs) & 16 \\
- & 5 & Intégration des données (ETL) & 14 \\
-\hline
-\multirow{2}{*}{Release 3} & 6 & Analyse décisionnelle \& reporting & 18 \\
-\cline{2-4}
- & 7 & Modèles prédictifs (IA) & 15 \\
-\hline
-\end{tabular}
-\end{table}
 
+\multirow{2}{*}{Release 1} 
+& 1 & Authentification & 10 \\
+\cline{2-4}
+& 2 & Gestion des utilisateurs & 10 \\
+\hline
+
+\multirow{2}{*}{Release 2} 
+& 3 & Intégration des données (ETL) & 10 \\
+\cline{2-4}
+& 4 & Gestion multi-domaines (pédagogique, financier, administratif..) & 10 \\
+\hline
+
+\multirow{1}{*}{Release 3} 
+& 5 & Analyse - KPIs + Filtrage avancé & 10 \\
+\hline
+
+\multirow{2}{*}{Release 4} 
+& 6 & Modèles prédictifs (IA) & 10 \\
+\cline{2-4}
+& 7 & Notifications et alertes intelligentes & 10 \\
+\hline
+
+\multirow{2}{*}{Release 5} 
+& 8 & Dashboard (visualisation des données) & 10 \\
+\cline{2-4}
+& 9 & Reporting et export des données & 10 \\
+\hline
+
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 \section{Conclusion} 
 

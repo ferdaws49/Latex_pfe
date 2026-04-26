@@ -82,4 +82,78 @@ SFEIR, ``Événements scrum,'' 2026, consulté le 25 avril 2026. [Online].
   Available: \url{https://wiki.sfeir.com/agilite/scrum/evenements-scrum/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{uml_spec}
+\BIBentryALTinterwordspacing
+{Object Management Group (OMG)}, ``Unified modeling language (uml)
+  specification,'' 2026, consulté en 2026. [Online]. Available:
+  \url{https://www.omg.org/spec/UML/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{vscode_docs}
+\BIBentryALTinterwordspacing
+{Microsoft}, ``Visual studio code documentation,'' 2026, consulté en 2026.
+  [Online]. Available: \url{https://code.visualstudio.com/docs}
+\BIBentrySTDinterwordspacing
+
+\bibitem{figma_docs}
+\BIBentryALTinterwordspacing
+{Figma Inc.}, ``Figma help center - design and prototyping,'' 2026, consulté
+  en 2026. [Online]. Available: \url{https://help.figma.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{github_docs}
+\BIBentryALTinterwordspacing
+{GitHub}, ``Github documentation - getting started with github,'' 2026,
+  consulté en 2026. [Online]. Available: \url{https://docs.github.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{postman_docs}
+\BIBentryALTinterwordspacing
+{Postman}, ``Postman learning center - api testing guide,'' 2026, consulté en
+  2026. [Online]. Available: \url{https://learning.postman.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{javascript_mdn}
+\BIBentryALTinterwordspacing
+{MDN Web Docs}, ``Javascript guide,'' 2026, consulté en 2026. [Online].
+  Available: \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript}
+\BIBentrySTDinterwordspacing
+
+\bibitem{typescript_docs}
+\BIBentryALTinterwordspacing
+{Microsoft}, ``Typescript documentation,'' 2026, consulté en 2026. [Online].
+  Available: \url{https://www.typescriptlang.org/docs/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{python_docs}
+\BIBentryALTinterwordspacing
+{Python Software Foundation}, ``Python documentation,'' 2026, consulté en
+  2026. [Online]. Available: \url{https://docs.python.org/3/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{nextjs_docs}
+\BIBentryALTinterwordspacing
+{Vercel}, ``Next.js documentation,'' 2026, consulté en 2026. [Online].
+  Available: \url{https://nextjs.org/docs}
+\BIBentrySTDinterwordspacing
+
+\bibitem{nestjs_docs}
+\BIBentryALTinterwordspacing
+{NestJS}, ``Nestjs official documentation,'' 2026, consulté en 2026. [Online].
+  Available: \url{https://docs.nestjs.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{chartjs_docs}
+\BIBentryALTinterwordspacing
+{Chart.js}, ``Chart.js documentation,'' 2026, consulté en 2026. [Online].
+  Available: \url{https://www.chartjs.org/docs/latest/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{postgresql_docs}
+\BIBentryALTinterwordspacing
+{PostgreSQL Global Development Group}, ``Postgresql documentation,'' 2026,
+  consulté en 2026. [Online]. Available:
+  \url{https://www.postgresql.org/docs/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
