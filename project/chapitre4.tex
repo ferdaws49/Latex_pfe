@@ -41,7 +41,7 @@ Le section \ref{ sec:Sprint1: «Authentification»} consacré à la sécurisatio
   L’inscription représente la première étape pour les apprenants souhaitant accéder à la plateforme. En effet, contrairement aux autres acteurs dont les comptes sont créés par l’administrateur, seuls les apprenants passent par cette étape. La figure \ref{fig:usecase_inscription} illustre le comportement dynamique de ce processus à travers un diagramme de cas d’utilisation.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/usecaseinscription.png}
+    \includegraphics[width=1\textwidth]{project/images/registerdg.png}
     \caption{Diagramme de cas d'utilisation "inscription"}
     \label{fig:usecase_inscription}
 \end{figure}
@@ -50,8 +50,8 @@ Le tableau \ref{tab:inscription_email} présente la description textuelle du cas
 
 \small % optionnel : réduit légèrement la taille du texte du tableau
 \begin{longtable}{|l|p{12cm}|}
-\label{ tab:inscription_email}
-\caption{Cas d’utilisation – Inscription et Vérification Email} 
+
+\caption{Cas d’utilisation – Inscription et Vérification Email}
 \label{tab:inscription_email} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
@@ -120,7 +120,7 @@ Une fois les comptes créés et pour les apprenants, leurs demandes d’inscript
 La figure \ref{fig:usecase_login} présente le diagramme de cas d’utilisation illustrant le processus de connexion.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/usecaserlogin.png}
+    \includegraphics[width=0.8\textwidth]{project/images/connecterdg.png}
     \caption{Diagramme de cas d'utilisation "authentification"}
     \label{fig:usecase_login}
 \end{figure}
@@ -191,7 +191,7 @@ Elle comprend la soumission d’une demande de réinitialisation, la réception 
 La figure \ref{fig:usecase_password_modification} présente le diagramme de cas d’utilisation expliquant le fonctionnement de la modification du mot de passe.
  \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/passwordmodification.png}
+    \includegraphics[width=1\textwidth]{project/images/resetDG.png}
     \caption{Diagramme de cas d'utilisation "modification du mot de passe"}
     \label{fig:usecase_password_modification}
 \end{figure}
@@ -271,38 +271,42 @@ Postcondition &
 \subsection{Conception}
 La phase de conception modélise techniquement le fonctionnement de l'authentification à l'aide de diagrammes de séquence. Ils illustrent chronologiquement les interactions entre l'utilisateur et le système pour garantir la sécurité des flux, depuis l'inscription de l'apprenant jusqu'à sa validation finale par l'administration.
 
-\textbf{Diagramme de séquence :Inscription de l'apprenant}
-Ce diagramme illustre le processus de création d'un nouveau compte sur la plateforme. L'utilisateur fournit ses donnés personnelles. La figure \ref{cap:Diagramme de séquence <<Inscription de l'apprenant>>} presente comment le système procède d'abord à une vérification du format des données et l'unicité de l'email . Une fois validé, le mot de passe est haché et le compte est créé avec un statut "non vérifié". Un lien de confirmation est alors envoyé par email à l'utilisateur pour confirmer l'identité de l'apprenant.
+\textbf{Diagramme de séquence: Inscription de l'apprenant}
+
+Ce diagramme illustre le processus de création d'un nouveau compte sur la plateforme. L'utilisateur fournit ses donnés personnelles. La figure \ref{cap:Diagramme de séquence <<Inscription de l'apprenant>>} presente comment le système procède d'abord à une vérification du format des données et l'unicité de l'email. Une fois validé, le mot de passe est haché et le compte est créé avec un statut "non vérifié". Un lien de confirmation est alors envoyé par email à l'utilisateur pour confirmer l'identité de l'apprenant.
 \vspace*{\fill} % espace vertical فوق
 \begin{figure}[H]
   \centering
-   \includegraphics[scale=0.065]{project/images/Register.jpg}
+   \includegraphics[scale=0.5]{project/images/inscds.png}
   \caption{Diagramme de séquence <<Inscription de l'apprenant>> }
   \label{cap:Diagramme de séquence <<Inscription de l'apprenant>>}
 \end{figure}
 \vspace*{\fill} % espace vertical sous
 
-\textbf{Diagramme de séquence :Vérification de l'adresse email}
+\textbf{Diagramme de séquence: Vérification de l'adresse email}
 Ce diagramme démontre la validation de l'email,comme il est representé dans la Figure \ref{cap:iagramme de séquence <<Vérification de l'adresse email>>}, faisant passer le compte du statut "non vérifié" à "en attente". En cliquant sur le lien reçu, l'apprenant transmet un code de sécurité que le système vérifie (intégrité et validité). Une fois l'email confirmé, le profil est prêt pour l'étape finale : l'examen et la validation manuelle par l'administrateur.
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.06]{project/images/Verify-email.jpg}
+    \includegraphics[scale=0.5]{project/images/Verify-mail.png}
   \caption{Diagramme de séquence <<Vérification de l'adresse email>> }
   \label{cap:Diagramme de séquence <<Vérification de l'adresse email>>}
 \end{figure}
-\textbf{Diagramme de séquence :Login}
 
-\textbf{Diagramme de séquence :Login - Apprenant}
+\textbf{Diagramme de séquence: Login}
 
-le diagramme détaille la procédure de connexion sécurisée pour le profil apprenant, qui est schématisé dans la Figure\ref{cap:Diagramme de séquence <<Login - Apprenant>>}.
+Le processus d’authentification est  détaillé en deux scénarios spécifiques : le login de l’apprenant et celui du responsable, afin de distinguer les différents parcours d’accès selon le rôle de l’utilisateur.
 
-\textbf{Diagramme de séquence :Login - Responsables et Administrateurs}
+\textbf{Diagramme de séquence: Login -Apprenant}
 
-Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}. présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique , Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
+le diagramme decrire la procédure de connexion sécurisée pour le profil apprenant, qui est schématisé dans la Figure\ref{cap:Diagramme de séquence <<Login - Apprenant>>}.
+
+\textbf{Diagramme de séquence: Login -Responsables et Administrateurs}
+
+Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}, présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique , Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.08]{project/images/Login-Apprenant.jpg}
+    \includegraphics[scale=0.8]{project/images/loginds.png}
   \caption{Diagramme de séquence <<Login - Apprenant>> }
   \label{cap:Diagramme de séquence <<Login - Apprenant>>}
 \end{figure}
@@ -310,7 +314,7 @@ Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Res
 \vspace*{\fill} % espace فوق
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.065]{project/images/Login-Res-Admin.jpg}
+    \includegraphics[scale=0.8]{project/images/LoginResds.png}
   \caption{Diagramme de séquence <<Login -Responsables et Administrateurs>> }
   \label{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}
   \centering
@@ -322,32 +326,32 @@ Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Res
  Ce diagramme modelise la demande de récupération de compte. Après avoir vérifié l'existence de l'utilisateur, le système lui envoie un lien de réinitialisation temporaire par email comme il est représenter dans la Figure \ref{cap:Diagramme de séquence <<Mot de passe oublié>>}. Ce mécanisme sécurisé garantit que seul le propriétaire légitime de la boîte mail peut initier la modification de son mot de passe.
 \vspace*{\fill} % espace فوق
 \begin{center}
-  \includegraphics[width=1.1\textwidth,keepaspectratio]{project/images/Forgot-password.jpg}
+  \includegraphics[width=1.1\textwidth,keepaspectratio]{project/images/forgetpassds.png}
   \captionof{figure}{Diagramme de séquence <<Mot de passe oublié>>}
   \label{cap:Diagramme de séquence <<Mot de passe oublié>>}
 \end{center}
 \vspace*{\fill} % espace تحت
 
-\textbf{Diagramme de séquence : Vérification de lien de réinitialisation}
+\textbf{Diagramme de séquence: Vérification de lien de réinitialisation}
 
 Ce diagramme décrit la validation automatique du lien envoyé par email. Avant d'autoriser tout changement, le système vérifie si le lien utilisé est toujours fonctionnel. Cela permet de bloquer la procédure si le lien a expiré, évitant ainsi à l'utilisateur de perdre du temps avec un lien expiré comme illustré dans la Figure 4.2.9\label{cap:Diagramme de séquence <<Vérification du lien de réinitialisation>> }
 \vspace*{\fill} % espace فوق
 \begin{figure}[H]
   \centering
-    \includegraphics[width=1.1\textwidth,keepaspectratio]{project/images/lien de réinitialisation.jpg}
+    \includegraphics[width=1.1\textwidth,keepaspectratio]{project/images/linkressds.png}
   \caption{Diagramme de séquence <<Vérification du lien de réinitialisation>> }
   \label{cap:Diagramme de séquence <<Vérification du lien de réinitialisation>> }
 \end{figure}
 \vspace*{\fill} % espace تحت
-\textbf{Diagramme de séquence : Réinitialisation du mot de passe}
+\textbf{Diagramme de séquence: Réinitialisation du mot de passe}
 
-ce dernier diagramme schématisé dans la Figure \ref{cap:Diagramme de séquence <<Réinitialisation du mot de passe>> } présente la mise à jour finale du mot de passe. L’utilisateur saisit ses nouvelles informations, qui sont envoyées de manière  sécurisée au système. Après une vérification finale de la demande, le système sécurise le nouveau mot de passe et l’enregistre dans la base de données.
+ce dernier diagramme schématisé dans la Figure \ref{cap:Diagramme de séquence:<<Réinitialisation du mot de passe>>} présente la mise à jour finale du mot de passe. L’utilisateur saisit ses nouvelles informations, qui sont envoyées de manière  sécurisée au système. Après une vérification finale de la demande, le système sécurise le nouveau mot de passe et l’enregistre dans la base de données.
 \vspace*{\fill} % espace فوق
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.06]{project/images/Reset password.jpg}
+    \includegraphics[scale=0.6]{project/images/newpassds.png}
   \caption{Diagramme de séquence <<Réinitialisation du mot de passe>> }
-  \label{cap:Diagramme de séquence: Réinitialisation du mot de passe}
+  \label{cap:Diagramme de séquence:<<Réinitialisation du mot de passe>>}
 \end{figure}
 \vspace*{\fill} % espace تحت
 
@@ -359,13 +363,13 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
 
 \subsubsection{interface d'inscription}
 
-La première étape pour l'apprenant est de renseigner ses informations de base via une interface intuitive.Comme l'illustre la Figure \ref{Interface d'inscription:standard}, le formulaire comprend des champs obligatoires avec une aide à la saisie pour guider l'apprenant.La Figure \ref{cap:Interface d'inscription:champs invalide} montre comment l'interface réagit lorsque les données ne respectent pas le format attendu (par exemple, un mot de passe trop simple ou un email mal formé). Si un utilisateur tente de s'inscrire avec un email déjà existant, une alerte spécifique est déclenchée comme le montre la figure \ref{cap:cap:Interface d'inscription:champs-invalide}
+La première étape pour l'apprenant est de renseigner ses informations de base via une interface intuitive.Comme l'illustre la Figure \ref{cap:Interface d'inscription:standard}, le formulaire comprend des champs obligatoires avec une aide à la saisie pour guider l'apprenant. La figure \ref{cap:Interface d'inscription:champs-vide} montre comment l'interface réagit lorsque les données ne respectent pas le format attendu (par exemple, un mot de passe trop simple ou un email mal formé). Si un utilisateur tente de s'inscrire avec un email déjà existant, une alerte spécifique est déclenchée comme le montre la figure \ref{cap:Interface d'inscription:champs-vide}.
 
 \textbf{etape de la Vérification d'email}
 
 L’interface illustrée en Figure \ref{cap:interface d'inscription: vérifier email} informe l'utilisateur qu'un lien de confirmation a été envoyé à son adresse mail pour valider son compte. À cette étape, la Figure \ref{cap:interface d'inscription: email de vérification}  présente le contenu du mail reçu par l'utilisateur, incluant un bouton sécurisé contenant un token d'activation . 
 
-Dans le cas où l'utilisateur clique sur un lien déjà utilisé ou dont la durée de validité est dépassée, l’interface de la \ref{interface d'inscription:lien non valide} s'affiche pour lui proposer de renvoyer un nouvel email de vérification.
+Dans le cas où l'utilisateur clique sur un lien déjà utilisé ou dont la durée de validité est dépassée, l’interface de la \ref{cap:interface d'inscription:lien non valide} s'affiche pour lui proposer de renvoyer un nouvel email de vérification.
 
 Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vérifié}, une page de confirmation apparaît brièvement suite à une validation réussie, avant de rediriger automatiquement l'utilisateur vers la page de connexion.
 
@@ -383,8 +387,8 @@ Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vé
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.69\linewidth]{project/images/register-empty.png}
-        \captionof{figure}{Interface d'inscription:champs invalide}
-        \label{cap:Interface d'inscription:champs-invalide}
+        \captionof{figure}{Interface d'inscription:champs vides}
+        \label{cap:Interface d'inscription:champs-vide}
     \end{minipage}
     
     \vspace{0.5cm} % espace بين الصفوف
@@ -393,7 +397,8 @@ Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vé
     \begin{minipage}{0.7\textwidth}
         \centering
         \includegraphics[width=0.5\linewidth]{project/images/register-invalid.png}
-        \captionof{figure}{Description figure 3}
+        \label{cap:Interface d'inscription:champs-invalide}
+        \captionof{figure}{Interface d'inscription: champs-invalide}
     \end{minipage}
 
 \end{figure}
@@ -433,7 +438,7 @@ Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vé
         \centering
         \includegraphics[width=0.8\linewidth]{project/images/validé.png}
         \captionof{figure}{cap:interface d'inscription:inscription vérifié}
-        \label{cap:interface d'inscription:inscription vérifié}
+        \label{cap:interfaced'inscription:inscription vérifié}
     \end{minipage}
 
 \end{figure}
@@ -450,7 +455,7 @@ Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vé
   \label{fig:Interface login:état normale}
 \end{figure}
 
-L’interface de connexion dans Figure \ref{fig:Interface login:état normale} constitue le point d’entrée unique pour tous les utilisateurs. Afin de sécuriser l'accès, un message d’erreur s’affiche en cas d’identifiants incorrects comme la montre Figure \ref{cap:Interface login: donnés invalide} Le système vérifie également le statut du compte : les profils en attente de validation illustré dans la Figure \ref{cap:Interface login:Apprenant ena attente d'acceptation} ou rejetés , qui est representé dans la Figure \ref{cap:Interface login:Apprenant est reffusé}sont informés par des interfaces spécifiques. Une fois l'authentification réussie, la plateforme redirige automatiquement l'utilisateur vers espace  selon son rôle.
+L’interface de connexion dans la Figure \ref{fig:Interface login:état normale}  constitue le point d’entrée unique pour tous les utilisateurs. Afin de sécuriser l'accès, un message d’erreur s’affiche en cas d’identifiants incorrects comme la montre Figure \ref{cap:Interface login: donnés invalide}. Le système vérifie également le statut du compte : les profils en attente de validation illustré dans la Figure \ref{cap:Interface login:Apprenant ena attente d'acceptation} ou rejetés, qui est representé dans la Figure \ref{cap:Interface login:Apprenant est reffusé} sont informés par des interfaces spécifiques. Une fois l'authentification réussie, la plateforme redirige automatiquement l'utilisateur vers un espace selon son rôle.
 
 \newpage
 \begin{figure}
@@ -487,9 +492,8 @@ L’interface de connexion dans Figure \ref{fig:Interface login:état normale} c
 \newpage
 
 
-\subsubsection{Interface"Réinitialisation du mot de passe"}
+\subsubsection{Interface "Réinitialisation du mot de passe"}
 
-L’interface illustrée en Figure \ref{cap:Interface de réinitialisation du mot de passe} permet à l'utilisateur de saisir son adresse email pour initier la procédure.
 L’interface illustrée en Figure \ref{cap:Interface de réinitialisation du mot de passe} permet à l'utilisateur de saisir son adresse email pour initier la procédure.
 Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format est incorrect, l'interface de la Figure \ref{cap:Interface de réinitialisation :email invalide} s'affiche.
 
@@ -516,9 +520,10 @@ Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format es
 
 \newpage
 \textbf{interface de lien de vérification}
+
 Une fois un email valide soumis, l'interface de la Figure \ref{cap:Interface de réinitialisation:email de réinitialisation} informe l'utilisateur qu'un lien de réinitialisation lui a été envoyé. Cette étape confirme la prise en compte de la demande par le serveur.
 
- le lien envoyé par email a une durée de validité limitée. Si l'utilisateur clique sur un lien obsolète ou déjà utilisé, l'interface présentée en Figure \ref{cap:Interface de réinitialisation: lien invalide} apparaît, l'invitant à renouveler sa demande.
+ Le lien envoyé par email a une durée de validité limitée. Si l'utilisateur clique sur un lien obsolète ou déjà utilisé, l'interface présentée en Figure \ref{cap:Interface de réinitialisation: lien invalide} apparaît, l'invitant à renouveler sa demande.
 \begin{figure}[h!]
     \centering
     
@@ -536,7 +541,7 @@ Une fois un email valide soumis, l'interface de la Figure \ref{cap:Interface de 
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{project/images/reset-pass.png}
-        \captionof{figure}{Description figure 2}
+        \captionof{figure}{Interface de réinitialisation: etat normale}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
@@ -550,11 +555,11 @@ Une fois un email valide soumis, l'interface de la Figure \ref{cap:Interface de 
 
 
 \newpage
-\textbf{interface de creation du nouvelle mot de passe}
+\textbf{Interface de creation du nouvelle mot de passe}
 
 Si le lien est valide, l'utilisateur accède au formulaire de la Figure \ref{cap:reset_form}. Cette interface sécurisée permet de saisir et de confirmer le nouveau mot de passe.
 
-Enfin, après la validation du nouveau mot de passe, un message de succès s'affiche (Figure \ref{cap:reset_success}) et le système redirige automatiquement l'utilisateur vers la page de connexion pour s'authentifier.
+Enfin, après la validation du nouveau mot de passe, un message de succès s'affiche (voir Figure \ref{cap:reset_success}) et le système redirige automatiquement l'utilisateur vers la page de connexion pour s'authentifier.
 
 
 \begin{figure}[h!]
@@ -565,12 +570,13 @@ Enfin, après la validation du nouveau mot de passe, un message de succès s'aff
         \centering
         \includegraphics[scale=0.5]{project/images/reset-empty.png}
         \captionof{figure}{Interface de réinitialisation: changer le mot de passe}
+        \label{cap:reset_form}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.69\linewidth]{project/images/ress-invalide.png}
-        \captionof{figure}{Description figure 2}
+        \captionof{figure}{Interface de réinitialisation: mot de passe invalide}
     \end{minipage}
     
     \vspace{0.5cm} % espace بين الصفوف
@@ -579,12 +585,14 @@ Enfin, après la validation du nouveau mot de passe, un message de succès s'aff
     \begin{minipage}{0.7\textwidth}
         \centering
         \includegraphics[width=0.5\linewidth]{project/images/ress-sucess.png}
-        \captionof{figure}{Description figure 3}
+        \captionof{figure}{Interface de réinitialisation: mot de passe réinitialisé avec succès}
+        \label{cap:reset_success}
     \end{minipage}
 \end{figure}
 
 \newpage
 \section{Sprint 2: «Gestion des utilisateurs»}
+\label{sec:Sprint2: «Gestion des utilisateurs»}
 Le sprint 2 est consacré au développement du module de gestion des utilisateurs, une fonctionnalité essentielle de notre système.
 Ce module permet aux administrateurs de gérer efficacement l’ensemble des utilisateurs de la plateforme, notamment à travers la consultation, la validation (acceptation ou refus), la suppression ainsi que la mise à jour de leurs informations.
 L’objectif de ce sprint est de mettre en place une interface intuitive, ergonomique et sécurisée, offrant une gestion complète et centralisée des comptes utilisateurs, afin de répondre aux besoins d’administration du système.
@@ -732,3 +740,41 @@ Postcondition &
 \hline
 \end{longtable}
 \vspace{0.2cm}
+
+\subsection{Conception}
+La section Conception présente la modélisation dynamique des principaux scénarios fonctionnels du module de gestion des utilisateurs. Les diagrammes de séquence ci-dessous illustrent, de manière chronologique et détaillée, les interactions entre les différents acteurs du système (Administrateur, Frontend, Backend, Base de données et Serveur Email), en couvrant les flux nominaux ainsi que les cas alternatifs et d'erreur.
+
+
+\textbf{Diagramme de séquence: Ajouter un utiliateur}
+
+
+Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Ajouter un utilisateur>>} illustre le processus d'ajout d'un nouvel utilisateur par l'administrateur, depuis la saisie du formulaire jusqu'à l'enregistrement en base de données.
+\begin{figure}[H]
+  \centering
+   \includegraphics[scale=0.7]{project/images/ajouter-user.png}
+  \caption{Diagramme de séquence <<Ajouter un utilisateur>> }
+  \label{cap:Diagramme de séquence <<Ajouter un utilisateur>>}
+\end{figure}
+\vspace*{\fill} % espace vertical sous
+
+\textbf{Diagramme de séquence: Réinitialisation du mot de passe}
+
+La Figure \ref{cap:Diagramme de séquence <<Réinitialisation du mot de passe>>} présente le diagramme de séquence relatif à la réinitialisation du mot de passe d'un utilisateur, initié par l'administrateur.
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.7]{project/images/admin-réinitialise.png}
+  \caption{Diagramme de séquence <<Réinitialisation du mot de passe>> }
+  \label{cap:Diagramme de séquence <<Réinitialisation du mot de passe>>}
+\end{figure}
+
+
+\textbf{Diagramme de séquence: Gestion des demandes des apprenants}
+
+
+Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Gestion des demandes des apprenants>>} décrit le flux de traitement des demandes d'inscription des apprenants par l'administrateur, en détaillant les deux chemins possibles: l'acceptation, qui declanche l'envoi d'une notification par email, et le refus, qui archive la demande et notifie l'apprenant.
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.7]{project/images/accept-rejectsequence.png}
+  \caption{Diagramme de séquence <<Gestion des demandes des apprenants>> }
+  \label{cap:Diagramme de séquence <<Gestion des demandes des apprenants>>}
+\end{figure}
