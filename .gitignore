@@ -10,7 +10,7 @@
 *.lot
 *.maf
 *.mtc*
-
+*.blg
 
 # OS files
 .DS_Store

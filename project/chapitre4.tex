@@ -14,10 +14,10 @@ Le section \ref{ sec:Sprint1: «Authentification»} consacré à la sécurisatio
   \label{ sec:Sprint1: «Authentification»}
   Cette section présente les résultats du premier sprint, dédié au développement du module d’authentification de la plateforme. Au cours de ce sprint, les efforts ont été orientés vers la mise en place des fonctionnalités essentielles, notamment l’inscription, la connexion des utilisateurs ainsi que la récupération des mots de passe, tout en intégrant des mécanismes de sécurité basés sur l’authentification et l’autorisation.
   \subsection{Le backlog du sprint 1}
-  dans cette subsection, nous présentons le backlog du sprint 1, qui a été élaboré à partir des besoins fonctionnels identifiés pour la fonctionnalité d’authentification. Ce backlog comprend les user stories détaillées, permettant de planifier et de prioriser les tâches à réaliser pendant ce sprint comme le montre le tableau \ref{tab:sprint1_backlog}.
+  dans cette partie, nous présentons le backlog du sprint 1, qui a été élaboré à partir des besoins fonctionnels identifiés pour la fonctionnalité d’authentification. Ce backlog comprend les user stories détaillées, permettant de planifier et de prioriser les tâches à réaliser pendant ce sprint comme le montre le tableau \ref{tab:sprint1_backlog}.
   \begin{table}[h!]
 \centering
-\caption{Backlog du Sprint 1 – Authentification}
+\caption{Backlog du Sprint 1 : Authentification}
 \label{tab:sprint1_backlog}
 \begin{tabular}{|c|p{4cm}|p{10cm}|c|}
 \hline
@@ -361,11 +361,11 @@ ce dernier diagramme schématisé dans la Figure \ref{cap:Diagramme de séquence
 \subsection{Réalisation}
 Cette section présente les interfaces de l'authentification. Nous allons détailler les différents modules en mettant l’accent sur l’expérience utilisateur et les fonctionnalités implémentées.
 
-\subsubsection{interface d'inscription}
+\textbf{Interface d'inscription}
 
 La première étape pour l'apprenant est de renseigner ses informations de base via une interface intuitive.Comme l'illustre la Figure \ref{cap:Interface d'inscription:standard}, le formulaire comprend des champs obligatoires avec une aide à la saisie pour guider l'apprenant. La figure \ref{cap:Interface d'inscription:champs-vide} montre comment l'interface réagit lorsque les données ne respectent pas le format attendu (par exemple, un mot de passe trop simple ou un email mal formé). Si un utilisateur tente de s'inscrire avec un email déjà existant, une alerte spécifique est déclenchée comme le montre la figure \ref{cap:Interface d'inscription:champs-vide}.
 
-\textbf{etape de la Vérification d'email}
+\textbf{Étape de la Vérification d'email}
 
 L’interface illustrée en Figure \ref{cap:interface d'inscription: vérifier email} informe l'utilisateur qu'un lien de confirmation a été envoyé à son adresse mail pour valider son compte. À cette étape, la Figure \ref{cap:interface d'inscription: email de vérification}  présente le contenu du mail reçu par l'utilisateur, incluant un bouton sécurisé contenant un token d'activation . 
 
@@ -444,7 +444,7 @@ Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vé
 \end{figure}
 
 \newpage
-\subsubsection{Interface Login}
+\textbf{Interface Login}
 
 
 
@@ -778,3 +778,6 @@ Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Gestion
   \caption{Diagramme de séquence <<Gestion des demandes des apprenants>> }
   \label{cap:Diagramme de séquence <<Gestion des demandes des apprenants>>}
 \end{figure}
+
+\subsection{Réalisation}:
+"remarque: Cette partie sera complétée par des captures d’écran de réalisation dès que celles-ci seront finalisées."
