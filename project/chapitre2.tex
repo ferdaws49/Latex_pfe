@@ -141,9 +141,9 @@ Gestion des ressources  & Ajout et mise à jour des ressources\\
 \hline
  Collecte des données  & Importation manuelle ou automatique des sources (inscriptions, formateurs, etc.)\\
 \hline
-Traitement des données  & Supervision du nettoyage, validation et structuration des données dans le schéma en étoile (pour l’analyse décisionnelle)\\
+Traitement des données  & Supervision du nettoyage, validation et structuration des données.\\
 \hline
-Maintenance  & Tests de performance, vérification de la cohérence des calculs et documentation technique\\
+Maintenance  & Suivi des performances de traitement, vérification de la cohérence des calculs et gestion du paramétrage technique\\
 \hline
 \end{tabular}
 \end{table}
@@ -297,15 +297,16 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 & & En tant qu'utilisateur, je veux appliquer des filtres (période, formation, formateur...) afin d'affiner mon analyse. & M \\
 \hline
 
-% --- US06 : Modèles prédictifs (IA) ---
-\multirow{3}{*}{\textbf{6}} & \multirow{3}{*}{\textbf{Modèles prédictifs (IA)}}
+% --- US06 : Module prédictif et recommandation ---
+\multirow{4}{*}{\textbf{6}} & \multirow{4}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandation}}}
 & En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des apprenants en difficulté. & C \\
 \cline{3-4}
 & & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
 \cline{3-4}
 & & En tant que directeur, je veux des capacités d'analyse prédictive (prévision des inscriptions) afin d'anticiper les besoins futurs. & C \\
+\cline{3-4}
+& & En tant que Directeur, je veux accéder à des recommandations stratégiques basées sur l'analyse des données, afin de mieux prioriser les actions, déléguer les responsabilités et améliorer les performances globales de l'établissement. & C \\
 \hline
-
 % --- US07 : Notifications & Alertes ---
 \multirow{1}{*}{\textbf{7}} & \multirow{1}{*}{\textbf{Notifications \& Alertes}}
 & En tant qu'utilisateur, je veux recevoir des notifications et des alertes filtrées par mon rôle afin de réagir rapidement aux événements importants. & M \\
@@ -368,7 +369,7 @@ Le tableau \ref{tab:release_planning} présente la répartition détaillée de n
 \hline
 
 \multirow{2}{*}{Release 4} 
-& 6 & Modèles prédictifs (IA) & 10 \\
+& 6 & Module prédictif et recommandation & 10 \\
 \cline{2-4}
 & 7 & Notifications et alertes intelligentes & 10 \\
 \hline
@@ -384,8 +385,6 @@ Le tableau \ref{tab:release_planning} présente la répartition détaillée de n
 \end{table}
 
 \section{Conclusion} 
-
-
 
 
 Ce chapitre nous a permis de définir précisément "pour qui" et "comment" nous allons construire cette solution. En comprenant les besoins des utilisateurs et en structurant notre méthode de travail agile, nous avons désormais une vision claire du projet. Forts de ces bases solides, nous pouvons maintenant aborder, dans le chapitre suivant, le choix des technologies et la conception technique qui permettront de transformer ces besoins en une plateforme réelle
