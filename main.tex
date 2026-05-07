@@ -1,4 +1,3 @@
-%ahna bech na3mlou rapport pfe donc nektbou report
 %12pt: taille de police (recommandé)
 %a4paper: type de papier
 \documentclass[12pt,a4paper]{report}
@@ -12,7 +11,8 @@
 \usepackage{subcaption}
 \setcounter{secnumdepth}{3}
   
- \usepackage[french]{minitoc} %2. yokhrejli mini sommaire mta3 kol chapitre
+ 
+%\usepackage[french]{minitoc} % Moved down to fix warning W0030
 %\etocsetnexttocdepth{subsection} %list subsections
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}% geometry package des marges des pages, (tnajem matektebech[] w howa yhotlek les tailles par defaut 
 \usepackage[pdftex]{graphicx} %package des images, option pdftex spécifier que le document sera compilé avec pdfLaTeX
@@ -33,6 +33,7 @@
 \usepackage{array}    % Pour mieux contrôler les colonnes
 \usepackage[table]{xcolor} % Pour les couleurs de fond
 \usepackage[french]{babel}
+\usepackage{chngcntr}
 \usepackage[font=small,labelfont=bf]{caption}%les caption seront en taille small et gras(figure1, table1) (kol tableau andou titre
 \onehalfspacing % basic elli dima nestamlou , teb3a el package setspace
 
@@ -58,6 +59,8 @@
 
 \renewcommand{\headrulewidth}{0.4pt} % Thickness of the header rule line
 \renewcommand{\footrulewidth}{0.4pt} % No footer rule line
+
+\usepackage[french]{minitoc} % Moved here to be after hyperref and fncychap
 
 \makeatletter
 \renewcommand{\numberline}[1]{%
@@ -102,6 +105,7 @@
 \input{project/chapitre2}
 \input{project/chapitre3}
 \input{project/chapitre4}
+\input{project/chapitre5}
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 \end{document}

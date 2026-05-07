@@ -5,13 +5,13 @@
 \section{Introduction}
   La première 'release' de notre plateforme repose sur des bases fonctionnelles essentielles, mises en place à travers deux sprints stratégiques : l’authentification et la gestion des utilisateurs.
   
- Ce chapitre présente de manière structurée le processus de développement adopté pour chaque sprint, en s’appuyant sur le backlog produit et les user stories ayant guidé la conception et l’implémentation des fonctionnalités.
+ Ce chapitre présente de manière structurée le processus de développement adopté pour chaque sprint, en s’appuyant sur le backlog produit et les users stories ayant guidé la conception et l’implémentation des fonctionnalités.
 
 Pour chaque sprint, une analyse des cas d’utilisation est réalisée, suivie d’une phase de conception illustrée par des diagrammes de séquence décrivant les interactions du système. Les résultats sont ensuite présentés à travers des maquettes et interfaces utilisateur.
 
-Le section \ref{ sec:Sprint1: «Authentification»} consacré à la sécurisation de l’accès à la plateforme via un système d’authentification fiable, tandis que la section \ref{sec:Sprint2: «Gestion des utilisateurs»} traite de la gestion des utilisateurs et des rôles. Ensemble, ces deux sprints constituent une base essentielle pour le développement des fonctionnalités analytiques de la plateforme.
+La section \ref{sec:sprint1-authentification} consacré à la sécurisation de l’accès à la plateforme via un système d’authentification fiable, tandis que la section \ref{sec:sprint2-gestion-utilisateurs} traite de la gestion des utilisateurs et des rôles. Ensemble, ces deux sprints constituent une base essentielle pour le développement des fonctionnalités analytiques de la plateforme.
   \section{Sprint 1: «Authentification»}
-  \label{ sec:Sprint1: «Authentification»}
+  \label{sec:sprint1-authentification}
   Cette section présente les résultats du premier sprint, dédié au développement du module d’authentification de la plateforme. Au cours de ce sprint, les efforts ont été orientés vers la mise en place des fonctionnalités essentielles, notamment l’inscription, la connexion des utilisateurs ainsi que la récupération des mots de passe, tout en intégrant des mécanismes de sécurité basés sur l’authentification et l’autorisation.
   \subsection{Le backlog du sprint 1}
   dans cette partie, nous présentons le backlog du sprint 1, qui a été élaboré à partir des besoins fonctionnels identifiés pour la fonctionnalité d’authentification. Ce backlog comprend les user stories détaillées, permettant de planifier et de prioriser les tâches à réaliser pendant ce sprint comme le montre le tableau \ref{tab:sprint1_backlog}.
@@ -198,26 +198,18 @@ La figure \ref{fig:usecase_password_modification} présente le diagramme de cas 
 Le tableau \ref{tab:password_modification} présente la description textuelle du cas d’utilisation «modification du mot de passe».
 
 \begin{longtable}{|l|p{12cm}|}
-<<<<<<< HEAD
-    \caption{cas d'utilisation-modification du mot de passe}
-    \label{tab:password_modification} \\
-=======
-\caption{Cas d’utilisation - Modification du mot de passe}
+\caption{cas d'utilisation-modification du mot de passe}
 \label{tab:password_modification} \\
->>>>>>> b21723fdcf1be1cd46133bbbd352103907b51b5a
 \hline
 \textbf{Élément} & \textbf{Description} \\
 \hline
 \endfirsthead
-
 \hline
 \textbf{Élément} & \textbf{Description} \\
 \hline
 \endhead
-
 Cas d’utilisation & Mot de passe oublié (Forgot Password) \\
 \hline
-
 Acteur & Utilisateur \\
 \hline
 
@@ -227,7 +219,6 @@ Précondition &
     \item L’utilisateur possède un compte dans le système
 \end{itemize} \\
 \hline
-
 Scénario principal & 
 \textbf{ Scénario 1 : Demande de réinitialisation}
 \begin{enumerate}
@@ -251,7 +242,6 @@ Scénario principal &
 \end{enumerate}
 \\
 \hline
-
 Scénarios alternatifs & 
 \begin{itemize}
     \item \textbf{Email invalide ou vide :} le système affiche un message d’erreur et bloque l’envoi
@@ -272,7 +262,6 @@ Postcondition &
 \end{itemize}
 \\
 \hline
-
 \end{longtable}
 
 \subsection{Conception}
@@ -378,7 +367,7 @@ L’interface illustrée en Figure \ref{cap:interface d'inscription: vérifier e
 
 Dans le cas où l'utilisateur clique sur un lien déjà utilisé ou dont la durée de validité est dépassée, l’interface de la \ref{cap:interface d'inscription:lien non valide} s'affiche pour lui proposer de renvoyer un nouvel email de vérification.
 
-Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vérifié}, une page de confirmation apparaît brièvement suite à une validation réussie, avant de rediriger automatiquement l'utilisateur vers la page de connexion.
+Enfin, comme le montre la Figure \ref{cap:interface d'inscription:inscription vérifié}, une page de confirmation apparaît brièvement suite à une validation réussie, avant de rediriger automatiquement l'utilisateur vers la page de connexion.
 
 \begin{figure}[h!]
     \centering
@@ -444,8 +433,8 @@ Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vé
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.8\linewidth]{project/images/validé.png}
-        \captionof{figure}{cap:interface d'inscription:inscription vérifié}
-        \label{cap:interfaced'inscription:inscription vérifié}
+        \captionof{figure}{interface d'inscription:inscription vérifié}
+        \label{cap:interface d'inscription:inscription vérifié}
     \end{minipage}
 
 \end{figure}
@@ -462,7 +451,7 @@ Enfin, comme le montre la Figure \ref{cap:interfaced'inscription:inscription vé
   \label{fig:Interface login:état normale}
 \end{figure}
 
-L’interface de connexion dans la Figure \ref{fig:Interface login:état normale}  constitue le point d’entrée unique pour tous les utilisateurs. Afin de sécuriser l'accès, un message d’erreur s’affiche en cas d’identifiants incorrects comme la montre Figure \ref{cap:Interface login: donnés invalide}. Le système vérifie également le statut du compte : les profils en attente de validation illustré dans la Figure \ref{cap:Interface login:Apprenant ena attente d'acceptation} ou rejetés, qui est representé dans la Figure \ref{cap:Interface login:Apprenant est reffusé} sont informés par des interfaces spécifiques. Une fois l'authentification réussie, la plateforme redirige automatiquement l'utilisateur vers un espace selon son rôle.
+L’interface de connexion dans la Figure \ref{fig:Interface login:état normale}  constitue le point d’entrée unique pour tous les utilisateurs. Afin de sécuriser l'accès, un message d’erreur s’affiche en cas d’identifiants incorrects comme la montre Figure \ref{cap:Interface login: données invalide}. Le système vérifie également le statut du compte : les profils en attente de validation illustré dans la Figure \ref{cap:Interface login:Apprenant ena attente d'acceptation} ou rejetés, qui est representé dans la Figure \ref{cap:Interface login:Apprenant-est-refusé} sont informés par des interfaces spécifiques. Une fois l'authentification réussie, la plateforme redirige automatiquement l'utilisateur vers un espace selon son rôle.
 
 \newpage
 \begin{figure}
@@ -472,8 +461,8 @@ L’interface de connexion dans la Figure \ref{fig:Interface login:état normale
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.8\linewidth]{project/images/Login-invalide.png}
-        \captionof{figure}{Interface login: donnés invalide}
-        \label{cap:Interface login: donnés invalide}
+        \captionof{figure}{Interface login: données invalide}
+        \label{cap:Interface login: données invalide}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
@@ -489,8 +478,8 @@ L’interface de connexion dans la Figure \ref{fig:Interface login:état normale
     \begin{minipage}{0.7\textwidth}
         \centering
         \includegraphics[width=0.5\linewidth]{project/images/rejected.png}
-        \captionof{figure}{Interface login:Apprenant est reffusé}
-        \label{cap:Interface login:Apprenant est reffusé}
+        \captionof{figure}{Interface login:Apprenant est refusé}
+        \label{cap:Interface login:Apprenant-est-refusé}
     \end{minipage}
 
 \end{figure}
@@ -599,7 +588,7 @@ Enfin, après la validation du nouveau mot de passe, un message de succès s'aff
 
 \newpage
 \section{Sprint 2: «Gestion des utilisateurs»}
-\label{sec:Sprint2: «Gestion des utilisateurs»}
+\label{sec:sprint2-gestion-utilisateurs}
 Le sprint 2 est consacré au développement du module de gestion des utilisateurs, une fonctionnalité essentielle de notre système.
 Ce module permet aux administrateurs de gérer efficacement l’ensemble des utilisateurs de la plateforme, notamment à travers la consultation, la validation (acceptation ou refus), la suppression ainsi que la mise à jour de leurs informations.
 L’objectif de ce sprint est de mettre en place une interface intuitive, ergonomique et sécurisée, offrant une gestion complète et centralisée des comptes utilisateurs, afin de répondre aux besoins d’administration du système.
