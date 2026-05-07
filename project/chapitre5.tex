@@ -180,6 +180,294 @@ Dans cette section, nous présentons les interfaces réalisées pour le module d
 
 
 
-\section{Sprint 4 : Gestion multi-domaines}
-\label{sec:Sprint4:MultiDomain}
-Comme perspectives, nous proposons...
+
+
+
+
+
+
+\section{Sprint 4: Gestion multi-domaines}
+Ce rapport de sprint détaille l'analyse fonctionnelle, la conception et les éléments de réalisation de la page "Planning du responsable pédagogique" au sein de la plateforme de gestion des formations. L'objectif est de fournir une documentation académique complète et structurée sur les opérations pour les sessions et les formations.
+
+
+\subsection{Le backlog du sprint 4}
+
+\begin{table}[H]
+\centering
+\caption{Backlog du Sprint 4: Gestion multi-domaines}
+\label{tab:sprint3_backlog}
+\begin{tabular}{|c|p{4.4cm}|p{10cm}|c|}
+\hline
+\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+\hline
+\multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Gestion multi-domaines}}
+& En tant que responsable pédagogique, je veux gérer les activités pédagogiques du centre afin d'assurer le bon déroulement des formations. & M \\
+
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Analyse}
+
+La phase d'analyse de ce sprint porte sur l'identification et la formalisation des exigences fonctionnelles liées à la gestion de la page « Planning des Sessions ». Elle se concentre exclusivement sur les opérations CRUD appliquées aux entités Session et Formation, telles qu'elles sont manipulées par le responsable pédagogique. Pour chaque fonctionnalité identifiée, un cas d'utilisation structuré est élaboré, décrivant les acteurs impliqués, les préconditions nécessaires, le scénario nominal ainsi que les scénarios alternatifs envisageables, afin de couvrir l'ensemble des comportements attendus du système.
+
+\textbf{Amélioration du cas d'utilisation « Gestion et Planification des Sessions de Formation »:}
+
+La figure \ref{Diagramme de cas d'utilisation « planning »} illustre le diagramme de cas d'utilisation présentant les différentes interactions entre l'administrateur et le système lors du processus d'import.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{project/images/UC-RP(planning).png}
+    \caption{Diagramme de cas d'utilisation « planning »}
+    \label{Diagramme de cas d'utilisation « Gestion et Planification des Sessions de Formation »}
+\end{figure}
+
+Le tableau \ref{tab:Gestion et Planification des Sessions de Formation} présente la description textuelle du cas d'utilisation « Gestion et Planification des Sessions de Formation ».
+
+\begin{longtable}{|l|p{12cm}|}
+\caption{Cas d'utilisation – Gestion et Planification des Sessions de Formation}
+\label{tab:Gestion et Planification des Sessions de Formation} \\
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endhead
+
+Cas d'utilisation & 
+\begin{itemize}[leftmargin=*]
+    \item Importer des données
+\end{itemize} \\
+\hline
+Acteur & 
+\begin{itemize}[leftmargin=*]
+    \item Responsable pédagogique
+\end{itemize} \\
+\hline
+Préconditions & 
+\begin{itemize}[leftmargin=*]
+    \item Le responsable pédagogique est authentifié et dispose du role responsable pédagogique.
+    \item Au moins une formation existe dans le système
+\end{itemize} \\
+\hline
+Scénario de base & 
+
+\textbf{Scenario 1: Créer une session de formation} 
+\begin{enumerate}[leftmargin=*]
+\item  Le responsable pédagogique accède à la page « Planning des Sessions ».
+\item  Il clique sur le bouton « Nouvelle session ». 
+\item  Le système affiche un modale de création.
+\item  Le responsable pédagogique renseigne les champs obligatoires: date, heure de début, heure de fin, formation associée, formateur, lieu, type, capacité maximale et prix.
+\item  Le responsable pédagogique clique sur « Enregistrer ».
+\item  Le système vérifie que tous les champs sont remplis.
+\item  Le système valide les données et crée l'enregistrement en base de données.
+\item  Le système ferme la modale, rafraîchit la liste des sessions et met à jour les KPI.
+\end{enumerate}
+\\
+
+ & \textbf{Scénario 2: Modifier une session de formation} 
+\begin{enumerate}[leftmargin=*]
+\item  Le responsable pédagogique sélectionne une session depuis le tableau ou le calendrier.
+\item  Le responsable pédagogique clique sur l’icône de modification. 
+\item  Le système affiche la fenêtre modale pré-remplie avec les données existantes de la session. 
+\item  Le responsable pédagogique modifie les champs souhaités 
+\item  Le responsable pédagogique clique sur « Enregistrer ». 
+\item  Le systeme met à jour la session en base de données.
+\item  La modale se ferme et l’affichage est rafraîchi.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 3: Annuler une session de formation} 
+\begin{enumerate}[leftmargin=*]
+\item  Le responsable pédagogique sélectionne une session.
+\item  Le responsable pédagogique clique sur « Annuler ».
+\item  Le système affiche une boîte de confirmation.
+\item  Le responsable pédagogique confirme l’action.
+\item  Le système met à jour le statut de la session en base de données.
+\item  Le systeme met à jour Les KPI et l’interface.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 4: Gérer les présences d'une session} 
+\begin{enumerate}[leftmargin=*]
+\item  Le responsable pédagogique sélectionne une session.
+\item  Le responsable pédagogique clique sur « Marquer présence ».
+\item  Le système récupère la liste des participants avec leur statut.
+\item  Une modale s’ouvre avec la liste des apprenants.
+\item  Le responsable pédagogique met à jour les statuts de présence.
+\item  Le responsable pédagogique clique sur « Enregistrer ».
+\item  Le système met à jour les données en base et ferme la modale.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 5: Créer une formation} 
+\begin{enumerate}[leftmargin=*]
+\item  Le responsable pédagogique clique sur « Nouvelle formation ».
+\item  Le système affiche une modale de création.
+\item  Le responsable pédagogique saisit les informations de la formation.
+\item  Le responsable pédagogique clique sur « Enregistrer ».
+\item  Le système enregistre la formation en base de données.
+\item  Le système mettre à jour la liste des formations dans l’interface
+\end{enumerate}
+\\
+
+& \textbf{Scénario 6: Modifier une formation} 
+\begin{enumerate}[leftmargin=*]
+\item  Le Responsable Pédagogique sélectionne l'action "Modifier" sur une formation spécifique depuis la liste des formations.
+\item  Le système ouvre le formulaire modal "Modifier Formation", pré-rempli avec les données actuelles de la formation.
+\item  Le Responsable Pédagogique modifie les informations souhaitées (ex: nom, description, durée).
+\item  Le Responsable Pédagogique soumet les modifications.
+\item  Le système valide les nouvelles données
+\item  Le système met à jour l'enregistrement correspondant dans la base de données.
+\item  Le système ferme le modal et rafraîchit l'affichage pour refléter les changements.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 7: Supprimer une formation}
+\begin{enumerate}[leftmargin=*]
+\item  Le Responsable Pédagogique sélectionne l'action "Annuler" pour une formation donnée.
+\item  Le système vérifie que la formation ne contient pas de sessions actives.
+\item  Le système affiche une boîte de dialogue demandant la confirmation de cette action irréversible.
+\item  Le Responsable Pédagogique confirme l'annulation.
+\item  Le système vérifie que la formation n'est associée à aucune session active ou planifiée
+\item  Le système modifie le statut de la formation en "Annulé" dans la base de données.
+\item  Le système ferme la boîte de dialogue et met à jour l'interface pour retirer la formation de la liste active.
+\end{enumerate}
+\\
+\hline
+Scénarios alternatifs & 
+    \textbf{Scénarios 1.6, 5.5, 2.6 et 6.5: Données invalides} 
+    
+    Si des champs obligatoires sont manquants, le système affiche un message d'erreur et bloque la soumission.
+
+     \textbf{Scénarios 2.5, 4.6, 5.4 et 6.4: Annulation} 
+     
+     Si le Responsable Pédagogique ferme le formulaire/modal avant la soumission, aucune donnée n'est enregistrée.
+
+     \textbf{Scenario1: Créer une session de formation}
+
+     \textbf{1.7: Conflit de planning} 
+     
+     Le système affiche un avertissement et propose de modifier le créneau horaire.
+
+    \textbf{Scénario 2: Modifier une session de formation}
+
+    \textbf{2.6: Conflit de ressources:} 
+    
+    Si les nouvelles dates ou le nouveau lieu entrent en conflit avec une autre session, le système bloque la mise à jour et notifie l'utilisateur.
+
+     \textbf{Scénarios 3.4 et 6.4: Rétractation} 
+     
+     Si le responsable pédagogique annule l'action lors de la demande de confirmation, le statut de la session reste inchangé.
+
+     \textbf{Scénario 5: Créer une formation} 
+
+     \textbf{5.5: Intitulé de formation déjà existant:} 
+     
+     Si la formation existe déjà, le système affiche un avertissement de doublon et invite à modifier l'intitulé.
+
+     \textbf{Scénario 7: Supprimer une formation}
+
+    \textbf{7.5: Formation avec sessions actives:} 
+    
+    Si le système détecte des sessions associées, il affiche un message d'erreur bloquant l'annulation.
+\\
+\hline
+Post-conditions &
+
+    \textbf{Scenario 1: Création d'une session} 
+    
+    Une nouvelle session de formation est planifiée, enregistrée dans le système et visible sur les interfaces de suivi.
+
+     \textbf{Scenario 2: Modification d'une session} 
+     
+     Les attributs de la session sont mis à jour dans le système et l'interface utilisateur est synchronisée.
+
+    \textbf{Scenario 3: Annulation d'une session de formation}
+    
+    La session est marquée comme annulée, elle n'est plus considérée comme active, et les indicateurs financiers et statistiques sont ajustés en conséquence.
+
+     \textbf{Scenario 4: Gestion des présences} 
+     
+     Les statuts de présence des apprenants sont mis à jour dans la base de données.
+
+     \textbf{Scenario 5: Création d'une formation} 
+     
+     Une nouvelle formation est créée dans le système et devient disponible lors de la création ou modification d'une session.
+
+     \textbf{Scenario 6: Modification d'une formation} 
+     
+     Les attributs de la formation sont mis à jour dans le système et l'interface utilisateur est synchronisée.
+
+     \textbf{Scenario 7: Suppression d'une formation} 
+     
+     La formation est marquée comme annulée ou supprimée du système et n'apparaît plus dans les listes actives.
+
+\\
+\hline
+\end{longtable}
+
+\subsection{Conception}
+
+La phase de conception traduit les exigences fonctionnelles identifiées en phase d'analyse en modèles techniques exploitables par l'équipe de développement. Elle s'appuie sur des diagrammes de séquence UML pour représenter les interactions dynamiques entre le responsable pédagogique, l'interface utilisateur (Frontend), la logique métier (Backend) et la persistance des données (Base de Données), pour chacune des opérations CRUD du sprint. Ces modèles constituent le fil conducteur technique du développement et garantissent la cohérence entre les exigences métier et l'architecture applicative retenue.
+
+
+\textbf{Diagramme de séquence: Créer une formation}
+
+Comme le montre la figure \ref{cap:Diagramme de séquence <<Creation formation>>}, Ce diagramme de séquance illustre le processus de création d'une nouvelle formation. Les interactions principales incluent l'affichage du formulaire, la soumission des données, la validation côté serveur et la réponse du système.
+\vspace*{\fill} % espace vertical فوق
+\begin{figure}[H]
+  \centering
+   \includegraphics[scale=0.5]{project/images/creer formation.png}
+  \caption{Diagramme de séquence <<Création formation>> }
+  \label{cap:Diagramme de séquence <<Creation formation>>}
+\end{figure}
+\vspace*{\fill} % espace vertical sous
+
+\textbf{Diagramme de séquence: creer session}
+
+Le diagramme presenté dans la figure \ref{cap:Diagramme de séquence <<Créer session>>} représente la séquence des opérations nécessaires pour créer une session. Il détaille comment le Responsable Pédagogique interagit avec le Frontend pour saisir les informations de la session, comment ces données sont envoyées au Backend pour traitement (incluant la vérification de la disponibilité des ressources) et comment elles sont finalement stockées dans la Base de Données.
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.5]{project/images/creer-session.png}
+  \caption{Diagramme de séquence << Création session >> }
+  \label{cap:Diagramme de séquence <<Créer session>>}
+\end{figure}
+
+\textbf{Diagramme de séquence: Modifier session}
+
+Le diagramme de la Figure \ref{cap:Diagramme de séquence <<modifier session>>} représente la séquence des opérations nécessaires pour modifier une session existante. Il commence par la sélection de la session par le Responsable Pédagogique, l'affichage des données actuelles dans un formulaire d'édition, la soumission des modifications au Backend, la mise à jour de l'enregistrement dans la Base de Données, et la confirmation de l'opération au Frontend.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.5]{project/images/modifier session.png}
+  \caption{Diagramme de séquence << Modifier session >> }
+  \label{cap:Diagramme de séquence <<modifier session>>}
+\end{figure}
+
+\textbf{Diagramme de séquence: Supprimer formation}
+
+ La figure \ref{cap:Diagramme de séquence <<supprimer session>>} illustre le processus du suppression d'une formation. Le diagramme met en évidence les validations critiques (vérification des dépendances) avant d'autoriser l'annulation.\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.5]{project/images/supprimer-formation.png}
+  \caption{Diagramme de séquence << supprimer formation >> }
+  \label{cap:Diagramme de séquence <<supprimer session>>}
+\end{figure}
+
+
+
+
+\subsection{Réalisation}
+
+
+Cette section propose une série de captures d'écran couvrent l’ensemble du parcours utilisateur, depuis la création et la modification d’une session jusqu’à la gestion des présences , en passant par la consultation des participants. Elles témoignent de la conformité du livrable par rapport aux cas d’utilisation définis en phase d’analyse, ainsi que de la qualité de l’expérience utilisateur mise en œuvre.
+
+\textbf{Interface de la page Planning}
+
+
+
+
+
+

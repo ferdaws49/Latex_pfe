@@ -37,6 +37,10 @@
 \usepackage[font=small,labelfont=bf]{caption}%les caption seront en taille small et gras(figure1, table1) (kol tableau andou titre
 \onehalfspacing % basic elli dima nestamlou , teb3a el package setspace
 
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+
 % Définir la longueur de l'espacement entre les paragraphes
 \setlength{\parskip}{10pt} % Réglez la valeur selon vos préférences(9adeh el espaces bin les paragraphes)
 %-------------------
@@ -76,6 +80,7 @@
 \counterwithin{figure}{chapter}
 %=============document principal ========
 \begin{document}
+
 \cleardoublepage % Pour commencer une nouvelle page  si nécessaire
 %======pour mettre la page de garde il faut: enlever le commentaire ci dessous====
 \includepdf{pagedegarde.pdf}
