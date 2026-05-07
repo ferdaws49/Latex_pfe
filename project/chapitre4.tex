@@ -1,4 +1,4 @@
-\chapter{Release 1:"Authentification et gestion des utilisateurs" } 
+\chapter{Release 1:Authentification et gestion des utilisateurs} 
  \minitoc
  \newpage
  \counterwithin{figure}{chapter}
@@ -32,7 +32,7 @@ La section \ref{sec:sprint1-authentification} consacré à la sécurisation de l
 \hline
 \end{tabular}
 \end{table}
-  Le tableau \ref{tab:sprint1_backlog} présente le backlog du sprint 1, axé sur la fonctionnalité d'authentification, Il détaille les user stories associées, permettant ainsi de planifier et de prioriser les tâches à réaliser pendant ce sprint.
+ 
   \subsection{Analyse}
   Dans cette section, nous proposons une analyse synthétique des cas d’utilisation élaborés durant ce sprint. Chaque cas a été ajusté afin de satisfaire les exigences liées à la gestion de l’authentification au sein de la plateforme.
 
@@ -41,7 +41,7 @@ La section \ref{sec:sprint1-authentification} consacré à la sécurisation de l
   L’inscription représente la première étape pour les apprenants souhaitant accéder à la plateforme. En effet, contrairement aux autres acteurs dont les comptes sont créés par l’administrateur, seuls les apprenants passent par cette étape. La figure \ref{fig:usecase_inscription} illustre le comportement dynamique de ce processus à travers un diagramme de cas d’utilisation.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/registerdg.png}
+    \includegraphics[width=1\textwidth]{project/images/inscription_use_case.png}
     \caption{Diagramme de cas d'utilisation "inscription"}
     \label{fig:usecase_inscription}
 \end{figure}
@@ -120,7 +120,7 @@ Une fois les comptes créés et pour les apprenants, leurs demandes d’inscript
 La figure \ref{fig:usecase_login} présente le diagramme de cas d’utilisation illustrant le processus de connexion.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/connecterdg.png}
+    \includegraphics[width=0.8\textwidth]{project/images/usecaserlogin.png}
     \caption{Diagramme de cas d'utilisation "authentification"}
     \label{fig:usecase_login}
 \end{figure}
@@ -191,7 +191,7 @@ Elle comprend la soumission d’une demande de réinitialisation, la réception 
 La figure \ref{fig:usecase_password_modification} présente le diagramme de cas d’utilisation expliquant le fonctionnement de la modification du mot de passe.
  \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/resetDG.png}
+    \includegraphics[width=1\textwidth]{project/images/usecase_reset.png}
     \caption{Diagramme de cas d'utilisation "modification du mot de passe"}
     \label{fig:usecase_password_modification}
 \end{figure}
@@ -280,13 +280,13 @@ Ce diagramme illustre le processus de création d'un nouveau compte sur la plate
 \vspace*{\fill} % espace vertical sous
 
 \textbf{Diagramme de séquence: Vérification de l'adresse email}
-Ce diagramme démontre la validation de l'email,comme il est representé dans la Figure \ref{cap:iagramme de séquence <<Vérification de l'adresse email>>}, faisant passer le compte du statut "non vérifié" à "en attente". En cliquant sur le lien reçu, l'apprenant transmet un code de sécurité que le système vérifie (intégrité et validité). Une fois l'email confirmé, le profil est prêt pour l'étape finale : l'examen et la validation manuelle par l'administrateur.
+Ce diagramme démontre la validation de l'email,comme il est representé dans la Figure \ref{cap:usecase_seq_verif}, faisant passer le compte du statut "non vérifié" à "en attente". En cliquant sur le lien reçu, l'apprenant transmet un code de sécurité que le système vérifie (intégrité et validité). Une fois l'email confirmé, le profil est prêt pour l'étape finale : l'examen et la validation manuelle par l'administrateur.
 
 \begin{figure}[H]
   \centering
     \includegraphics[scale=0.5]{project/images/Verify-mail.png}
   \caption{Diagramme de séquence <<Vérification de l'adresse email>> }
-  \label{cap:Diagramme de séquence <<Vérification de l'adresse email>>}
+  \label{cap:usecase_seq_verif}
 \end{figure}
 
 \textbf{Diagramme de séquence: Login}
@@ -330,14 +330,15 @@ Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Res
 
 \textbf{Diagramme de séquence: Vérification de lien de réinitialisation}
 
-Ce diagramme décrit la validation automatique du lien envoyé par email. Avant d'autoriser tout changement, le système vérifie si le lien utilisé est toujours fonctionnel. Cela permet de bloquer la procédure si le lien a expiré, évitant ainsi à l'utilisateur de perdre du temps avec un lien expiré comme illustré dans la Figure 4.2.9\label{cap:Diagramme de séquence <<Vérification du lien de réinitialisation>> }
+Ce diagramme décrit la validation automatique du lien envoyé par email. Avant d'autoriser tout changement, le système vérifie si le lien utilisé est toujours fonctionnel. Cela permet de bloquer la procédure si le lien a expiré, évitant ainsi à l'utilisateur de perdre du temps avec un lien expiré comme illustré dans la Figure\label{cap:usecase_seq_linkReset}.
 \vspace*{\fill} % espace فوق
 \begin{figure}[H]
   \centering
     \includegraphics[width=1.1\textwidth,keepaspectratio]{project/images/linkressds.png}
   \caption{Diagramme de séquence <<Vérification du lien de réinitialisation>> }
-  \label{cap:Diagramme de séquence <<Vérification du lien de réinitialisation>> }
+  \label{cap:usecase_seq_linkReset }
 \end{figure}
+
 \vspace*{\fill} % espace تحت
 \textbf{Diagramme de séquence: Réinitialisation du mot de passe}
 
