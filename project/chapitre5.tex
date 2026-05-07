@@ -94,56 +94,56 @@ Préconditions &
 \hline
 Scénario de base & 
 \textbf{Scénario 1 : Sélection de l'entité cible} \\
-& L'administrateur accède au module d'import. \\
-& Le système affiche la liste des entités disponibles. \\
-& L'administrateur sélectionne l'entité cible. \\
-& Le système récupère les informations de l'entité sélectionnée. \\
-& Le système affiche l'interface de sélection de fichier adaptée à l'entité. \\
+&-L'administrateur accède au module d'import. \\
+&-Le système affiche la liste des entités disponibles. \\
+&-L'administrateur sélectionne l'entité cible. \\
+&-Le système récupère les informations de l'entité sélectionnée. \\
+&-Le système affiche l'interface de sélection de fichier adaptée à l'entité. \\
 \\
 & \textbf{Scénario 2 : Sélection et chargement du fichier} \\
-& L'administrateur sélectionne un fichier (CSV ou Excel). \\
-& Le système vérifie que l'extension du fichier correspond au format attendu. \\
-& Le système vérifie que la taille du fichier ne dépasse pas la limite autorisée. \\
-& Le système charge et parse le fichier. \\
-& Le système extrait les en-têtes de colonnes du fichier. \\
+&-L'administrateur sélectionne un fichier (CSV ou Excel). \\
+&-Le système vérifie que l'extension du fichier correspond au format attendu. \\
+&-Le système vérifie que la taille du fichier ne dépasse pas la limite autorisée. \\
+&-Le système charge et parse le fichier. \\
+&-Le système extrait les en-têtes de colonnes du fichier. \\
 \\
 & \textbf{Scénario 3 : Mapping automatique des colonnes} \\
-& Le système compare les en-têtes du fichier avec les champs définis dans le modèle de données. \\
-& En cas de correspondance exacte, le système pré-remplit le mapping automatiquement. \\
-& Le système affiche le mapping proposé à l'administrateur. \\
+&-Le système compare les en-têtes du fichier avec les champs définis dans le modèle de données. \\
+&-En cas de correspondance exacte, le système pré-remplit le mapping automatiquement. \\
+&-Le système affiche le mapping proposé à l'administrateur. \\
 \\
 & \textbf{Scénario 4 : Mapping manuel (si nécessaire)} \\
-& L'administrateur visualise les colonnes non mappées ou mal mappées. \\
-& L'administrateur sélectionne manuellement dans une liste déroulante le champ de la base correspondant à chaque colonne du fichier. \\
-& L'administrateur valide le mapping final. \\
-& Le système vérifie que tous les champs obligatoires de l'entité sont couverts. \\
+&-L'administrateur visualise les colonnes non mappées ou mal mappées. \\
+&-L'administrateur sélectionne manuellement dans une liste déroulante le champ de la base correspondant à chaque colonne du fichier. \\
+&-L'administrateur valide le mapping final. \\
+&-Le système vérifie que tous les champs obligatoires de l'entité sont couverts. \\
 \\
 & \textbf{Scénario 5 : Aperçu des données (Preview)} \\
-& Le système affiche un aperçu des premières lignes du fichier avec le mapping appliqué. \\
-& L'administrateur vérifie visuellement la conformité des données. \\
+&-Le système affiche un aperçu des premières lignes du fichier avec le mapping appliqué. \\
+&-L'administrateur vérifie visuellement la conformité des données. \\
 \\
 & \textbf{Scénario 6 : Validation des données} \\
-& Le système vérifie la conformité des types de données. \\
-& Le système détecte les valeurs manquantes sur les champs obligatoires. \\
-& Le système identifie les doublons potentiels (basés sur les champs uniques comme l'email). \\
-& Le système affiche les erreurs détectées avec indication des lignes concernées. \\
-& L'administrateur corrige les erreurs ou choisit d'ignorer les lignes invalides. \\
+&-Le système vérifie la conformité des types de données. \\
+&-Le système détecte les valeurs manquantes sur les champs obligatoires. \\
+&-Le système identifie les doublons potentiels (basés sur les champs uniques comme l'email). \\
+&-Le système affiche les erreurs détectées avec indication des lignes concernées. \\
+&-L'administrateur corrige les erreurs ou choisit d'ignorer les lignes invalides. \\
 \\
 & \textbf{Scénario 7 : Traitement ETL} \\
-& L'administrateur lance le processus d'intégration. \\
-& Le système effectue le nettoyage des données. \\
-& Le système transforme les données selon les règles métier de l'entité. \\
-& Le système détecte et gère les doublons (fusion ou rejet). \\
-& Le système insère les données validées dans la table correspondante de la base de données. \\
-& Le système met à jour les logs d'audit avec l'identifiant de l'administrateur et la date. \\
+&-L'administrateur lance le processus d'intégration. \\
+&-Le système effectue le nettoyage des données. \\
+&-Le système transforme les données selon les règles métier de l'entité. \\
+&-Le système détecte et gère les doublons (fusion ou rejet). \\
+&-Le système insère les données validées dans la table correspondante de la base de données. \\
+&-Le système met à jour les logs d'audit avec l'identifiant de l'administrateur et la date. \\
 \\
 & \textbf{Scénario 8 : Rapport d'import} \\
-& Le système génère un rapport indiquant le nombre de lignes importées et en erreur. \\
-& Le système affiche un message de confirmation à l'administrateur. \\
+&-Le système génère un rapport indiquant le nombre de lignes importées et en erreur. \\
+&-Le système affiche un message de confirmation à l'administrateur. \\
 \\
 & \textbf{Scénario 9 : Gestion des erreurs (Rollback)} \\
-& En cas d'erreur lors de l'insertion en base de données, le système effectue un rollback de la transaction en cours. \\
-& Les données en cours d'import sont annulées. \\
+&-En cas d'erreur lors de l'insertion en base de données, le système effectue un rollback de la transaction en cours. \\
+&-Les données en cours d'import sont annulées. \\
 & Le système notifie l'administrateur de l'échec de l'opération. \\
 \hline
 Scénarios alternatifs & 
@@ -167,10 +167,9 @@ Post-conditions &
 \subsection{Conception}
 Dans cette partie, nous présentons la conception du cas d'utilisation « Importer des données » à travers un diagramme de séquence. Ce diagramme illustre les interactions entre l'administrateur et les différents composants du système lors du processus d'importation des données, en mettant en évidence les étapes clés telles que la sélection de l'entité, le mapping des colonnes, la validation des données et le traitement ETL.
 La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présentant les différentes interactions entre l'administrateur et le système lors du processus d'import.
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/seqdiagram_import.png}
+    \includegraphics[width=0.9\textwidth]{project/images/seqdiagram_import.png}
     \caption{Diagramme de séquence « Importer des données »}
     \label{fig:seqdiagram_import}
 \end{figure}

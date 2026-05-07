@@ -80,19 +80,19 @@ Préconditions &
 \hline
 Scénario de base & 
 \textbf{Scénario 1 : Inscription} \\
-& L’utilisateur saisit ses informations (nom, email, téléphone, mot de passe, confirmation, programme). \\
-& Le système vérifie que tous les champs obligatoires sont remplis. \\
-& Le système valide la conformité du mot de passe et sa correspondance avec la confirmation. \\
-& Le système vérifie que l’email n’existe pas déjà dans la base de données. \\
-& Le système chiffre le mot de passe et enregistre les données avec statut \textit{Non vérifié}. \\
-& Le système envoie un email de vérification contenant un lien. \\
+& -L’utilisateur saisit ses informations (nom, email, téléphone, mot de passe, confirmation, programme). \\
+& -Le système vérifie que tous les champs obligatoires sont remplis. \\
+& -Le système valide la conformité du mot de passe et sa correspondance avec la confirmation. \\
+& -Le système vérifie que l’email n’existe pas déjà dans la base de données. \\
+& -Le système chiffre le mot de passe et enregistre les données avec statut \textit{Non vérifié}. \\
+& -Le système envoie un email de vérification contenant un lien. \\
 \\
 & \textbf{Scénario 2 : Vérification Email} \\
 & -L’utilisateur clique sur le lien reçu. \\
 & -Le système vérifie la validité du lien et l’existence de l’utilisateur. \\
-& Le système met à jour le statut vers \textit{En attente (Pending)}. \\
-& Le système affiche un message indiquant que l’inscription est réussie et en attente de validation par l’administrateur. \\
-& Le système envoie un email de confirmation à l’utilisateur. \\
+& -Le système met à jour le statut vers \textit{En attente (Pending)}. \\
+& -Le système affiche un message indiquant que l’inscription est réussie et en attente de validation par l’administrateur. \\
+& -Le système envoie un email de confirmation à l’utilisateur. \\
 \hline
 Scénarios alternatifs & 
 \textbf{Scénario 1 : Inscription} \\
@@ -330,13 +330,13 @@ Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Res
 
 \textbf{Diagramme de séquence: Vérification de lien de réinitialisation}
 
-Ce diagramme décrit la validation automatique du lien envoyé par email. Avant d'autoriser tout changement, le système vérifie si le lien utilisé est toujours fonctionnel. Cela permet de bloquer la procédure si le lien a expiré, évitant ainsi à l'utilisateur de perdre du temps avec un lien expiré comme illustré dans la Figure\label{cap:usecase_seq_linkReset}.
+Ce diagramme décrit la validation automatique du lien envoyé par email. Avant d'autoriser tout changement, le système vérifie si le lien utilisé est toujours fonctionnel. Cela permet de bloquer la procédure si le lien a expiré, évitant ainsi à l'utilisateur de perdre du temps avec un lien expiré comme illustré dans la Figure \ref{cap:usecase_seq_linkReset}.
 \vspace*{\fill} % espace فوق
 \begin{figure}[H]
   \centering
     \includegraphics[width=1.1\textwidth,keepaspectratio]{project/images/linkressds.png}
   \caption{Diagramme de séquence <<Vérification du lien de réinitialisation>> }
-  \label{cap:usecase_seq_linkReset }
+  \label{cap:usecase_seq_linkReset}
 \end{figure}
 
 \vspace*{\fill} % espace تحت
@@ -360,7 +360,7 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
 
 \textbf{Interface d'inscription}
 
-La première étape pour l'apprenant est de renseigner ses informations de base via une interface intuitive.Comme l'illustre la Figure \ref{cap:Interface d'inscription:standard}, le formulaire comprend des champs obligatoires avec une aide à la saisie pour guider l'apprenant. La figure \ref{cap:Interface d'inscription:champs-vide} montre comment l'interface réagit lorsque les données ne respectent pas le format attendu (par exemple, un mot de passe trop simple ou un email mal formé). Si un utilisateur tente de s'inscrire avec un email déjà existant, une alerte spécifique est déclenchée comme le montre la figure \ref{cap:Interface d'inscription:champs-vide}.
+La première étape pour l'apprenant est de renseigner ses informations de base via une interface intuitive.Comme l'illustre la Figure \ref{cap:Interface d'inscription:standard}, le formulaire comprend des champs obligatoires avec une aide à la saisie pour guider l'apprenant. La figure \ref{cap:Interface d'inscription:champs-vide} montre comment l'interface réagit lorsque les données ne respectent pas le format attendu (par exemple, un mot de passe trop simple ou un email mal formé). Si un utilisateur tente de s'inscrire avec un email déjà existant, une alerte spécifique est déclenchée comme le montre la figure \ref{cap:Interface d'inscription:champs-invalide}.
 
 \textbf{Étape de la Vérification d'email}
 
@@ -370,7 +370,7 @@ Dans le cas où l'utilisateur clique sur un lien déjà utilisé ou dont la dur�
 
 Enfin, comme le montre la Figure \ref{cap:interface d'inscription:inscription vérifié}, une page de confirmation apparaît brièvement suite à une validation réussie, avant de rediriger automatiquement l'utilisateur vers la page de connexion.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     
     % الصف الأول (زوز صور)
@@ -394,15 +394,15 @@ Enfin, comme le montre la Figure \ref{cap:interface d'inscription:inscription v�
     \begin{minipage}{0.7\textwidth}
         \centering
         \includegraphics[width=0.5\linewidth]{project/images/register-invalid.png}
-        \label{cap:Interface d'inscription:champs-invalide}
         \captionof{figure}{Interface d'inscription: champs-invalide}
+        \label{cap:Interface d'inscription:champs-invalide}
     \end{minipage}
 
 \end{figure}
 
 \newpage
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     
     % الصف الأول
@@ -411,7 +411,6 @@ Enfin, comme le montre la Figure \ref{cap:interface d'inscription:inscription v�
         \includegraphics[width=1\linewidth]{project/images/confirme.png}
         \captionof{figure}{interface d'inscription: vérifier email}
         \label{cap:interface d'inscription: vérifier email}
-        \label{cap:}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
@@ -445,7 +444,8 @@ Enfin, comme le montre la Figure \ref{cap:interface d'inscription:inscription v�
 
 
 
-\begin{figure}[h]
+
+\begin{figure}[H]
   \centering
     \includegraphics[scale=0.8]{project/images/login.png}
   \caption{ Interface login:état normale}
@@ -455,7 +455,7 @@ Enfin, comme le montre la Figure \ref{cap:interface d'inscription:inscription v�
 L’interface de connexion dans la Figure \ref{fig:Interface login:état normale}  constitue le point d’entrée unique pour tous les utilisateurs. Afin de sécuriser l'accès, un message d’erreur s’affiche en cas d’identifiants incorrects comme la montre Figure \ref{cap:Interface login: données invalide}. Le système vérifie également le statut du compte : les profils en attente de validation illustré dans la Figure \ref{cap:Interface login:Apprenant ena attente d'acceptation} ou rejetés, qui est representé dans la Figure \ref{cap:Interface login:Apprenant-est-refusé} sont informés par des interfaces spécifiques. Une fois l'authentification réussie, la plateforme redirige automatiquement l'utilisateur vers un espace selon son rôle.
 
 \newpage
-\begin{figure}
+\begin{figure}[H]
     \centering
     
     % الصف الأول
@@ -494,7 +494,7 @@ L’interface de connexion dans la Figure \ref{fig:Interface login:état normale
 L’interface illustrée en Figure \ref{cap:Interface de réinitialisation du mot de passe} permet à l'utilisateur de saisir son adresse email pour initier la procédure.
 Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format est incorrect, l'interface de la Figure \ref{cap:Interface de réinitialisation :email invalide} s'affiche.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     
     % الصورة الأولى
@@ -521,7 +521,7 @@ Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format es
 Une fois un email valide soumis, l'interface de la Figure \ref{cap:Interface de réinitialisation:email de réinitialisation} informe l'utilisateur qu'un lien de réinitialisation lui a été envoyé. Cette étape confirme la prise en compte de la demande par le serveur.
 
  Le lien envoyé par email a une durée de validité limitée. Si l'utilisateur clique sur un lien obsolète ou déjà utilisé, l'interface présentée en Figure \ref{cap:Interface de réinitialisation: lien invalide} apparaît, l'invitant à renouveler sa demande.
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     
     % الصورة اللي فوق (في الوسط)
@@ -559,7 +559,7 @@ Si le lien est valide, l'utilisateur accède au formulaire de la Figure \ref{cap
 Enfin, après la validation du nouveau mot de passe, un message de succès s'affiche (voir Figure \ref{cap:reset_success}) et le système redirige automatiquement l'utilisateur vers la page de connexion pour s'authentifier.
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     
     % الصف الأول (زوز صور)
@@ -594,7 +594,7 @@ Le sprint 2 est consacré au développement du module de gestion des utilisateur
 Ce module permet aux administrateurs de gérer efficacement l’ensemble des utilisateurs de la plateforme, notamment à travers la consultation, la validation (acceptation ou refus), la suppression ainsi que la mise à jour de leurs informations.
 L’objectif de ce sprint est de mettre en place une interface intuitive, ergonomique et sécurisée, offrant une gestion complète et centralisée des comptes utilisateurs, afin de répondre aux besoins d’administration du système.
 \subsection{Le backlog du sprint 2}
-Le Tableau 4.5 détaille le backlog du Sprint 2, centré sur les fonctionnalités de gestion des utilisateurs. Cette structure permet de planifier et de hiérarchiser efficacement les tâches à accomplir tout au long de cette itération.
+Le Tableau \ref{tab:backlog_sprint2} détaille le backlog du Sprint 2, centré sur les fonctionnalités de gestion des utilisateurs. Cette structure permet de planifier et de hiérarchiser efficacement les tâches à accomplir tout au long de cette itération.
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|p{8cm}|c|}
@@ -618,6 +618,7 @@ Le Tableau 4.5 détaille le backlog du Sprint 2, centré sur les fonctionnalité
 \hline
 \end{tabular}
 \caption{Backlog - Gestion des utilisateurs}
+\label{tab:backlog_sprint2}
 \end{table}
 \subsection{Analyse}
 L'analyse du module de gestion des utilisateurs nous a permis d'identifier les besoins fonctionnels et de définir précisément les interactions attendues entre l'administrateur et le système
@@ -625,7 +626,7 @@ L'analyse du module de gestion des utilisateurs nous a permis d'identifier les b
  \textbf{Amélioration du cas d’utilisation « gestion des utilisateurs »:}
  Le cas d'utilisation « gestion des utilisateurs » permet à l’administrateur d'effectuer toutes les opérations nécessaires à la gestion efficace des comptes utilisateurs au sein du système.
 
-La figure 4.3.1 présente le diagramme de cas d'utilisation illustrant les différents scénarios de gestion des utilisateurs, et détaillant les différentes actions que l’administrateur peut réaliser.
+La figure \ref{fig:usecase_gestion_utilisateurs} présente le diagramme de cas d'utilisation illustrant les différents scénarios de gestion des utilisateurs, et détaillant les différentes actions que l’administrateur peut réaliser.
  \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{project/images/usecasemanager1.png}
@@ -633,7 +634,7 @@ La figure 4.3.1 présente le diagramme de cas d'utilisation illustrant les diff�
     \label{fig:usecase_gestion_utilisateurs}
 \end{figure}
 
-Le tableau 4.2 présente la description textuelle du cas d'utilisation « gestion des utilisateurs ».
+Le tableau \ref{tab:gestion_utilisateurs} présente la description textuelle du cas d'utilisation « gestion des utilisateurs ».
 
 \small % optionnel : réduit légèrement la taille du texte du tableau
 \begin{longtable}{|l|p{12cm}|}
@@ -667,53 +668,53 @@ Préconditions &
 \hline
 Scénario de base & 
 \textbf{Scénario 1: Consulter la liste des utilisateurs} \\
-&L’administrateur accède à l’interface Gestion des Utilisateurs. \\
-& Le système vérifie la validité du token.\\
-& Le système contrôle que l’utilisateur possède bien le rôle ADMIN.\\
-& Le système renvoie la liste complète des utilisateurs.\\
+&-L’administrateur accède à l’interface Gestion des Utilisateurs. \\
+&-Le système vérifie la validité du token.\\
+&-le système contrôle que l’utilisateur possède bien le rôle ADMIN.\\
+&-Le système renvoie la liste complète des utilisateurs.\\
 &\textbf{Scénario 2:Filtrage des utilisateurs}\\
-& L’administrateur applique un filtre (exemple : Rôle : directeur).\\
-& Le système met à jour dynamiquement le tableau sans rechargement de la page.\\
-& Le système affiche la liste filtrée.\\
+&-L’administrateur applique un filtre (exemple : Rôle : directeur).\\
+&-Le système met à jour dynamiquement le tableau sans rechargement de la page.\\
+&-Le système affiche la liste filtrée.\\
 &\textbf{Scénario 3: Rechercher d’un utilisateur}\\
-& L’administrateur saisit un nom ou un email dans le champ de recherche.\\
-& Le système effectue une recherche en temps réel et met à jour la liste des utilisateurs.\\
-& Le système affiche les résultats correspondants.\\
+&-L’administrateur saisit un nom ou un email dans le champ de recherche.\\
+&-Le système effectue une recherche en temps réel et met à jour la liste des utilisateurs.\\
+&-Le système affiche les résultats correspondants.\\
 &\textbf{Scénario 4: Modifier les informations d’un utilisateur}\\
-& L’administrateur sélectionne un utilisateur dans la liste.\\
-& Le système affiche les détails de l’utilisateur.\\
-& L’administrateur modifie les informations souhaitées.\\
-& Le système met à jour les données de l’utilisateur.\\
+&-L’administrateur sélectionne un utilisateur dans la liste.\\
+&-Le système affiche les détails de l’utilisateur.\\
+&-L’administrateur modifie les informations souhaitées.\\
+&-Le système met à jour les données de l’utilisateur.\\
 &\textbf{Scénario 5 : Ajouter un utilisateur}\\
-& L’administrateur clique sur « Nouveau utilisateur ».\\
-& Le système affiche le formulaire d’ajout.\\
-& L’administrateur renseigne les informations nécessaires (nom, prénom, email, rôle).\\
-& L’administrateur valide la création.\\
-& Le système vérifie la validité des données et l’unicité de l’email.\\
-& Le système hache le mot de passe (bcrypt).\\
-& Le système enregistre le nouvel utilisateur.\\
+&-L’administrateur clique sur « Nouveau utilisateur ».\\
+&-Le système affiche le formulaire d’ajout.\\
+&-L’administrateur renseigne les informations nécessaires (nom, prénom, email, rôle).\\
+&-L’administrateur valide la création.\\
+&-Le système vérifie la validité des données et l’unicité de l’email.\\
+&-Le système hache le mot de passe (bcrypt).\\
+&-Le système enregistre le nouvel utilisateur.\\
 &\textbf{Scénario 6: Supprimer un utilisateur}\\
-& L’administrateur sélectionne un utilisateur dans la liste.\\
-& Le système affiche une confirmation de suppression.\\
-& L’administrateur confirme la suppression.\\
-& Le système supprime l’utilisateur de la base de données.\\
+&-L’administrateur sélectionne un utilisateur dans la liste.\\
+&-Le système affiche une confirmation de suppression.\\
+&-L’administrateur confirme la suppression.\\
+&-Le système supprime l’utilisateur de la base de données.\\
 &\textbf{Scénario 7: Réinitialiser le mot de passe}\\
-& L’administrateur sélectionne un utilisateur.\\
-& Le système envoie un email de réinitialisation à l’utilisateur.\\
-&L’utilisateur saisit un nouveau mot de passe\\
-& Le système vérifie la validité du mot de passe.\\
-& Le système hache le nouveau mot de passe (bcrypt).\\
-& Le système met à jour les données de l’utilisateur.\\
-& Le système confirme la réussite de l’opération.\\
+&-L’administrateur sélectionne un utilisateur.\\
+&-Le système envoie un email de réinitialisation à l’utilisateur.\\
+&-L’utilisateur saisit un nouveau mot de passe\\
+&-Le système vérifie la validité du mot de passe.\\
+&-Le système hache le nouveau mot de passe (bcrypt).\\
+&-Le système met à jour les données de l’utilisateur.\\
+&-Le système confirme la réussite de l’opération.\\
 & \textbf{scénario 8: Gérer les demandes des apprenants}\\
-& L’administrateur accède à la section « Apprenants ».\\
-& Le système affiche la liste des apprenants en attente de validation.\\
-& L’administrateur accède à la liste des demandes d’inscription.\\
-& L’administrateur traite la demande (acceptation ou refus).\\
-& Le système met à jour le statut de la demande.\\
-& En cas d’acceptation, le système crée un compte utilisateur pour l’apprenant.\\
-& Le système envoie une notification à l’apprenant.\\
-& En cas de refus, le système archive la demande.\\
+&-L’administrateur accède à la section « Apprenants ».\\
+&-Le système affiche la liste des apprenants en attente de validation.\\
+&-L’administrateur accède à la liste des demandes d’inscription.\\
+&-L’administrateur traite la demande (acceptation ou refus).\\
+&-Le système met à jour le statut de la demande.\\
+&-En cas d’acceptation, le système crée un compte utilisateur pour l’apprenant.\\
+&-Le système envoie une notification à l’apprenant.\\
+&-En cas de refus, le système archive la demande.\\
 \hline
 Scénarios alternatifs &
 \textbf{Cas 1 : Échec d’authentification}\\
