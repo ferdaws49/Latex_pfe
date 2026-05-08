@@ -185,23 +185,38 @@ Dans cette section, nous présentons les interfaces réalisées pour le module d
 
 
 
-\section{Sprint 4: Gestion multi-domaines}
+\section{Sprint 4: Gestion et Planification des Sessions de Formation}
 Ce rapport de sprint détaille l'analyse fonctionnelle, la conception et les éléments de réalisation de la page "Planning du responsable pédagogique" au sein de la plateforme de gestion des formations. L'objectif est de fournir une documentation académique complète et structurée sur les opérations pour les sessions et les formations.
 
 
 \subsection{Le backlog du sprint 4}
 
+Le tableau \ref{tab:sprint4_backlog}  présente l'ensemble des éléments du backlog retenus pour ce sprint, classés par ordre de priorité décroissante. Chaque élément est formulé du point de vue du responsable pédagogique et décrit la fonctionnalité attendue ainsi que la valeur métier qu'elle apporte. Les fonctionnalités prioritaires portent sur les opérations essentielles de gestion des sessions et des formations, garantissant la livraison d'un module pleinement opérationnel à l'issue du sprint. Les fonctionnalités de suivi, telles que la consultation des participants et la gestion des présences, complètent le périmètre en apportant une valeur ajoutée au responsable pédagogique dans son pilotage quotidien de l'activité de formation.
+
 \begin{table}[H]
 \centering
-\caption{Backlog du Sprint 4: Gestion multi-domaines}
-\label{tab:sprint3_backlog}
-\begin{tabular}{|c|p{4.4cm}|p{10cm}|c|}
+\caption{Backlog du Sprint 4: Gestion et Planification des Sessions de Formation}
+\label{tab:sprint4_backlog}
+\begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
 \hline
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
-\multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Gestion multi-domaines}}
-& En tant que responsable pédagogique, je veux gérer les activités pédagogiques du centre afin d'assurer le bon déroulement des formations. & M \\
-
+\multirow{9}{*}{4} & \multirow{9}{*}{\makecell{Gestion\\et Planification\\des Sessions de\\Formation}}
+& En tant que responsable pédagogique, je veux pouvoir créer une nouvelle session de formation afin de planifier et organiser les activités de formation de mon établissement. &  M\\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir modifier les informations d'une session existante afin de maintenir le planning à jour en cas de changement. & M\\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir annuler une session de formation afin de refléter toute interruption imprévue dans le planning. & M\\
+\cline {3-4}
+& & En tant que responsable pédagogique, je veux pouvoir consulter la liste des participants inscrits à une session afin d'avoir une visibilité sur les effectifs concernés. & M\\
+\cline {3-4}
+& &  En tant que responsable pédagogique, je veux pouvoir enregistrer les présences des apprenants pour chaque session afin d'assurer le suivi pédagogique et administratif des formations. & C\\
+\cline {3-4}
+& &  En tant que responsable pédagogique, je veux pouvoir créer une nouvelle formation directement depuis le planning afin d'enrichir le catalogue sans interrompre mon flux de travail. & M\\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir modifier les informations d'une formation existante afin de maintenir le catalogue de formations à jour et conforme aux évolutions pédagogiques. & S\\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir supprimer une formation du catalogue afin d'éliminer les programmes obsolètes ou erronés et garantir la cohérence des données disponibles. & S\\
 \hline
 \end{tabular}
 \end{table}
@@ -212,13 +227,13 @@ La phase d'analyse de ce sprint porte sur l'identification et la formalisation d
 
 \textbf{Amélioration du cas d'utilisation « Gestion et Planification des Sessions de Formation »:}
 
-La figure \ref{Diagramme de cas d'utilisation « planning »} illustre le diagramme de cas d'utilisation présentant les différentes interactions entre l'administrateur et le système lors du processus d'import.
+La figure \ref{Diagramme de cas d'utilisation « planning »} illustre le diagramme de cas d'utilisation présentant les interactions entre le responsable pédagogique et les fonctionnalités de gestion des sessions et des formations offertes par la plateforme.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{project/images/UC-RP(planning).png}
-    \caption{Diagramme de cas d'utilisation « planning »}
-    \label{Diagramme de cas d'utilisation « Gestion et Planification des Sessions de Formation »}
+    \caption{Diagramme de cas d'utilisation « Gestion et Planification des Sessions de Formation »}
+    \label{Diagramme de cas d'utilisation « planning »}
 \end{figure}
 
 Le tableau \ref{tab:Gestion et Planification des Sessions de Formation} présente la description textuelle du cas d'utilisation « Gestion et Planification des Sessions de Formation ».
@@ -353,7 +368,7 @@ Scénarios alternatifs &
 
     \textbf{Scénario 2: Modifier une session de formation}
 
-    \textbf{2.6: Conflit de ressources:} 
+    \textbf{2.6: Conflit de ressources} 
     
     Si les nouvelles dates ou le nouveau lieu entrent en conflit avec une autre session, le système bloque la mise à jour et notifie l'utilisateur.
 
@@ -363,13 +378,13 @@ Scénarios alternatifs &
 
      \textbf{Scénario 5: Créer une formation} 
 
-     \textbf{5.5: Intitulé de formation déjà existant:} 
+     \textbf{5.5: Intitulé de formation déjà existant} 
      
      Si la formation existe déjà, le système affiche un avertissement de doublon et invite à modifier l'intitulé.
 
      \textbf{Scénario 7: Supprimer une formation}
 
-    \textbf{7.5: Formation avec sessions actives:} 
+    \textbf{7.5: Formation avec sessions actives} 
     
     Si le système détecte des sessions associées, il affiche un message d'erreur bloquant l'annulation.
 \\
@@ -425,7 +440,7 @@ Comme le montre la figure \ref{cap:Diagramme de séquence <<Creation formation>>
 \end{figure}
 \vspace*{\fill} % espace vertical sous
 
-\textbf{Diagramme de séquence: creer session}
+\textbf{Diagramme de séquence: créer session}
 
 Le diagramme presenté dans la figure \ref{cap:Diagramme de séquence <<Créer session>>} représente la séquence des opérations nécessaires pour créer une session. Il détaille comment le Responsable Pédagogique interagit avec le Frontend pour saisir les informations de la session, comment ces données sont envoyées au Backend pour traitement (incluant la vérification de la disponibilité des ressources) et comment elles sont finalement stockées dans la Base de Données.
 \begin{figure}[H]
