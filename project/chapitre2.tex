@@ -27,7 +27,7 @@ Responsable Pédagogique & Garant de la qualité des formations, supervise les p
 \hline
 Responsable Financier & Gère les aspects financiers, la facturation, les paiements et le suivi budgétaire du centre \\
 \hline
-Administrateur Système &Assure l’administration globale du système, ainsi que la gestion des utilisateurs et des ressources. Il garantit la sécurité, la fiabilité et la cohérence des données. \\
+Administrateur Système &Assure l’administration globale du système, ainsi que la gestion des utilisateurs et des ressources.\\
 \hline
 Apprenant &Consulte ses propres résultats, suit l'avancement de son parcours et gérer ses inscriptions \\
 \hline
@@ -93,7 +93,7 @@ Consulter les alertes liées aux anomalies ou aux situations critiques. \\
 \end{tabular}
 \end{table}
 
-\textbf{Besoins fonctionnels de l’acteur «financier »}
+\textbf{Besoins fonctionnels de l’acteur «Responsable financier »}
 
 \vspace{0.3cm}
 
@@ -143,8 +143,6 @@ Gestion des ressources  & Ajout et mise à jour des ressources\\
 \hline
 Traitement des données  & Supervision du nettoyage, validation et structuration des données.\\
 \hline
-Maintenance  & Suivi des performances de traitement, vérification de la cohérence des calculs et gestion du paramétrage technique\\
-\hline
 \end{tabular}
 \end{table}
 
@@ -170,10 +168,6 @@ Accès aux résultats  & Consulter ses notes et ses évaluations finales de mani
 \hline
 \end{tabular}
 \end{table}
-
-
-
-
 
 
 
@@ -266,8 +260,19 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 & & En tant qu'administrateur, je veux modifier et configurer les profils personnels des utilisateurs. & M \\
 \hline
 
-% --- US03 : Intégration des données ---
-\multirow{4}{*}{\textbf{3}} & \multirow{4}{*}{\textbf{Intégration des données}}
+% --- US03 : Gestion des sessions de formation---
+\multirow{4}{*}{\textbf{3}} & \multirow{4}{*}{\textbf{\shortstack[1]{Gestion des sessions \\ de formation}}}
+& En tant que responsable pédagogique, je veux organiser et gérer les sessions de formation afin d'assurer le suivi et le bon déroulement des formations. & M \\
+\hline
+
+% --- US04 : Espace apprenant ---
+\multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Espace apprenant}}
+& En tant qu’ apprenant, ........ & M \\
+\cline{3-4} 
+& & En tant qu’apprenant, je veux consulter mes résultats et mon taux de complétion de la formation afin de suivre ma progression. & M \\
+\hline
+% --- US05 : Alimentation des données ---
+\multirow{4}{*}{\textbf{5}} & \multirow{4}{*}{\textbf{Alimentation des données}}
 & En tant qu'administrateur, je veux importer les données brutes (raw data) pour centraliser les informations. & M \\
 \cline{3-4}
 & & En tant qu'administrateur, je souhaite que le système détecte automatiquement les erreurs dans les données importées afin de garantir leur qualité. & M \\
@@ -276,25 +281,12 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \cline{3-4}
 & & En tant qu'administrateur, je souhaite charger les données validées dans la base de données afin qu'elles puissent être utilisées pour l'analyse et la production de rapports. & S \\
 \hline
+% --- US06 : Visualisation et analyse des données --- 
+\multirow{6}{*}{\textbf{6}} & \multirow{6}{*}{\textbf{\shortstack[l]{Visualisation et \\ analyse des données}}} & En tant qu’utilisateur interne, je veux analyser les données du centre afin de comprendre les performances des activités. & M \\ \cline{3-4} & & En tant qu’utilisateur interne, je veux visualiser les indicateurs de performance sous forme de graphiques afin de suivre l’évolution des résultats. & M \\ \cline{3-4} & & En tant qu’utilisateur interne, je veux consulter des tableaux de bord afin de suivre les KPIs du centre. & M \\ \cline{3-4} & & En tant qu’utilisateur interne, je veux filtrer les données afin d’affiner mes analyses selon différents critères. & S \\ \cline{3-4} & & En tant que utilisateur interne, je veux exporter des rapports afin de partager les analyses et les résultats du centre. & M \\ \cline{3-4} & & En tant qu'utilisateur interne, je veux recevoir des notifications et alertes afin d'être informé en temps réel de tout événement important lié au fonctionnement du centre. & S \\ \hline
 
-% --- US04 : Gestion multi-domaines ---
-\multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Gestion multi-domaines}}
-& En tant que responsable pédagogique, je veux gérer les activités pédagogiques du centre afin d'assurer le bon déroulement des formations. & M \\
-\hline
 
-% --- US05 : Analyse & KPIs ---
-\multirow{4}{*}{\textbf{5}} & \multirow{4}{*}{\textbf{Analyse \& KPIs}}
-& En tant que responsable pédagogique, je veux visualiser les taux de réussite et d'abandon afin d'évaluer la performance des formations. & M \\
-\cline{3-4}
-& & En tant que responsable financier, je veux analyser les données financières pour suivre les recettes et les dépenses. & M \\
-\cline{3-4}
-& & En tant que directeur, je veux visualiser les KPIs stratégiques et analyser les performances globales du centre. & M \\
-\cline{3-4}
-& & En tant qu'utilisateur, je veux appliquer des filtres (période, formation, formateur...) afin d'affiner mon analyse. & M \\
-\hline
-
-% --- US06 : Module prédictif et recommandation ---
-\multirow{4}{*}{\textbf{6}} & \multirow{4}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandation}}}
+% --- US07 : Module prédictif et recommandations ---
+\multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandations}}}
 & En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des apprenants en difficulté. & C \\
 \cline{3-4}
 & & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
@@ -303,29 +295,6 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \cline{3-4}
 & & En tant que Directeur, je veux accéder à des recommandations stratégiques basées sur l'analyse des données, afin de mieux prioriser les actions, déléguer les responsabilités et améliorer les performances globales de l'établissement. & C \\
 \hline
-% --- US07 : Notifications & Alertes ---
-\multirow{1}{*}{\textbf{7}} & \multirow{1}{*}{\textbf{Notifications \& Alertes}}
-& En tant qu'utilisateur, je veux recevoir des notifications et des alertes filtrées par mon rôle afin de réagir rapidement aux événements importants. & M \\
-\hline
-
-% --- US08 : Dashboards ---
-\multirow{4}{*}{\textbf{8}} & \multirow{4}{*}{\textbf{Dashboards}}
-& En tant que directeur, je veux consulter un dashboard global afin de suivre la performance générale du centre. & M \\
-\cline{3-4}
-& & En tant que responsable financier, je veux consulter un dashboard opérationnel pour suivre les activités quotidiennes. & M \\
-\cline{3-4}
-& & En tant que responsable pédagogique, je veux consulter les performances des formations pour évaluer leur efficacité. & M \\
-\cline{3-4}
-& & En tant qu'apprenant, je veux voir mon espace personnel afin de suivre mes formations et mes progrès. & S \\
-\hline
-
-% --- US09 : Export & Reporting ---
-\multirow{2}{*}{\textbf{9}} & \multirow{2}{*}{\textbf{Export \& Reporting}}
-& En tant que responsable financier, je veux générer et exporter des rapports pour documenter les activités du centre. & M \\
-\cline{3-4}
-& & En tant que directeur, je veux exporter des rapports pour partager les analyses stratégiques. & M \\
-\hline
-
 \end{longtable}
 
 \subsection{Planification des sprints}
@@ -354,26 +323,18 @@ Le tableau \ref{tab:release_planning} présente la répartition détaillée de n
 & 2 & Gestion des utilisateurs & 10 \\
 \hline
 
-\multirow{2}{*}{Release 2} 
-& 3 & Intégration des données (ETL) & 10 \\
+\multirow{3}{*}{Release 2} 
+& 3 & Gestion des sessions de formation & 10 \\
 \cline{2-4}
-& 4 & Gestion multi-domaines (pédagogique, financier, administratif..) & 10 \\
+& 4 & Espace apprenant & 10 \\
+\cline{2-4}
+& 5 & Alimentation des données & 10 \\
 \hline
 
-\multirow{1}{*}{Release 3} 
-& 5 & Analyse - KPIs + Filtrage avancé & 10 \\
-\hline
-
-\multirow{2}{*}{Release 4} 
-& 6 & Module prédictif et recommandation & 10 \\
+\multirow{2}{*}{Release 3} 
+& 6 & Visualisation et analyse des données & 10 \\
 \cline{2-4}
-& 7 & Notifications et alertes intelligentes & 10 \\
-\hline
-
-\multirow{2}{*}{Release 5} 
-& 8 & Dashboard (visualisation des données) & 10 \\
-\cline{2-4}
-& 9 & Reporting et export des données & 10 \\
+& 7 & Module prédictif et recommandations & 10 \\
 \hline
 
 \end{tabular}
