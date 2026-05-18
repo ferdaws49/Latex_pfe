@@ -1,0 +1,145 @@
+\chapter{ Release 3 : Visualisation et analyse des données, module prédictif et recommandations}
+\minitoc
+\newpage
+\counterwithin{figure}{chapter}
+
+\section{Introduction}
+Cette section constitue une base pour le chapitre 6. Vous pouvez y ajouter l'introduction generale du chapitre ainsi que ses objectifs.
+
+\section{Sprint 6 : Visualisation et analyse des données}
+Cette section est reservee a l'analyse des besoins, des fonctionnalites ou des resultats presentes dans ce chapitre.
+
+\subsection{Le backlog produit}
+ L'objectif est de fournir des tableaux de bord pertinents et des outils d'analyse adaptés aux besoins spécifiques de chaque rôle : responsable pédagogique, responsable financier, directeur et administrateur.
+\subsection{Analyse et conception}
+Cette section présente l'analyse fonctionnelle et la conception technique des modules de visualisation et d'analyse de données, en se concentrant sur les interactions utilisateurs et la structure des processus.
+
+\textbf{Diagramme de cas d'utilisation}
+
+Le diagramme de cas d'utilisation modélise les interactions entre les acteurs du système et les fonctionnalités offertes par les modules de visualisation et d'analyse. Il permet de définir clairement les périmètres d'action de chaque profil utilisateur.
+
+
+\begin{longtable}{|l|p{12cm}|}
+\caption{Cas d'utilisation – Visualiser}
+\label{tab:Visualiser} \\
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endhead
+
+Cas d'utilisation & 
+\begin{itemize}[leftmargin=*]
+    \item Visualiser
+\end{itemize} \\
+\hline
+Acteur & 
+\begin{itemize}[leftmargin=*]
+    \item Responsable pédagogique
+    \item Responsable financier
+    \item Directeur
+    \item Administrateur
+\end{itemize} \\
+\hline
+Préconditions & 
+\begin{itemize}[leftmargin=*]
+    \item L'utilisateur est authentifié.
+\end{itemize} \\
+\hline
+Scénario de base & 
+ L'utilisateur accède à son espace.  \\
+& Le système affiche le tableau de bord spécifique.    \\
+& L'utilisateur visualise les graphiques et indicateurs KPI.\\
+& L'utilisateur applique des filtres.\\
+&Le système récupère les donnés concernant ces fitres appliqué.\\
+& Le système faire une mise à jour de la page.\\
+
+
+\hline
+Scénarios alternatifs & 
+  Si aucune donnée disponible: Le système affiche un message indiquant l'absence de données.\\
+\hline
+Post-conditions & 
+\begin{itemize}[leftmargin=*]
+    \item L'utilisateur a consulté les informations pertinentes.
+\end{itemize} \\
+\hline
+\end{longtable}
+
+
+
+\subsection{L'architecture BI}
+L'architecture de Business Intelligence (BI) est conçue pour collecter, transformer, stocker et analyser les données afin de fournir des informations exploitables aux différents utilisateurs. Elle repose sur un processus structuré garantissant la qualité et la pertinence des données.
+
+\textbf{Processus des données}
+
+Le processus ETL (Extract, Transform, Load) est le cœur de l'architecture BI. Il assure le mouvement et la préparation des données depuis les systèmes sources jusqu'à l'entrepôt de données (Data Warehouse).
+
+\textbf{Collecte et Extraction:} Cette phase consiste à identifier et à récupérer les données brutes provenant de diverses sources opérationnelles (bases de données transactionnelles, etc.). L'extraction doit être planifiée et automatisée pour garantir la fraîcheur des données. 
+
+\textbf{Transformation:} Une fois extraites, les données sont nettoyées, standardisées, enrichies et agrégées. Cette étape est cruciale pour assurer la qualité et la cohérence des données. Les opérations typiques incluent la suppression des doublons, la correction des erreurs, la conversion des formats, le calcul de nouvelles métriques et l'intégration de données provenant de sources différentes. La transformation prépare les données pour l'analyse et la visualisation, en les rendant conformes aux modèles de données cibles.
+
+\textbf{Chargement:} La dernière étape consiste à charger les données transformées dans la destination finale, entrepôt de données (Data Warehouse). Le Data Warehouse est optimisé pour les requêtes analytiques et le reporting, offrant une vue historique et consolidée des informations.
+\subsection{Réalisation}
+dans cette réalisation on a 
+
+
+
+\section{Sprint 7: Module prédictif et recommandations}
+ dans cette sprint
+\subsection{Le backlog produit}
+on a choisi de realiser les fonctionnalites suivantes 
+
+\begin{table}[H]
+\centering
+\caption{Backlog du Sprint 7: Module prédictif et recommandations}
+\label{tab:sprint3_backlog}
+\begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
+\hline
+\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+\hline
+\multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandations}}}
+& En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des apprenants en difficulté. & C \\
+\cline{3-4}
+& & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
+\cline{3-4}
+&& je veux pouvoir prédire la probabilité de survenue de sessions déficitaires afin d'anticiper les risques financiers pour optimiser la rentabilité de l'entreprise. & C\\
+\cline{3-4}
+& & En tant que directeur, je veux des capacités d'analyse prédictive (prévision des inscriptions) afin d'anticiper les besoins futurs. & C \\
+\cline{3-4}
+& & En tant que Directeur, je veux accéder à des recommandations stratégiques basées sur l'analyse des données, afin de mieux prioriser les actions, déléguer les responsabilités et améliorer les performances globales de l'établissement. & C \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Analyse et conception}
+pour la realisation de ce sprint on a choisi d'utiliser le modele de machine learning suivant
+\subsection{L'intégration de modéle ML}
+Cette section détaille le processus d'intégration des modèles d'apprentissage automatique, en mettant l'accent sur le choix des algorithmes de régression linéaire et logistique, leur justification, et les étapes d'implémentation.
+
+\subsubsection{Type du modèle utilisé}
+Le module prédictif repose sur le paradigme de \textbf{l'apprentissage supervisé (Supervised Learning)}. Ce choix méthodologique est dicté par la nature de notre base de données: nous disposons de données historiques étiquetées, où chaque session passée contient déjà les résultats obtenus par les apprenants. 
+L'objectif est d'entraîner nos algorithmes à apprendre la fonction de corrélation entre les caractéristiques d'entrée et la variable cible.
+
+Le choix de ces modèles par rapport à des modèles non-linéaires plus sophistiqués (comme les SVM ou le Deep Learning) s'appuie sur trois piliers fondamentaux:
+
+\textbf{Interprétabilité et Transparence:} L'un des défis majeurs des modèles complexes est l'opacité de leur processus de décision. À l'inverse, les modèles de régression offrent une interprétabilité intrinsèque exceptionnelle.
+
+\textbf{Robustesse face au Surapprentissage:} La complexité d'un modèle est souvent une arme à double tranchant. Les modèles très flexibles ont tendance à mémoriser le bruit présent dans les données d'entraînement (surapprentissage), ce qui dégrade leurs performances sur de nouvelles données
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Pour la prédiction du Chiffre d'affaire:} Pour cet prédiction, nous avons choisi la régression linéaire pour prédire le chiffre d’affaires car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d'affaires et les facteurs qui l'influencent, comme les couts ou les nombres de participation. Sa simplicité permet d'identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
+    \item \textbf{Pour la prédiction des sessions déficitaires:} Pour cet prédiction, nous avons utilisé la régression logistique car l'objectif ici est de répondre à une question binaire: la session sera-t-elle déficitaire ou non (Oui/Non) ? Contrairement à la régression classique, ce modèle est spécifiquement conçu pour la classification. Il permet de calculer la probabilité qu'une session tombe en déficit en fonction de certaines variables, ce qui en fait un outil parfait pour l'analyse des risques et l'anticipation des pertes.
+\end{itemize}
+
+En résumé, le choix de la régression linéaire et logistique n'est pas un compromis par défaut, mais une décision architecturale délibérée. Ils offrent le meilleur équilibre entre **performance prédictive**, **transparence opérationnelle** et **efficacité technique**, répondant ainsi parfaitement aux exigences d'un module prédictif robuste et actionnable.
+\subsection{Recommendations}
+recommendations sont faites en se basant sur les resultats du modéle ML
+\subsection{Réalisation}
+fgfggghghghhgfhghg
+
+\section{Conclusion}
+sggdgfdgfdgdfgfdg

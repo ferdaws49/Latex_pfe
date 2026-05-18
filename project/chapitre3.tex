@@ -225,36 +225,52 @@ La figure \ref{fig:diagramme de classe} présente cette modélisation et illustr
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.8]{project/images/diagClasse.png}
+    \includegraphics[scale=0.4]{project/images/diagrammedeclasse.png}
   \caption{ Diagramme de classe}
   \label{fig:diagramme de classe}
 \end{figure}
 
 \subsection{Modélisation décisionnelle}
-La modélisation multidimensionnelle est l'étape clé pour structurer les données afin de faciliter l'analyse. Le système repose sur une architecture ROLAP, implémentée à l’aide d’une base de données relationnelle PostgreSQL, en s’appuyant sur un schéma en constellation pour optimiser les requêtes analytiques.
+La modélisation décisionnelle est l'étape clé qui permet de transformer les données brutes de gestion en informations exploitables pour le pilotage de l'activité. Pour ce projet, nous avons mis en place un Système d’Information Décisionnel (SID) basé sur une architecture ROLAP.
 
-\textbf{ Les Dimensions}\newline Les dimensions représentent les axes d'analyse 
+\textbf{Architecture en Schéma en Étoile (Star Schema)}
 
-Dim-Temps: Permet d'analyser les données par année, semestre, mois et jour.
+Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile}. Cette structure est ainsi nommée car elle organise les données de manière centrale et rayonnante:
 
-Dim-Apprenants: Regroupe les informations sur les profils inscrits (niveau, ville, etc.).
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Le centre de l'étoile:} Il est constitué par la \textbf{Table de Faits} (\textit{fact\_finance}). Elle contient les données quantitatives et les clés étrangères. C'est ici que sont stockées les mesures de performance.
+    \item \textbf{Les branches de l'étoile:} Elles sont représentées par les \textbf{Tables de Dimensions}. Chaque branche fournit un contexte spécifique aux mesures centrales. 
+\end{itemize}
 
-Dim-Formations: Contient les détails des programmes proposés.
+L'avantage majeur de cette architecture est la \textbf{dénormalisation contrôlée}. Contrairement à une base transactionnelle classique qui multiplie les jointures, le schéma en étoile simplifie les chemins d'accès aux données, garantissant ainsi des temps de réponse optimaux pour les rapports analytiques.
 
-Dim-Formateurs: Identifie les intervenants et leurs expertises.
+\textbf{Les Tables de Dimensions}
 
-Dim-Sessions: Précise le cadre temporel et physique (ou virtuel) des cours.
+Les dimensions constituent les axes d’analyse. Elles permettent de "découper" les chiffres selon différents contextes métier: 
 
-\textbf{ Les Faits}\newline
-Les faits contiennent les mesures quantitatives (les indicateurs de performance ou KPIs).
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Dimension Temps (dim\_temps):} Axe temporel indispensable permettant de suivre l'évolution des indicateurs par jour, mois, trimestre ou année.
+    \item \textbf{Dimension Formation (dim\_formation):} Regroupe les informations sur les cours (titre, catégorie, statut) pour analyser la rentabilité par thématique.
+    \item \textbf{Dimension Session (dim\_session):} Détaille le cadre de réalisation (type, capacité), permettant d'évaluer l'efficacité de l'organisation.
+    \item \textbf{Dimension Formateur (dim\_formateur):} Identifie l'intervenant pour analyser l'impact des coûts d'animation sur la marge brute.
+    \item \textbf{Dimension Apprenant (dim\_apprenant):} Permet de segmenter les résultats par client et d'analyser les comportements de paiement.
+    \item \textbf{Dimension Type Finance (dim\_type\_finance):} Définit la nature du flux (paiement, dépense, remboursement) pour une classification précise.
+\end{itemize}
 
-Faits-Inscriptions : Analyse le volume des nouveaux inscrits et les flux d'admission.
+\textbf{La Table de Faits: fact\_finance}
 
-Faits-Performances : Suit les résultats pédagogiques (notes, taux de réussite).
+La table de faits enregistre les événements quantitatifs liés à l'activité financière.
 
-Faits-Finances : Centralise les données monétaires (revenus, impayés, CA).
+\textbf{Les indicateurs (KPIs) stockés sont:}
+\begin{itemize}[label=$\star$]
+    \item \textbf{Montant:} Flux financier réel enregistré (Cash-flow).
+    \item \textbf{CA Théorique:} Revenu potentiel calculé (Prix $\times$ Nombre d'inscrits).
+    \item \textbf{Coûts (Formateur et Logistique):} Valeurs permettant de calculer la rentabilité nette par session.
+    \item \textbf{Nombre d’inscrits:} Mesure du volume d'activité et du taux de remplissage.
+    \item \textbf{Indicateurs Booléens:} Champs (\textit{est\_paiement, est\_impaye}) facilitant la segmentation rapide des données.
+\end{itemize}
 
-Le choix du schéma en étoile se justifie par la simplicité des jointures. Contrairement à un schéma en flocon, il réduit le nombre de tables à interroger, ce qui accélère la génération des graphiques dans le dashboard final.
+\textbf{Liaison et Clés Techniques:} La liaison entre le centre (le fait) et les branches (les dimensions) s'effectue via des clés techniques générées (\textit{sk\_temps, sk\_session}, etc.). Cette méthode assure l'intégrité du référentiel analytique indépendamment des évolutions de la base de données de production.ccélère la génération des graphiques dans le dashboard final.
 
 \section{Conception de l'interface des utilisateurs }
 \label{sec:Conception de l'interface des utilisateurs }

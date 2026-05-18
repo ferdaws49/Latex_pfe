@@ -1,4 +1,4 @@
-\chapter{Release 2 : Intégration des données "ETL" et gestion multi-domaines}
+\chapter{Release 2 : Gestion des sessions de formation, espace apprenant et alimentation des données}
 \minitoc
  \newpage
  \counterwithin{figure}{chapter}
@@ -93,43 +93,43 @@ Préconditions &
 \end{itemize} \\
 \hline
 Scénario de base & 
-\textbf{Scénario 1 : Sélection de l'entité cible} \\
+\textbf{Scénario 1: Sélection de l'entité cible} \\
 &-L'administrateur accède au module d'import. \\
 &-Le système affiche la liste des entités disponibles. \\
 &-L'administrateur sélectionne l'entité cible. \\
 &-Le système récupère les informations de l'entité sélectionnée. \\
 &-Le système affiche l'interface de sélection de fichier adaptée à l'entité. \\
 \\
-& \textbf{Scénario 2 : Sélection et chargement du fichier} \\
+& \textbf{Scénario 2: Sélection et chargement du fichier} \\
 &-L'administrateur sélectionne un fichier (CSV ou Excel). \\
 &-Le système vérifie que l'extension du fichier correspond au format attendu. \\
 &-Le système vérifie que la taille du fichier ne dépasse pas la limite autorisée. \\
 &-Le système charge et parse le fichier. \\
 &-Le système extrait les en-têtes de colonnes du fichier. \\
 \\
-& \textbf{Scénario 3 : Mapping automatique des colonnes} \\
+& \textbf{Scénario 3: Mapping automatique des colonnes} \\
 &-Le système compare les en-têtes du fichier avec les champs définis dans le modèle de données. \\
 &-En cas de correspondance exacte, le système pré-remplit le mapping automatiquement. \\
 &-Le système affiche le mapping proposé à l'administrateur. \\
 \\
-& \textbf{Scénario 4 : Mapping manuel (si nécessaire)} \\
+& \textbf{Scénario 4: Mapping manuel (si nécessaire)} \\
 &-L'administrateur visualise les colonnes non mappées ou mal mappées. \\
 &-L'administrateur sélectionne manuellement dans une liste déroulante le champ de la base correspondant à chaque colonne du fichier. \\
 &-L'administrateur valide le mapping final. \\
 &-Le système vérifie que tous les champs obligatoires de l'entité sont couverts. \\
 \\
-& \textbf{Scénario 5 : Aperçu des données (Preview)} \\
+& \textbf{Scénario 5: Aperçu des données (Preview)} \\
 &-Le système affiche un aperçu des premières lignes du fichier avec le mapping appliqué. \\
 &-L'administrateur vérifie visuellement la conformité des données. \\
 \\
-& \textbf{Scénario 6 : Validation des données} \\
+& \textbf{Scénario 6: Validation des données} \\
 &-Le système vérifie la conformité des types de données. \\
 &-Le système détecte les valeurs manquantes sur les champs obligatoires. \\
 &-Le système identifie les doublons potentiels (basés sur les champs uniques comme l'email). \\
 &-Le système affiche les erreurs détectées avec indication des lignes concernées. \\
 &-L'administrateur corrige les erreurs ou choisit d'ignorer les lignes invalides. \\
 \\
-& \textbf{Scénario 7 : Traitement ETL} \\
+& \textbf{Scénario 7: Traitement ETL} \\
 &-L'administrateur lance le processus d'intégration. \\
 &-Le système effectue le nettoyage des données. \\
 &-Le système transforme les données selon les règles métier de l'entité. \\
@@ -137,23 +137,23 @@ Scénario de base &
 &-Le système insère les données validées dans la table correspondante de la base de données. \\
 &-Le système met à jour les logs d'audit avec l'identifiant de l'administrateur et la date. \\
 \\
-& \textbf{Scénario 8 : Rapport d'import} \\
+& \textbf{Scénario 8: Rapport d'import} \\
 &-Le système génère un rapport indiquant le nombre de lignes importées et en erreur. \\
 &-Le système affiche un message de confirmation à l'administrateur. \\
 \\
-& \textbf{Scénario 9 : Gestion des erreurs (Rollback)} \\
+& \textbf{Scénario 9: Gestion des erreurs (Rollback)} \\
 &-En cas d'erreur lors de l'insertion en base de données, le système effectue un rollback de la transaction en cours. \\
 &-Les données en cours d'import sont annulées. \\
 & Le système notifie l'administrateur de l'échec de l'opération. \\
 \hline
 Scénarios alternatifs & 
-\textbf{1.1 Entité non configurée :} Si l'entité sélectionnée n'a pas de structure définie, le système affiche un message d'erreur et invite à contacter le support technique. \\
-& \textbf{2.1 Format de fichier invalide :} Si le fichier n'est pas compatible ou dépasse la taille maximale autorisée, un message d'erreur s'affiche et l'administrateur doit sélectionner un autre fichier. \\
-& \textbf{2.2 Fichier vide :} Si le fichier ne contient aucune donnée ou aucun en-tête, le système affiche un avertissement et empêche la poursuite du processus. \\
-& \textbf{3.1 Aucune correspondance automatique :} Si aucun en-tête ne correspond aux champs de l'entité, le système passe directement au mapping manuel avec une alerte informative. \\
-& \textbf{4.1 Champs obligatoires non mappés :} Si des champs obligatoires de l'entité ne sont pas couverts par le mapping, le système bloque la validation et demande à l'administrateur de compléter. \\
-& \textbf{6.1 Erreurs bloquantes :} Si des erreurs critiques sont détectées, l'import est bloqué jusqu'à correction du fichier. \\
-& \textbf{9.1 Échec technique durant l'import :} Si une erreur survient lors de l'insertion en base de données, le système effectue un rollback automatique de la transaction en cours. Toutes les données de l'import sont annulées et le statut passe à « Échoué ». \\
+\textbf{1.1 Entité non configurée:} Si l'entité sélectionnée n'a pas de structure définie, le système affiche un message d'erreur et invite à contacter le support technique. \\
+& \textbf{2.1 Format de fichier invalide:} Si le fichier n'est pas compatible ou dépasse la taille maximale autorisée, un message d'erreur s'affiche et l'administrateur doit sélectionner un autre fichier. \\
+& \textbf{2.2 Fichier vide:} Si le fichier ne contient aucune donnée ou aucun en-tête, le système affiche un avertissement et empêche la poursuite du processus. \\
+& \textbf{3.1 Aucune correspondance automatique:} Si aucun en-tête ne correspond aux champs de l'entité, le système passe directement au mapping manuel avec une alerte informative. \\
+& \textbf{4.1 Champs obligatoires non mappés:} Si des champs obligatoires de l'entité ne sont pas couverts par le mapping, le système bloque la validation et demande à l'administrateur de compléter. \\
+& \textbf{6.1 Erreurs bloquantes:} Si des erreurs critiques sont détectées, l'import est bloqué jusqu'à correction du fichier. \\
+& \textbf{9.1 Échec technique durant l'import:} Si une erreur survient lors de l'insertion en base de données, le système effectue un rollback automatique de la transaction en cours. Toutes les données de l'import sont annulées et le statut passe à « Échoué ». \\
 \hline
 Post-conditions & 
 \begin{itemize}
@@ -350,6 +350,7 @@ Scénario de base &
 \item  Le système ferme la boîte de dialogue et met à jour l'interface pour retirer la formation de la liste active.
 \end{enumerate}
 \\
+
 \hline
 Scénarios alternatifs & 
     \textbf{Scénarios 1.6, 5.5, 2.6 et 6.5: Données invalides} 
@@ -481,6 +482,222 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
 \textbf{Interface de la page Planning}
 
 
+\section{Sprint 5: Espace apprennat}
+Ce rapport présente le travail réalisé au cours du sprint dédié à l'espace apprenant de la plateforme. L'objectif principal de ce sprint est de concevoir, développer et tester l'ensemble des fonctionnalités accessibles à un apprenant connecté, couvrant six grandes rubriques : le tableau de bord, la gestion des formations, les participations aux sessions, les résultats académiques, l'emploi du temps et le suivi des paiements.
+
+\subsection{Le backlog du sprint 4}
+Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regroupe l'ensemble des fonctionnalités à implémenter au cours de cette itération. Chaque élément est décrit sous la forme d'une user story centrée sur les besoins de l'apprenant, accompagnée d'un niveau de priorité. 
+
+\begin{table}[H]
+\centering
+\caption{Backlog du Sprint 4: Gestion et Planification des Sessions de Formation}
+\label{tab:sprint4_backlog}
+\begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
+\hline
+\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+\hline
+\multirow{9}{*}{4} & \multirow{9}{*}{\makecell{Espace apprennat}}
+& En tant qu'apprenant, je veux être redirigé automatiquement vers la page d'inscription lors de ma première connexion, afin de rejoindre une session avant d'accéder aux autres modules. & M\\
+\cline{3-4}
+& & En tant qu'apprenant, je veux voir un résumé de mes statistiques (formations inscrites, sessions à venir, moyenne générale) afin d'avoir une vue d'ensemble de mon parcours. & S\\
+\cline{3-4}
+& & En tant qu'apprenant, je veux consulter la liste des formations auxquelles j'ai participé, afin de suivre mon avancement. & S\\
+\cline {3-4}
+& & En tant qu'apprenant, je veux consulter les formations disponibles auxquelles Je n’ai pas encore participé, afin de découvrir de nouvelles opportunités d'apprentissage. & S\\
+\cline {3-4}
+& &  En tant qu'apprenant, Je veux participer à une session disponible d’une formation, afin de rejoindre une promotion active. & M\\
+\cline {3-4}
+& &  En tant qu'apprenant, je veux annuler ma participation à une session, afin de me désinscrire si mes disponibilités changent. & S\\
+\cline{3-4}
+& & En tant qu'apprenant, je veux consulter l'historique de toutes mes inscriptions passées et actuelles, afin de garder une trace de mon parcours. & C\\
+\cline{3-4}
+&& En tant qu'apprenant, je veux consulter mon emploi du temps complet (filtrable par semaine ou par mois), afin d'organiser mon agenda. & S\\
+\cline{3-4}
+& & En tant qu'apprenant, je veux consulter la synthèse de toutes mes notes par formation, afin d'évaluer mes performances globales. & C\\
+\cline{3-4}
+&& En tant qu'apprenant, je veux consulter la liste paginée de tous mes paiements (filtrables par formation, session ou date), afin de suivre ma situation financière. & S\\
+\cline{3-4}
+&& En tant qu'apprenant, je veux attribuer une note et un commentaire à une formation que j'ai suivie, afin de partager mon retour d'expérience. & C\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Analyse}
+
+Dans cette section, nous présentons l'analyse fonctionnelle de l'espace apprenant à travers une modélisation UML. L'objectif est d'identifier clairement les cas d'utilisation couverts, les acteurs impliqués et les interactions entre le système et l'apprenant. Cette analyse constitue le fondement de la conception et oriente les choix d'implémentation effectués lors du sprint.
+
+\textbf{Amélioration du cas d'utilisation « Espace apprenant»:}
+
+Le diagramme de cas d'utilisation de la figure \ref{Diagramme de cas d'utilisation « Espace apprenant »} illustre l'ensemble des fonctionnalités offertes à l'apprenant dans le cadre de cette plateforme. Il met en évidence les relations d'inclusion et d'extension entre les différents cas d'utilisation, permettant de structurer clairement les parcours fonctionnels disponibles. L'apprenant interagit directement avec six grandes familles de fonctionnalités : le tableau de bord, les formations, les inscriptions, l'emploi du temps, les résultats et les paiements.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{project/images/espace-app-UC.png}
+    \caption{Diagramme de cas d'utilisation « Espace apprenant »}
+    \label{Diagramme de cas d'utilisation « Espace apprenant »}
+\end{figure}
+
+Le tableau \ref{tab:Espace apprenant} présente la description textuelle structurée du diagramme de cas d'utilisation global, détaillant les acteurs, les préconditions, les scénarios de base et alternatifs, ainsi que les post-conditions associées.
+
+\begin{longtable}{|l|p{12cm}|}
+\caption{Cas d'utilisation – Espace apprenant}
+\label{tab:Espace apprenant} \\
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endhead
+
+Cas d'utilisation & 
+\begin{itemize}[leftmargin=*]
+\item Espace apprenant
+\end{itemize} \\
+\hline
+Acteur & 
+\begin{itemize}[leftmargin=*]
+\item Apprenant
+\end{itemize} \\
+\hline
+Préconditions & 
+\begin{itemize}[leftmargin=*]
+\item L'apprenant possède un compte.
+\item Il s'est authentifié et dispose du role apprenant.
+\item Le système récupère les données de l’apprenant à partir de l’identifiant utilisateur.
+\end{itemize} \\
+\hline
+Scénario de base & 
+
+\textbf{Scenario 1: Première connexion (accès conditionnel)} 
+\begin{enumerate}[leftmargin=*]
+\item L'apprenant se connecte pour la première fois.
+\item Le système récupère le profil apprenant lié à l’identifiant utilisateur.
+\item L'apprenant clique sur « nouvelle participation ».
+\item Le systeme affiche les formations actives.
+\item L'apprenant choisit une formation.
+\item Le système affiche un modale des sessions disponibles.
+\item L'apprenant clique sur « participer ».
+\item Le système vérifie l’existence de l’apprenant et de la session.
+\item Le système vérifie si l’apprenant n’est pas déjà inscrit à la session.
+\item Le système vérifie la capacité de la session (places disponibles).
+\item le système enregistre la participation.
+\item Le système confirme l’inscription et redirige vers son espace apprenant.
+\end{enumerate}
+\\
+
+ & \textbf{Scénario 2: Consulter le tableau de bord } 
+\begin{enumerate}[leftmargin=*]
+\item Le système récupère les sessions associées à l’apprenant.
+\item Le système calcule les indicateurs principaux (sessions suivies, sessions terminées, moyenne générale)
+\item Le système récupère et formate les notes récentes.
+\item Le système récupère les prochaines sessions à venir.
+\item  Le système génère et affiche les statistiques globales de l’apprenant (inscriptions, sessions à venir, moyenne générale et notes récentes).
+\end{enumerate}
+\\
+
+& \textbf{Scénario 3: consulter mes formations} 
+\begin{enumerate}[leftmargin=*]
+\item L'apprenant accède à la section <<Mes formations>>.
+\item Le système récupère les formations associées à l’apprenant connecté.
+\item Le système affiche les informations des formations.
+\item L’apprenant filtre les formations selon leur statut.
+\item Le système affiche les résultats correspondants.
+\item L’apprennat saisit une note et un commentaire pour la formation sélectionnée.
+\item Le système enregistre ou met à jour la satisfaction de l’apprenant pour cette formation.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 4: suivre ses participations} 
+\begin{enumerate}[leftmargin=*]
+\item L'apprenant accède à la section participations.
+\item Le système récupère les inscriptions associées à l’apprenant connecté.
+\item Le système affiche l’historique des participations avec les détails des sessions et formations.
+\item L’apprenant consulte les informations d’une participation.
+\item L’apprenant demande l’annulation d’une participation.
+\item Le système vérifie l’existence de l’inscription puis supprime la participation.
+\item Le système met à jour la liste des participations.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 5: Consulter ses résultats} 
+\begin{enumerate}[leftmargin=*]
+\item L'apprenant accède à la section Résultats.
+\item Le système récupère toutes les performances de l’apprenant à partir de l’identifiant utilisateur.
+\item Le système charge les informations liées aux sessions et aux formations associées
+\item Le système regroupe les notes par formation.
+\item Le système calcule la moyenne des notes pour chaque formation.
+\item Le système détermine le statut de réussite (passed/failed) pour chaque formation
+\item Le système calcule la moyenne générale de toutes les formations.
+\item Le système retourne une vue globale des résultats de l’apprenant
+\end{enumerate}
+\\
+
+\hline
+Scénarios alternatifs & 
+
+    Si toutes les places sont prises, le système affiche un message d'indisponibilité et empêche l'inscription.
+
+    Si l'apprenant tente de s'inscrire une deuxième fois à la même session, le système retourne une erreur de doublon.
+\\
+\hline
+Post-conditions &
+    
+L'apprenant est inscrit à au moins une session.
+
+Les statistiques du tableau de bord sont mises à jour.
+
+La note et le commentaire sont enregistrés ou mis à jour.
+
+\\
+\hline
+\end{longtable}
+
+\subsection{Conception}
+
+Cette section présente les diagrammes de séquence les plus représentatifs de l'espace apprenant. Nous avons retenu les deux flux les plus critiques en termes de logique métier et d'interactions multi-couches. Ces diagrammes illustrent la communication entre les différents composants de l'architecture (Frontend, Backend et Base de donnés) pour chacun de ces scénarios
+
+\textbf{Diagramme de séquence: Première connexion et accès conditionnel}
+
+Comme le montre la figure \ref{cap:Diagramme de séquence <<Participer session>>}, ce diagramme modélise le flux de connexion d'un apprenant depuis l'authentification jusqu'à l'accès aux modules. Une fois l'inscription effectuée, l'apprenant est redirigé vers le tableau de bord et accède à tous les modules.
+
+
+
+\begin{figure}[H]
+ \centering
+    \includegraphics[scale=0.5]{project/images/participe apprenant.png}
+  \caption{Diagramme de séquence << Première connexion >> }
+  \label{cap:Diagramme de séquence <<Participer session>>}
+\end{figure}
+
+
+
+\subsection{Réalisation}
+Cette section présente les principales interfaces développées côté backend pour l'espace apprenant. Chaque endpoint et service a fait l'objet d'une implémentation soignée, garantissant la sécurité des données, la performance des requêtes et la cohérence des réponses retournées au frontend. Les captures d'écran suivantes illustrent les résultats obtenus lors des tests fonctionnels réalisés via Postman et l'interface d'administration.
+
+\textbf{Interface du tableau de bord de l'apprenant}
+
+
+\textbf{Interface du gestion des formations }
+
+
+
+
+\textbf{Interface du participation }
+
+
+
+
+\textbf{Interface d'emploi du temps }
+
+
+\textbf{Interface des résultats académiques }
+
+
+
+\textbf{Suivi des paiements}
 
 
 

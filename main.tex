@@ -67,7 +67,7 @@
 \renewcommand{\footrulewidth}{0.4pt} % No footer rule line
 
 \usepackage[french]{minitoc} % Moved here to be after hyperref and fncychap
-
+\dominitoc % Create mini-toc for each chapter
 \makeatletter
 \renewcommand{\numberline}[1]{%
   \settowidth\@tempdimb{#1}%
@@ -113,6 +113,7 @@
 \input{project/chapitre3}
 \input{project/chapitre4}
 \input{project/chapitre5}
+\input{project/chapitre6}
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 \end{document}
