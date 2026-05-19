@@ -11,14 +11,40 @@ Cette section est reservee a l'analyse des besoins, des fonctionnalites ou des r
 
 \subsection{Le backlog produit}
  L'objectif est de fournir des tableaux de bord pertinents et des outils d'analyse adaptés aux besoins spécifiques de chaque rôle : responsable pédagogique, responsable financier, directeur et administrateur.
+
+ \begin{table}[H]
+\centering
+\caption{Backlog du Sprint 6: Visualisation et analyse des données}
+\label{tab:sprint4_backlog}
+\begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
+\hline
+\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+\hline
+\multirow{6}{*}{\textbf{6}} & \multirow{6}{*}{\textbf{\shortstack[l]{Visualisation et \\ analyse des données}}} & En tant qu’utilisateur interne, je veux analyser les données du centre afin de comprendre les performances des activités. & M \\
+ \cline{3-4}
+& & En tant qu’utilisateur interne, je veux visualiser les indicateurs de performance sous forme de graphiques afin de suivre l’évolution des résultats. & M \\
+\cline{3-4} & & En tant qu’utilisateur interne, je veux consulter des tableaux de bord afin de suivre les KPIs du centre. & M \\
+\cline{3-4} & & En tant qu’utilisateur interne, je veux filtrer les données afin d’affiner mes analyses selon différents critères. & S \\ 
+\cline{3-4} & & En tant que utilisateur interne, je veux exporter des rapports afin de partager les analyses et les résultats du centre. & M \\
+\cline{3-4} & & En tant qu'utilisateur interne, je veux recevoir des notifications et alertes afin d'être informé en temps réel de tout événement important lié au fonctionnement du centre. & S \\ 
+\hline
+\end{tabular}
+\end{table}
 \subsection{Analyse et conception}
 Cette section présente l'analyse fonctionnelle et la conception technique des modules de visualisation et d'analyse de données, en se concentrant sur les interactions utilisateurs et la structure des processus.
 
 \textbf{Diagramme de cas d'utilisation}
 
-Le diagramme de cas d'utilisation modélise les interactions entre les acteurs du système et les fonctionnalités offertes par les modules de visualisation et d'analyse. Il permet de définir clairement les périmètres d'action de chaque profil utilisateur.
+Le diagramme de cas d'utilisation presenté dans la figure \ref{Diagramme de cas d'utilisation « visualiser »} générique décrit le parcours de l'utilisateur interne. Bien que les données affichées (KPIs financiers, pédagogiques ou administratifs) diffèrent selon le rôle, le processus d'interaction, d'analyse et d'exportation reste identique pour tous les acteurs.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{project/images/visualiser.png}
+    \caption{Diagramme de cas d'utilisation « Visualisation et analyse des données »}
+    \label{Diagramme de cas d'utilisation « visualiser »}
+\end{figure}
 
+Le tableau \ref{tab:Visualiser} présente le backlog du sprint
 \begin{longtable}{|l|p{12cm}|}
 \caption{Cas d'utilisation – Visualiser}
 \label{tab:Visualiser} \\
@@ -47,42 +73,67 @@ Acteur &
 Préconditions & 
 \begin{itemize}[leftmargin=*]
     \item L'utilisateur est authentifié.
+    \item L'utilisateur possède les droits d'accès à son espace spécifique.
+    \item Les données sources ont été préalablement traitées/synchronisées.
 \end{itemize} \\
 \hline
 Scénario de base & 
- L'utilisateur accède à son espace.  \\
-& Le système affiche le tableau de bord spécifique.    \\
-& L'utilisateur visualise les graphiques et indicateurs KPI.\\
-& L'utilisateur applique des filtres.\\
-&Le système récupère les donnés concernant ces fitres appliqué.\\
-& Le système faire une mise à jour de la page.\\
+\begin{enumerate}[leftmargin=*]
 
-
+\item L'utilisateur accède à son espace.
+\item Le système affiche les indicateurs de performance (KPIs) et les graphiques correspondants au rôle de l'utilisateur.
+\item L'utilisateur visualise les tendances et les évolutions des résultats du centre.
+\item L'utilisateur filtre les données (par date, formation, statut, etc.) pour affiner son analyse selon ses besoins spécifiques
+\item Le système met à jour dynamiquement les visuels suite à l'application des filtres.
+\item L'utilisateur analyse les résultats pour comprendre les performances des activités.
+\item L'utilisateur exporte un rapport (PDF/Excel/csv) pour partager ses analyses avec d'autres parties prenantes.
+\end{enumerate}
+\\
 \hline
 Scénarios alternatifs & 
-  Si aucune donnée disponible: Le système affiche un message indiquant l'absence de données.\\
+   \textbf{Alertes en temps réel:} Le système affiche une notification prioritaire si un seuil critique ou un événement important est détecté (lié au fonctionnement du centre).
+
+   \textbf{Absence de données:} Si aucun enregistrement ne correspond aux filtres, le système affiche un message "Aucune donnée disponible" au lieu d'un graphique vide.\\
 \hline
 Post-conditions & 
 \begin{itemize}[leftmargin=*]
-    \item L'utilisateur a consulté les informations pertinentes.
+    \item L'utilisateur a une vision claire de ses indicateurs.
+    \item Un rapport a été généré et sauvegardé ou partagé.
+    \item L'utilisateur a pris connaissance des dernières alertes via les notifications.
 \end{itemize} \\
 \hline
 \end{longtable}
 
+\textbf{Diagramme de séquance}
 
+Le diagramme de séquence illustré dans la figure décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
 
 \subsection{L'architecture BI}
 L'architecture de Business Intelligence (BI) est conçue pour collecter, transformer, stocker et analyser les données afin de fournir des informations exploitables aux différents utilisateurs. Elle repose sur un processus structuré garantissant la qualité et la pertinence des données.
 
-\textbf{Processus des données}
+\begin{itemize}[label=\textbullet]
+\item \textbf{Sources des Données} Nous distinguons deux modes d'alimentation pour couvrir l'ensemble des besoins du centre:
 
-Le processus ETL (Extract, Transform, Load) est le cœur de l'architecture BI. Il assure le mouvement et la préparation des données depuis les systèmes sources jusqu'à l'entrepôt de données (Data Warehouse).
+\begin{itemize}[label=$\star$]
+\item \textbf{Intégration Directe:} Synchronisation directe avec les bases opérationnelles pour récupérer en temps réel les données métiers.
+\item \textbf{Import Manuel:} Import de fichiers par l'Administrateur pour intégrer l'historique ou des données externes.
+\end{itemize}
 
-\textbf{Collecte et Extraction:} Cette phase consiste à identifier et à récupérer les données brutes provenant de diverses sources opérationnelles (bases de données transactionnelles, etc.). L'extraction doit être planifiée et automatisée pour garantir la fraîcheur des données. 
+\item \textbf{Le processus ETL:} Le processus ETL (Extract, Transform, Load) est le cœur de l'architecture BI. Il assure le mouvement et la préparation des données depuis les systèmes sources jusqu'à l'entrepôt de données (Data Warehouse).
 
-\textbf{Transformation:} Une fois extraites, les données sont nettoyées, standardisées, enrichies et agrégées. Cette étape est cruciale pour assurer la qualité et la cohérence des données. Les opérations typiques incluent la suppression des doublons, la correction des erreurs, la conversion des formats, le calcul de nouvelles métriques et l'intégration de données provenant de sources différentes. La transformation prépare les données pour l'analyse et la visualisation, en les rendant conformes aux modèles de données cibles.
+\begin{itemize}[label=$\star$]
+\item \textbf{Extraction:} Cette phase consiste à récupérer les données brutes provenant des deux sources citées précédemment.
+\item \textbf{Transformation:} Une fois extraites, les données sont nettoyées, standardisées, enrichies et agrégées. Cette étape est cruciale pour assurer la qualité et la cohérence des données. Les opérations typiques incluent la suppression des doublons, la correction des erreurs, la conversion des formats, le calcul de nouvelles métriques et l'intégration de données provenant de sources différentes. La transformation prépare les données pour l'analyse et la visualisation, en les rendant conformes aux modèles de données cibles.
+\item \textbf{Chargement:} La dernière étape consiste à charger les données transformées dans la destination finale, entrepôt de données (Data Warehouse). Le Data Warehouse est optimisé pour les requêtes analytiques et le reporting, offrant une vue historique et consolidée des informations.
+\end{itemize}
 
-\textbf{Chargement:} La dernière étape consiste à charger les données transformées dans la destination finale, entrepôt de données (Data Warehouse). Le Data Warehouse est optimisé pour les requêtes analytiques et le reporting, offrant une vue historique et consolidée des informations.
+\item \textbf{Restitution et Analyse}
+\begin{itemize}[label=$\star$]
+\item \textbf{Dashboards Interactifs:} Visualisation sous forme de graphiques (secteurs, barres, courbes) pour identifier les tendances en un coup d'œil.
+\item\textbf{Analyses Approfondies:} Grâce aux filtres et au "Drill-down", l'utilisateur peut passer d'une vue globale à une vue détaillée.
+\item \textbf{Aide à la Décision:} Le résultat final n'est pas seulement une image, mais un outil permettant de prendre des décisions stratégiques.
+\end{itemize}
+\end{itemize}
 \subsection{Réalisation}
 dans cette réalisation on a 
 
@@ -121,14 +172,16 @@ pour la realisation de ce sprint on a choisi d'utiliser le modele de machine lea
 Cette section détaille le processus d'intégration des modèles d'apprentissage automatique, en mettant l'accent sur le choix des algorithmes de régression linéaire et logistique, leur justification, et les étapes d'implémentation.
 
 \subsubsection{Type du modèle utilisé}
-Le module prédictif repose sur le paradigme de \textbf{l'apprentissage supervisé (Supervised Learning)}. Ce choix méthodologique est dicté par la nature de notre base de données: nous disposons de données historiques étiquetées, où chaque session passée contient déjà les résultats obtenus par les apprenants. 
-L'objectif est d'entraîner nos algorithmes à apprendre la fonction de corrélation entre les caractéristiques d'entrée et la variable cible.
+Le module prédictif repose sur le paradigme de \textbf{l'apprentissage supervisé (Supervised Learning)}. Ce choix méthodologique est dicté par la nature de notre base de données: nous disposons de données historiques annotées (par exemple des historiques de paiements, les résultats obtenus par les apprenants, etc) qui constituent une "vérité terrain".
+L'objectif est d'entraîner nos algorithmes à généraliser la relation entre les caractéristiques d'entrée et la variable cible, permettant ainsi de formuler des prédictions précises sur de nouvelles données.
 
 Le choix de ces modèles par rapport à des modèles non-linéaires plus sophistiqués (comme les SVM ou le Deep Learning) s'appuie sur trois piliers fondamentaux:
 
 \textbf{Interprétabilité et Transparence:} L'un des défis majeurs des modèles complexes est l'opacité de leur processus de décision. À l'inverse, les modèles de régression offrent une interprétabilité intrinsèque exceptionnelle.
 
-\textbf{Robustesse face au Surapprentissage:} La complexité d'un modèle est souvent une arme à double tranchant. Les modèles très flexibles ont tendance à mémoriser le bruit présent dans les données d'entraînement (surapprentissage), ce qui dégrade leurs performances sur de nouvelles données
+\textbf{Robustesse face au Surapprentissage:} La complexité d'un modèle est souvent une arme à double tranchant. Les modèles très flexibles ont tendance à mémoriser le bruit présent dans les données d'entraînement (surapprentissage), ce qui dégrade leurs performances sur de nouvelles données.
+
+\textbf{Performance et Rapidité:} Les algorithmes de régression sont simples et consomment très peu de ressources techniques (mémoire, puissance de calcul). Ils sont beaucoup plus rapides à entraîner que des modèles complexes comme le Deep Learning.
 
 \begin{itemize}[label=\textbullet]
     \item \textbf{Pour la prédiction du Chiffre d'affaire:} Pour cet prédiction, nous avons choisi la régression linéaire pour prédire le chiffre d’affaires car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d'affaires et les facteurs qui l'influencent, comme les couts ou les nombres de participation. Sa simplicité permet d'identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
