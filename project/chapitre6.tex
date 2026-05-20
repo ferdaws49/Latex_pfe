@@ -115,7 +115,7 @@ L'architecture de Business Intelligence (BI) est conçue pour collecter, transfo
 \item \textbf{Sources des Données} Nous distinguons deux modes d'alimentation pour couvrir l'ensemble des besoins du centre:
 
 \begin{itemize}[label=$\star$]
-\item \textbf{Intégration Directe:} Synchronisation directe avec les bases opérationnelles pour récupérer en temps réel les données métiers.
+\item \textbf{Intégration Direct:} Synchronisation directe avec les bases opérationnelles pour récupérer en temps réel les données métiers.
 \item \textbf{Import Manuel:} Import de fichiers par l'Administrateur pour intégrer l'historique ou des données externes.
 \end{itemize}
 
@@ -127,6 +127,53 @@ L'architecture de Business Intelligence (BI) est conçue pour collecter, transfo
 \item \textbf{Chargement:} La dernière étape consiste à charger les données transformées dans la destination finale, entrepôt de données (Data Warehouse). Le Data Warehouse est optimisé pour les requêtes analytiques et le reporting, offrant une vue historique et consolidée des informations.
 \end{itemize}
 
+
+\textbf{Architecture en Schéma en Étoile (Star Schema)}
+
+Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile} comme illustré dans la figure \ref{fig:star_schema}. Cette structure est ainsi nommée car elle organise les données de manière centrale et rayonnante:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/starschema.png}
+    \caption{Schéma en Étoile}
+    \label{fig:star_schema}
+\end{figure}
+
+\begin{itemize}[label=\textbullet]
+\item \textbf{Le centre de l'étoile:} Il est constitué par la \textbf{Table de Faits} (\textit{fact\_finance}). Elle contient les données quantitatives et les clés étrangères. C'est ici que sont stockées les mesures de performance.
+\item \textbf{Les branches de l'étoile:} Elles sont représentées par les \textbf{Tables de Dimensions}. Chaque branche fournit un contexte spécifique aux mesures centrales. 
+\end{itemize}
+
+L'avantage majeur de cette architecture est la \textbf{dénormalisation contrôlée}. Contrairement à une base transactionnelle classique qui multiplie les jointures, le schéma en étoile simplifie les chemins d'accès aux données, garantissant ainsi des temps de réponse optimaux pour les rapports analytiques.
+
+\textbf{Les Tables de Dimensions}
+
+Les dimensions constituent les axes d’analyse. Elles permettent de "découper" les chiffres selon différents contextes métier: 
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Dimension Temps (dim\_temps):} Axe temporel indispensable permettant de suivre l'évolution des indicateurs par jour, mois, trimestre ou année.
+    \item \textbf{Dimension Formation (dim\_formation):} Regroupe les informations sur les cours (titre, catégorie, statut) pour analyser la rentabilité par thématique.
+    \item \textbf{Dimension Session (dim\_session):} Détaille le cadre de réalisation (type, capacité), permettant d'évaluer l'efficacité de l'organisation.
+    \item \textbf{Dimension Formateur (dim\_formateur):} Identifie l'intervenant pour analyser l'impact des coûts d'animation sur la marge brute.
+    \item \textbf{Dimension Apprenant (dim\_apprenant):} Permet de segmenter les résultats par client et d'analyser les comportements de paiement.
+    \item \textbf{Dimension Type Finance (dim\_type\_finance):} Définit la nature du flux (paiement, dépense, remboursement) pour une classification précise.
+\end{itemize}
+
+\textbf{La Table de Faits: fact\_finance}
+
+La table de faits enregistre les événements quantitatifs liés à l'activité financière.
+
+\textbf{Les indicateurs (KPIs) stockés sont:}
+\begin{itemize}[label=$\star$]
+    \item \textbf{Montant:} Flux financier réel enregistré (Cash-flow).
+    \item \textbf{CA Théorique:} Revenu potentiel calculé (Prix $\times$ Nombre d'inscrits).
+    \item \textbf{Coûts (Formateur et Logistique):} Valeurs permettant de calculer la rentabilité nette par session.
+    \item \textbf{Nombre d’inscrits:} Mesure du volume d'activité et du taux de remplissage.
+    \item \textbf{Indicateurs Booléens:} Champs (\textit{est\_paiement, est\_impaye}) facilitant la segmentation rapide des données.
+\end{itemize}
+
+\textbf{Liaison et Clés Techniques:} La liaison entre le centre (le fait) et les branches (les dimensions) s'effectue via des clés techniques générées (\textit{sk\_temps, sk\_session}, etc.). Cette méthode assure l'intégrité du référentiel analytique indépendamment des évolutions de la base de données de production.ccélère la génération des graphiques dans le dashboard final.
+
 \item \textbf{Restitution et Analyse}
 \begin{itemize}[label=$\star$]
 \item \textbf{Dashboards Interactifs:} Visualisation sous forme de graphiques (secteurs, barres, courbes) pour identifier les tendances en un coup d'œil.
@@ -134,6 +181,7 @@ L'architecture de Business Intelligence (BI) est conçue pour collecter, transfo
 \item \textbf{Aide à la Décision:} Le résultat final n'est pas seulement une image, mais un outil permettant de prendre des décisions stratégiques.
 \end{itemize}
 \end{itemize}
+
 \subsection{Réalisation}
 dans cette réalisation on a 
 
@@ -167,7 +215,186 @@ on a choisi de realiser les fonctionnalites suivantes
 \end{table}
 
 \subsection{Analyse et conception}
-pour la realisation de ce sprint on a choisi d'utiliser le modele de machine learning suivant
+
+Cette section présente l'analyse fonctionnelle et la conception technique du module prédictif et de recommandations. L'objectif est de formaliser les interactions entre les différents acteurs métier (Responsable Pédagogique, Responsable Financier et Directeur) et le système d'intelligence artificielle, en s'appuyant sur les modèles de Machine Learning retenus.
+
+\textbf{Amélioration du cas d'utilisation « Module Prédictif et Recommandations » :}
+
+La figure \ref{fig:use_case_ia} illustre le diagramme de cas d'utilisation présentant les interactions entre les acteurs métier et les fonctionnalités prédictives du système. Chaque cas d'utilisation repose sur le « Module IA » qui orchestre les algorithmes d'apprentissage automatique.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{project/images/moduleIAUseCase.png}
+    \caption{Diagramme de cas d'utilisation « Module Prédictif et Recommandations »}
+    \label{fig:use_case_ia}
+\end{figure}
+
+Le tableau \ref{tab:module_ia} présente la description textuelle structurée du cas d'utilisation global du module prédictif. Il détaille les scénarios nominaux pour chaque fonctionnalité, les scénarios alternatifs envisageables ainsi que les post-conditions associées.
+
+\begin{longtable}{|l|p{12cm}|}
+\caption{Cas d'utilisation – Module Prédictif et Recommandations}
+\label{tab:module_ia} \\
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Élément} & \textbf{Description} \\
+\hline
+\endhead
+
+Cas d'utilisation & 
+\begin{itemize}[leftmargin=*]
+    \item Module Prédictif et Recommandations
+\end{itemize} \\
+\hline
+Acteur & 
+\begin{itemize}[leftmargin=*]
+    \item Responsable Pédagogique
+    \item Responsable Financier
+    \item Directeur
+\end{itemize} \\
+\hline
+Préconditions & 
+\begin{itemize}[leftmargin=*]
+    \item L'utilisateur est authentifié et dispose des droits d'accès à son espace spécifique.
+    \item Les données historiques nécessaires ont été préalablement intégrées et synchronisées dans le système.
+    \item Les modèles de Machine Learning sont entraînés et déployés sur le serveur d'inférence.
+\end{itemize} \\
+\hline
+Scénario de base & 
+
+\textbf{Scénario 1 : Recevoir des alertes sur les risques d'abandon} 
+\begin{enumerate}[leftmargin=*]
+\item Le Responsable Pédagogique accède au « Alerts IA ».
+\item Le système récupère les données comportementales et académiques des apprenants.
+\item Le système prépare et normalise le jeu de données pour l'inférence.
+\item Le système invoque le modèle de régression logistique entraîné pour estimer la probabilité d'abandon de chaque apprenant.
+\item Le système classe les apprenants par niveau de risque (\textbf{critique}, \textbf{élevé}, \textbf{modéré}, \textbf{faible}) et génère les alertes correspondantes.
+\item Le Responsable Pédagogique visualise le tableau d'alertes avec les scores de risque et les indicateurs explicatifs.
+\item Le Responsable Pédagogique sélectionne un apprenant à risque et consulte le détail des facteurs contributifs.
+\item Le Responsable Pédagogique peut contacter l’apprenant à risque afin d’assurer un suivi pédagogique.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 2 : Prédire la probabilité de sessions déficitaires} 
+\begin{enumerate}[leftmargin=*]
+\item Le Responsable Financier accède à la fonctionnalité de prédiction des sessions déficitaires.
+\item Le système extrait l'historique des sessions (coûts de formateur, coûts logistiques, nombre d'inscrits, prix de vente, taux de remplissage).
+\item Le système calcule la rentabilité historique par session et constitue le vecteur de caractéristiques.
+\item Le système applique le modèle prédictif pour estimer la probabilité qu'une session future soit déficitaire.
+\item Le système affiche une liste des sessions planifiées avec leur probabilité de déficit et le montant estimé du risque.
+\item Le Responsable Financier consulte les résultats et ajuste ses décisions budgétaires en conséquence.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 3 : Prévoir les revenus pour le budget} 
+\begin{enumerate}[leftmargin=*]
+\item Le Responsable Financier accède au module de prévision des revenus.
+\item Il sélectionne l'horizon temporel de la prévision (trimestriel, semestriel ou annuel) et éventuellement des filtres (par type de formation, par catégorie).
+\item Le système récupère les données historiques de chiffre d'affaires et les variables explicatives (nombre d'inscriptions, prix moyen, saisonnalité).
+\item Le système exécute le modèle de régression linéaire pour projeter le chiffre d'affaires futur.
+\item Le système génère un graphique de tendance avec la courbe prévisionnelle et les intervalles de confiance.
+\item Le Responsable Financier visualise les revenus prévus, compare avec les objectifs budgétaires et exporte le rapport de prévision.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 4 : prévoir les inscriptions} 
+\begin{enumerate}[leftmargin=*]
+\item Le Directeur accède à la page « Rapports stratégiques » depuis son espace.
+\item Le système affiche automatiquement le widget de prévision des inscriptions intégré au tableau de bord stratégique.
+\item Le système collecte la série chronologique historique des inscriptions mensuelles sans intervention du Directeur.
+\item Le système paramètre et exécute le modèle ML sur un horizon fixe de 3 mois, en intégrant les saisonnalités et les effets de tendance.
+\item Le système produit la prévision des inscriptions pour les 3 prochains mois.
+\item Le Directeur consulte les résultats sous forme de courbe prévisionelle.
+\item Le Directeur utilise ces prévisions pour anticiper les besoins en ressources pédagogiques et logistiques.
+\end{enumerate}
+\\
+
+& \textbf{Scénario 5 : Accéder aux recommandations stratégiques} 
+\begin{enumerate}[leftmargin=*]
+\item Le Directeur accède à la page « Rapports stratégiques ».
+\item Le système agrège les résultats des différents KPI actuels du centre de formation (revenus, abandons, satisfaction, etc.) et les problèmes détectés.
+\item Le système compile ces données chiffrées dans un prompt structuré et sollicite un modèle de langage (LLM) afin de générer dynamiquement des conseils stratégiques personnalisés et actionnables.
+\item Le système reçoit les recommandations générées, les classe par impact et par facilité de mise en œuvre, puis les affiche dans la section inférieure de la page.
+\item Le Directeur visualise la liste des recommandations stratégiques classées par impact et par facilité de mise en œuvre.
+\end{enumerate}
+\\
+
+\hline
+Scénarios alternatifs & 
+
+\textbf{Données insuffisantes :} Si l'historique d'un apprenant ou des inscriptions est trop fragmentaire (moins de 3 mois), le système affiche un avertissement et exclut l'élément concerné du calcul prédictif.
+
+\textbf{Indisponibilité du moteur prédictif :} Si le service de calcul IA est inaccessible, le système bascule sur une méthode de secours locale (règles métier pondérées pour l'abandon, projection linéaire pour les inscriptions, indicateurs réels pour les recommandations) tout en signalant à l'utilisateur le mode de dégradation contrôlée.
+
+\textbf{Paramètres invalides :} Si l'utilisateur sélectionne une période de prévision non supportée ou antérieure à la date du jour, le système affiche une erreur de validation et bloque le traitement.
+
+\textbf{Données désynchronisées :} Si les indicateurs des autres modules ne sont pas à jour, le système signale la date de dernière mise à jour et avertit que les recommandations peuvent être obsolètes.
+
+\textbf{Défaillance d'un composant :} Si un widget graphique ou le service de conseils est indisponible, le système affiche un message informatif dans la zone concernée sans bloquer le reste de la page.
+
+\\
+
+\hline
+Post-conditions &
+
+\textbf{Scénario 1 :} Les alertes d'abandon sont générées, stockées dans la base de données et consultables par le Responsable Pédagogique. Les apprenants à risque sont identifiés.
+
+\textbf{Scénario 2 :} Les probabilités de déficit par session sont calculées et stockées. Le Responsable Financier dispose d'une vision des risques financiers futurs.
+
+\textbf{Scénario 3 :} La prévision de chiffre d'affaires est enregistrée et peut être comparée aux réalisations ultérieures. Le rapport est exportable.
+
+\textbf{Scénario 4 :} La série prévisionnelle des inscriptions est disponible et exploitable pour la planification des ressources.
+
+\textbf{Scénario 5 :} Les recommandations stratégiques sont générées.
+
+\\
+
+\hline
+\end{longtable}
+
+\textbf{Conception}
+
+La phase de conception traduit les exigences fonctionnelles du module prédictif en modèles techniques UML. Les diagrammes de séquence suivants détaillent les interactions dynamiques entre les acteurs métier, l'interface utilisateur (Frontend), la couche applicative (Backend), le moteur d'inférence IA et la base de données, pour les flux les plus critiques du sprint.
+
+\textbf{Diagramme de séquence : Génération des alertes d'abandon}
+
+Ce diagramme illustre le flux de détection des risques d'abandon. Le Responsable Pédagogique sollicite l'analyse via l'interface. Le système orchestre la récupération des données comportementales, prépare les features et invoque le modèle de régression logistique. Les probabilités retournées sont traitées, classées par niveau de risque (critique, élevé, modéré, faible) et restituées sous forme d'alertes interactives.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{project/images/rep_ds.png}
+  \caption{Diagramme de séquence « Génération des alertes d'abandon »}
+  \label{fig:ds_alerte_abandon}
+\end{figure}
+
+\vspace{0.5cm}
+
+\textbf{Diagramme de séquence : Prévision des revenus}
+
+Ce diagramme modélise le processus de prévision budgétaire. Le Responsable Financier paramètre son horizon d'analyse. Le système extrait l'historique financier, exécute le modèle de régression linéaire et produit la projection de chiffre d'affaires avec ses intervalles de confiance. Le flux de prédiction des sessions déficitaires suit une architecture similaire avec extraction des coûts et calcul de rentabilité.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{project/images/resfinanIA.png}
+  \caption{Diagramme de séquence « Prévision des revenus »}
+  \label{fig:ds_prevision_revenus}
+\end{figure}
+
+\vspace{0.5cm}
+
+\textbf{Diagramme de séquence : Rapports stratégiques (Prévision des inscriptions et Recommandations)}
+
+Ce diagramme représente le flux combiné de la page « Rapports stratégiques » accessible au Directeur. Deux traitements parallels opèrent sur le même tableau de bord : (a) la prévision des inscriptions sur 3 mois via le modèle de série temporelle, et (b) la génération de recommandations stratégiques par agrégation des indicateurs de performance et traitement par modèle de langage.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{project/images/directA.png}
+  \caption{Diagramme de séquence « Rapports stratégiques »}
+  \label{fig:ds_rapports_strategiques}
+\end{figure}
+
+
 \subsection{L'intégration de modéle ML}
 Cette section détaille le processus d'intégration des modèles d'apprentissage automatique, en mettant l'accent sur le choix des algorithmes de régression linéaire et logistique, leur justification, et les étapes d'implémentation.
 
@@ -184,13 +411,20 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 \textbf{Performance et Rapidité:} Les algorithmes de régression sont simples et consomment très peu de ressources techniques (mémoire, puissance de calcul). Ils sont beaucoup plus rapides à entraîner que des modèles complexes comme le Deep Learning.
 
 \begin{itemize}[label=\textbullet]
-    \item \textbf{Pour la prédiction du Chiffre d'affaire:} Pour cet prédiction, nous avons choisi la régression linéaire pour prédire le chiffre d’affaires car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d'affaires et les facteurs qui l'influencent, comme les couts ou les nombres de participation. Sa simplicité permet d'identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
-    \item \textbf{Pour la prédiction des sessions déficitaires:} Pour cet prédiction, nous avons utilisé la régression logistique car l'objectif ici est de répondre à une question binaire: la session sera-t-elle déficitaire ou non (Oui/Non) ? Contrairement à la régression classique, ce modèle est spécifiquement conçu pour la classification. Il permet de calculer la probabilité qu'une session tombe en déficit en fonction de certaines variables, ce qui en fait un outil parfait pour l'analyse des risques et l'anticipation des pertes.
+    \item \textbf{Pour la prévision du chiffre d’affaires :} Pour cette prévision, nous avons choisi la régression linéaire afin de prédire le chiffre d’affaires, car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d’affaires et les facteurs qui l’influencent, tels que les coûts ou le nombre de participations. Sa simplicité permet d’identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
+    \item \textbf{Pour la prévision des inscriptions mensuelles :} Pour cette prévision, nous avons opté pour le modèle Meta Prophet, reconnu pour sa performance dans l’analyse des séries temporelles. Ce modèle permet d’estimer l’évolution future des inscriptions sur une période de trois mois en se basant sur les données historiques. Grâce à ces prévisions, le directeur peut anticiper la demande, mieux planifier les ressources disponibles et prendre des décisions stratégiques afin d’optimiser la gestion du centre de formation.
+    \item \textbf{Pour la prédiction de l’abandon (Alerts IA) :} Pour cette prédiction, nous avons également opté pour la régression logistique. L’abandon est un phénomène binaire (un apprenant abandonne ou ne le fait pas), ce qui correspond parfaitement à la nature de la régression logistique. En analysant les caractéristiques des apprenants et leurs comportements passés, ce modèle permet d’estimer la probabilité d’abandon, permettant ainsi au responsable pédagogique d’intervenir de manière proactive auprès des apprenants à risque.
 \end{itemize}
 
-En résumé, le choix de la régression linéaire et logistique n'est pas un compromis par défaut, mais une décision architecturale délibérée. Ils offrent le meilleur équilibre entre **performance prédictive**, **transparence opérationnelle** et **efficacité technique**, répondant ainsi parfaitement aux exigences d'un module prédictif robuste et actionnable.
+
 \subsection{Recommendations}
-recommendations sont faites en se basant sur les resultats du modéle ML
+Un module de recommandation basé sur l'IA Générative (LLM). un modèle de langage (LLM) a été intégré afin de générer des recommandations stratégiques à partir des indicateurs de performance de la plateforme.
+modèle utilisé: LLaMA 3 via API Groq
+entrée:
+KPI (taux de réussite, abandon, revenus…)
+sortie:
+3 recommandations structurées (JSON)
+LLM de type Llama-3
 \subsection{Réalisation}
 fgfggghghghhgfhghg
 

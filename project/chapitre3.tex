@@ -231,46 +231,7 @@ La figure \ref{fig:diagramme de classe} présente cette modélisation et illustr
 \end{figure}
 
 \subsection{Modélisation décisionnelle}
-La modélisation décisionnelle est l'étape clé qui permet de transformer les données brutes de gestion en informations exploitables pour le pilotage de l'activité. Pour ce projet, nous avons mis en place un Système d’Information Décisionnel (SID) basé sur une architecture ROLAP.
-
-\textbf{Architecture en Schéma en Étoile (Star Schema)}
-
-Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile}. Cette structure est ainsi nommée car elle organise les données de manière centrale et rayonnante:
-
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Le centre de l'étoile:} Il est constitué par la \textbf{Table de Faits} (\textit{fact\_finance}). Elle contient les données quantitatives et les clés étrangères. C'est ici que sont stockées les mesures de performance.
-    \item \textbf{Les branches de l'étoile:} Elles sont représentées par les \textbf{Tables de Dimensions}. Chaque branche fournit un contexte spécifique aux mesures centrales. 
-\end{itemize}
-
-L'avantage majeur de cette architecture est la \textbf{dénormalisation contrôlée}. Contrairement à une base transactionnelle classique qui multiplie les jointures, le schéma en étoile simplifie les chemins d'accès aux données, garantissant ainsi des temps de réponse optimaux pour les rapports analytiques.
-
-\textbf{Les Tables de Dimensions}
-
-Les dimensions constituent les axes d’analyse. Elles permettent de "découper" les chiffres selon différents contextes métier: 
-
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Dimension Temps (dim\_temps):} Axe temporel indispensable permettant de suivre l'évolution des indicateurs par jour, mois, trimestre ou année.
-    \item \textbf{Dimension Formation (dim\_formation):} Regroupe les informations sur les cours (titre, catégorie, statut) pour analyser la rentabilité par thématique.
-    \item \textbf{Dimension Session (dim\_session):} Détaille le cadre de réalisation (type, capacité), permettant d'évaluer l'efficacité de l'organisation.
-    \item \textbf{Dimension Formateur (dim\_formateur):} Identifie l'intervenant pour analyser l'impact des coûts d'animation sur la marge brute.
-    \item \textbf{Dimension Apprenant (dim\_apprenant):} Permet de segmenter les résultats par client et d'analyser les comportements de paiement.
-    \item \textbf{Dimension Type Finance (dim\_type\_finance):} Définit la nature du flux (paiement, dépense, remboursement) pour une classification précise.
-\end{itemize}
-
-\textbf{La Table de Faits: fact\_finance}
-
-La table de faits enregistre les événements quantitatifs liés à l'activité financière.
-
-\textbf{Les indicateurs (KPIs) stockés sont:}
-\begin{itemize}[label=$\star$]
-    \item \textbf{Montant:} Flux financier réel enregistré (Cash-flow).
-    \item \textbf{CA Théorique:} Revenu potentiel calculé (Prix $\times$ Nombre d'inscrits).
-    \item \textbf{Coûts (Formateur et Logistique):} Valeurs permettant de calculer la rentabilité nette par session.
-    \item \textbf{Nombre d’inscrits:} Mesure du volume d'activité et du taux de remplissage.
-    \item \textbf{Indicateurs Booléens:} Champs (\textit{est\_paiement, est\_impaye}) facilitant la segmentation rapide des données.
-\end{itemize}
-
-\textbf{Liaison et Clés Techniques:} La liaison entre le centre (le fait) et les branches (les dimensions) s'effectue via des clés techniques générées (\textit{sk\_temps, sk\_session}, etc.). Cette méthode assure l'intégrité du référentiel analytique indépendamment des évolutions de la base de données de production.ccélère la génération des graphiques dans le dashboard final.
+La modélisation décisionnelle représente une étape importante dans la conception d’un Système d’Information Décisionnel (SID). Elle a pour objectif de structurer les données issues des systèmes opérationnels afin de les rendre exploitables pour l’analyse et l’aide à la prise de décision. Dans ce cadre, les informations sont organisées de manière à faciliter leur exploitation par les outils de reporting et de visualisation. Pour ce projet, nous avons opté pour une architecture de type ROLAP, permettant une analyse flexible des données tout en conservant un lien direct avec la base de données relationnelle. Cette approche assure une meilleure adaptabilité des analyses et répond aux besoins de pilotage de l’activité.
 
 \section{Conception de l'interface des utilisateurs }
 \label{sec:Conception de l'interface des utilisateurs }
@@ -282,7 +243,7 @@ distincts, en s'appuyant sur des bases théoriques et pratiques adaptées au pro
 \subsection{Conception UI/UX}
 \textbf{Interface Utilisateur (UI) }\newline
 L'interface utilisateur (UI) constitue le principal point d'interaction avec la plateforme décisionnelle, conçue pour offrir une visualisation claire et intuitive des KPIs. Une hiérarchisation efficace met en avant les indicateurs clés sous forme de cartes, complétées par des graphiques interactifs pour analyser les tendances. la typographie a été définie avec la police Inter, largement utilisée dans le projet pour sa modernité et sa lisibilité, garantissant une présentation claire des
-texte, Le choix de la palette de couleurs s'est orienté vers des tons \textit{sage} et \textit{cream}, comme illustré dans la Figure \ref{fig:placeholder3}. Ces couleurs ont été sélectionnées pour leur aspect apaisant et professionnel, favorisant une meilleure lisibilité des informations. Toutefois, ce choix reste évolutif et pourra faire l'objet d'ajustements lors de la phase de réalisation, afin d'améliorer davantage l'expérience utilisateur et l'ergonomie de l'interface.
+texte, Le choix de la palette de couleurs s'est orienté vers des tons \textit{sage} et \textit{cream}, comme illustré dans la Figure \ref{fig:placeholder4}. Ces couleurs ont été sélectionnées pour leur aspect apaisant et professionnel, favorisant une meilleure lisibilité des informations. Toutefois, ce choix reste évolutif et pourra faire l'objet d'ajustements lors de la phase de réalisation, afin d'améliorer davantage l'expérience utilisateur et l'ergonomie de l'interface.
 \begin{figure}[H]
      \centering
      \includegraphics[width=0.8\linewidth]{project/images/WhatsApp Image 2026-03-23 at 9.56.31 PM.jpeg}
