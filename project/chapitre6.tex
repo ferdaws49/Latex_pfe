@@ -1,4 +1,4 @@
-\chapter{ Release 3 : Visualisation et analyse des données, module prédictif et recommandations}
+\chapter{ Release 3: Visualisation et analyse des données, module prédictif et recommandations}
 \minitoc
 \newpage
 \counterwithin{figure}{chapter}
@@ -6,7 +6,7 @@
 \section{Introduction}
 Cette section constitue une base pour le chapitre 6. Vous pouvez y ajouter l'introduction generale du chapitre ainsi que ses objectifs.
 
-\section{Sprint 6 : Visualisation et analyse des données}
+\section{Sprint 6: Visualisation et analyse des données}
 Cette section est reservee a l'analyse des besoins, des fonctionnalites ou des resultats presentes dans ce chapitre.
 
 \subsection{Le backlog produit}
@@ -218,7 +218,7 @@ on a choisi de realiser les fonctionnalites suivantes
 
 Cette section présente l'analyse fonctionnelle et la conception technique du module prédictif et de recommandations. L'objectif est de formaliser les interactions entre les différents acteurs métier (Responsable Pédagogique, Responsable Financier et Directeur) et le système d'intelligence artificielle, en s'appuyant sur les modèles de Machine Learning retenus.
 
-\textbf{Amélioration du cas d'utilisation « Module Prédictif et Recommandations » :}
+\textbf{Amélioration du cas d'utilisation « Module Prédictif et Recommandations »:}
 
 La figure \ref{fig:use_case_ia} illustre le diagramme de cas d'utilisation présentant les interactions entre les acteurs métier et les fonctionnalités prédictives du système. Chaque cas d'utilisation repose sur le « Module IA » qui orchestre les algorithmes d'apprentissage automatique.
 
@@ -264,7 +264,7 @@ Préconditions &
 \hline
 Scénario de base & 
 
-\textbf{Scénario 1 : Recevoir des alertes sur les risques d'abandon} 
+\textbf{Scénario 1: Recevoir des alertes sur les risques d'abandon} 
 \begin{enumerate}[leftmargin=*]
 \item Le Responsable Pédagogique accède au « Alerts IA ».
 \item Le système récupère les données comportementales et académiques des apprenants.
@@ -277,7 +277,7 @@ Scénario de base &
 \end{enumerate}
 \\
 
-& \textbf{Scénario 2 : Prédire la probabilité de sessions déficitaires} 
+& \textbf{Scénario 2: Prédire la probabilité de sessions déficitaires} 
 \begin{enumerate}[leftmargin=*]
 \item Le Responsable Financier accède à la fonctionnalité de prédiction des sessions déficitaires.
 \item Le système extrait l'historique des sessions (coûts de formateur, coûts logistiques, nombre d'inscrits, prix de vente, taux de remplissage).
@@ -288,7 +288,7 @@ Scénario de base &
 \end{enumerate}
 \\
 
-& \textbf{Scénario 3 : Prévoir les revenus pour le budget} 
+& \textbf{Scénario 3: Prévoir les revenus pour le budget} 
 \begin{enumerate}[leftmargin=*]
 \item Le Responsable Financier accède au module de prévision des revenus.
 \item Il sélectionne l'horizon temporel de la prévision (trimestriel, semestriel ou annuel) et éventuellement des filtres (par type de formation, par catégorie).
@@ -299,7 +299,7 @@ Scénario de base &
 \end{enumerate}
 \\
 
-& \textbf{Scénario 4 : prévoir les inscriptions} 
+& \textbf{Scénario 4: prévoir les inscriptions} 
 \begin{enumerate}[leftmargin=*]
 \item Le Directeur accède à la page « Rapports stratégiques » depuis son espace.
 \item Le système affiche automatiquement le widget de prévision des inscriptions intégré au tableau de bord stratégique.
@@ -311,7 +311,7 @@ Scénario de base &
 \end{enumerate}
 \\
 
-& \textbf{Scénario 5 : Accéder aux recommandations stratégiques} 
+& \textbf{Scénario 5: Accéder aux recommandations stratégiques} 
 \begin{enumerate}[leftmargin=*]
 \item Le Directeur accède à la page « Rapports stratégiques ».
 \item Le système agrège les résultats des différents KPI actuels du centre de formation (revenus, abandons, satisfaction, etc.) et les problèmes détectés.
@@ -324,30 +324,30 @@ Scénario de base &
 \hline
 Scénarios alternatifs & 
 
-\textbf{Données insuffisantes :} Si l'historique d'un apprenant ou des inscriptions est trop fragmentaire (moins de 3 mois), le système affiche un avertissement et exclut l'élément concerné du calcul prédictif.
+\textbf{Données insuffisantes:} Si l'historique d'un apprenant ou des inscriptions est trop fragmentaire (moins de 3 mois), le système affiche un avertissement et exclut l'élément concerné du calcul prédictif.
 
-\textbf{Indisponibilité du moteur prédictif :} Si le service de calcul IA est inaccessible, le système bascule sur une méthode de secours locale (règles métier pondérées pour l'abandon, projection linéaire pour les inscriptions, indicateurs réels pour les recommandations) tout en signalant à l'utilisateur le mode de dégradation contrôlée.
+\textbf{Indisponibilité du moteur prédictif:} Si le service de calcul IA est inaccessible, le système bascule sur une méthode de secours locale (règles métier pondérées pour l'abandon, projection linéaire pour les inscriptions, indicateurs réels pour les recommandations) tout en signalant à l'utilisateur le mode de dégradation contrôlée.
 
-\textbf{Paramètres invalides :} Si l'utilisateur sélectionne une période de prévision non supportée ou antérieure à la date du jour, le système affiche une erreur de validation et bloque le traitement.
+\textbf{Paramètres invalides:} Si l'utilisateur sélectionne une période de prévision non supportée ou antérieure à la date du jour, le système affiche une erreur de validation et bloque le traitement.
 
-\textbf{Données désynchronisées :} Si les indicateurs des autres modules ne sont pas à jour, le système signale la date de dernière mise à jour et avertit que les recommandations peuvent être obsolètes.
+\textbf{Données désynchronisées:} Si les indicateurs des autres modules ne sont pas à jour, le système signale la date de dernière mise à jour et avertit que les recommandations peuvent être obsolètes.
 
-\textbf{Défaillance d'un composant :} Si un widget graphique ou le service de conseils est indisponible, le système affiche un message informatif dans la zone concernée sans bloquer le reste de la page.
+\textbf{Défaillance d'un composant:} Si un widget graphique ou le service de conseils est indisponible, le système affiche un message informatif dans la zone concernée sans bloquer le reste de la page.
 
 \\
 
 \hline
 Post-conditions &
 
-\textbf{Scénario 1 :} Les alertes d'abandon sont générées, stockées dans la base de données et consultables par le Responsable Pédagogique. Les apprenants à risque sont identifiés.
+\textbf{Scénario 1:} Les alertes d'abandon sont générées, stockées dans la base de données et consultables par le Responsable Pédagogique. Les apprenants à risque sont identifiés.
 
-\textbf{Scénario 2 :} Les probabilités de déficit par session sont calculées et stockées. Le Responsable Financier dispose d'une vision des risques financiers futurs.
+\textbf{Scénario 2:} Les probabilités de déficit par session sont calculées et stockées. Le Responsable Financier dispose d'une vision des risques financiers futurs.
 
-\textbf{Scénario 3 :} La prévision de chiffre d'affaires est enregistrée et peut être comparée aux réalisations ultérieures. Le rapport est exportable.
+\textbf{Scénario 3:} La prévision de chiffre d'affaires est enregistrée et peut être comparée aux réalisations ultérieures. Le rapport est exportable.
 
-\textbf{Scénario 4 :} La série prévisionnelle des inscriptions est disponible et exploitable pour la planification des ressources.
+\textbf{Scénario 4:} La série prévisionnelle des inscriptions est disponible et exploitable pour la planification des ressources.
 
-\textbf{Scénario 5 :} Les recommandations stratégiques sont générées.
+\textbf{Scénario 5:} Les recommandations stratégiques sont générées.
 
 \\
 
@@ -358,7 +358,7 @@ Post-conditions &
 
 La phase de conception traduit les exigences fonctionnelles du module prédictif en modèles techniques UML. Les diagrammes de séquence suivants détaillent les interactions dynamiques entre les acteurs métier, l'interface utilisateur (Frontend), la couche applicative (Backend), le moteur d'inférence IA et la base de données, pour les flux les plus critiques du sprint.
 
-\textbf{Diagramme de séquence : Génération des alertes d'abandon}
+\textbf{Diagramme de séquence: Génération des alertes d'abandon}
 
 Ce diagramme illustre le flux de détection des risques d'abandon. Le Responsable Pédagogique sollicite l'analyse via l'interface. Le système orchestre la récupération des données comportementales, prépare les features et invoque le modèle de régression logistique. Les probabilités retournées sont traitées, classées par niveau de risque (critique, élevé, modéré, faible) et restituées sous forme d'alertes interactives.
 \begin{figure}[H]
@@ -370,7 +370,7 @@ Ce diagramme illustre le flux de détection des risques d'abandon. Le Responsabl
 
 \vspace{0.5cm}
 
-\textbf{Diagramme de séquence : Prévision des revenus}
+\textbf{Diagramme de séquence: Prévision des revenus}
 
 Ce diagramme modélise le processus de prévision budgétaire. Le Responsable Financier paramètre son horizon d'analyse. Le système extrait l'historique financier, exécute le modèle de régression linéaire et produit la projection de chiffre d'affaires avec ses intervalles de confiance. Le flux de prédiction des sessions déficitaires suit une architecture similaire avec extraction des coûts et calcul de rentabilité.
 
@@ -383,7 +383,7 @@ Ce diagramme modélise le processus de prévision budgétaire. Le Responsable Fi
 
 \vspace{0.5cm}
 
-\textbf{Diagramme de séquence : Rapports stratégiques (Prévision des inscriptions et Recommandations)}
+\textbf{Diagramme de séquence: Rapports stratégiques (Prévision des inscriptions et Recommandations)}
 
 Ce diagramme représente le flux combiné de la page « Rapports stratégiques » accessible au Directeur. Deux traitements parallels opèrent sur le même tableau de bord : (a) la prévision des inscriptions sur 3 mois via le modèle de série temporelle, et (b) la génération de recommandations stratégiques par agrégation des indicateurs de performance et traitement par modèle de langage.
 
@@ -410,10 +410,74 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 
 \textbf{Performance et Rapidité:} Les algorithmes de régression sont simples et consomment très peu de ressources techniques (mémoire, puissance de calcul). Ils sont beaucoup plus rapides à entraîner que des modèles complexes comme le Deep Learning.
 
+
 \begin{itemize}[label=\textbullet]
-    \item \textbf{Pour la prévision du chiffre d’affaires :} Pour cette prévision, nous avons choisi la régression linéaire afin de prédire le chiffre d’affaires, car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d’affaires et les facteurs qui l’influencent, tels que les coûts ou le nombre de participations. Sa simplicité permet d’identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
-    \item \textbf{Pour la prévision des inscriptions mensuelles :} Pour cette prévision, nous avons opté pour le modèle Meta Prophet, reconnu pour sa performance dans l’analyse des séries temporelles. Ce modèle permet d’estimer l’évolution future des inscriptions sur une période de trois mois en se basant sur les données historiques. Grâce à ces prévisions, le directeur peut anticiper la demande, mieux planifier les ressources disponibles et prendre des décisions stratégiques afin d’optimiser la gestion du centre de formation.
-    \item \textbf{Pour la prédiction de l’abandon (Alerts IA) :} Pour cette prédiction, nous avons également opté pour la régression logistique. L’abandon est un phénomène binaire (un apprenant abandonne ou ne le fait pas), ce qui correspond parfaitement à la nature de la régression logistique. En analysant les caractéristiques des apprenants et leurs comportements passés, ce modèle permet d’estimer la probabilité d’abandon, permettant ainsi au responsable pédagogique d’intervenir de manière proactive auprès des apprenants à risque.
+    \item \textbf{Pour la prévision du chiffre d’affaires:} Pour cette prévision, nous avons choisi la régression linéaire afin de prédire le chiffre d’affaires, car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d’affaires et les facteurs qui l’influencent, tels que les coûts ou le nombre de participations. Sa simplicité permet d’identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
+    \item \textbf{Pour la prévision des inscriptions mensuelles:} Pour cette prévision, nous avons opté pour le modèle Meta Prophet, reconnu pour sa performance dans l’analyse des séries temporelles. Ce modèle permet d’estimer l’évolution future des inscriptions sur une période de trois mois en se basant sur les données historiques. Grâce à ces prévisions, le directeur peut anticiper la demande, mieux planifier les ressources disponibles et prendre des décisions stratégiques afin d’optimiser la gestion du centre de formation.
+    \item \textbf{Pour la prédiction de l’abandon (Alerts IA):} Pour cette prédiction, nous avons également opté pour la régression logistique. L’abandon est un phénomène binaire (un apprenant abandonne ou ne le fait pas), ce qui correspond parfaitement à la nature de la régression logistique. En analysant les caractéristiques des apprenants et leurs comportements passés, ce modèle permet d’estimer la probabilité d’abandon, permettant ainsi au responsable pédagogique d’intervenir de manière proactive auprès des apprenants à risque.
+    \item \textbf{Pour la prédiction des sessions déficitaires:} Pour cette prédiction, nous avons utilisé la régression logistique car l'objectif ici est de répondre à une question binaire: la session sera-t-elle déficitaire ou non (Oui/Non) ? Contrairement à la régression classique, ce modèle est spécifiquement conçu pour la classification. Il permet de calculer la probabilité qu'une session tombe en déficit en fonction de certaines variables, ce qui en fait un outil parfait pour l'analyse des risques et l'anticipation des pertes.
+\end{itemize}
+
+\subsubsection{Choix des paramètres}
+ Cette section détaille l'ensemble des choix techniques et méthodologiques qui structurent notre solution, depuis la sélection des sources de données dans le Data Warehouse jusqu'à la mise en œuvre du processus de prédiction en temps réel
+
+\textbf{Pour la prédiction du Chiffre d'affaire:} pour la prédiction du CA, nous utilisons:
+\begin{itemize}[label=\textbullet]
+ \item \textbf{dw.fact\_finance:} le modèle s'appuie sur la table de faits financière dw.fact\_finance croisée avec les dimensions suivantes: 
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{dw.dim\_temps:} Pour l'axe temporel (mois, année, trimestre).
+    \item \textbf{dw.dim\_type\_finance:} Pour filtrer les flux (paiements vs dépenses).
+    \item \textbf{dw.dim\_apprenant et dw.dim\_session:} Pour calculer les volumes d'activité.
+\end{itemize}
+
+\textbf{Pourquoi cette table?} Elle constitue la source de vérité centrale contenant l'historique complet des paiements encaissés, des coûts et des inscriptions, ce qui est indispensable pour identifier les cycles de revenus.
+
+\textbf{Attributs Clés:}
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Le passé financier:} Les revenus des mois précédents et de l'année dernière pour comprendre les habitudes de croissance.
+    \item \textbf{L'activité réelle:} Le nombre d'élèves inscrits, le nombre de formations lancées et les coûts réels (formateurs et logistique).
+    \item \textbf{Le calendrier:} Le mois et la saison pour identifier automatiquement les périodes de forte activité et les périodes de vacances.
+\end{itemize}
+
+\item \textbf{Détails du Modèle}
+
+\textbf{Chargement des données:} Les données sont extraites via une requête SQL aggregée. Le système vérifie une condition de qualité :un minimum de 15 mois d'historique est requis. Les données sont ensuite chargées dans un DataFrame Pandas, triées par ordre chronologique pour respecter la logique de série temporelle.
+
+\textbf{Entraînement du modèle}
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Préparation des données:} Pour que l'apprentissage soit structuré, nous séparons les informations en deux groupes:
+    \begin{itemize}[label=\textbullet]
+        \item \textbf{Les variables explicatives (X):} Ce sont tous les indices créés précédemment. Le modèle va chercher le lien entre ces indices et le résultat final.
+        \item \textbf{La variable cible (y):} C'est ce que nous voulons prédire (le Chiffre d'Affaires mensuel).
+    \end{itemize}
+    \item \textbf{Normalisation:} On utilise le StandardScaler. Cette étape est indispensable car les montants (ex: 50 000 DT) et les effectifs (ex: 10 inscrits) ont des échelles trop différentes. Le scaler centre les données autour de 0 avec un écart-type de 1.
+    \item \textbf{Division des données:} nous avons divisé notre historique de 60 mois selon une logique de 80/20. L'ensemble d'entraînement, composé de 48 mois, permet au modèle d'analyser les
+     tendances sur quatre cycles annuels complets pour construire sa logique mathématique. En parallèle, l'ensemble de test, regroupant les 12 mois de l'année la plus récente, est scrupuleusement isolé pour évaluer la précision des prévisions en conditions réelles sur des données inconnues. Ce découpage a été réalisé en respectant strictement l'ordre chronologique, une condition indispensable pour garantir la validité d'une modélisation par séries temporelles et éviter tout risque de fuite de données du futur vers le passé.
+    \item \textbf{L'Apprentissage:} C'est le cœur de l'entraînement. Nous utilisons l'algorithme de Régression Linéaire.
+    \item  \textbf{Evaluation:} Pour quantifier la précision, nous nous appuyons sur deux métriques standards en statistiques:
+        \begin{itemize}[label=\textbullet]
+            \item \textbf{Le Coefficient de Détermination (R²):} Il mesure la qualité globale du modèle sur une échelle de 0 à 1. 
+            \item \textbf{L’Erreur Moyenne Absolue (MAE):} Elle exprime l'erreur en valeur monétaire réelle.
+        \end{itemize}
+    Cette étape est cruciale car elle confirme que le modèle ne fait pas de "sur-apprentissage" (mémorisation par cœur du passé), mais qu'il possède une réelle capacité de généralisation.
+    \item \textbf{Sauvegarde du modèle:} Une fois l'apprentissage terminé, le "cerveau" du modèle est exporté dans un fichier compressé (format .pkl). Ce fichier contient tout: le modèle entraîné, les règles de mise à l'échelle (Scaler) et les dernières données connues.
+\end{itemize}
+\textbf{Prediction}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Chargement:} le système charge le fichier .pkl contenant le modèle, le normaliseur (scaler) et les indicateurs clés.
+    \item  \textbf{Prédiction en boucle (Itérative):}
+    \item Le modèle fonctionne comme une réaction en chaîne:
+    \begin{itemize}[label=\textbullet]
+        \item Il prédit d'abord le mois M+1.
+        \item Il utilise ensuite ce résultat comme une "vraie" donnée pour prédire le mois M+2, et ainsi de suite. Cela permet de projeter le futur sur plusieurs mois.
+    \end{itemize}
+    \item \textbf{Resultat:} Prevision du chiffre d'affaire 
+
+
+\end{itemize}
 \end{itemize}
 
 
