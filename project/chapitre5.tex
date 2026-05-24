@@ -3,11 +3,11 @@
  \newpage
  \counterwithin{figure}{chapter}
 \section{Introduction}
-Dans cette deuxième release, la plateforme évolue vers une dimension décisionnelle plus avancée, en intégrant des mécanismes de traitement et d'exploitation des données.
-Après avoir mis en place les bases fonctionnelles liées à l'authentification et à la gestion des utilisateurs dans la Release 1, cette phase introduit deux axes majeurs : l'intégration des données via un processus ETL (Extract, Transform, Load), présentée dans la section \ref{sec:Sprint3:ETL}, et la gestion multi-domaines, détaillée dans la section \ref{sec:Sprint4:MultiDomain}.
-Ce chapitre présente les différents sprints réalisés, en s'appuyant sur les backlogs et les user stories. Chaque sprint est structuré autour d'une analyse fonctionnelle, suivie d'une conception basée sur des diagrammes de séquence, puis d'une présentation des interfaces réalisées.
+Cette deuxième release marque une évolution vers la dimension opérationnelle et métier de la plateforme. Elle introduit trois axes majeurs : la gestion des sessions de formation, présentée dans la section \ref{sec:Sprint3:Planning}, l'espace apprenant, détaillé dans la section \ref{sec:Sprint4:Apprenant}, et l'alimentation des données, traitée dans la section \ref{sec:Sprint5:ETL}. Ces trois volets visent à transformer la plateforme d'un système administratif en un outil de planification pédagogique et d'engagement des apprenants.
 
+Ce chapitre présente les différents sprints réalisés, en s'appuyant sur les backlogs et les user stories. Chaque sprint est structuré autour d'une analyse fonctionnelle, suivie d'une conception basée sur des diagrammes de séquence, puis d'une présentation des éléments de réalisation.
 \section{Sprint 3: Gestion des Sessions de Formation}
+\label{sec:Sprint3:Planning}
 Ce rapport de sprint détaille l'analyse fonctionnelle, la conception et les éléments de réalisation de la page "Planning du responsable pédagogique" au sein de la plateforme de gestion des formations. L'objectif est de fournir une documentation académique complète et structurée sur les opérations pour les sessions et les formations.
 
 
@@ -305,15 +305,16 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
 
 
 \section{Sprint 4: Espace apprenant}
+\label{sec:Sprint4:Apprenant}
 Ce rapport présente le travail réalisé au cours du sprint dédié à l'espace apprenant de la plateforme. L'objectif principal de ce sprint est de concevoir, développer et tester l'ensemble des fonctionnalités accessibles à un apprenant connecté, couvrant six grandes rubriques : le tableau de bord, la gestion des formations, les participations aux sessions, les résultats académiques, l'emploi du temps et le suivi des paiements.
 
 \subsection{Le backlog du sprint 4}
 Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regroupe l'ensemble des fonctionnalités à implémenter au cours de cette itération. Chaque élément est décrit sous la forme d'une user story centrée sur les besoins de l'apprenant, accompagnée d'un niveau de priorité. 
-
+\par
 \begin{table}[H]
-\centering
-\caption{Backlog du Sprint 4: Gestion et Planification des Sessions de Formation}
-\label{tab:sprint4_backlog}
+    \centering
+    \caption{Backlog du Sprint 4: Espace apprenant}
+    \label{tab:sprint4_backlog}
 \begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
 \hline
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\

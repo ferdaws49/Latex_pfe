@@ -4,18 +4,19 @@
 \counterwithin{figure}{chapter}
 
 \section{Introduction}
-Cette section constitue une base pour le chapitre 6. Vous pouvez y ajouter l'introduction generale du chapitre ainsi que ses objectifs.
+Cette troisième release marque une évolution vers une dimension décisionnelle et prédictive plus avancée. Elle introduit deux axes majeurs : la visualisation et l'analyse des données, présentée dans la section \ref{sec:Sprint6:Visualisation}, et le module prédictif avec les recommandations stratégiques, détaillé dans la section \ref{sec:Sprint7:Predictif}. Ces deux volets visent à transformer les données brutes en leviers d'aide à la décision pour les différents responsables du centre.
+Ce chapitre présente les différents sprints réalisés, en s'appuyant sur les backlogs et les user stories. Chaque sprint est structuré autour d'une analyse fonctionnelle, suivie d'une conception basée sur des diagrammes de séquence, puis d'une présentation des éléments de réalisation.
+\section{Sprint 6 : Visualisation et analyse des données}
+\label{sec:Sprint6:Visualisation}
 
-\section{Sprint 6: Visualisation et analyse des données}
-Cette section est reservee a l'analyse des besoins, des fonctionnalites ou des resultats presentes dans ce chapitre.
-
-\subsection{Le backlog produit}
- L'objectif est de fournir des tableaux de bord pertinents et des outils d'analyse adaptés aux besoins spécifiques de chaque rôle : responsable pédagogique, responsable financier, directeur et administrateur.
-
+Cette section vise à doter le centre de formation d'outils de visualisation et d'analyse des données, permettant aux différents acteurs de suivre les performances et d'identifier les tendances clés.
+\subsection{Le backlog produit du sprint 6}
+ dans cette partie , nous présentons le backlog du sprint 6, qui se concentre sur la visualisation et l'analyse des données. Ce backlog est structuré autour de plusieurs fonctionnalités clés, chacune accompagnée d'une user story spécifique et d'une priorité associée. Ces fonctionnalités visent à offrir aux utilisateurs internes une expérience riche en termes de suivi des performances et d'analyse des indicateurs clés du centre de formation comme le montre le tableau \ref{tab:sprint6_backlog}.
+ 
  \begin{table}[H]
 \centering
 \caption{Backlog du Sprint 6: Visualisation et analyse des données}
-\label{tab:sprint4_backlog}
+\label{tab:sprint6_backlog}
 \begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
 \hline
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
@@ -25,7 +26,7 @@ Cette section est reservee a l'analyse des besoins, des fonctionnalites ou des r
 & & En tant qu’utilisateur interne, je veux visualiser les indicateurs de performance sous forme de graphiques afin de suivre l’évolution des résultats. & M \\
 \cline{3-4} & & En tant qu’utilisateur interne, je veux consulter des tableaux de bord afin de suivre les KPIs du centre. & M \\
 \cline{3-4} & & En tant qu’utilisateur interne, je veux filtrer les données afin d’affiner mes analyses selon différents critères. & S \\ 
-\cline{3-4} & & En tant que utilisateur interne, je veux exporter des rapports afin de partager les analyses et les résultats du centre. & M \\
+\cline{3-4} & & En tant qu'utilisateur interne, je veux exporter des rapports afin de partager les analyses et les résultats du centre. & M \\
 \cline{3-4} & & En tant qu'utilisateur interne, je veux recevoir des notifications et alertes afin d'être informé en temps réel de tout événement important lié au fonctionnement du centre. & S \\ 
 \hline
 \end{tabular}
@@ -38,10 +39,10 @@ Cette section présente l'analyse fonctionnelle et la conception technique des m
 Le diagramme de cas d'utilisation presenté dans la figure \ref{Diagramme de cas d'utilisation « visualiser »} générique décrit le parcours de l'utilisateur interne. Bien que les données affichées (KPIs financiers, pédagogiques ou administratifs) diffèrent selon le rôle, le processus d'interaction, d'analyse et d'exportation reste identique pour tous les acteurs.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{project/images/visualiser.png}
-    \caption{Diagramme de cas d'utilisation « Visualisation et analyse des données »}
-    \label{Diagramme de cas d'utilisation « visualiser »}
+ \centering
+ \includegraphics[width=1\textwidth]{project/images/visualiser.png}
+\caption{Diagramme de cas d'utilisation « Visualisation et analyse des données »}
+\label{Diagramme de cas d'utilisation « visualiser »}
 \end{figure}
 
 Le tableau \ref{tab:Visualiser} présente le backlog du sprint
@@ -106,7 +107,15 @@ Post-conditions &
 
 \textbf{Diagramme de séquance}
 
-Le diagramme de séquence illustré dans la figure décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
+Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance « visualiser »} décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=1\textwidth]{project/images/seqdig_vis.png}
+ \caption{Diagramme de séquence « Visualisation et analyse des données »}
+ \label{Diagramme de séquance « visualiser »}
+
+\end{figure}
 
 \subsection{L'architecture BI}
 L'architecture de Business Intelligence (BI) est conçue pour collecter, transformer, stocker et analyser les données afin de fournir des informations exploitables aux différents utilisateurs. Elle repose sur un processus structuré garantissant la qualité et la pertinence des données.
@@ -183,19 +192,21 @@ La table de faits enregistre les événements quantitatifs liés à l'activité 
 \end{itemize}
 
 \subsection{Réalisation}
-dans cette réalisation on a 
+dans cette réalisation on a (on va terminer cette partie par des captures d’écran de réalisation dès que celles-ci seront finalisées.)
 
 
 
 \section{Sprint 7: Module prédictif et recommandations}
- dans cette sprint
+\label{sec:Sprint7:Predictif}
+Dans ce sprint, nous avons développé un module prédictif et de recommandations stratégiques. L'objectif est d'exploiter les données historiques pour générer des insights prédictifs et fournir des conseils personnalisés aux différents responsables du centre de formation, afin d'optimiser les performances et la prise de décision.
+
 \subsection{Le backlog produit}
-on a choisi de realiser les fonctionnalites suivantes 
+Dans cette partie, nous présentons le backlog du sprint 7, qui se concentre sur le développement du module prédictif et des recommandations stratégiques. Ce backlog est structuré autour de plusieurs fonctionnalités clés, chacune accompagnée d'une user story spécifique et d'une priorité associée. Ces fonctionnalités visent à offrir aux utilisateurs internes des outils avancés pour anticiper les risques et optimiser les performances du centre de formation, comme le montre le tableau \ref{tab:sprint7_backlog}.
 
 \begin{table}[H]
 \centering
 \caption{Backlog du Sprint 7: Module prédictif et recommandations}
-\label{tab:sprint3_backlog}
+\label{tab:sprint7_backlog}
 \begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
 \hline
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
@@ -398,6 +409,18 @@ Ce diagramme représente le flux combiné de la page « Rapports stratégiques �
 \subsection{L'intégration de modéle ML}
 Cette section détaille le processus d'intégration des modèles d'apprentissage automatique, en mettant l'accent sur le choix des algorithmes de régression linéaire et logistique, leur justification, et les étapes d'implémentation.
 
+\subsubsection{Exploration des données}
+
+Line chart (CA)
+
+Bar chart  CA par formation
+
+Line chart inscriptions par mois/formation
+Scatter plots(nb\_inscriptions vs CA)
+
+matrice de correltion
+interpretation
+
 \subsubsection{Type du modèle utilisé}
 Le module prédictif repose sur le paradigme de \textbf{l'apprentissage supervisé (Supervised Learning)}. Ce choix méthodologique est dicté par la nature de notre base de données: nous disposons de données historiques annotées (par exemple des historiques de paiements, les résultats obtenus par les apprenants, etc) qui constituent une "vérité terrain".
 L'objectif est d'entraîner nos algorithmes à généraliser la relation entre les caractéristiques d'entrée et la variable cible, permettant ainsi de formuler des prédictions précises sur de nouvelles données.
@@ -481,16 +504,126 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 \end{itemize}
 
 
+
+\textbf{Pour la prédiction des sessions déficitaires:}
+
+Les données utilisées pour la prédiction des sessions déficitaires proviennent du Data Warehouse et sont obtenues via des requêtes SQL.
+\begin{itemize}[label=\textbullet]
+    \item \textbf{dw.fact\_finance:} source principale des montants financiers.
+    \item \textbf{dw.dim\_temps:} permet de travailler avec les dates et les périodes.
+    \item \textbf{dw.dim\_type\_finance:} permet de séparer paiements, coûts formateur, coûts logistique et impayés.
+    \item \textbf{dw.dim\_formation:} utilisée pour filtrer par formation.
+    \item \textbf{dw.dim\_session:} utilisée uniquement si un filtre par type de session est demandé.
+\end{itemize}
+\textbf{Attributs extraits}
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{session\_id:} identifiant unique de la session
+    \item \textbf{nb\_inscrits:} nombre d’inscrits réels
+    \item \textbf{capacite:} capacité maximale (doit être $> 0$)
+    \item \textbf{revenu:} chiffre d’affaires de la session
+    \item \textbf{cout\_formateur:} coût du formateur
+    \item \textbf{cout\_logistique:} coût logistique
+    \item \textbf{impayes:} montant impayé
+    \item \textbf{date:} date au format ISO (YYYY-MM-DD)
+\end{itemize}
+
+\textbf{Details du modele}
+\begin{enumerate}
+    \item \textbf{Nettoyage}
+    \begin{itemize}[label=\textbullet]
+        \item Suppression des identifiants nuls
+        \item Conversion des champs numériques
+        \item Filtrage des sessions sans capacité ou données financières
+    \end{itemize}
+
+    \item \textbf{Feature Engineering} Calcul des features suivantes à partir des données extraites:
+    \begin{itemize}[label=\textbullet]
+        \item \textbf{fill\_rate:} taux de remplissage (inscrits / capacité)
+        \item \textbf{cout\_total:} somme des coûts formateur et logistique
+        \item \textbf{marge:} revenu - coût total
+        \item \textbf{taux\_impaye:} ratio des impayés
+        \item \textbf{month:} mois de la session (saisonnalité)
+    \end{itemize}
+
+    \item \textbf{Création des labels} La variable cible is\_deficit est définie comme une indicatrice binaire: 1 si la marge nette est strictement négative, 0 sinon.
+    \item \textbf{Vérification des classes} Vérification de la présence des deux classes avec au moins deux échantillons chacune.
+    \item \textbf{Séparation Train/Test} Division 80/20 avec un \texttt{test\_size = 0.2} et \texttt{random\_state = 42}. Utilisation de \texttt{stratify} si les classes sont équilibrées.
+    \item \textbf{Normalisation:} Application de \texttt{StandardScaler} ajusté uniquement sur \texttt{X\_train} pour éviter la fuite de données.
+    \item \textbf{Entraînement:} Modèle utilisé: Régression Logistique avec: \texttt{class\_weight = "balanced"} et \texttt{max\_iter = 1000}
+    \item \textbf{Évaluation:} Calcul de l'accuracy, du ROC-AUC, de la précision, du recall et du F1-score sur le jeu de test, complété par une matrice de confusion.
+    \item \textbf{Persistance:} Sauvegarde du modèle et du scaler avec \texttt{joblib} (session\_deficit\_model.pkl et session\_deficit\_scaler.pkl). Cette persistance évite un réentraînement systématique à chaque redémarrage du serveur.
+    \item \textbf{Prédiction:}
+    \begin{itemize}[label=\textbullet]
+        \item \textbf{Chargement} Le modèle et sa configuration de normalisation sont récupérés.
+        \item \textbf{Preparation} Les nouvelles sessions sont nettoyées, transformées en features et normalisées.
+        \item \textbf{Scoring} Le modèle estime la probabilité de déficit de chaque session.
+        \item \textbf{Decision} Cette probabilité est traduite en trois niveaux: LOW ($\leq 0.5$), MEDIUM ($> 0.5$), HIGH ($> 0.8$).
+        \item \textbf{Action} Génére une recommandation basée sur le risque et le taux de remplissage.
+    \end{itemize}
+\end{enumerate}
+
+
+
 \subsection{Recommendations}
-Un module de recommandation basé sur l'IA Générative (LLM). un modèle de langage (LLM) a été intégré afin de générer des recommandations stratégiques à partir des indicateurs de performance de la plateforme.
-modèle utilisé: LLaMA 3 via API Groq
-entrée:
-KPI (taux de réussite, abandon, revenus…)
-sortie:
-3 recommandations structurées (JSON)
-LLM de type Llama-3
+Le module de recommandations stratégiques exploite les capacités de l'intelligence artificielle générative pour transformer les indicateurs de performance du centre en conseils opérationnels personnalisés. Il constitue le volet décisionnel du tableau de bord du Directeur, accessible depuis la page « Rapports stratégiques ».
+
+\subsubsection{Principe de fonctionnement}
+
+Contrairement aux modèles prédictifs classiques qui estiment une valeur numérique, ce module produit des analyses textuelles structurées. Le système s'appuie sur un modèle de langage (LLM) afin de générer automatiquement des fiches de recommandations à partir du contexte métier du centre.
+
+Le processus repose sur trois étapes successives :
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Agrégation des indicateurs :} Le système collecte les KPI actuels du centre (taux d'abandon, taux de réussite, satisfaction moyenne, revenus, taux de remplissage des sessions) à partir de la base de données décisionnelle.
+    
+    \item \textbf{Construction du prompt métier :} Les indicateurs sont structurés dans un prompt qui synthétise la situation du centre. Ce prompt sollicite la génération de trois conseils stratégiques distincts, priorisés et actionnables.
+    
+    \item \textbf{Génération et structuration :} Le modèle de langage traite le prompt et retourne trois recommandations classées selon leur impact (critique, moyen, positif) et leur facilité de mise en œuvre.
+\end{enumerate}
+
+\subsubsection{Données d'entrée et format de sortie}
+
+Les données d'entrée correspondent aux indicateurs clés de performance consolidés par le module BI. La sortie se présente sous la forme de trois recommandations structurées, chacune comprenant :
+\begin{itemize}[label=$\bullet$,leftmargin=*]
+    \item un intitulé décrivant l'action suggérée ;
+    \item la catégorie concernée (pédagogique, financière ou organisationnelle) ;
+    \item le niveau d'impact estimé ;
+    \item les indicateurs ayant motivé la recommandation.
+\end{itemize}
+
+\subsubsection{Consultation et exploitation}
+
+Les recommandations générées sont affichées dans la section inférieure de la page « Rapports stratégiques », sous forme de fiches interactives. Le Directeur peut consulter ces conseils stratégiques et les utiliser comme support décisionnel pour orienter ses actions de gestion. À ce stade de l'implémentation, le module se limite à la génération et à la consultation des recommandations, sans mécanisme backend d'acceptation, de validation ou d'archivage.
+
+\subsubsection{Intégration technique et résilience}
+
+Le modèle de langage utilisé (LLaMA 3) est sollicité via une API externe. Afin de garantir la continuité du service en cas d'indisponibilité de cette API, le système intègre un mécanisme de secours local. Ce dernier génère algorithmiquement trois axes de recommandations à partir des mêmes indicateurs réels, assurant ainsi une dégradation contrôlée sans interruption pour le Directeur.
+\subsubsection{Validation des recommandations}
+
+Contrairement aux modèles prédictifs numériques (régression, classification) 
+où la performance se mesure par des métriques statistiques (MSE, accuracy, F1-score), 
+le module de recommandations repose sur un modèle génératif de langage. 
+La qualité des conseils produits est évaluée selon deux critères :
+
+\begin{itemize}[label=$\bullet$,leftmargin=*]
+    \item \textbf{Cohérence métier :} Les recommandations doivent s'appuyer 
+    strictement sur les indicateurs réels fournis en entrée, sans hallucination.
+    \item \textbf{Actionnabilité :} Chaque conseil doit être concret, réalisable 
+    et classé selon un niveau d'impact pertinent pour le centre de formation.
+\end{itemize}
+
+
+
+
+
 \subsection{Réalisation}
-fgfggghghghhgfhghg
+cette partie sera complétée par des captures d’écran de la réalisation dès que celles-ci seront finalisées.
 
 \section{Conclusion}
-sggdgfdgfdgdfgfdg
+
+Ce chapitre a présenté la troisième et dernière release du projet, dédiée à la dimension décisionnelle et prédictive de la plateforme.
+
+Le Sprint 6 a livré une architecture de Business Intelligence robuste, avec des tableaux de bord adaptés à chaque profil métier et des outils d'export de rapports. Le Sprint 7 a constitué l'aboutissement de la démarche analytique en intégrant des modèles de Machine Learning supervisés et un module de recommandations stratégiques basé sur l'intelligence artificielle générative.
+
+L'ensemble de ces développements positionne la plateforme comme un système d'information managérial complet, aligné sur les standards des outils décisionnels modernes.
