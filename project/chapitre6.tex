@@ -216,7 +216,7 @@ Dans cette partie, nous présentons le backlog du sprint 7, qui se concentre sur
 \cline{3-4}
 & & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
 \cline{3-4}
-&& je veux pouvoir prédire la probabilité de survenue de sessions déficitaires afin d'anticiper les risques financiers pour optimiser la rentabilité de l'entreprise. & C\\
+&& En tant que responsable financier, je veux pouvoir prédire la probabilité de survenue de sessions déficitaires afin d'anticiper les risques financiers pour optimiser la rentabilité de l'entreprise. & C\\
 \cline{3-4}
 & & En tant que directeur, je veux des capacités d'analyse prédictive (prévision des inscriptions) afin d'anticiper les besoins futurs. & C \\
 \cline{3-4}
@@ -290,23 +290,23 @@ Scénario de base &
 
 & \textbf{Scénario 2: Prédire la probabilité de sessions déficitaires} 
 \begin{enumerate}[leftmargin=*]
-\item Le Responsable Financier accède à la fonctionnalité de prédiction des sessions déficitaires.
-\item Le système extrait l'historique des sessions (coûts de formateur, coûts logistiques, nombre d'inscrits, prix de vente, taux de remplissage).
-\item Le système calcule la rentabilité historique par session et constitue le vecteur de caractéristiques.
-\item Le système applique le modèle prédictif pour estimer la probabilité qu'une session future soit déficitaire.
-\item Le système affiche une liste des sessions planifiées avec leur probabilité de déficit et le montant estimé du risque.
-\item Le Responsable Financier consulte les résultats et ajuste ses décisions budgétaires en conséquence.
+\item Le Responsable Financier accède à la page « Analyse intelligente » depuis son espace.
+\item L'utilisateur applique des filtres optionnels (date, formation, formateur, type)
+\item Le système récupère les sessions filtrées depuis le Data Warehouse.
+\item Le système applique le modèle ML pour estimer la probabilité qu'une session future soit déficitaire.
+\item Le système affiche une liste des sessions planifiées avec leur probabilité de déficit et des recommandations.
 \end{enumerate}
 \\
 
 & \textbf{Scénario 3: Prévoir les revenus pour le budget} 
 \begin{enumerate}[leftmargin=*]
-\item Le Responsable Financier accède au module de prévision des revenus.
-\item Il sélectionne l'horizon temporel de la prévision (trimestriel, semestriel ou annuel) et éventuellement des filtres (par type de formation, par catégorie).
-\item Le système récupère les données historiques de chiffre d'affaires et les variables explicatives (nombre d'inscriptions, prix moyen, saisonnalité).
-\item Le système exécute le modèle de régression linéaire pour projeter le chiffre d'affaires futur.
-\item Le système génère un graphique de tendance avec la courbe prévisionnelle et les intervalles de confiance.
-\item Le Responsable Financier visualise les revenus prévus, compare avec les objectifs budgétaires et exporte le rapport de prévision.
+\item Le Responsable Financier accède à la page « Analyse intelligente » depuis son espace.
+\item Le système affiche automatiquement la courbe historique.
+\item Le Responsable Financier applique des filtres optionnels (date, formation, formateur, type).
+\item Le système recharge la courbe avec les critères sélectionnés.
+\item Le Responsable Financier clique sur l'option 1, 3 ou 6 mois.
+\item Le modèle ML extrait l'historique et calcule les prévisions.
+\item Le système affiche historique + prévisions sous forme de courbe.
 \end{enumerate}
 \\
 
@@ -387,7 +387,7 @@ Ce diagramme modélise le processus de prévision budgétaire. Le Responsable Fi
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{project/images/resfinanIA.png}
+  \includegraphics[width=0.9\textwidth]{project/images/DS-previsionCA.png}
   \caption{Diagramme de séquence « Prévision des revenus »}
   \label{fig:ds_prevision_revenus}
 \end{figure}
@@ -451,7 +451,7 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 \begin{itemize}[label=\textbullet]
     \item \textbf{dw.dim\_temps:} Pour l'axe temporel (mois, année, trimestre).
     \item \textbf{dw.dim\_type\_finance:} Pour filtrer les flux (paiements vs dépenses).
-    \item \textbf{dw.dim\_apprenant et dw.dim\_session:} Pour calculer les volumes d'activité.
+    \item \textbf{dw.dim\_session:} Pour calculer les volumes d'activité.
 \end{itemize}
 
 \textbf{Pourquoi cette table?} Elle constitue la source de vérité centrale contenant l'historique complet des paiements encaissés, des coûts et des inscriptions, ce qui est indispensable pour identifier les cycles de revenus.
@@ -466,7 +466,7 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 
 \item \textbf{Détails du Modèle}
 
-\textbf{Chargement des données:} Les données sont extraites via une requête SQL aggregée. Le système vérifie une condition de qualité :un minimum de 15 mois d'historique est requis. Les données sont ensuite chargées dans un DataFrame Pandas, triées par ordre chronologique pour respecter la logique de série temporelle.
+\textbf{Chargement des données:} Les données sont extraites via une requête SQL agrégée croisant dw.fact\_finance, dw.dim\_temps, dw.dim\_type\_finance et dw.dim\_session. Le système vérifie une condition de qualité : un minimum de 15 mois d'historique est recommandé pour capturer la saisonnalité annuelle. Les données sont chargées dans un DataFrame Pandas et triées chronologiquement
 
 \textbf{Entraînement du modèle}
 
@@ -477,26 +477,27 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
         \item \textbf{La variable cible (y):} C'est ce que nous voulons prédire (le Chiffre d'Affaires mensuel).
     \end{itemize}
     \item \textbf{Normalisation:} On utilise le StandardScaler. Cette étape est indispensable car les montants (ex: 50 000 DT) et les effectifs (ex: 10 inscrits) ont des échelles trop différentes. Le scaler centre les données autour de 0 avec un écart-type de 1.
-    \item \textbf{Division des données:} nous avons divisé notre historique de 60 mois selon une logique de 80/20. L'ensemble d'entraînement, composé de 48 mois, permet au modèle d'analyser les
-     tendances sur quatre cycles annuels complets pour construire sa logique mathématique. En parallèle, l'ensemble de test, regroupant les 12 mois de l'année la plus récente, est scrupuleusement isolé pour évaluer la précision des prévisions en conditions réelles sur des données inconnues. Ce découpage a été réalisé en respectant strictement l'ordre chronologique, une condition indispensable pour garantir la validité d'une modélisation par séries temporelles et éviter tout risque de fuite de données du futur vers le passé.
-    \item \textbf{L'Apprentissage:} C'est le cœur de l'entraînement. Nous utilisons l'algorithme de Régression Linéaire.
+    \item \textbf{Division des données:} nous avons divisé notre historique selon une logique de 80/20. L'ensemble d'entraînement, permet au modèle d'analyser les
+     tendances pour construire sa logique mathématique. En parallèle, l'ensemble de test, est scrupuleusement isolé pour évaluer la précision des prévisions en conditions réelles sur des données inconnues. Ce découpage a été réalisé en respectant strictement l'ordre chronologique, une condition indispensable pour garantir la validité d'une modélisation par séries temporelles et éviter tout risque de fuite de données du futur vers le passé (\textit{data leakage}).
+    \item \textbf{L'Apprentissage:} C'est le cœur de l'entraînement. Nous utilisons une Régression Linéaire Multiple (sklearn.linear\_model.LinearRegression), qui établit une relation mathématique entre plusieurs variables explicatives (lags, moyennes mobiles, coûts, saisonnalité) et la variable cible (CA mensuel).
     \item  \textbf{Evaluation:} Pour quantifier la précision, nous nous appuyons sur deux métriques standards en statistiques:
         \begin{itemize}[label=\textbullet]
-            \item \textbf{Le Coefficient de Détermination (R²):} Il mesure la qualité globale du modèle sur une échelle de 0 à 1. 
+            \item \textbf{Le Coefficient de Détermination (R²):} Il mesure la qualité globale du modèle. Un R² proche de 1 indique une excellente adéquation ; un R² négatif signale que le modèle est moins performant qu'une simple moyenne, ce qui peut survenir avec un historique insuffisant ou des données très bruitées. 
             \item \textbf{L’Erreur Moyenne Absolue (MAE):} Elle exprime l'erreur en valeur monétaire réelle.
         \end{itemize}
     Cette étape est cruciale car elle confirme que le modèle ne fait pas de "sur-apprentissage" (mémorisation par cœur du passé), mais qu'il possède une réelle capacité de généralisation.
-    \item \textbf{Sauvegarde du modèle:} Une fois l'apprentissage terminé, le "cerveau" du modèle est exporté dans un fichier compressé (format .pkl). Ce fichier contient tout: le modèle entraîné, les règles de mise à l'échelle (Scaler) et les dernières données connues.
+    \item \textbf{Sauvegarde du modèle:} Une fois l'apprentissage terminé, les paramètres du modèle entraîné sont exportés dans un fichier compressé (format .pkl). Ce fichier contient tout: le modèle entraîné, les règles de mise à l'échelle (Scaler) et les dernières données connues.
 \end{itemize}
 \textbf{Prediction}
 \begin{itemize}[label=\textbullet]
     \item \textbf{Chargement:} le système charge le fichier .pkl contenant le modèle, le normaliseur (scaler) et les indicateurs clés.
     \item  \textbf{Prédiction en boucle (Itérative):}
-    \item Le modèle fonctionne comme une réaction en chaîne:
+    \item Le modèle fonctionne comme un processus itératif:
     \begin{itemize}[label=\textbullet]
         \item Il prédit d'abord le mois M+1.
-        \item Il utilise ensuite ce résultat comme une "vraie" donnée pour prédire le mois M+2, et ainsi de suite. Cela permet de projeter le futur sur plusieurs mois.
+        \item Il réinjecte cette valeur dans le vecteur de features (lags, moyennes mobiles) pour prédire M+2, et ainsi de suite
     \end{itemize}
+    Cette propagation autorise une projection sur 1, 3 ou 6 mois, bien que l'incertitude augmente avec l'horizon temporel
     \item \textbf{Resultat:} Prevision du chiffre d'affaire 
 
 
@@ -509,11 +510,10 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 
 Les données utilisées pour la prédiction des sessions déficitaires proviennent du Data Warehouse et sont obtenues via des requêtes SQL.
 \begin{itemize}[label=\textbullet]
+    \item \textbf{dw.dim\_session:} table centrale de la requête, fournissant l'identifiant, la date, la capacité et le type de session.
     \item \textbf{dw.fact\_finance:} source principale des montants financiers.
-    \item \textbf{dw.dim\_temps:} permet de travailler avec les dates et les périodes.
     \item \textbf{dw.dim\_type\_finance:} permet de séparer paiements, coûts formateur, coûts logistique et impayés.
-    \item \textbf{dw.dim\_formation:} utilisée pour filtrer par formation.
-    \item \textbf{dw.dim\_session:} utilisée uniquement si un filtre par type de session est demandé.
+    \item \textbf{dw.dim\_formation} et \textbf{dw.dim\_formateur:}  utilisées pour les filtres optionnels par formation et par formateur.
 \end{itemize}
 \textbf{Attributs extraits}
 
@@ -530,6 +530,9 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
 
 \textbf{Details du modele}
 \begin{enumerate}
+    \item Le ML Service reçoit les critères de filtre depuis NestJS (date\_from, date\_to, formation\_id, formateur\_id, session\_type) et traduit ces paramètres en clauses WHERE SQL.
+    La requête joint dw.dim\_session (table centrale) à dw.fact\_finance via sk\_session, avec dim\_formation et dim\_formateur pour les filtres optionnels.
+    Seules les sessions répondant aux critères sont extraites, nettoyées et transformées en features. Cette approche évite le transfert de données brutes entre NestJS et le ML Service, conformément à l'architecture unifiée des deux pipelines de prédiction.
     \item \textbf{Nettoyage}
     \begin{itemize}[label=\textbullet]
         \item Suppression des identifiants nuls
@@ -548,9 +551,9 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
 
     \item \textbf{Création des labels} La variable cible is\_deficit est définie comme une indicatrice binaire: 1 si la marge nette est strictement négative, 0 sinon.
     \item \textbf{Vérification des classes} Vérification de la présence des deux classes avec au moins deux échantillons chacune.
-    \item \textbf{Séparation Train/Test} Division 80/20 avec un \texttt{test\_size = 0.2} et \texttt{random\_state = 42}. Utilisation de \texttt{stratify} si les classes sont équilibrées.
+    \item \textbf{Séparation Train/Test} Division 80/20 avec un \texttt{test\_size = 0.2} et \texttt{random\_state = 42}. Utilisation de \texttt{stratify=y} pour préserver la proportion des classes déficit/non-déficit dans les deux sous-ensembles, essentiel lors d'un déséquilibre de classes.
     \item \textbf{Normalisation:} Application de \texttt{StandardScaler} ajusté uniquement sur \texttt{X\_train} pour éviter la fuite de données.
-    \item \textbf{Entraînement:} Modèle utilisé: Régression Logistique avec: \texttt{class\_weight = "balanced"} et \texttt{max\_iter = 1000}
+    \item \textbf{Entraînement:} Modèle utilisé : Régression Logistique (\texttt{sklearn.linear\_model.LogisticRegression}), un algorithme de classification binaire, avec \texttt{class\_weight = "balanced"} et \texttt{max\_iter = 1000}
     \item \textbf{Évaluation:} Calcul de l'accuracy, du ROC-AUC, de la précision, du recall et du F1-score sur le jeu de test, complété par une matrice de confusion.
     \item \textbf{Persistance:} Sauvegarde du modèle et du scaler avec \texttt{joblib} (session\_deficit\_model.pkl et session\_deficit\_scaler.pkl). Cette persistance évite un réentraînement systématique à chaque redémarrage du serveur.
     \item \textbf{Prédiction:}
@@ -559,7 +562,7 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
         \item \textbf{Preparation} Les nouvelles sessions sont nettoyées, transformées en features et normalisées.
         \item \textbf{Scoring} Le modèle estime la probabilité de déficit de chaque session.
         \item \textbf{Decision} Cette probabilité est traduite en trois niveaux: LOW ($\leq 0.5$), MEDIUM ($> 0.5$), HIGH ($> 0.8$).
-        \item \textbf{Action} Génére une recommandation basée sur le risque et le taux de remplissage.
+        \item \textbf{Action} Génère une recommandation basée sur le risque et le taux de remplissage.
     \end{itemize}
 \end{enumerate}
 
@@ -584,7 +587,7 @@ Le processus repose sur trois étapes successives :
 
 \subsubsection{Données d'entrée et format de sortie}
 
-Les données d'entrée correspondent aux indicateurs clés de performance consolidés par le module BI. La sortie se présente sous la forme de trois recommandations structurées, chacune comprenant :
+Les données d'entrée correspondent aux indicateurs clés de performance consolidés par le module BI. La sortie se présente sous la forme de trois recommandations structurées, chacune comprenant:
 \begin{itemize}[label=$\bullet$,leftmargin=*]
     \item un intitulé décrivant l'action suggérée ;
     \item la catégorie concernée (pédagogique, financière ou organisationnelle) ;
