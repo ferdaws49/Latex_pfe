@@ -445,127 +445,64 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
  Cette section détaille l'ensemble des choix techniques et méthodologiques qui structurent notre solution, depuis la sélection des sources de données dans le Data Warehouse jusqu'à la mise en œuvre du processus de prédiction en temps réel
 
 \textbf{Pour la prédiction du Chiffre d'affaire:} pour la prédiction du CA, nous utilisons:
+\begin{itemize}
+\item \textbf{Préparation des données:}
+Le système extrait les données financières agrégées par mois depuis le Data Warehouse. Nous récupérons quatre types d'informations essentielles:
 \begin{itemize}[label=\textbullet]
- \item \textbf{dw.fact\_finance:} le modèle s'appuie sur la table de faits financière dw.fact\_finance croisée avec les dimensions suivantes: 
+\item\textbf{Les flux financiers:} Le Chiffre d'Affaires mensuel réel (somme des paiements encaissés) et le volume des impayés (factures émises mais non réglées).
+\item\textbf{Le volume d'activité:} Le nombre d'apprenants uniques ayant réalisé au moins une transaction (paiement ou impayé) durant le mois.
+\item\textbf{La planification pédagogique:} La capacité effictive du mois, c'est-à-dire le nombre total de places offertes par les sessions ayant effectivement généré des revenus. Cette donnée est extraite du calendrier pédagogique en croisant les flux financiers réels, afin d'exclure les sessions sans activité commerciale et garantir la cohérence entre l'offre et le chiffre d'affaires.
+\item\textbf{Le temps:} L'année et le mois pour situer chaque donnée chronologiquement.
+\end{itemize}
+\item \textbf{Feature Engineering}
+Pour que l'algorithme comprenne l'évolution du business, nous créons des indicateurs spécifiques:
+\begin{itemize}[label=\textbullet]
+\item \textbf{L'effet retard (Lag1):} On donne au modèle la valeur du mois précédent pour le CA, les impayés et le nombre d'apprenants. L'idée est que l'activité de demain dépend fortement de celle d'hier.
+\item \textbf{La capacité effective du mois courant:} Contrairement aux variables retardées, la capacité effective représente le potentiel d'accueil du mois en cours. Elle permet au modèle d'anticiper les pics d'activité liés à l'ouverture de nouvelles sessions.
+\item \textbf{La position dans l'année:} Le mois est conservé comme indicateur de saisonnalité pour capturer d'éventuelles régularités annuelles.
+\end{itemize}
+\item \textbf{Normalisation:} On utilise le StandardScaler pour remettre les données à la même échelle et éviter que les montants financiers n'écrasent les petits volumes (comme le nombre d'apprenants).
+\item \textbf{Division des données:} Nous divisons notre historique selon une logique chronologique de 80/20. Les données les plus anciennes servent à l'entraînement, et les plus récentes constituent l'ensemble de test, ce qui respecte la dimension temporelle du phénomène.
+\item \textbf{Choix et Entraînement du Modèle:} Nous utilisons une Régression Linéaire Multiple, qui établit une relation mathématique entre plusieurs variables explicatives et le CA réel du mois.
+\item  \textbf{Evaluation:}  La performance du modèle est mesurée par le Coefficient de Détermination (R²) et l'Erreur Moyenne Absolue (MAE) 
 
-\begin{itemize}[label=\textbullet]
-    \item \textbf{dw.dim\_temps:} Pour l'axe temporel (mois, année, trimestre).
-    \item \textbf{dw.dim\_type\_finance:} Pour filtrer les flux (paiements vs dépenses).
-    \item \textbf{dw.dim\_session:} Pour calculer les volumes d'activité.
+\item \textbf{Sauvegarde:} Export du modèle entraîné, du normaliseur (Scaler) et de la liste des indicateurs dans un fichier binaire sérialisé au format .pkl via Joblib.
+\item \textbf{Génération des Prévisions (Forecasting):} Une fois entraîné, le modèle effectue une prédiction itérative. Il prédit le mois suivant (M+1) en utilisant les données réelles du dernier mois connu. Pour prédire le mois d'après (M+2), il utilise sa propre prédiction  comme base de calcul. 
 \end{itemize}
 
-\textbf{Pourquoi cette table?} Elle constitue la source de vérité centrale contenant l'historique complet des paiements encaissés, des coûts et des inscriptions, ce qui est indispensable pour identifier les cycles de revenus.
+ 
 
-\textbf{Attributs Clés:}
-
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Le passé financier:} Les revenus des mois précédents et de l'année dernière pour comprendre les habitudes de croissance.
-    \item \textbf{L'activité réelle:} Le nombre d'élèves inscrits, le nombre de formations lancées et les coûts réels (formateurs et logistique).
-    \item \textbf{Le calendrier:} Le mois et la saison pour identifier automatiquement les périodes de forte activité et les périodes de vacances.
-\end{itemize}
-
-\item \textbf{Détails du Modèle}
-
-\textbf{Chargement des données:} Les données sont extraites via une requête SQL agrégée croisant dw.fact\_finance, dw.dim\_temps, dw.dim\_type\_finance et dw.dim\_session. Le système vérifie une condition de qualité : un minimum de 15 mois d'historique est recommandé pour capturer la saisonnalité annuelle. Les données sont chargées dans un DataFrame Pandas et triées chronologiquement
-
-\textbf{Entraînement du modèle}
-
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Préparation des données:} Pour que l'apprentissage soit structuré, nous séparons les informations en deux groupes:
-    \begin{itemize}[label=\textbullet]
-        \item \textbf{Les variables explicatives (X):} Ce sont tous les indices créés précédemment. Le modèle va chercher le lien entre ces indices et le résultat final.
-        \item \textbf{La variable cible (y):} C'est ce que nous voulons prédire (le Chiffre d'Affaires mensuel).
-    \end{itemize}
-    \item \textbf{Normalisation:} On utilise le StandardScaler. Cette étape est indispensable car les montants (ex: 50 000 DT) et les effectifs (ex: 10 inscrits) ont des échelles trop différentes. Le scaler centre les données autour de 0 avec un écart-type de 1.
-    \item \textbf{Division des données:} nous avons divisé notre historique selon une logique de 80/20. L'ensemble d'entraînement, permet au modèle d'analyser les
-     tendances pour construire sa logique mathématique. En parallèle, l'ensemble de test, est scrupuleusement isolé pour évaluer la précision des prévisions en conditions réelles sur des données inconnues. Ce découpage a été réalisé en respectant strictement l'ordre chronologique, une condition indispensable pour garantir la validité d'une modélisation par séries temporelles et éviter tout risque de fuite de données du futur vers le passé (\textit{data leakage}).
-    \item \textbf{L'Apprentissage:} C'est le cœur de l'entraînement. Nous utilisons une Régression Linéaire Multiple (sklearn.linear\_model.LinearRegression), qui établit une relation mathématique entre plusieurs variables explicatives (lags, moyennes mobiles, coûts, saisonnalité) et la variable cible (CA mensuel).
-    \item  \textbf{Evaluation:} Pour quantifier la précision, nous nous appuyons sur deux métriques standards en statistiques:
-        \begin{itemize}[label=\textbullet]
-            \item \textbf{Le Coefficient de Détermination (R²):} Il mesure la qualité globale du modèle. Un R² proche de 1 indique une excellente adéquation ; un R² négatif signale que le modèle est moins performant qu'une simple moyenne, ce qui peut survenir avec un historique insuffisant ou des données très bruitées. 
-            \item \textbf{L’Erreur Moyenne Absolue (MAE):} Elle exprime l'erreur en valeur monétaire réelle.
-        \end{itemize}
-    Cette étape est cruciale car elle confirme que le modèle ne fait pas de "sur-apprentissage" (mémorisation par cœur du passé), mais qu'il possède une réelle capacité de généralisation.
-    \item \textbf{Sauvegarde du modèle:} Une fois l'apprentissage terminé, les paramètres du modèle entraîné sont exportés dans un fichier compressé (format .pkl). Ce fichier contient tout: le modèle entraîné, les règles de mise à l'échelle (Scaler) et les dernières données connues.
-\end{itemize}
-\textbf{Prediction}
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Chargement:} le système charge le fichier .pkl contenant le modèle, le normaliseur (scaler) et les indicateurs clés.
-    \item  \textbf{Prédiction en boucle (Itérative):}
-    \item Le modèle fonctionne comme un processus itératif:
-    \begin{itemize}[label=\textbullet]
-        \item Il prédit d'abord le mois M+1.
-        \item Il réinjecte cette valeur dans le vecteur de features (lags, moyennes mobiles) pour prédire M+2, et ainsi de suite
-    \end{itemize}
-    Cette propagation autorise une projection sur 1, 3 ou 6 mois, bien que l'incertitude augmente avec l'horizon temporel
-    \item \textbf{Resultat:} Prevision du chiffre d'affaire 
-
-
-\end{itemize}
-\end{itemize}
 
 
 
 \textbf{Pour la prédiction des sessions déficitaires:}
 
-Les données utilisées pour la prédiction des sessions déficitaires proviennent du Data Warehouse et sont obtenues via des requêtes SQL.
-\begin{itemize}[label=\textbullet]
-    \item \textbf{dw.dim\_session:} table centrale de la requête, fournissant l'identifiant, la date, la capacité et le type de session.
-    \item \textbf{dw.fact\_finance:} source principale des montants financiers.
-    \item \textbf{dw.dim\_type\_finance:} permet de séparer paiements, coûts formateur, coûts logistique et impayés.
-    \item \textbf{dw.dim\_formation} et \textbf{dw.dim\_formateur:}  utilisées pour les filtres optionnels par formation et par formateur.
-\end{itemize}
-\textbf{Attributs extraits}
+Les données utilisées pour la prédiction des sessions déficitaires proviennent du Data Warehouse et sont obtenues via des requêtes SQL, en croisant la table de faits financière (\texttt{dw.fact\_finance}) avec les dimensions sessions, formations et temps.
+\begin{enumerate}[label=\textbullet]
+  \item \textbf{Attributs extraits} Identifiants, nombre d'inscrits, capacité maximale, revenus, coûts (formateur et logistique) et dates.
 
-\begin{itemize}[label=\textbullet]
-    \item \textbf{session\_id:} identifiant unique de la session
-    \item \textbf{nb\_inscrits:} nombre d’inscrits réels
-    \item \textbf{capacite:} capacité maximale (doit être $> 0$)
-    \item \textbf{revenu:} chiffre d’affaires de la session
-    \item \textbf{cout\_formateur:} coût du formateur
-    \item \textbf{cout\_logistique:} coût logistique
-    \item \textbf{impayes:} montant impayé
-    \item \textbf{date:} date au format ISO (YYYY-MM-DD)
-\end{itemize}
-
-\textbf{Details du modele}
-\begin{enumerate}
-    \item Le ML Service reçoit les critères de filtre depuis NestJS (date\_from, date\_to, formation\_id, formateur\_id, session\_type) et traduit ces paramètres en clauses WHERE SQL.
-    La requête joint dw.dim\_session (table centrale) à dw.fact\_finance via sk\_session, avec dim\_formation et dim\_formateur pour les filtres optionnels.
-    Seules les sessions répondant aux critères sont extraites, nettoyées et transformées en features. Cette approche évite le transfert de données brutes entre NestJS et le ML Service, conformément à l'architecture unifiée des deux pipelines de prédiction.
-    \item \textbf{Nettoyage}
-    \begin{itemize}[label=\textbullet]
-        \item Suppression des identifiants nuls
-        \item Conversion des champs numériques
-        \item Filtrage des sessions sans capacité ou données financières
-    \end{itemize}
-
-    \item \textbf{Feature Engineering} Calcul des features suivantes à partir des données extraites:
-    \begin{itemize}[label=\textbullet]
-        \item \textbf{fill\_rate:} taux de remplissage (inscrits / capacité)
-        \item \textbf{cout\_total:} somme des coûts formateur et logistique
-        \item \textbf{marge:} revenu - coût total
-        \item \textbf{taux\_impaye:} ratio des impayés
-        \item \textbf{month:} mois de la session (saisonnalité)
-    \end{itemize}
-
-    \item \textbf{Création des labels} La variable cible is\_deficit est définie comme une indicatrice binaire: 1 si la marge nette est strictement négative, 0 sinon.
-    \item \textbf{Vérification des classes} Vérification de la présence des deux classes avec au moins deux échantillons chacune.
-    \item \textbf{Séparation Train/Test} Division 80/20 avec un \texttt{test\_size = 0.2} et \texttt{random\_state = 42}. Utilisation de \texttt{stratify=y} pour préserver la proportion des classes déficit/non-déficit dans les deux sous-ensembles, essentiel lors d'un déséquilibre de classes.
-    \item \textbf{Normalisation:} Application de \texttt{StandardScaler} ajusté uniquement sur \texttt{X\_train} pour éviter la fuite de données.
-    \item \textbf{Entraînement:} Modèle utilisé : Régression Logistique (\texttt{sklearn.linear\_model.LogisticRegression}), un algorithme de classification binaire, avec \texttt{class\_weight = "balanced"} et \texttt{max\_iter = 1000}
-    \item \textbf{Évaluation:} Calcul de l'accuracy, du ROC-AUC, de la précision, du recall et du F1-score sur le jeu de test, complété par une matrice de confusion.
-    \item \textbf{Persistance:} Sauvegarde du modèle et du scaler avec \texttt{joblib} (session\_deficit\_model.pkl et session\_deficit\_scaler.pkl). Cette persistance évite un réentraînement systématique à chaque redémarrage du serveur.
-    \item \textbf{Prédiction:}
-    \begin{itemize}[label=\textbullet]
-        \item \textbf{Chargement} Le modèle et sa configuration de normalisation sont récupérés.
-        \item \textbf{Preparation} Les nouvelles sessions sont nettoyées, transformées en features et normalisées.
-        \item \textbf{Scoring} Le modèle estime la probabilité de déficit de chaque session.
-        \item \textbf{Decision} Cette probabilité est traduite en trois niveaux: LOW ($\leq 0.5$), MEDIUM ($> 0.5$), HIGH ($> 0.8$).
-        \item \textbf{Action} Génère une recommandation basée sur le risque et le taux de remplissage.
-    \end{itemize}
+\item \textbf{Details du modele}
+\begin{enumerate}[label=\textbullet]
+    \item \textbf{Prétraitement:} Le ML effectue un nettoyage automatique (gestion des nuls, conversion de types) et filtre les sessions non exploitables.
+    \item \textbf{Feature Engineering} Pour enrichir l'apprentissage, des indicateurs métiers sont calculés:
+    \begin{enumerate}[label=\textbullet]
+        \item \textbf{Features (Entrées):} Taux de remplissage, coût total consolidé et saisonnalité mensuelle.
+        \item \textbf{Variable Cible (Cible):} Une indicatrice binaire \texttt{is\_deficit} est créée: 1 si la marge est négative, 0 sinon.
+    \end{enumerate}
+ \item \textbf{Entraînement et Modélisation} Le modèle s'appuie sur un algorithme de Régression Logistique (\texttt{Scikit-Learn}):
+ \begin{enumerate}[label=\textbullet]
+\item \textbf{Pipeline:} Les données sont normalisées (\texttt{StandardScaler}) et divisées en ensembles d'entraînement (80%) et de test (20%) pour valider la capacité de généralisation.
+\item \textbf{Optimisation:} L'utilisation de \texttt{class\_weight="balanced"} permet de gérer le déséquilibre entre les sessions rentables et déficitaires.
+\item \textbf{Évaluation:} Les performances sont mesurées via l'Accuracy et le ROC-AUC, 
+\item \textbf{Sauvegarde:} Le modèle est sauvegardé au format \textbf{.pkl} pour une utilisation en temps réel.
 \end{enumerate}
-
+\item \textbf{Prédiction:} Lors de la phase de prédiction, le système transforme chaque session en score de probabilité:
+    \begin{enumerate}[label=\textbullet]
+        \item \textbf{Niveaux de Risque:} Les probabilités sont classées en trois catégories : Faible, Modéré (>0.5) ou Élevé (>0.8).
+        \item \textbf{Actions Correctives:} Le système génère automatiquement des recommandations basées sur le risque et le remplissage (ex :promouvoir la session, réduire les coûts ou annuler la session).
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
 
 
 \subsection{Recommendations}
@@ -575,23 +512,23 @@ Le module de recommandations stratégiques exploite les capacités de l'intellig
 
 Contrairement aux modèles prédictifs classiques qui estiment une valeur numérique, ce module produit des analyses textuelles structurées. Le système s'appuie sur un modèle de langage (LLM) afin de générer automatiquement des fiches de recommandations à partir du contexte métier du centre.
 
-Le processus repose sur trois étapes successives :
+Le processus repose sur trois étapes successives:
 
 \begin{enumerate}[leftmargin=*]
-    \item \textbf{Agrégation des indicateurs :} Le système collecte les KPI actuels du centre (taux d'abandon, taux de réussite, satisfaction moyenne, revenus, taux de remplissage des sessions) à partir de la base de données décisionnelle.
+    \item \textbf{Agrégation des indicateurs:} Le système collecte les KPI actuels du centre (taux d'abandon, taux de réussite, satisfaction moyenne, revenus, taux de remplissage des sessions) à partir de la base de données décisionnelle.
     
-    \item \textbf{Construction du prompt métier :} Les indicateurs sont structurés dans un prompt qui synthétise la situation du centre. Ce prompt sollicite la génération de trois conseils stratégiques distincts, priorisés et actionnables.
+    \item \textbf{Construction du prompt métier:} Les indicateurs sont structurés dans un prompt qui synthétise la situation du centre. Ce prompt sollicite la génération de trois conseils stratégiques distincts, priorisés et actionnables.
     
-    \item \textbf{Génération et structuration :} Le modèle de langage traite le prompt et retourne trois recommandations classées selon leur impact (critique, moyen, positif) et leur facilité de mise en œuvre.
+    \item \textbf{Génération et structuration:} Le modèle de langage traite le prompt et retourne trois recommandations classées selon leur impact (critique, moyen, positif) et leur facilité de mise en œuvre.
 \end{enumerate}
 
 \subsubsection{Données d'entrée et format de sortie}
 
 Les données d'entrée correspondent aux indicateurs clés de performance consolidés par le module BI. La sortie se présente sous la forme de trois recommandations structurées, chacune comprenant:
 \begin{itemize}[label=$\bullet$,leftmargin=*]
-    \item un intitulé décrivant l'action suggérée ;
-    \item la catégorie concernée (pédagogique, financière ou organisationnelle) ;
-    \item le niveau d'impact estimé ;
+    \item un intitulé décrivant l'action suggérée;
+    \item la catégorie concernée (pédagogique, financière ou organisationnelle);
+    \item le niveau d'impact estimé;
     \item les indicateurs ayant motivé la recommandation.
 \end{itemize}
 
@@ -610,9 +547,9 @@ le module de recommandations repose sur un modèle génératif de langage.
 La qualité des conseils produits est évaluée selon deux critères :
 
 \begin{itemize}[label=$\bullet$,leftmargin=*]
-    \item \textbf{Cohérence métier :} Les recommandations doivent s'appuyer 
+    \item \textbf{Cohérence métier:} Les recommandations doivent s'appuyer 
     strictement sur les indicateurs réels fournis en entrée, sans hallucination.
-    \item \textbf{Actionnabilité :} Chaque conseil doit être concret, réalisable 
+    \item \textbf{Actionnabilité:} Chaque conseil doit être concret, réalisable 
     et classé selon un niveau d'impact pertinent pour le centre de formation.
 \end{itemize}
 
@@ -630,3 +567,9 @@ Ce chapitre a présenté la troisième et dernière release du projet, dédiée 
 Le Sprint 6 a livré une architecture de Business Intelligence robuste, avec des tableaux de bord adaptés à chaque profil métier et des outils d'export de rapports. Le Sprint 7 a constitué l'aboutissement de la démarche analytique en intégrant des modèles de Machine Learning supervisés et un module de recommandations stratégiques basé sur l'intelligence artificielle générative.
 
 L'ensemble de ces développements positionne la plateforme comme un système d'information managérial complet, aligné sur les standards des outils décisionnels modernes.
+
+
+
+
+
+
