@@ -310,7 +310,7 @@ Ce rapport présente le travail réalisé au cours du sprint dédié à l'espace
 
 \subsection{Le backlog du sprint 4}
 Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regroupe l'ensemble des fonctionnalités à implémenter au cours de cette itération. Chaque élément est décrit sous la forme d'une user story centrée sur les besoins de l'apprenant, accompagnée d'un niveau de priorité. 
-\par
+
 \begin{table}[H]
     \centering
     \caption{Backlog du Sprint 4: Espace apprenant}
@@ -319,7 +319,7 @@ Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regro
 \hline
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
-\multirow{9}{*}{4} & \multirow{9}{*}{\makecell{Espace apprennat}}
+\multirow{9}{*}{4} & \multirow{9}{*}{\makecell{Espace apprenant}}
 & En tant qu'apprenant, je veux être redirigé automatiquement vers la page d'inscription lors de ma première connexion, afin de rejoindre une session avant d'accéder aux autres modules. & M\\
 \cline{3-4}
 & & En tant qu'apprenant, je veux voir un résumé de mes statistiques (formations inscrites, sessions à venir, moyenne générale) afin d'avoir une vue d'ensemble de mon parcours. & S\\
@@ -684,7 +684,7 @@ Dans cette partie, nous présentons la conception du cas d'utilisation « Import
 La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présentant les différentes interactions entre l'administrateur et le système lors du processus d'import.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{project/images/importseq.png}
+    \includegraphics[width=0.9\textwidth]{project/images/DigSeq1.png}
     \caption{Diagramme de séquence « Importer des données »}
     \label{fig:seqdiagram_import}
 \end{figure}
@@ -698,20 +698,8 @@ Dans cette section, nous présentons les interfaces réalisées pour le module d
 
 
 \section{Conclusion}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Cette release a permis de structurer la plateforme autour de trois axes complémentaires : la gestion des sessions de formation, l’espace apprenant et l’intégration des données via un processus ETL.
+Elle couvre l’ensemble du cycle opérationnel, depuis la planification des activités jusqu’à l’exploitation des données.
+Les fonctionnalités développées assurent une meilleure expérience utilisateur et une gestion plus cohérente des informations.
+Cette étape renforce la stabilité et la qualité des données au sein du système.
+La prochaine phase sera dédiée à l’analyse et à la Business Intelligence afin d’exploiter ces données de manière décisionnelle.
