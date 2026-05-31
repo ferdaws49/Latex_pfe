@@ -301,8 +301,76 @@ Le diagramme de la Figure \ref{cap:Diagramme de séquence <<modifier session>>} 
 
 Cette section propose une série de captures d'écran couvrent l’ensemble du parcours utilisateur, depuis la création et la modification d’une session jusqu’à la gestion des présences , en passant par la consultation des participants. Elles témoignent de la conformité du livrable par rapport aux cas d’utilisation définis en phase d’analyse, ainsi que de la qualité de l’expérience utilisateur mise en œuvre.
 
-\textbf{Interface de la page Planning}
+\textbf{Interface de planification des sessions:} 
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (6).png}
+    \caption{Description mte3 el capture}
+    \label{fig:capture1}
+\end{figure}
 
+\textbf{Liste participants}
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (11).png}
+    \caption{Description mte3 el capture}
+    \label{fig:capture2}
+\end{figure}
+
+\textbf{Gestion des présences}
+
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (12).png}
+    \caption{Description mte3 el capture}
+    \label{fig:capture3}
+\end{figure}
+
+\textbf{Interfaces des sessions}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (9).png}
+        \caption{Etape 1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/modifier_session.png}
+        \caption{Etape 2}
+    \end{subfigure}
+    
+    \vspace{0.5cm}  % espace bin les lignes
+    
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/notificationsdelete.png}
+        \caption{Etape 4}
+    \end{subfigure}
+    \caption{Processus complet}
+\end{figure}
+
+\textbf{interfaces des formations}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (10).png}
+        \caption{Etape 1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/modifier_formation.png}
+        \caption{Etape 2}
+    \end{subfigure}
+    
+    \vspace{0.5cm}  % espace bin les lignes
+    
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/supprimer_formation.png}
+        \caption{Etape 3}
+    \end{subfigure}
+
+\end{figure}
 
 \section{Sprint 4: Espace apprenant}
 \label{sec:Sprint4:Apprenant}
@@ -692,10 +760,72 @@ La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présen
 \subsection{Réalisation}
 Dans cette section, nous présentons les interfaces réalisées pour le module d'importation des données, en mettant l'accent sur les différentes étapes du processus d'intégration. Les captures d'écran suivantes illustrent les écrans de sélection de l'entité cible, de mapping des colonnes, d'aperçu des données et de rapport d'import.
 
+\textbf{Aperçu de l’interface d’import:}
 
+La figure \ref{fig:admin_import} présente l'écran principal du module d'import avec la sélection de l'entité cible et l'historique des jobs d'importation.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_admin_resources.png}
+    \caption{interface d'importation des données}
+    \label{fig:admin_import}
+\end{figure}
 
+\textbf{interface de l'étape upload et mapping:}
 
+Les figures \ref{fig:upload} et \ref{fig:mapping} illustrent respectivement l'écran de chargement du fichier (CSV/Excel) et l'interface de correspondance automatique et manuelle des colonnes avec les champs de l'entité sélectionnée.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/upload.png}
+        \caption{Première interface}
+        \label{fig:upload}
+    \end{subfigure}
+    \hfill                    % espace entre les 2
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/mapping.png}
+        \caption{Deuxième interface}
+        \label{fig:mapping}
+    \end{subfigure}
+    \caption{Étapes d'upload et de mapping des données}
+    \label{fig:upload_mapping}
+\end{figure}
+
+\textbf{Interface de validation des données:}
+
+La figure \ref{fig:validation} montre l'affichage des erreurs détectées (types de données incorrects, champs obligatoires manquants, doublons potentiels) avec indication des lignes concernées.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/validation data.png}
+    \caption{interface de validation des données}
+    \label{fig:validation}
+\end{figure}
+
+\textbf{Interface d'aperçu des données avant import:}
+
+La figure \ref{fig:apercu} présente la prévisualisation des premières lignes du fichier avec le mapping appliqué, permettant à l'administrateur de vérifier la conformité avant l'intégration finale.
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{project/images/apercu.png}
+    \captionof{figure}{interface d'aperçu des données}
+    \label{fig:apercu}
+\end{center}
+
+\textbf{Interface de rapport d'import et gestion des erreurs:}
+
+La figure \ref{fig:report} illustre le compte-rendu détaillé post-import avec le nombre de lignes traitées avec succès, les erreurs rencontrées et les doublons gérés.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_admin_import (8).png}
+    \caption{interface de rapport d'import et gestion des erreurs}
+    \label{fig:report}
+\end{figure}
+\textbf{}
 
 \section{Conclusion}
 Cette release a permis de structurer la plateforme autour de trois axes complémentaires : la gestion des sessions de formation, l’espace apprenant et l’intégration des données via un processus ETL.

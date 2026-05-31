@@ -105,7 +105,7 @@ Post-conditions &
 \hline
 \end{longtable}
 
-\textbf{Diagramme de séquance}
+\textbf{Diagramme de séquence}
 
 Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance « visualiser »} décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
 
@@ -121,7 +121,7 @@ Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance �
 L'architecture de Business Intelligence (BI) est conçue pour collecter, transformer, stocker et analyser les données afin de fournir des informations exploitables aux différents utilisateurs. Elle repose sur un processus structuré garantissant la qualité et la pertinence des données.
 
 \begin{itemize}[label=\textbullet]
-\item \textbf{Sources des Données} Nous distinguons deux modes d'alimentation pour couvrir l'ensemble des besoins du centre:
+\item \textbf{Sources des Données:} Nous distinguons deux modes d'alimentation pour couvrir l'ensemble des besoins du centre:
 
 \begin{itemize}[label=$\star$]
 \item \textbf{Intégration Direct:} Synchronisation directe avec les bases opérationnelles pour récupérer en temps réel les données métiers.
@@ -192,7 +192,42 @@ La table de faits enregistre les événements quantitatifs liés à l'activité 
 \end{itemize}
 
 \subsection{Réalisation}
-dans cette réalisation on a (on va terminer cette partie par des captures d’écran de réalisation dès que celles-ci seront finalisées.)
+Dans cette section, nous présentons les éléments de réalisation du sprint 6, en mettant l'accent sur les interfaces de visualisation des données, les fonctionnalités d'analyse et les options d'exportation.
+
+\textbf{Espace directeur:}
+
+Le directeur bénéficie d'une vue stratégique consolidée sur l'ensemble 
+de l'activité du centre, couvrant à la fois les indicateurs globaux 
+et les dimensions qualité. La figure \ref{fig:dash_dir} présente le 
+tableau de bord des KPIs stratégiques et la vue qualité associée 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/dashboard_dircteur.png}
+        \caption{tableau de bord des KPIs }
+        \label{fig:dash_dir_kpi}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/qualité.png}
+        \caption{Analyse qualité et performance}
+        \label{fig:dash_dir_qualite}
+    \end{subfigure}
+    \caption{Tableaux de bord du Directeur}
+    \label{fig:dash_dir}
+\end{figure}
+
+\textbf{Espace responsable pédagogique:}
+
+\textbf{Espace responsable financier:}
+
+
+\textbf{Espace admin:}
+
+
 
 
 
@@ -409,18 +444,6 @@ Ce diagramme représente le flux combiné de la page « Rapports stratégiques �
 \subsection{L'intégration de modéle ML}
 Cette section détaille le processus d'intégration des modèles d'apprentissage automatique, en mettant l'accent sur le choix des algorithmes de régression linéaire et logistique, leur justification, et les étapes d'implémentation.
 
-\subsubsection{Exploration des données}
-
-Line chart (CA)
-
-Bar chart  CA par formation
-
-Line chart inscriptions par mois/formation
-Scatter plots(nb\_inscriptions vs CA)
-
-matrice de correltion
-interpretation
-
 \subsubsection{Type du modèle utilisé}
 Le module prédictif repose sur le paradigme de \textbf{l'apprentissage supervisé (Supervised Learning)}. Ce choix méthodologique est dicté par la nature de notre base de données: nous disposons de données historiques annotées (par exemple des historiques de paiements, les résultats obtenus par les apprenants, etc) qui constituent une "vérité terrain".
 L'objectif est d'entraîner nos algorithmes à généraliser la relation entre les caractéristiques d'entrée et la variable cible, permettant ainsi de formuler des prédictions précises sur de nouvelles données.
@@ -464,228 +487,249 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 % 1. RISK MODEL — ABANDON
 % ─────────────────────────────────────────────────────────────────
 \textbf{Pour la prédiction du risque d'abandon (Alerts IA) :}
- 
-\textbf{Tables utilisées :} Les données sont extraites directement des
-tables opérationnelles PostgreSQL (schéma NestJS/TypeORM) :
-\texttt{apprenants}, \texttt{users}, \texttt{presences},
-\texttt{performance}, \texttt{satisfaction}, \texttt{finances} et
-\texttt{sessions\_apprenants}.
- 
-\textbf{Pourquoi ces tables ?} La base relationnelle constitue la source
-de vérité unique. L'absence d'une colonne \textit{abandon} impose la
+
+\textbf{Tables utilisées :} Les données sont extraites des tables 
+opérationnelles PostgreSQL : \texttt{apprenants}, \texttt{users}, 
+\texttt{presences}, \texttt{performance}, \texttt{satisfaction}, 
+\texttt{finances} et \texttt{sessions\_apprenants}.
+
+\textbf{Pourquoi ces tables ?} La base relationnelle constitue la source 
+de vérité unique. L'absence d'une colonne \textit{abandon} impose la 
 construction d'un label proxy basé sur les comportements observés.
- 
+
 \textbf{Attributs clés :}
 \begin{itemize}[label=\textbullet]
-    \item \textbf{taux\_presence} : ratio de présences validées sur le
-          nombre total de sessions ;
-    \item \textbf{absences\_consecutives} : longueur maximale d'une
-          séquence d'absences consécutives ;
+    \item \textbf{taux\_presence} : ratio de présences validées sur le 
+    nombre total de sessions ;
+    \item \textbf{absences\_consecutives} : longueur maximale d'une 
+    séquence d'absences consécutives ;
     \item \textbf{moyenne\_notes} : moyenne des évaluations (0--20) ;
-    \item \textbf{tendance\_notes} : écart entre la dernière et la
-          première note enregistrée ;
+    \item \textbf{tendance\_notes} : écart entre la dernière et la 
+    première note enregistrée ;
     \item \textbf{moyenne\_satisfaction} : moyenne sur échelle 1--5 ;
-    \item \textbf{jours\_retard\_paiement} : ancienneté du dernier
-          impayé.
+    \item \textbf{jours\_retard\_paiement} : ancienneté du dernier impayé.
 \end{itemize}
- 
-\textbf{Label :} Un apprenant est considéré \og à risque \fg{} (label~=~1)
-si : taux\_presence $< 60\%$ \textbf{OU} moyenne\_notes $< 8/20$
-\textbf{OU} absences\_consecutives $\geq 4$ \textbf{OU}
-jours\_retard\_paiement $> 45$ jours.
- 
+
 \textbf{Détails du modèle :}
- 
-\begin{enumerate}
-    \item \textbf{Chargement des données :} Extraction SQL via
-    \texttt{load\_risk\_data()} avec un seuil de qualité (minimum
-    20~apprenants, minimum 3~présences enregistrées par apprenant).
-    La requête agrège plusieurs CTEs
-    (\texttt{presence\_stats}, \texttt{absences\_consecutives},
-    \texttt{notes\_stats}, \texttt{satisfaction\_stats},
-    \texttt{finance\_stats}) en un seul DataFrame prêt à l'emploi.
- 
-    \item \textbf{Préparation des données :}
-    \begin{itemize}[label=\textbullet]
-        \item Variables explicatives ($X$) : les 6 features numériques
-              listées ci-dessus ;
-        \item Variable cible ($y$) : abandon binaire (0 / 1).
-    \end{itemize}
- 
-    \item \textbf{Imputation :} \texttt{SimpleImputer} (stratégie :
-    moyenne) pour les valeurs manquantes.
- 
-    \item \textbf{Normalisation :} \texttt{StandardScaler} pour
-    homogénéiser les échelles entre features.
- 
-    \item \textbf{Division des données :} Split 80/20 avec
-    \texttt{stratify=y}, afin de préserver la proportion des classes
-    dans les deux ensembles. Le jeu de test (20\,\%) est réservé
-    exclusivement à l'évaluation finale.
- 
-    \item \textbf{Entraînement :} Deux modèles candidats sont comparés :
-    \begin{itemize}[label=\textbullet]
-        \item Régression logistique
-              (\texttt{LogisticRegression}, \texttt{max\_iter=1000},
-              \texttt{C=1.0}) ;
-        \item Random Forest
-              (\texttt{RandomForestClassifier},
-              \texttt{n\_estimators=100}, \texttt{max\_depth=6}).
-    \end{itemize}
-    Le modèle final est sélectionné selon l'AUC-ROC obtenu sur le jeu
-    de test (meilleur AUC retenu).
- 
-    \item \textbf{Évaluation :} Accuracy, AUC-ROC, F1-score et matrice
-    de confusion.
- 
-    \item \textbf{Sauvegarde :} Le modèle, le scaler et l'imputer sont
-    sérialisés dans \texttt{risk\_model.pkl} via \texttt{joblib}.
- 
-    \item \textbf{Prédiction :} Sortie probabiliste $p \in [0,1]$
-    convertie en score $\mathit{risk\_score} = p \times 100$.
-    Classification : critique ($\geq 75$), élevé ($\geq 55$),
-    modéré ($\geq 35$), faible.
- 
-    \item \textbf{Production :} NestJS agrège les features depuis
-    PostgreSQL et le microservice FastAPI charge le modèle
-    pré-entraîné (\texttt{risk\_model.pkl}) sans ré-entraînement à
-    chaque requête.
-\end{enumerate}
- 
+
+\begin{itemize}[label=\textbullet]
+
+    \item \textbf{Construction du label (\texttt{generate\_label}) :} 
+    Cette étape génère la variable cible binaire à partir des features 
+    comportementales, en évitant l'apprentissage trivial des règles 
+    métier fixes.
+
+    \textbf{Processus :}
+    \begin{enumerate}
+    \item Calcul d'un score de risque $r$ par combinaison pondérée 
+    des features, où le taux de présence et la moyenne des notes 
+    reçoivent les poids les plus élevés car ils sont les indicateurs 
+    les plus prédictifs du décrochage :
+   \begin{center}
+    \vspace{-0.3cm}
+    $\displaystyle
+    r = 0.45(1 - \text{taux\_p}) + 0.35\left(1 - 
+    \frac{\text{moyenne\_n}}{20}\right) + 
+    0.15\left(\frac{\text{jours\_r}}{90}\right) + 
+    0.05\left(\frac{\text{absences\_c}}{5}\right)
+    $
+    \vspace{-0.3cm}
+    \end{center}
+    \vspace{0.2cm}
+        \item Transformation du score $r$ en probabilité via la fonction 
+        sigmoïde, ce qui permet de contraindre la sortie dans l'intervalle 
+        $[0,1]$ et d'amplifier les différences autour du seuil de 
+        basculement $0.45$ :
+        \[
+        p = \frac{1}{1 + e^{-8(r - 0.45)}}
+        \]
+        \item Tirage binomial $y \sim \mathcal{B}(1, p)$ : un même profil 
+        peut ainsi générer $y=0$ ou $y=1$ selon la probabilité calculée, 
+        ce qui force le modèle à apprendre des patterns statistiques 
+        plutôt que des règles déterministes.
+    \end{enumerate}
+    \textit{Résultat :} Un DataFrame enrichi d'une colonne 
+    \texttt{abandon} binaire (0 / 1) avec une distribution équilibrée 
+    entre les deux classes.
+
+    \item \textbf{Entraînement du modèle (\texttt{train\_risk\_model}) :} 
+    Cette étape prépare les données, entraîne les modèles candidats et 
+    sélectionne le meilleur selon une métrique adaptée au contexte métier.
+
+    \textbf{Processus :}
+    \begin{enumerate}
+        \item Séparation des variables explicatives ($X$) correspondant 
+        aux 6 features comportementales, et de la variable cible ($y$) 
+        représentant le label d'abandon binaire.
+        \item Imputation des valeurs manquantes via \texttt{SimpleImputer} 
+        avec la stratégie moyenne, indispensable car certains apprenants 
+        peuvent ne pas avoir de notes ou de données financières 
+        enregistrées. Suivi d'une normalisation via \texttt{StandardScaler} 
+        pour homogénéiser les échelles très différentes entre features 
+        (taux de présence dans $[0,1]$ vs jours de retard dans $[0,90]$).
+        \item Division stratifiée 80/20 sur $y$ afin de préserver la 
+        proportion des classes dans les deux ensembles et garantir une 
+        évaluation représentative sur le jeu de test.
+        \item Entraînement de deux modèles candidats : la Régression 
+        Logistique et la Forêt Aléatoire, tous deux configurés avec 
+        \texttt{class\_weight='balanced'} pour compenser un éventuel 
+        déséquilibre entre apprenants stables et apprenants à risque.
+        \item Évaluation sur le jeu de test via l'accuracy, l'AUC-ROC, 
+        le F1-score et la matrice de confusion. L'AUC-ROC est retenu 
+        comme critère de sélection principal car il mesure la capacité 
+        de discrimination indépendamment du seuil choisi, ce qui est 
+        essentiel dans un contexte de classes potentiellement 
+        déséquilibrées.
+        \item Sauvegarde du modèle retenu, du scaler et de l'imputer 
+        dans un fichier \texttt{.pkl} pour éviter un réentraînement 
+        systématique à chaque requête.
+    \end{enumerate}
+    \textit{Résultat :} Un modèle entraîné et sélectionné avec ses 
+    statistiques d'évaluation complètes.
+
+    \item \textbf{Prédiction (\texttt{predict\_risk}) :} Cette étape 
+    calcule le score de risque en temps réel pour chaque apprenant 
+    à partir du modèle pré-entraîné.
+
+    \textbf{Processus :}
+    \begin{enumerate}
+        \item Chargement du modèle, du scaler et de l'imputer depuis 
+        le fichier \texttt{.pkl}, ce qui garantit des temps de réponse 
+        optimaux sans réentraînement à chaque requête.
+        \item Préparation des features du nouvel apprenant : imputation 
+        des valeurs manquantes et normalisation selon les paramètres 
+        appris lors de l'entraînement, garantissant la cohérence avec 
+        le pipeline d'entraînement.
+        \item Calcul de la probabilité $p \in [0,1]$ par le modèle, 
+        convertie en score de risque entre 0 et 100, puis classée 
+        automatiquement en quatre niveaux d'alerte : critique 
+        ($\geq 75$), élevé ($\geq 55$), modéré ($\geq 35$), faible.
+    \end{enumerate}
+    \textit{Résultat :} Un score de risque et un niveau d'alerte 
+    associé pour chaque apprenant, transmis au tableau de bord 
+    pédagogique.
+
+\end{itemize}
 % ─────────────────────────────────────────────────────────────────
 % 2. FORECAST — INSCRIPTIONS
 % ─────────────────────────────────────────────────────────────────
 \textbf{Pour la prévision des inscriptions mensuelles :}
  
-\textbf{Tables utilisées :} \texttt{sessions\_apprenants} et
+\textbf{Pour la prévision des inscriptions mensuelles :}
+
+\textbf{Tables utilisées :} \texttt{sessions\_apprenants} et 
 \texttt{sessions}.
- 
+
+\textbf{Pourquoi ces tables ?} Ces deux tables constituent la source 
+directe des inscriptions effectives : \texttt{sessions\_apprenants} 
+enregistre les associations entre apprenants et sessions, tandis que 
+\texttt{sessions} fournit les dates nécessaires à l'agrégation mensuelle.
+
 \textbf{Attributs clés :}
 \begin{itemize}[label=\textbullet]
-    \item \textbf{ds} : mois au format \texttt{YYYY-MM} (axe temporel) ;
-    \item \textbf{y} : nombre d'inscriptions effectives dans les sessions
-          de ce mois.
+    \item \textbf{ds} : mois au format \texttt{YYYY-MM}, constituant 
+    l'axe temporel de la série ;
+    \item \textbf{y} : nombre d'inscriptions effectives agrégées 
+    pour chaque mois.
 \end{itemize}
- 
+
 \textbf{Détails du modèle :}
- 
-\begin{enumerate}
-    \item \textbf{Chargement des données :} Agrégation mensuelle des
-    inscriptions effectives via \texttt{load\_inscriptions\_data()}.
-    La requête joint \texttt{sessions\_apprenants} et \texttt{sessions}
-    et regroupe par mois (\texttt{TO\_CHAR}). Minimum 3~mois
-    d'historique requis.
- 
-    \item \textbf{Préparation des données :} Le DataFrame résultant
-    suit la convention Prophet : colonne \texttt{ds} (date) et colonne
-    \texttt{y} (effectif). La colonne \texttt{y} est convertie en
-    \texttt{float} pour la compatibilité des deux modèles.
- 
-    \item \textbf{Évaluation par split chronologique 80/20 :} Deux
-    modèles sont comparés sur le jeu de test en calculant MAE et RMSE :
-    \begin{itemize}[label=\textbullet]
-        \item \textit{LinearTrend} : régression linéaire sur l'indice
-              temporel $t$ (0, 1, 2, \ldots) ;
-        \item \textit{Prophet} : modèle de séries temporelles avec
-              saisonnalité annuelle activée si l'historique couvre au
-              moins 24~mois, \texttt{interval\_width=0.80}.
-    \end{itemize}
- 
-    \item \textbf{Sélection du modèle :} Le modèle présentant le MAE
-    le plus faible sur le jeu de test est retenu comme modèle
-    principal. LinearTrend est toujours entraîné en parallèle et
-    sauvegardé comme fallback.
- 
-    \item \textbf{Architecture robuste (Option B) :}
-    \begin{itemize}[label=\textbullet]
-        \item Modèle principal : entraînement \textit{offline} +
-              sérialisation (\texttt{.pkl}) ---
-              \texttt{Prophet.fit()} n'est jamais appelé à chaque
-              requête HTTP ;
-        \item Fallback~1 : LinearTrend (si Prophet indisponible ou
-              erreur de prédiction) ;
-        \item Fallback~2 : données statiques de démonstration si
-              l'historique fourni comporte moins de 3~points.
-    \end{itemize}
- 
-    \item \textbf{Sauvegarde :} Le bundle \texttt{forecast\_model.pkl}
-    contient le modèle principal, le LinearTrend de secours, les
-    données \texttt{last\_data} et les métriques test.
- 
-    \item \textbf{Prédiction :} Sortie pour chaque mois futur :
-    \texttt{valeur\_prevue}, \texttt{borne\_basse},
-    \texttt{borne\_haute} (équivalents Prophet : \texttt{yhat},
-    \texttt{yhat\_lower}, \texttt{yhat\_upper}). La tendance
-    (hausse~/ baisse~/ stable) est calculée en comparant le dernier
-    mois observé au premier mois prédit (seuil $\pm 10\,\%$).
- 
-    \item \textbf{Production :} Le endpoint \texttt{POST /forecast}
-    reçoit l'historique depuis NestJS, charge le \texttt{.pkl} sans
-    \textit{fit}, et renvoie les prévisions avec le champ
-    \texttt{model\_used} indiquant le modèle réellement utilisé.
-\end{enumerate}
- 
-
-\textbf{Pour la prédiction du Chiffre d'affaire:} pour la prédiction du CA, nous utilisons:
-\begin{itemize}[label=\textbullet]
- \item \textbf{dw.fact\_finance:} le modèle s'appuie sur la table de faits financière dw.fact\_finance croisée avec les dimensions suivantes: 
 
 \begin{itemize}[label=\textbullet]
-    \item \textbf{dw.dim\_temps:} Pour l'axe temporel (mois, année, trimestre).
-    \item \textbf{dw.dim\_type\_finance:} Pour filtrer les flux (paiements vs dépenses).
-    \item \textbf{dw.dim\_session:} Pour calculer les volumes d'activité.
-\end{itemize}
 
-\textbf{Pourquoi cette table?} Elle constitue la source de vérité centrale contenant l'historique complet des paiements encaissés, des coûts et des inscriptions, ce qui est indispensable pour identifier les cycles de revenus.
+    \item \textbf{Chargement des données 
+    (\texttt{load\_inscriptions\_data}) :} Cette étape agrège 
+    les inscriptions mensuelles et prépare la série temporelle 
+    pour l'entraînement.
 
-\textbf{Attributs Clés:}
+    \textbf{Processus :}
+    \begin{enumerate}
+        \item Agrégation mensuelle des inscriptions effectives 
+        en joignant \texttt{sessions\_apprenants} et 
+        \texttt{sessions}, regroupées par mois via la fonction 
+        \texttt{TO\_CHAR}. Un minimum de 3 mois d'historique 
+        est requis pour garantir une modélisation valide.
+        \item Le DataFrame résultant suit la convention Prophet 
+        avec une colonne \texttt{ds} (date) et une colonne 
+        \texttt{y} (effectif mensuel), convertie en 
+        \texttt{float} pour assurer la compatibilité des 
+        deux modèles candidats.
+        \item Application d'une moyenne mobile d'ordre 3 sur 
+        la colonne \texttt{y} afin de réduire le bruit mensuel 
+        lié aux sessions intensives ponctuelles, tout en 
+        préservant les tendances de fond.
+        \item Exclusion du dernier mois si celui-ci compte 
+        moins de 20 jours écoulés, afin d'éviter un biais 
+        de sous-estimation dû à des données incomplètes.
+    \end{enumerate}
+    \textit{Résultat :} Une série temporelle mensuelle lissée, 
+    prête à être utilisée par les deux modèles candidats.
 
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Le passé financier:} Les revenus des mois précédents et de l'année dernière pour comprendre les habitudes de croissance.
-    \item \textbf{L'activité réelle:} Le nombre d'élèves inscrits, le nombre de formations lancées et les coûts réels (formateurs et logistique).
-    \item \textbf{Le calendrier:} Le mois et la saison pour identifier automatiquement les périodes de forte activité et les périodes de vacances.
-\end{itemize}
+    \item \textbf{Entraînement et sélection du modèle 
+    (\texttt{train\_forecast\_model}) :} Cette étape compare 
+    deux approches complémentaires sur un split chronologique 
+    rigoureux et retient la plus performante selon le MAE.
 
-\item \textbf{Détails du Modèle}
-
-\textbf{Chargement des données:} Les données sont extraites via une requête SQL agrégée croisant dw.fact\_finance, dw.dim\_temps, dw.dim\_type\_finance et dw.dim\_session. Le système vérifie une condition de qualité : un minimum de 15 mois d'historique est recommandé pour capturer la saisonnalité annuelle. Les données sont chargées dans un DataFrame Pandas et triées chronologiquement
-
-\textbf{Entraînement du modèle}
-
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Préparation des données:} Pour que l'apprentissage soit structuré, nous séparons les informations en deux groupes:
-    \begin{itemize}[label=\textbullet]
-        \item \textbf{Les variables explicatives (X):} Ce sont tous les indices créés précédemment. Le modèle va chercher le lien entre ces indices et le résultat final.
-        \item \textbf{La variable cible (y):} C'est ce que nous voulons prédire (le Chiffre d'Affaires mensuel).
-    \end{itemize}
-    \item \textbf{Normalisation:} On utilise le StandardScaler. Cette étape est indispensable car les montants (ex: 50 000 DT) et les effectifs (ex: 10 inscrits) ont des échelles trop différentes. Le scaler centre les données autour de 0 avec un écart-type de 1.
-    \item \textbf{Division des données:} nous avons divisé notre historique selon une logique de 80/20. L'ensemble d'entraînement, permet au modèle d'analyser les
-     tendances pour construire sa logique mathématique. En parallèle, l'ensemble de test, est scrupuleusement isolé pour évaluer la précision des prévisions en conditions réelles sur des données inconnues. Ce découpage a été réalisé en respectant strictement l'ordre chronologique, une condition indispensable pour garantir la validité d'une modélisation par séries temporelles et éviter tout risque de fuite de données du futur vers le passé (\textit{data leakage}).
-    \item \textbf{L'Apprentissage:} C'est le cœur de l'entraînement. Nous utilisons une Régression Linéaire Multiple (sklearn.linear\_model.LinearRegression), qui établit une relation mathématique entre plusieurs variables explicatives (lags, moyennes mobiles, coûts, saisonnalité) et la variable cible (CA mensuel).
-    \item  \textbf{Evaluation:} Pour quantifier la précision, nous nous appuyons sur deux métriques standards en statistiques:
+    \textbf{Processus :}
+    \begin{enumerate}
+        \item Division chronologique 80/20 du jeu de données, 
+        en respectant strictement l'ordre temporel pour éviter 
+        toute fuite de données du futur vers le passé 
+        (\textit{data leakage}), condition indispensable pour 
+        la validité d'une modélisation par séries temporelles.
+        \item Entraînement de deux modèles candidats sur 
+        l'ensemble d'entraînement :
         \begin{itemize}[label=\textbullet]
-            \item \textbf{Le Coefficient de Détermination (R²):} Il mesure la qualité globale du modèle. Un R² proche de 1 indique une excellente adéquation ; un R² négatif signale que le modèle est moins performant qu'une simple moyenne, ce qui peut survenir avec un historique insuffisant ou des données très bruitées. 
-            \item \textbf{L’Erreur Moyenne Absolue (MAE):} Elle exprime l'erreur en valeur monétaire réelle.
+            \item \textit{LinearTrend} : régression linéaire 
+            sur l'indice temporel $t = 0, 1, 2, \ldots$, 
+            servant de modèle de référence robuste et 
+            interprétable, garantissant la continuité du 
+            service même en cas de données insuffisantes ;
+            \item \textit{Prophet} : modèle additif de séries 
+            temporelles avec saisonnalité annuelle activée 
+            si l'historique couvre au moins 24 mois, offrant 
+            une meilleure gestion implicite des changements 
+            de tendance et des intervalles de confiance à 
+            $80\%$.
         \end{itemize}
-    Cette étape est cruciale car elle confirme que le modèle ne fait pas de "sur-apprentissage" (mémorisation par cœur du passé), mais qu'il possède une réelle capacité de généralisation.
-    \item \textbf{Sauvegarde du modèle:} Une fois l'apprentissage terminé, les paramètres du modèle entraîné sont exportés dans un fichier compressé (format .pkl). Ce fichier contient tout: le modèle entraîné, les règles de mise à l'échelle (Scaler) et les dernières données connues.
-\end{itemize}
-\textbf{Prediction}
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Chargement:} le système charge le fichier .pkl contenant le modèle, le normaliseur (scaler) et les indicateurs clés.
-    \item  \textbf{Prédiction en boucle (Itérative):}
-    \item Le modèle fonctionne comme un processus itératif:
-    \begin{itemize}[label=\textbullet]
-        \item Il prédit d'abord le mois M+1.
-        \item Il réinjecte cette valeur dans le vecteur de features (lags, moyennes mobiles) pour prédire M+2, et ainsi de suite
-    \end{itemize}
-    Cette propagation autorise une projection sur 1, 3 ou 6 mois, bien que l'incertitude augmente avec l'horizon temporel
-    \item \textbf{Resultat:} Prevision du chiffre d'affaire 
+        \item Évaluation des deux modèles sur le jeu de test 
+        via le MAE et le RMSE. Le modèle présentant le MAE 
+        le plus faible est retenu comme modèle principal, 
+        tandis que LinearTrend est systématiquement conservé 
+        comme fallback pour garantir la continuité du service.
+        \item Sauvegarde du modèle principal et du fallback 
+        dans un fichier \texttt{.pkl}, incluant les données 
+        d'historique et les métriques d'évaluation.
+    \end{enumerate}
+    \textit{Résultat :} Un modèle principal sélectionné et 
+    un fallback sauvegardés, accompagnés de leurs métriques 
+    de performance respectives.
 
+    \item \textbf{Prédiction (\texttt{predict\_forecast}) :} 
+    Cette étape génère les prévisions mensuelles futures 
+    à partir du modèle pré-entraîné.
+
+    \textbf{Processus :}
+    \begin{enumerate}
+        \item Chargement du modèle principal depuis le fichier 
+        \texttt{.pkl} sans réentraînement, garantissant des 
+        temps de réponse optimaux à chaque requête.
+        \item Génération des prévisions pour les mois futurs 
+        demandés, produisant pour chaque mois une valeur 
+        prévue et ses bornes de confiance (\texttt{yhat}, 
+        \texttt{yhat\_lower}, \texttt{yhat\_upper}).
+        \item Calcul automatique de la tendance globale 
+        (hausse / baisse / stable) en comparant le dernier 
+        mois observé au premier mois prédit, avec un seuil 
+        de $\pm 10\,\%$. En cas d'erreur du modèle principal, 
+        le fallback LinearTrend est automatiquement activé 
+        pour garantir la continuité du service.
+    \end{enumerate}
+    \textit{Résultat :} Une liste de prévisions mensuelles 
+    datées avec leurs bornes de confiance et la tendance 
+    globale détectée.
 
 \end{itemize}
-\end{itemize}
-
 
 
 \textbf{Pour la prédiction des sessions déficitaires:}
@@ -748,7 +792,7 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
     \end{itemize}
 \end{enumerate}
 
-
+\subsubsection{Évaluation des résultats}
 
 \subsection{Recommendations}
 Le module de recommandations stratégiques exploite les capacités de l'intelligence artificielle générative pour transformer les indicateurs de performance du centre en conseils opérationnels personnalisés. Il constitue le volet décisionnel du tableau de bord du Directeur, accessible depuis la page « Rapports stratégiques ».
