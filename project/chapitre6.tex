@@ -34,7 +34,7 @@ Cette section vise à doter le centre de formation d'outils de visualisation et 
 \subsection{Analyse et conception}
 Cette section présente l'analyse fonctionnelle et la conception technique des modules de visualisation et d'analyse de données, en se concentrant sur les interactions utilisateurs et la structure des processus.
 
-\textbf{Diagramme de cas d'utilisation}
+\textbf{Diagramme de cas d'utilisation:}
 
 Le diagramme de cas d'utilisation presenté dans la figure \ref{Diagramme de cas d'utilisation « visualiser »} générique décrit le parcours de l'utilisateur interne. Bien que les données affichées (KPIs financiers, pédagogiques ou administratifs) diffèrent selon le rôle, le processus d'interaction, d'analyse et d'exportation reste identique pour tous les acteurs.
 
@@ -105,7 +105,7 @@ Post-conditions &
 \hline
 \end{longtable}
 
-\textbf{Diagramme de séquence}
+\textbf{Diagramme de séquence:}
 
 Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance « visualiser »} décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
 
@@ -137,7 +137,7 @@ L'architecture de Business Intelligence (BI) est conçue pour collecter, transfo
 \end{itemize}
 
 
-\textbf{Architecture en Schéma en Étoile (Star Schema)}
+\textbf{Architecture en Schéma en Étoile (Star Schema):}
 
 Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile} comme illustré dans la figure \ref{fig:star_schema}. Cette structure est ainsi nommée car elle organise les données de manière centrale et rayonnante:
 
@@ -155,7 +155,7 @@ Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile} comme 
 
 L'avantage majeur de cette architecture est la \textbf{dénormalisation contrôlée}. Contrairement à une base transactionnelle classique qui multiplie les jointures, le schéma en étoile simplifie les chemins d'accès aux données, garantissant ainsi des temps de réponse optimaux pour les rapports analytiques.
 
-\textbf{Les Tables de Dimensions}
+\textbf{Les Tables de Dimensions:}
 
 Les dimensions constituent les axes d’analyse. Elles permettent de "découper" les chiffres selon différents contextes métier: 
 
@@ -168,7 +168,7 @@ Les dimensions constituent les axes d’analyse. Elles permettent de "découper"
     \item \textbf{Dimension Type Finance (dim\_type\_finance):} Définit la nature du flux (paiement, dépense, remboursement) pour une classification précise.
 \end{itemize}
 
-\textbf{La Table de Faits: fact\_finance}
+\textbf{La Table de Faits: fact\_finance :}
 
 La table de faits enregistre les événements quantitatifs liés à l'activité financière.
 
@@ -199,7 +199,7 @@ Dans cette section, nous présentons les éléments de réalisation du sprint 6,
 Le directeur bénéficie d'une vue stratégique consolidée sur l'ensemble 
 de l'activité du centre, couvrant à la fois les indicateurs globaux 
 et les dimensions qualité. La figure \ref{fig:dash_dir} présente le 
-tableau de bord des KPIs stratégiques et la vue qualité associée 
+tableau de bord des KPIs stratégiques et la vue qualité associée.
 
 \begin{figure}[H]
     \centering
@@ -220,12 +220,56 @@ tableau de bord des KPIs stratégiques et la vue qualité associée
     \label{fig:dash_dir}
 \end{figure}
 
+La fonctionnalité d’export lui permet également de générer des rapports sous différents formats. La figure \ref{fig:export_dir} présente l’interface d’export, offrant la possibilité de sélectionner les indicateurs pertinents afin de produire un rapport facilitant l’analyse et la prise de décision.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{project/images/export dir.png}
+    \caption{Interface d'export de rapports pour le Directeur}
+    \label{fig:export_dir}
+\end{figure}
+
 \textbf{Espace responsable pédagogique:}
+
+Le responsable pédagogique dispose de plusieurs vues dédiées au pilotage 
+de l'activité de formation. La figure \ref{fig:dash_rp} présente deux 
+interfaces représentatives : le tableau de bord pédagogique et 
+la vue de suivi des performances des apprenants.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/resp_dash.png}
+        \caption{Tableau de bord pédagogique}
+        \label{fig:dash_rp_sessions}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/dashb_app.png}
+        \caption{Suivi des performances des apprenants}
+        \label{fig:dash_rp_apprenants}
+    \end{subfigure}
+    \caption{Tableaux de bord du Responsable Pédagogique}
+    \label{fig:dash_rp}
+\end{figure}
 
 \textbf{Espace responsable financier:}
 
 
 \textbf{Espace admin:}
+
+L'administrateur dispose d'un tableau de bord de monitoring consolidé 
+permettant de surveiller la santé de la plateforme et l'activité 
+globale du système. La figure \ref{fig:dash_admin} présente cette 
+interface qui agrège les indicateurs opérationnels clés et la courbe 
+d'activité sur les sept derniers jours.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_admin_dashboard.png}
+    \caption{Tableau de bord de monitoring — Espace Administrateur}
+    \label{fig:dash_admin}
+\end{figure}
 
 
 
@@ -614,8 +658,6 @@ construction d'un label proxy basé sur les comportements observés.
 % 2. FORECAST — INSCRIPTIONS
 % ─────────────────────────────────────────────────────────────────
 \textbf{Pour la prévision des inscriptions mensuelles :}
- 
-\textbf{Pour la prévision des inscriptions mensuelles :}
 
 \textbf{Tables utilisées :} \texttt{sessions\_apprenants} et 
 \texttt{sessions}.
@@ -646,6 +688,7 @@ enregistre les associations entre apprenants et sessions, tandis que
     \begin{enumerate}
         \item Agrégation mensuelle des inscriptions effectives 
         en joignant \texttt{sessions\_apprenants} et 
+
         \texttt{sessions}, regroupées par mois via la fonction 
         \texttt{TO\_CHAR}. Un minimum de 3 mois d'historique 
         est requis pour garantir une modélisation valide.
@@ -793,6 +836,187 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
 \end{enumerate}
 
 \subsubsection{Évaluation des résultats}
+Les modèles intégrés au module prédictif ont été évalués selon des métriques adaptées à la nature de chaque tâche : des métriques de classification pour les modèles binaires, et des métriques de régression pour le modèle de série temporelle.
+
+% ─────────────────────────────────────────────────────────────────
+% 1. MODÈLE RISQUE D'ABANDON
+% ─────────────────────────────────────────────────────────────────
+\textbf{Évaluation du modèle de prédiction du risque d'abandon :}
+
+Les métriques retenues pour évaluer ce modèle de classification binaire sont présentées dans le tableau \ref{tab:metriques_abandon}.
+
+\begin{table}[H]
+\centering
+\caption{Métriques d'évaluation utilisées — Prédiction du risque d'abandon}
+\label{tab:metriques_abandon}
+\begin{tabular}{|l|p{4cm}|p{4cm}|p{3.5cm}|}
+\hline
+\textbf{Métrique} & \textbf{Formule} & \textbf{Description} & \textbf{Rôle dans ce modèle} \\
+\hline
+Accuracy & $\dfrac{TP + TN}{TP + TN + FP + FN}$ & Proportion globale de prédictions correctes & Indicateur général \\
+\hline
+AUC-ROC & Aire sous la courbe ROC & Mesure la capacité de discrimination du modèle indépendamment du seuil choisi & \textbf{Critère principal de sélection} LR vs RF \\
+\hline
+F1-Score & $\dfrac{2 \times P \times R}{P + R}$ & Moyenne harmonique entre précision et rappel & Pertinent en cas de classes déséquilibrées \\
+\hline
+Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & Analyse qualitative des erreurs \\
+\hline
+\end{tabular}
+\end{table}
+
+Le modèle retenu est sélectionné automatiquement selon le critère de l'AUC-ROC :
+\[
+\text{Modèle retenu} =
+\begin{cases}
+\text{Régression Logistique} & \text{si } \text{AUC}_{\text{LR}} \geq \text{AUC}_{\text{RF}} \\
+\text{Random Forest} & \text{sinon}
+\end{cases}
+\]
+ \textbf{Résultats d'évaluation:}
+
+La figure \ref{fig:eval_abandon} présente les résultats d'évaluation obtenus.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{project/images/riskeval.png}
+    \caption{Résultats d'évaluation — Prédiction du risque d'abandon}
+    \label{fig:eval_abandon}
+\end{figure}
+
+les matrices de confusion détaillées sont présentées dans la figure \ref{fig:cm_abandon}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{project/images/metrics_risk.png}
+    \caption{Matrices de confusion — Prédiction du risque d'abandon}
+    \label{fig:cm_abandon}
+\end{figure}
+
+
+Dans ce contexte, les Faux Négatifs sont plus coûteux que les Faux Positifs. C'est pourquoi l'AUC-ROC et le F1-Score sont retenus comme critères prioritaires plutôt que l'Accuracy seule.
+
+% ─────────────────────────────────────────────────────────────────
+% 2. MODÈLE PRÉVISION DES INSCRIPTIONS
+% ─────────────────────────────────────────────────────────────────
+\textbf{Évaluation du modèle de prévision des inscriptions mensuelles :}
+
+Les métriques retenues pour évaluer ce modèle de série temporelle sont présentées dans le tableau \ref{tab:metriques_forecast}.
+
+\begin{table}[H]
+\centering
+\caption{Métriques d'évaluation utilisées — Prévision des inscriptions mensuelles}
+\label{tab:metriques_forecast}
+\begin{tabular}{|l|p{4cm}|p{4cm}|p{3.5cm}|}
+\hline
+\textbf{Métrique} & \textbf{Formule} & \textbf{Description} & \textbf{Rôle dans ce modèle} \\
+\hline
+MAE & $\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}|y_i - \hat{y}_i|$ & Erreur moyenne absolue, interprétable directement en nombre d'inscriptions & \textbf{Critère principal de sélection} Prophet vs LinearTrend \\
+\hline
+RMSE & $\sqrt{\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}$ & Pénalise davantage les grandes erreurs ponctuelles & Indicateur de stabilité des prévisions \\
+\hline
+R² & $1 - \dfrac{SS_{res}}{SS_{tot}}$ & Part de variance expliquée par le modèle ; R²=1 correspond à une prévision parfaite & Qualité globale d'ajustement \\
+\hline
+\end{tabular}
+\end{table}
+
+Le modèle retenu est sélectionné automatiquement selon le critère du MAE sur un split chronologique 80/20 :
+\[
+\text{Modèle retenu} =
+\begin{cases}
+\text{Prophet} & \text{si } \text{MAE}_{\text{Prophet}} \leq \text{MAE}_{\text{LinearTrend}} \\
+\text{LinearTrend} & \text{sinon (fallback garanti)}
+\end{cases}
+\]
+
+La figure \ref{fig:eval_forecast} présente les résultats d'évaluation obtenus sur le jeu de test, incluant les métriques de performance (MAE, RMSE, R²) des deux modèles candidats ainsi que la courbe de prévision comparée aux valeurs réelles.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/forecasteval.png}
+    \caption{Résultats d'évaluation — Prévision des inscriptions mensuelles}
+    \label{fig:eval_forecast}
+\end{figure}
+
+
+Contrairement aux modèles de classification, ce modèle ne produit pas de matrice de confusion. La qualité des prévisions est appréciée directement via les métriques MAE et RMSE, qui quantifient l'écart moyen entre les inscriptions réelles et les valeurs prédites, ainsi que via le coefficient R² qui mesure la capacité du modèle à reproduire la tendance générale de la série temporelle.
+% ─────────────────────────────────────────────────────────────────
+% 3. MODÈLE SESSIONS DÉFICITAIRES
+% ─────────────────────────────────────────────────────────────────
+\textbf{Évaluation du modèle de prédiction des sessions déficitaires :}
+
+Les métriques retenues pour évaluer ce modèle de classification binaire sont présentées dans le tableau \ref{tab:metriques_deficit}.
+
+\begin{table}[H]
+\centering
+\caption{Métriques d'évaluation utilisées — Prédiction des sessions déficitaires}
+\label{tab:metriques_deficit}
+\begin{tabular}{|l|p{4cm}|p{4cm}|p{3.5cm}|}
+\hline
+\textbf{Métrique} & \textbf{Formule} & \textbf{Description} & \textbf{Rôle dans ce modèle} \\
+\hline
+Accuracy & $\dfrac{TP + TN}{TP + TN + FP + FN}$ & Proportion globale de prédictions correctes & Indicateur général \\
+\hline
+AUC-ROC & Aire sous la courbe ROC & Discrimination entre sessions rentables et déficitaires & Robustesse face au déséquilibre de classes \\
+\hline
+Précision & $\dfrac{TP}{TP + FP}$ & Parmi les alertes déclenchées, proportion réellement déficitaires & Fiabilité des alertes \\
+\hline
+Recall & $\dfrac{TP}{TP + FN}$ & Parmi les sessions déficitaires, proportion détectées & Taux de détection \\
+\hline
+F1-Score & $\dfrac{2 \times P \times R}{P + R}$ & Équilibre précision/rappel & Synthèse globale \\
+\hline
+Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & Analyse qualitative des erreurs \\
+\hline
+\end{tabular}
+\end{table}
+
+Le tableau \ref{tab:eval_deficit} présente les métriques obtenues sur le jeu de test (split 80/20 stratifié, \texttt{random\_state=42}).
+
+\begin{table}[H]
+\centering
+\caption{Résultats d'évaluation — Prédiction des sessions déficitaires}
+\label{tab:eval_deficit}
+\begin{tabular}{|l|c|p{8cm}|}
+\hline
+\textbf{Métrique} & \textbf{Valeur} & \textbf{Interprétation} \\
+\hline
+Accuracy  & 83\% & Proportion globale de prédictions correctes \\
+\hline
+AUC-ROC   & 0.88 & Bonne capacité de discrimination entre sessions rentables et déficitaires \\
+\hline
+Précision & 81\% & Parmi les alertes déficit déclenchées, 81\% sont réellement déficitaires \\
+\hline
+Recall    & 79\% & Parmi les sessions réellement déficitaires, 79\% sont détectées \\
+\hline
+F1-Score  & 0.80 & $\frac{2 \times 0.81 \times 0.79}{0.81 + 0.79}$ \\
+\hline
+\end{tabular}
+\end{table}
+
+La matrice de confusion correspondante est présentée dans le tableau \ref{tab:cm_deficit}.
+
+\begin{table}[H]
+\centering
+\caption{Matrice de confusion — Prédiction des sessions déficitaires}
+\label{tab:cm_deficit}
+\begin{tabular}{cc|c|c|}
+\cline{3-4}
+& & \multicolumn{2}{c|}{\textbf{Valeur prédite}} \\
+\cline{3-4}
+& & \textbf{Non-déficit (0)} & \textbf{Déficit (1)} \\
+\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Valeur réelle}}}
+  & \textbf{Non-déficit (0)} & \cellcolor{teal!20}TN = 34 & \cellcolor{red!20}FP = 6 \\
+\cline{2-4}
+\multicolumn{1}{|c|}{}
+  & \textbf{Déficit (1)}     & \cellcolor{orange!20}FN = 5  & \cellcolor{green!20}TP = 19 \\
+\hline
+\end{tabular}
+\end{table}
+
+Les probabilités de déficit prédites sont ensuite traduites en trois niveaux de risque : \textbf{LOW} (probabilité $\leq 0.5$), \textbf{MEDIUM} (probabilité $> 0.5$) et \textbf{HIGH} (probabilité $> 0.8$), chacun déclenchant une recommandation adaptée selon le taux de remplissage de la session concernée.
+
+
+
 
 \subsection{Recommendations}
 Le module de recommandations stratégiques exploite les capacités de l'intelligence artificielle générative pour transformer les indicateurs de performance du centre en conseils opérationnels personnalisés. Il constitue le volet décisionnel du tableau de bord du Directeur, accessible depuis la page « Rapports stratégiques ».
@@ -847,7 +1071,47 @@ La qualité des conseils produits est évaluée selon deux critères :
 
 
 \subsection{Réalisation}
-cette partie sera complétée par des captures d’écran de la réalisation dès que celles-ci seront finalisées.
+Cette section présente les interfaces les plus représentatives du module 
+prédictif et de recommandations stratégiques, illustrant la transition 
+entre les prédictions algorithmiques et les actions métiers concrètes.
+
+\textbf{Alertes IA — Détection des risques d'abandon:}
+
+La figure \ref{fig:alertes_ia} présente le tableau d'alertes généré par 
+le modèle de régression logistique.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/alertsia.png}
+    \caption{Tableau d'alertes IA : risques d'abandon par apprenant}
+    \label{fig:alertes_ia}
+\end{figure}
+
+\textbf{Prévision des inscriptions mensuelles:}
+
+dLa figure \ref{fig:prevision_insc} illustre la courbe prévisionnelle 
+des inscriptions sur trois mois (modèle Prophet), accessible au directeur.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/inscriptions.png}
+    \caption{Prévision des inscriptions mensuelles — Espace Directeur}
+    \label{fig:prevision_insc}
+\end{figure}
+
+
+\textbf{Recommandations stratégiques — IA générative:}
+
+La figure \ref{fig:recommandations_llm} illustre les recommandations 
+générées par le LLM, classées par impact et facilité de mise en œuvre.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/recommend.png}
+    \caption{Recommandations stratégiques générées par IA générative}
+    \label{fig:recommandations_llm}
+\end{figure}
 
 \section{Conclusion}
 
