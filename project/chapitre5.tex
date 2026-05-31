@@ -310,7 +310,7 @@ Ce rapport présente le travail réalisé au cours du sprint dédié à l'espace
 
 \subsection{Le backlog du sprint 4}
 Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regroupe l'ensemble des fonctionnalités à implémenter au cours de cette itération. Chaque élément est décrit sous la forme d'une user story centrée sur les besoins de l'apprenant, accompagnée d'un niveau de priorité. 
-\par
+
 \begin{table}[H]
     \centering
     \caption{Backlog du Sprint 4: Espace apprenant}
@@ -319,7 +319,7 @@ Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regro
 \hline
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
-\multirow{9}{*}{4} & \multirow{9}{*}{\makecell{Espace apprennat}}
+\multirow{9}{*}{4} & \multirow{9}{*}{\makecell{Espace apprenant}}
 & En tant qu'apprenant, je veux être redirigé automatiquement vers la page d'inscription lors de ma première connexion, afin de rejoindre une session avant d'accéder aux autres modules. & M\\
 \cline{3-4}
 & & En tant qu'apprenant, je veux voir un résumé de mes statistiques (formations inscrites, sessions à venir, moyenne générale) afin d'avoir une vue d'ensemble de mon parcours. & S\\
@@ -498,31 +498,158 @@ Comme le montre la figure \ref{cap:Diagramme de séquence <<Participer session>>
 
 
 \subsection{Réalisation}
-Cette section présente les principales interfaces développées côté backend pour l'espace apprenant. Chaque endpoint et service a fait l'objet d'une implémentation soignée, garantissant la sécurité des données, la performance des requêtes et la cohérence des réponses retournées au frontend. Les captures d'écran suivantes illustrent les résultats obtenus lors des tests fonctionnels réalisés via Postman et l'interface d'administration.
+Cette section détaille la mise en œuvre de l'espace apprenant, en présentant les différentes interfaces et les fonctionnalités offertes à l'utilisateur. Chaque description est accompagnée de références à des figures illustratives, permettant une meilleure compréhension visuelle des interactions.
 
-\textbf{Interface du tableau de bord de l'apprenant}
+\textbf{Interface de première connexion:}
+
+Lors de sa première connexion, une page d'accueil conviviale s'affiche, présentant un message de bienvenue et une brève introduction à l'espace apprenant. Un bouton , tel que "Parcourir tous les formations", invite l'apprenant à explorer les offres de formation disponibles.
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.5\textwidth]{project/images/welcome.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{Titre explicatif de votre dashboard}
+    \label{fig:dashboard1}
+\end{figure}
+
+Après avoir cliqué sur le bouton, l'apprenant est dirigé vers une page listant toutes les formations proposées par la plateforme.
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.5\textwidth]{project/images/see-catalogue.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard2}
+\end{figure}
 
 
-\textbf{Interface du gestion des formations }
+
+Lorsqu'une formation est sélectionnée, un modal s'affiche, présentant les sessions disponibles pour cette formation.
+L'apprenant peut choisir de s'inscrire à une session de son choix. Si l'inscription est validée, l'apprenant est automatiquement dirigé vers son espace officiel. 
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/session-dispo.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard5}
+\end{figure}
 
 
 
 
-\textbf{Interface du participation }
+\textbf{Interface Vue Globale}
+le tableau de bord principal de l'apprenant, offre un accès rapide à toutes les fonctionnalités et informations pertinentes. Cette page présente un résumé des activités récentes( resultats, sessions à venir, formations suivies, etc) et un accès direct aux différentes sections de l'espace apprenant.
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/first-in.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard8}
+\end{figure}
+
+\textbf{Interface "Mes Formations"}
+
+
+Cette section regroupe toutes les formations auxquelles l'apprenant est actuellement inscrit
+
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/mes-formations.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard9}
+\end{figure}
+En cliquant sur une formation, l'apprenant accède à une page dédiée présentant les sessions dans laquelle il a participé, les formateurs et d'autres informations spécifiques à la formation.
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/formations details.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard10}
+\end{figure}
+Après avoir suivi une formation, l'apprenant a la possibilité de lui attribuer une note et de laisser un commentaire, contribuant ainsi à l'évaluation continue de la plateforme. 
+
+
+\begin{center}
+   \centering
+   \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{project/images/note-vide.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \captionof{figure}{liste des formations}
+    \label{fig:dashboard11}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{project/images/satisfaction.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \captionof{figure}{liste des formations}
+    \label{fig:dashboard12}
+    \end{minipage}
+\end{center}
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.4\textwidth]{project/images/success-note.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard13}
+\end{figure}
+
+\textbf{Interface mes inscriptions }
+
+Cette interface permet à l'apprenant de gérer ses inscriptions passées et futures. Elle présente un récapitulatif de toutes les sessions auxquelles l'apprenant s'est inscrit
+
+L'apprenant peut annuler une inscription à une session. Une confirmation est requise avant l'annulation.
+L'apprenant peut également s'inscrire à de nouvelles sessions directement depuis cette interface, un bouton "Participer" qui lui permet de revenir à l'interface des formations disponibles pour s'inscrire à de nouvelles sessions.
+
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/success-note.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard14}
+\end{figure}
+
+\begin{figure}[H] % [H] force l'image à rester ICI
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/inscriptioninterface.png} 
+    % 0.9\textwidth signifie 90% de la largeur du texte
+    \caption{liste des formations}
+    \label{fig:dashboard15}
+\end{figure}
+
+
+\textbf{Interface "Mes résultats"}
+Cette section fournit un aperçu des performances de l'apprenant pour les formations suivies. Présente la moyenne générale et le statut de réussite ou d'échec.
+En cliquant sur l'un des formations, les notes obtenues pour chaque formation et le statut de réussite ou d'échec.
+Si aucune donnée de résultat n'est disponible, un message informatif est affiché pour l'apprenant.
+
+
+\textbf{Interface "Planning des Sessions"}
+
+Cette interface offre une vue d'ensemble des sessions planifiées, qui permet à l'apprenant de visualiser son emploi du temps en affichant les dates et horaires des sessions à venir, potentiellement sous forme de calendrier ou de liste.
 
 
 
 
-\textbf{Interface d'emploi du temps }
+\textbf{ Interface "Paiement"}
+Cette section gère toutes les informations relatives aux transactions financières de l'apprenant.Liste tous les paiements effectués, avec les détails de chaque transaction.
 
+Affiche le total payé, le reste à payer et le nombre de sessions associées aux paiements.
 
-\textbf{Interface des résultats académiques }
+\textbf{ Interface "Mon profil"}
 
+L'interface de profil permet à l'apprenant de consulter et de mettre à jour ses informations personnelles.
+L'apprenant peut éditer ses données personnelles et d'ajouter une nouvelle image de profil ou de supprimer l'image existante. 
 
-
-\textbf{Suivi des paiements}
-
-\section{Sprint 5 : Alimentation des données}
+\section{Sprint 5: Alimentation des données}
 \label{sec:Sprint5:ETL}
 Dans le cadre de ce projet, le processus d'intégration des données repose sur une approche hybride. En effet, en l'absence de sources de données réelles, nous avons procédé à la génération de jeux de données simulés afin de reproduire un environnement proche de la réalité et de permettre le bon fonctionnement et la validation des différentes fonctionnalités de la plateforme. Cette génération de données a permis de modéliser plusieurs entités, garantissant ainsi la disponibilité d'un volume de données suffisant pour les traitements analytiques.
 Par ailleurs, la plateforme ne se limite pas à ces données statiques : l'administrateur dispose également d'un module d'importation lui permettant d'intégrer des données externes à travers plusieurs étapes structurées. Le processus se fait à travers plusieurs étapes afin d'assurer leur cohérence et leur conformité avec le modèle du système. Les données validées sont alors intégrées dans la base de données(OLTP) pour être exploitées par les différents modules analytiques.
@@ -533,7 +660,7 @@ Chaque user story est formulée selon le format « En tant que… je veux… afi
 
 \begin{table}[H]
 \centering
-\caption{Backlog du Sprint 5 : Intégration des données (ETL)}
+\caption{Backlog du Sprint 5: Intégration des données (ETL)}
 \label{tab:sprint5_backlog}
 \begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
 \hline
@@ -684,7 +811,7 @@ Dans cette partie, nous présentons la conception du cas d'utilisation « Import
 La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présentant les différentes interactions entre l'administrateur et le système lors du processus d'import.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{project/images/importseq.png}
+    \includegraphics[width=0.9\textwidth]{project/images/DigSeq1.png}
     \caption{Diagramme de séquence « Importer des données »}
     \label{fig:seqdiagram_import}
 \end{figure}
@@ -698,20 +825,8 @@ Dans cette section, nous présentons les interfaces réalisées pour le module d
 
 
 \section{Conclusion}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Cette release a permis de structurer la plateforme autour de trois axes complémentaires : la gestion des sessions de formation, l’espace apprenant et l’intégration des données via un processus ETL.
+Elle couvre l’ensemble du cycle opérationnel, depuis la planification des activités jusqu’à l’exploitation des données.
+Les fonctionnalités développées assurent une meilleure expérience utilisateur et une gestion plus cohérente des informations.
+Cette étape renforce la stabilité et la qualité des données au sein du système.
+La prochaine phase sera dédiée à l’analyse et à la Business Intelligence afin d’exploiter ces données de manière décisionnelle.
