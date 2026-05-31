@@ -566,7 +566,11 @@ Une fois un email valide soumis, l'interface de la Figure \ref{cap:Interface de 
 
 
 
+<<<<<<< HEAD
 \textbf{Interface de creation du nouvelle mot de passe:}
+=======
+\textbf{Interface de création du nouvelle mot de passe :}
+>>>>>>> fa489ec68afe165be4be74ff4ca9d0f3dae95c23
 
 Si le lien est valide, l'utilisateur accède au formulaire de la Figure \ref{cap:reset_form}. Cette interface sécurisée permet de saisir et de confirmer le nouveau mot de passe.
 
@@ -791,8 +795,75 @@ Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Gestion
   \label{cap:Diagramme de séquence <<Gestion des demandes des apprenants>>}
 \end{figure}
 
-\subsection{Réalisation}:
-"remarque: Cette partie sera complétée par des captures d’écran de réalisation dès que celles-ci seront finalisées."
+\subsection{Réalisation}
+Cette section présente les interfaces de gestion des utilisateurs, en mettant l’accent sur les différentes fonctionnalités implémentées et l’expérience utilisateur offerte par ces interfaces.
+
+
+\textbf{Interface de gestion des utilisateurs:} 
+
+La figure \ref{fig:capture_userstab} présente l'interface principale affichant la liste des utilisateurs sous forme de tableau structuré, avec barre de recherche et filtres par rôle.
+
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_admin_users.png}
+    \caption{Gestion des utilisateurs}
+    \label{fig:capture_userstab}
+\end{figure}
+
+\textbf{Validation des comptes:} 
+
+La figure \ref{fig:capture_learnersvalidated} illustre l'interface de traitement des demandes d'inscription, permettant à l'administrateur d'accepter ou de refuser les comptes en attente.
+
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_admin_learners.png}
+    \caption{Gestion des demandes d'inscription des apprenants}
+    \label{fig:capture_learnersvalidated}
+\end{figure}
+
+\textbf{Ajout d’un utilisateur:} 
+
+La figure \ref{fig:capture_newuser} montre le modal d'ajout d'un nouvel utilisateur, comportant les champs nom, email, rôle et mot de passe.
+
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_admin_users (1).png}
+    \caption{Ajout d’un utilisateur}
+    \label{fig:capture_newuser}
+\end{figure}
+
+\textbf{Modification des informations:} 
+
+ Les figures \ref{fig:interfaces } présentent respectivement la sélection d'un utilisateur et le modal de modification pré-rempli avec ses données actuelles.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/localhost_3000_admin_users (2).png}
+        \caption{Réinitialisation du mot de passe}
+        \label{fig:reset-password}      % <-- Label 1ère image
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/localhost_3000_admin_users3.png}
+        \caption{Modifier d'un utilisateur}
+        \label{fig:modifier-user}         % <-- Label 2ème image
+    \end{subfigure}
+    \caption{Interfaces modification des informations}
+    \label{fig:interfaces}               % <-- Label globale (optionnel)
+\end{figure}
+
+\textbf{Suppression d’un utilisateur:} 
+
+La figure \ref{fig:capture_del} montre le modal de confirmation de suppression, invitant l'administrateur à confirmer ou annuler la suppression définitive du compte.
+
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_admin_users4.png}
+    \caption{Suppression d'un utilisateur}
+    \label{fig:capture_del}
+\end{figure}
 
 \section{Conclusion}
 Ce chapitre a présenté la première release de la plateforme, organisée en deux sprints principaux. Le premier sprint a concerné la mise en place de l’authentification afin de sécuriser l’accès au système, tandis que le second a porté sur la gestion des utilisateurs et des rôles.

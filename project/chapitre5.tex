@@ -301,8 +301,76 @@ Le diagramme de la Figure \ref{cap:Diagramme de séquence <<modifier session>>} 
 
 Cette section propose une série de captures d'écran couvrent l’ensemble du parcours utilisateur, depuis la création et la modification d’une session jusqu’à la gestion des présences , en passant par la consultation des participants. Elles témoignent de la conformité du livrable par rapport aux cas d’utilisation définis en phase d’analyse, ainsi que de la qualité de l’expérience utilisateur mise en œuvre.
 
-\textbf{Interface de la page Planning}
+\textbf{Interface de planification des sessions:} 
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (6).png}
+    \caption{Description mte3 el capture}
+    \label{fig:capture1}
+\end{figure}
 
+\textbf{Liste participants}
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (11).png}
+    \caption{Description mte3 el capture}
+    \label{fig:capture2}
+\end{figure}
+
+\textbf{Gestion des présences}
+
+\begin{figure}[H]  % [H] bech t7otha houni just
+    \centering
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (12).png}
+    \caption{Description mte3 el capture}
+    \label{fig:capture3}
+\end{figure}
+
+\textbf{Interfaces des sessions}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (9).png}
+        \caption{Etape 1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/modifier_session.png}
+        \caption{Etape 2}
+    \end{subfigure}
+    
+    \vspace{0.5cm}  % espace bin les lignes
+    
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/notificationsdelete.png}
+        \caption{Etape 4}
+    \end{subfigure}
+    \caption{Processus complet}
+\end{figure}
+
+\textbf{interfaces des formations}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (10).png}
+        \caption{Etape 1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/modifier_formation.png}
+        \caption{Etape 2}
+    \end{subfigure}
+    
+    \vspace{0.5cm}  % espace bin les lignes
+    
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\linewidth]{project/images/supprimer_formation.png}
+        \caption{Etape 3}
+    \end{subfigure}
+
+\end{figure}
 
 \section{Sprint 4: Espace apprenant}
 \label{sec:Sprint4:Apprenant}
@@ -495,159 +563,140 @@ Comme le montre la figure \ref{cap:Diagramme de séquence <<Participer session>>
   \label{cap:Diagramme de séquence <<Participer session>>}
 \end{figure}
 
-
-
 \subsection{Réalisation}
 Cette section détaille la mise en œuvre de l'espace apprenant, en présentant les différentes interfaces et les fonctionnalités offertes à l'utilisateur. Chaque description est accompagnée de références à des figures illustratives, permettant une meilleure compréhension visuelle des interactions.
 
 \textbf{Interface de première connexion:}
 
-Lors de sa première connexion, une page d'accueil conviviale s'affiche, présentant un message de bienvenue et une brève introduction à l'espace apprenant. Un bouton , tel que "Parcourir tous les formations", invite l'apprenant à explorer les offres de formation disponibles.
-
-\begin{figure}[H] % [H] force l'image à rester ICI
-    \centering
-    \includegraphics[width=0.5\textwidth]{project/images/welcome.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{Titre explicatif de votre dashboard}
-    \label{fig:dashboard1}
-\end{figure}
-
-Après avoir cliqué sur le bouton, l'apprenant est dirigé vers une page listant toutes les formations proposées par la plateforme.
-
-\begin{figure}[H] % [H] force l'image à rester ICI
-    \centering
-    \includegraphics[width=0.5\textwidth]{project/images/see-catalogue.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard2}
-\end{figure}
-
-
-
-Lorsqu'une formation est sélectionnée, un modal s'affiche, présentant les sessions disponibles pour cette formation.
-L'apprenant peut choisir de s'inscrire à une session de son choix. Si l'inscription est validée, l'apprenant est automatiquement dirigé vers son espace officiel. 
-
-\begin{figure}[H] % [H] force l'image à rester ICI
-    \centering
-    \includegraphics[width=0.9\textwidth]{project/images/session-dispo.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard5}
-\end{figure}
-
-
-
-
-\textbf{Interface Vue Globale}
-le tableau de bord principal de l'apprenant, offre un accès rapide à toutes les fonctionnalités et informations pertinentes. Cette page présente un résumé des activités récentes( resultats, sessions à venir, formations suivies, etc) et un accès direct aux différentes sections de l'espace apprenant.
-
-\begin{figure}[H] % [H] force l'image à rester ICI
-    \centering
-    \includegraphics[width=0.9\textwidth]{project/images/first-in.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard8}
-\end{figure}
-
-\textbf{Interface "Mes Formations"}
-
-
-Cette section regroupe toutes les formations auxquelles l'apprenant est actuellement inscrit
-
-
-\begin{figure}[H] % [H] force l'image à rester ICI
-    \centering
-    \includegraphics[width=0.9\textwidth]{project/images/mes-formations.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard9}
-\end{figure}
-En cliquant sur une formation, l'apprenant accède à une page dédiée présentant les sessions dans laquelle il a participé, les formateurs et d'autres informations spécifiques à la formation.
-
-\begin{figure}[H] % [H] force l'image à rester ICI
-    \centering
-    \includegraphics[width=0.9\textwidth]{project/images/formations details.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard10}
-\end{figure}
-Après avoir suivi une formation, l'apprenant a la possibilité de lui attribuer une note et de laisser un commentaire, contribuant ainsi à l'évaluation continue de la plateforme. 
-
+Lors de sa première connexion, une page d'accueil conviviale s'affiche (figure~\ref{fig:welcome-page}), présentant un message de bienvenue et une brève introduction à l'espace apprenant. Un bouton, tel que \textit{Parcourir toutes les formations}, invite l'apprenant à explorer les offres disponibles. Après avoir cliqué sur ce bouton, l'apprenant est dirigé vers le catalogue des formations proposées par la plateforme (figure~\ref{fig:formation-catalogue}).
 
 \begin{center}
-   \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.23]{project/images/welcome.png}
+        \captionof{figure}{Page d'accueil de l'espace apprenant}
+        \label{fig:welcome-page}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.23]{project/images/see-catalogue.png} 
+        \captionof{figure}{Catalogue des formations disponibles}
+        \label{fig:formation-catalogue}
+    \end{minipage}
+\end{center}
+
+Lorsqu'une formation est sélectionnée, un modal s'affiche présentant les sessions disponibles pour cette formation (figure~\ref{fig:session-modal}). L'apprenant peut choisir de s'inscrire à une session de son choix. Si l'inscription est validée, l'apprenant est automatiquement dirigé vers son espace officiel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{project/images/session-dispo.png} 
+    \caption{Modal des sessions disponibles pour une formation}
+    \label{fig:session-modal}
+\end{figure}
+
+\textbf{Interface Vue Globale}
+
+Le tableau de bord principal de l'apprenant (figure~\ref{fig:vue-globale}), offre un accès rapide à toutes les fonctionnalités et informations pertinentes. Cette page présente un résumé des activités récentes (résultats, sessions à venir, formations suivies, etc.) et un accès direct aux différentes sections de l'espace apprenant.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/first-in.png} 
+    \caption{Tableau de bord principal de l'apprenant}
+    \label{fig:vue-globale}
+\end{figure}
+
+\textbf{Interface \textit{Mes Formations}}
+
+Cette section regroupe toutes les formations auxquelles l'apprenant est actuellement inscrit (figure~\ref{fig:mes-formations}). En cliquant sur une formation, l'apprenant accède à une page dédiée présentant les sessions auxquelles il a participé, les formateurs et d'autres informations spécifiques (figure~\ref{fig:formation-details}).
+
+\begin{center}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.1]{project/images/mes-formations.png} 
+        \captionof{figure}{Liste des formations inscrites}
+        \label{fig:mes-formations}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.1]{project/images/formations details.png} 
+        \captionof{figure}{Détails d'une formation spécifique}
+        \label{fig:formation-details}
+    \end{minipage}
+\end{center}
+
+Après avoir suivi une formation, l'apprenant a la possibilité de lui attribuer une note et de laisser un commentaire, contribuant ainsi à l'évaluation continue de la plateforme (figures~\ref{fig:evaluation-vide} et~\ref{fig:evaluation-remplie}). Une confirmation visuelle s'affiche une fois l'évaluation soumise (figure~\ref{fig:success-evaluation}).
+
+\begin{center}
    \begin{minipage}{0.45\textwidth}
     \centering
-    \includegraphics[width=0.5\textwidth]{project/images/note-vide.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \captionof{figure}{liste des formations}
-    \label{fig:dashboard11}
+    \includegraphics[width=0.8\textwidth]{project/images/note-vide.png} 
+    \captionof{figure}{Interface d'évaluation avant remplissage}
+    \label{fig:evaluation-vide}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
     \centering
-    \includegraphics[width=0.5\textwidth]{project/images/satisfaction.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \captionof{figure}{liste des formations}
-    \label{fig:dashboard12}
+    \includegraphics[width=0.8\textwidth]{project/images/satisfaction.png} 
+    \captionof{figure}{Formulaire de satisfaction rempli}
+    \label{fig:evaluation-remplie}
     \end{minipage}
 \end{center}
 
-\begin{figure}[H] % [H] force l'image à rester ICI
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{project/images/success-note.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard13}
+    \includegraphics[width=0.7\textwidth]{project/images/success-note.png} 
+    \caption{Confirmation de soumission de l'évaluation}
+    \label{fig:success-evaluation}
 \end{figure}
 
-\textbf{Interface mes inscriptions }
+\textbf{Interface \textit{Mes inscriptions}}
 
-Cette interface permet à l'apprenant de gérer ses inscriptions passées et futures. Elle présente un récapitulatif de toutes les sessions auxquelles l'apprenant s'est inscrit
+Cette interface permet à l'apprenant de gérer ses inscriptions passées et futures (figure~\ref{fig:mes-inscriptions}). Elle présente un récapitulatif de toutes les sessions auxquelles l'apprenant s'est inscrit. L'apprenant peut annuler une inscription à une session, une confirmation étant requise avant l'annulation. Il peut également s'inscrire à de nouvelles sessions directement depuis cette interface via un bouton \textit{Participer} qui le redirige vers le catalogue des formations.
 
-L'apprenant peut annuler une inscription à une session. Une confirmation est requise avant l'annulation.
-L'apprenant peut également s'inscrire à de nouvelles sessions directement depuis cette interface, un bouton "Participer" qui lui permet de revenir à l'interface des formations disponibles pour s'inscrire à de nouvelles sessions.
-
-
-\begin{figure}[H] % [H] force l'image à rester ICI
-    \centering
-    \includegraphics[width=0.9\textwidth]{project/images/success-note.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard14}
-\end{figure}
-
-\begin{figure}[H] % [H] force l'image à rester ICI
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{project/images/inscriptioninterface.png} 
-    % 0.9\textwidth signifie 90% de la largeur du texte
-    \caption{liste des formations}
-    \label{fig:dashboard15}
+    \caption{Interface de gestion des inscriptions}
+    \label{fig:mes-inscriptions}
 \end{figure}
 
+\textbf{Interface \textit{Mes résultats}}
 
-\textbf{Interface "Mes résultats"}
-Cette section fournit un aperçu des performances de l'apprenant pour les formations suivies. Présente la moyenne générale et le statut de réussite ou d'échec.
-En cliquant sur l'un des formations, les notes obtenues pour chaque formation et le statut de réussite ou d'échec.
-Si aucune donnée de résultat n'est disponible, un message informatif est affiché pour l'apprenant.
+Cette section fournit un aperçu des performances de l'apprenant pour les formations suivies. Elle présente la moyenne générale et le statut de réussite ou d'échec. En cliquant sur l'une des formations, les notes obtenues pour chaque évaluation et le statut final sont affichés. Si aucune donnée de résultat n'est disponible, un message informatif est affiché pour l'apprenant.
 
+\textbf{Interface \textit{Planning des Sessions}}
 
-\textbf{Interface "Planning des Sessions"}
+Cette interface offre une vue d'ensemble des sessions planifiées, permettant à l'apprenant de visualiser son emploi du temps en affichant les dates et horaires des sessions à venir. Deux vues sont proposées : une vue mensuelle (figure~\ref{fig:planning-mois}) et une vue hebdomadaire (figure~\ref{fig:planning-semaine}).
 
-Cette interface offre une vue d'ensemble des sessions planifiées, qui permet à l'apprenant de visualiser son emploi du temps en affichant les dates et horaires des sessions à venir, potentiellement sous forme de calendrier ou de liste.
+\begin{center}
+   \begin{minipage}{0.7\textwidth}
+    \centering
+    \includegraphics[width=0.3\textwidth]{project/images/emploi.png} 
+    \captionof{figure}{Vue mensuelle du planning des sessions}
+    \label{fig:planning-mois}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+    \centering
+    \includegraphics[width=0.4\textwidth]{project/images/emploi-week.png} 
+    \captionof{figure}{Vue hebdomadaire du planning des sessions}
+    \label{fig:planning-semaine}
+    \end{minipage}
+\end{center}
 
+\textbf{Interface \textit{Paiement}}
 
+Cette section gère toutes les informations relatives aux transactions financières de l'apprenant (figure~\ref{fig:paiement}). Elle liste tous les paiements effectués avec les détails de chaque transaction, et affiche le total payé, le reste à payer ainsi que le nombre de sessions associées aux paiements.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/paiement.png} 
+    \caption{Interface de suivi des paiements}
+    \label{fig:paiement}
+\end{figure}
 
-\textbf{ Interface "Paiement"}
-Cette section gère toutes les informations relatives aux transactions financières de l'apprenant.Liste tous les paiements effectués, avec les détails de chaque transaction.
-
-Affiche le total payé, le reste à payer et le nombre de sessions associées aux paiements.
-
-\textbf{ Interface "Mon profil"}
-
-L'interface de profil permet à l'apprenant de consulter et de mettre à jour ses informations personnelles.
-L'apprenant peut éditer ses données personnelles et d'ajouter une nouvelle image de profil ou de supprimer l'image existante. 
 
 \section{Sprint 5: Alimentation des données}
 \label{sec:Sprint5:ETL}
@@ -691,7 +740,7 @@ Chaque user story est formulée selon le format « En tant que… je veux… afi
 \subsection{Analyse}
 À partir du backlog du sprint 5, nous détaillons dans la section suivante l'analyse du cas d'utilisation principal « Importer des données ». Cette analyse permet de définir les interactions fonctionnelles entre l'administrateur et le système lors du processus d'intégration des données, prenant en charge les différentes entités disponibles, 
 
-\textbf{Amélioration du cas d'utilisation « Importer des données » :}
+\textbf{Amélioration du cas d'utilisation « Importer des données »:}
 
 La figure \ref{fig:use_case_import} illustre le diagramme de cas d'utilisation présentant les différentes interactions entre l'administrateur et le système lors du processus d'import.
 
@@ -819,10 +868,72 @@ La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présen
 \subsection{Réalisation}
 Dans cette section, nous présentons les interfaces réalisées pour le module d'importation des données, en mettant l'accent sur les différentes étapes du processus d'intégration. Les captures d'écran suivantes illustrent les écrans de sélection de l'entité cible, de mapping des colonnes, d'aperçu des données et de rapport d'import.
 
+\textbf{Aperçu de l’interface d’import:}
 
+La figure \ref{fig:admin_import} présente l'écran principal du module d'import avec la sélection de l'entité cible et l'historique des jobs d'importation.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_admin_resources.png}
+    \caption{interface d'importation des données}
+    \label{fig:admin_import}
+\end{figure}
 
+\textbf{interface de l'étape upload et mapping:}
 
+Les figures \ref{fig:upload} et \ref{fig:mapping} illustrent respectivement l'écran de chargement du fichier (CSV/Excel) et l'interface de correspondance automatique et manuelle des colonnes avec les champs de l'entité sélectionnée.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/upload.png}
+        \caption{Première interface}
+        \label{fig:upload}
+    \end{subfigure}
+    \hfill                    % espace entre les 2
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/mapping.png}
+        \caption{Deuxième interface}
+        \label{fig:mapping}
+    \end{subfigure}
+    \caption{Étapes d'upload et de mapping des données}
+    \label{fig:upload_mapping}
+\end{figure}
+
+\textbf{Interface de validation des données:}
+
+La figure \ref{fig:validation} montre l'affichage des erreurs détectées (types de données incorrects, champs obligatoires manquants, doublons potentiels) avec indication des lignes concernées.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/validation data.png}
+    \caption{interface de validation des données}
+    \label{fig:validation}
+\end{figure}
+
+\textbf{Interface d'aperçu des données avant import:}
+
+La figure \ref{fig:apercu} présente la prévisualisation des premières lignes du fichier avec le mapping appliqué, permettant à l'administrateur de vérifier la conformité avant l'intégration finale.
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{project/images/apercu.png}
+    \captionof{figure}{interface d'aperçu des données}
+    \label{fig:apercu}
+\end{center}
+
+\textbf{Interface de rapport d'import et gestion des erreurs:}
+
+La figure \ref{fig:report} illustre le compte-rendu détaillé post-import avec le nombre de lignes traitées avec succès, les erreurs rencontrées et les doublons gérés.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_admin_import (8).png}
+    \caption{interface de rapport d'import et gestion des erreurs}
+    \label{fig:report}
+\end{figure}
+\textbf{}
 
 \section{Conclusion}
 Cette release a permis de structurer la plateforme autour de trois axes complémentaires : la gestion des sessions de formation, l’espace apprenant et l’intégration des données via un processus ETL.
