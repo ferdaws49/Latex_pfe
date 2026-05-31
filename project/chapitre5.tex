@@ -302,72 +302,90 @@ Le diagramme de la Figure \ref{cap:Diagramme de séquence <<modifier session>>} 
 Cette section propose une série de captures d'écran couvrent l’ensemble du parcours utilisateur, depuis la création et la modification d’une session jusqu’à la gestion des présences , en passant par la consultation des participants. Elles témoignent de la conformité du livrable par rapport aux cas d’utilisation définis en phase d’analyse, ainsi que de la qualité de l’expérience utilisateur mise en œuvre.
 
 \textbf{Interface de planification des sessions:} 
+
+La figure~\ref{fig:capture1} présente le tableau de bord de planification affichant l'ensemble des sessions programmées avec leurs dates, horaires et statuts.
+
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
     \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (6).png}
-    \caption{Description mte3 el capture}
+    \caption{Interface de planification des sessions}
     \label{fig:capture1}
 \end{figure}
 
-\textbf{Liste participants}
+\textbf{Liste participants:}
+
+La figure~\ref{fig:capture2} illustre la liste des participants inscrits avec leurs informations essentielles et options de filtrage
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
     \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (11).png}
-    \caption{Description mte3 el capture}
+    \caption{Liste des participants}
     \label{fig:capture2}
+
 \end{figure}
 
-\textbf{Gestion des présences}
+\textbf{Gestion des présences:}
 
+La figure~\ref{fig:capture3} montre l'interface de marquage des présences avec le taux de présence en temps réel.
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
     \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (12).png}
-    \caption{Description mte3 el capture}
+    \caption{Gestion des présences}
     \label{fig:capture3}
 \end{figure}
 
-\textbf{Interfaces des sessions}
+\textbf{Interfaces de gestion sessions:}
+
+La figure~\ref{fig:gestion_sessions} regroupe les interfaces de création (\ref{fig:creer_session}), modification (\ref{fig:modifier_session}) et annulation (\ref{fig:annuler_session}) d'une session.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (9).png}
-        \caption{Etape 1}
+        \caption{Création d'une session}
+        \label{fig:creer_session}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{project/images/modifier_session.png}
-        \caption{Etape 2}
+        \caption{Modification d'une session}
+        \label{fig:modifier_session}
     \end{subfigure}
     
     \vspace{0.5cm}  % espace bin les lignes
     
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{project/images/notificationsdelete.png}
-        \caption{Etape 4}
+        \caption{Annulation d'une session}
+        \label{fig:annuler_session}
     \end{subfigure}
-    \caption{Processus complet}
+    \caption{Gestion des sessions}
 \end{figure}
 
-\textbf{interfaces des formations}
+\textbf{interfaces de gestion formations:}
+
+La figure~\ref{fig:gestion_formations} présente les écrans de création (\ref{fig:creer_formation}), modification (\ref{fig:modifier_formation}) et suppression (\ref{fig:supprimer_formation}) d'une formation.
+
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (10).png}
-        \caption{Etape 1}
+        \caption{Création d'une formation}
+        \label{fig:creer_formation}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{project/images/modifier_formation.png}
-        \caption{Etape 2}
+        \caption{Modifier une formation}
+        \label{fig:modifier_formation}
     \end{subfigure}
     
     \vspace{0.5cm}  % espace bin les lignes
     
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{project/images/supprimer_formation.png}
-        \caption{Etape 3}
+        \caption{supprimer une formation}
+        \label{fig:supprimer_formation}
     \end{subfigure}
 
 \end{figure}
@@ -673,14 +691,14 @@ Cette interface offre une vue d'ensemble des sessions planifiées, permettant à
 \begin{center}
    \begin{minipage}{0.7\textwidth}
     \centering
-    \includegraphics[width=0.3\textwidth]{project/images/emploi.png} 
+    \includegraphics[width=0.5\textwidth]{project/images/emploi.png} 
     \captionof{figure}{Vue mensuelle du planning des sessions}
     \label{fig:planning-mois}
     \end{minipage}
     \hfill
     \begin{minipage}{0.7\textwidth}
     \centering
-    \includegraphics[width=0.4\textwidth]{project/images/emploi-week.png} 
+    \includegraphics[width=0.5\textwidth]{project/images/emploi-week.png} 
     \captionof{figure}{Vue hebdomadaire du planning des sessions}
     \label{fig:planning-semaine}
     \end{minipage}
@@ -716,23 +734,23 @@ Chaque user story est formulée selon le format « En tant que… je veux… afi
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
 \multirow{9}{*}{5} & \multirow{9}{*}{Import de données} 
-& En tant qu'administrateur, je veux sélectionner l'entité cible parmi les entités disponibles afin de déterminer dans quelle table les données seront importées. & Must \\
+& En tant qu'administrateur, je veux sélectionner l'entité cible parmi les entités disponibles afin de déterminer dans quelle table les données seront importées. & M \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux sélectionner un fichier de données (CSV, excel,xlsx) correspondant à l'entité choisie afin d'importer de nouvelles données dans le système. & Must \\
+& & En tant qu'administrateur, je veux sélectionner un fichier de données (CSV, excel,xlsx) correspondant à l'entité choisie afin d'importer de nouvelles données dans le système. & M \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux que le système détecte automatiquement les correspondances entre les colonnes du fichier et les champs de l'entité cible afin d'accélérer le mapping. & Must \\
+& & En tant qu'administrateur, je veux que le système détecte automatiquement les correspondances entre les colonnes du fichier et les champs de l'entité cible afin d'accélérer le mapping. & M \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux pouvoir ajuster manuellement le mapping des colonnes en cas de correspondance inexacte afin d'assurer la fiabilité de l'import. & Must \\
+& & En tant qu'administrateur, je veux pouvoir ajuster manuellement le mapping des colonnes en cas de correspondance inexacte afin d'assurer la fiabilité de l'import. & M \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux visualiser un aperçu des données importées avant validation afin de vérifier leur conformité avec la structure de l'entité sélectionnée. & Must \\
+& & En tant qu'administrateur, je veux visualiser un aperçu des données importées avant validation afin de vérifier leur conformité avec la structure de l'entité sélectionnée. & M \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux être notifié en cas d'erreur de format, de type de données incorrect ou de champs obligatoires manquants lors de l'import afin de corriger le fichier source. & Must \\
+& & En tant qu'administrateur, je veux être notifié en cas d'erreur de format, de type de données incorrect ou de champs obligatoires manquants lors de l'import afin de corriger le fichier source. & M \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux lancer le processus d'intégration ETL afin que les données importées soient automatiquement nettoyées, validées et insérées dans la base. & Must \\
+& & En tant qu'administrateur, je veux lancer le processus d'intégration ETL afin que les données importées soient automatiquement nettoyées, validées et insérées dans la base. & M \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux recevoir un rapport détaillé des lignes importées, des erreurs et des doublons détectés afin d'auditer la qualité de l'import. & Should \\
+& & En tant qu'administrateur, je veux recevoir un rapport détaillé des lignes importées, des erreurs et des doublons détectés afin d'auditer la qualité de l'import. & S \\
 \cline{3-4}
-& & En tant qu'administrateur, je veux pouvoir annuler ou corriger une importation en cas d'erreur détectée après coup afin de maintenir l'intégrité des données. & Should \\
+& & En tant qu'administrateur, je veux pouvoir annuler ou corriger une importation en cas d'erreur détectée après coup afin de maintenir l'intégrité des données. & S \\
 \hline
 \end{tabular}
 \end{table}
@@ -881,7 +899,7 @@ La figure \ref{fig:admin_import} présente l'écran principal du module d'import
 
 \textbf{interface de l'étape upload et mapping:}
 
-Les figures \ref{fig:upload} et \ref{fig:mapping} illustrent respectivement l'écran de chargement du fichier (CSV/Excel) et l'interface de correspondance automatique et manuelle des colonnes avec les champs de l'entité sélectionnée.
+Les figures \ref{fig:upload_mapping} illustrent respectivement l'écran de chargement du fichier (CSV/Excel) et l'interface de correspondance automatique et manuelle des colonnes avec les champs de l'entité sélectionnée.
 
 \begin{figure}[H]
     \centering
