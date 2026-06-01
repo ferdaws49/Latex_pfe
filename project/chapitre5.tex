@@ -250,19 +250,18 @@ Post-conditions &
 
 La phase de conception traduit les exigences fonctionnelles identifiées en phase d'analyse en modèles techniques exploitables par l'équipe de développement. Elle s'appuie sur des diagrammes de séquence UML pour représenter les interactions dynamiques entre le responsable pédagogique, l'interface utilisateur (Frontend), la logique métier (Backend) et la persistance des données (Base de Données), pour chacune des opérations CRUD du sprint. Ces modèles constituent le fil conducteur technique du développement et garantissent la cohérence entre les exigences métier et l'architecture applicative retenue.
 
-
+\vspace{2cm}
 \textbf{Diagramme de séquence: Créer une formation}
 
 Comme le montre la figure \ref{cap:Diagramme de séquence <<Creation formation>>}, Ce diagramme de séquance illustre le processus de création d'une nouvelle formation. Les interactions principales incluent l'affichage du formulaire, la soumission des données, la validation côté serveur et la réponse du système.
-\vspace*{\fill} % espace vertical فوق
+\vspace{0.3cm}
 \begin{figure}[H]
   \centering
-   \includegraphics[scale=0.5]{project/images/creer formation.png}
+   \includegraphics[width=1.1\textwidth,height=0.9\textheight]{project/images/creer formation.png}
   \caption{Diagramme de séquence <<Création formation>> }
   \label{cap:Diagramme de séquence <<Creation formation>>}
 \end{figure}
-\vspace*{\fill} % espace vertical sous
-
+\vspace{0.3cm}
 \textbf{Diagramme de séquence: créer session}
 
 Le diagramme presenté dans la figure \ref{cap:Diagramme de séquence <<Créer session>>} représente la séquence des opérations nécessaires pour créer une session. Il détaille comment le Responsable Pédagogique interagit avec le Frontend pour saisir les informations de la session, comment ces données sont envoyées au Backend pour traitement (incluant la vérification de la disponibilité des ressources) et comment elles sont finalement stockées dans la Base de Données.
@@ -303,7 +302,7 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
 
 \textbf{Interface de planification des sessions:} 
 
-La figure~\ref{fig:capture1} présente le tableau de bord de planification affichant l'ensemble des sessions programmées avec leurs dates, horaires et statuts.
+La figure \ref{fig:capture1} présente le tableau de bord de planification affichant l'ensemble des sessions programmées avec leurs dates, horaires et statuts.
 
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
@@ -314,7 +313,7 @@ La figure~\ref{fig:capture1} présente le tableau de bord de planification affic
 
 \textbf{Liste participants:}
 
-La figure~\ref{fig:capture2} illustre la liste des participants inscrits avec leurs informations essentielles et options de filtrage
+La figure~\ref{fig:capture2} illustre la liste des participants inscrits avec leurs informations essentielles et options de filtrage.
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
     \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (11).png}
@@ -335,7 +334,7 @@ La figure~\ref{fig:capture3} montre l'interface de marquage des présences avec 
 
 \textbf{Interfaces de gestion sessions:}
 
-La figure~\ref{fig:gestion_sessions} regroupe les interfaces de création (\ref{fig:creer_session}), modification (\ref{fig:modifier_session}) et annulation (\ref{fig:annuler_session}) d'une session.
+La figure \ref{fig:gestion_sessions} regroupe les interfaces de création (\ref{fig:creer_session}), modification (\ref{fig:modifier_session}) et annulation (\ref{fig:annuler_session}) d'une session.
 
 \begin{figure}[H]
     \centering
@@ -359,11 +358,12 @@ La figure~\ref{fig:gestion_sessions} regroupe les interfaces de création (\ref{
         \label{fig:annuler_session}
     \end{subfigure}
     \caption{Gestion des sessions}
+    \label{fig:gestion_sessions}
 \end{figure}
 
 \textbf{interfaces de gestion formations:}
 
-La figure~\ref{fig:gestion_formations} présente les écrans de création (\ref{fig:creer_formation}), modification (\ref{fig:modifier_formation}) et suppression (\ref{fig:supprimer_formation}) d'une formation.
+La figure \ref{fig:gestion_formations} présente les écrans de création (\ref{fig:creer_formation}), modification (\ref{fig:modifier_formation}) et suppression (\ref{fig:supprimer_formation}) d'une formation.
 
 
 \begin{figure}[H]
@@ -387,7 +387,8 @@ La figure~\ref{fig:gestion_formations} présente les écrans de création (\ref{
         \caption{supprimer une formation}
         \label{fig:supprimer_formation}
     \end{subfigure}
-
+    \caption{Gestion des formations}
+    \label{fig:gestion_formations}
 \end{figure}
 
 \section{Sprint 4: Espace apprenant}
