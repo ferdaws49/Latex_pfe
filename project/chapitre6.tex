@@ -34,9 +34,9 @@ Cette section vise à doter le centre de formation d'outils de visualisation et 
 \subsection{Analyse et conception}
 Cette section présente l'analyse fonctionnelle et la conception technique des modules de visualisation et d'analyse de données, en se concentrant sur les interactions utilisateurs et la structure des processus.
 
-\textbf{Diagramme de cas d'utilisation:}
+\noindent\textbf{Diagramme de cas d'utilisation:}
 
-Le diagramme de cas d'utilisation presenté dans la figure \ref{Diagramme de cas d'utilisation « visualiser »} générique décrit le parcours de l'utilisateur interne. Bien que les données affichées (KPIs financiers, pédagogiques ou administratifs) diffèrent selon le rôle, le processus d'interaction, d'analyse et d'exportation reste identique pour tous les acteurs.
+\noindent Le diagramme de cas d'utilisation presenté dans la figure \ref{Diagramme de cas d'utilisation « visualiser »} générique décrit le parcours de l'utilisateur interne. Bien que les données affichées (KPIs financiers, pédagogiques ou administratifs) diffèrent selon le rôle, le processus d'interaction, d'analyse et d'exportation reste identique pour tous les acteurs.
 
 \begin{figure}[H]
  \centering
@@ -45,7 +45,7 @@ Le diagramme de cas d'utilisation presenté dans la figure \ref{Diagramme de cas
 \label{Diagramme de cas d'utilisation « visualiser »}
 \end{figure}
 
-Le tableau \ref{tab:Visualiser} présente le backlog du sprint
+\noindent Le tableau \ref{tab:Visualiser} présente le backlog du sprint
 \begin{longtable}{|l|p{12cm}|}
 \caption{Cas d'utilisation – Visualiser}
 \label{tab:Visualiser} \\
@@ -105,9 +105,9 @@ Post-conditions &
 \hline
 \end{longtable}
 
-\textbf{Diagramme de séquence:}
+\noindent\textbf{Diagramme de séquence:}
 
-Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance « visualiser »} décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
+\noindent Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance « visualiser »} décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
 
 \begin{figure}[H]
  \centering
@@ -191,9 +191,9 @@ La table de faits enregistre les événements quantitatifs liés à l'activité 
 
 Dans cette section, nous présentons les éléments de réalisation du sprint 6, en mettant l'accent sur les interfaces de visualisation des données, les fonctionnalités d'analyse et les options d'exportation.
 
-\textbf{Dashboard Financier}
+\noindent\textbf{Dashboard Financier}
 
-Le tableau de bord financier offre une vue d'ensemble stratégique des indicateurs clés de performance (KPIs) et des tendances financières. La figure~\ref{fig:dashboard-financier} présente l'interface dédiée au responsable financier, tandis que la figure \ref{fig:interface-depense} illustre l'écran de gestion des dépenses.
+\noindent Le tableau de bord financier offre une vue d'ensemble stratégique des indicateurs clés de performance (KPIs) et des tendances financières. La figure~\ref{fig:dashboard-financier} présente l'interface dédiée au responsable financier, tandis que la figure \ref{fig:interface-depense} illustre l'écran de gestion des dépenses.
 
 \begin{center}
     \begin{minipage}{0.45\textwidth}
@@ -214,10 +214,10 @@ Le tableau de bord financier offre une vue d'ensemble stratégique des indicateu
 
 
 
-\textbf{Espace directeur:}
+\noindent \textbf{Espace directeur:}
 
 
-Le directeur bénéficie d'une vue stratégique consolidée sur l'ensemble 
+\noindent Le directeur bénéficie d'une vue stratégique consolidée sur l'ensemble 
 de l'activité du centre, couvrant à la fois les indicateurs globaux 
 et les dimensions qualité. La figure \ref{fig:dash_dir} présente le 
 tableau de bord des KPIs stratégiques et la vue qualité associée.
@@ -241,7 +241,7 @@ tableau de bord des KPIs stratégiques et la vue qualité associée.
     \label{fig:dash_dir}
 \end{figure}
 
-La fonctionnalité d’export lui permet également de générer des rapports sous différents formats. La figure \ref{fig:export_dir} présente l’interface d’export, offrant la possibilité de sélectionner les indicateurs pertinents afin de produire un rapport facilitant l’analyse et la prise de décision.
+\noindent La fonctionnalité d’export lui permet également de générer des rapports sous différents formats. La figure \ref{fig:export_dir} présente l’interface d’export, offrant la possibilité de sélectionner les indicateurs pertinents afin de produire un rapport facilitant l’analyse et la prise de décision.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/export dir.png}
@@ -249,11 +249,9 @@ La fonctionnalité d’export lui permet également de générer des rapports so
     \label{fig:export_dir}
 \end{figure}
 
-\textbf{Espace responsable pédagogique:}
+\noindent \textbf{Espace responsable pédagogique:}
 
-<<<<<<< HEAD
-=======
-Le responsable pédagogique dispose de plusieurs vues dédiées au pilotage 
+\noindent Le responsable pédagogique dispose de plusieurs vues dédiées au pilotage 
 de l'activité de formation. La figure \ref{fig:dash_rp} présente deux 
 interfaces représentatives : le tableau de bord pédagogique et 
 la vue de suivi des performances des apprenants.
@@ -276,13 +274,9 @@ la vue de suivi des performances des apprenants.
     \label{fig:dash_rp}
 \end{figure}
 
-\textbf{Espace responsable financier:}
->>>>>>> 4f4bb3f92973248d2b45f6dbe14bd4482a1a8575
+\noindent\textbf{Espace admin:}
 
-
-\textbf{Espace admin:}
-
-L'administrateur dispose d'un tableau de bord de monitoring consolidé 
+\noindent L'administrateur dispose d'un tableau de bord de monitoring consolidé 
 permettant de surveiller la santé de la plateforme et l'activité 
 globale du système. La figure \ref{fig:dash_admin} présente cette 
 interface qui agrège les indicateurs opérationnels clés et la courbe 
@@ -332,9 +326,9 @@ Dans cette partie, nous présentons le backlog du sprint 7, qui se concentre sur
 
 Cette section présente l'analyse fonctionnelle et la conception technique du module prédictif et de recommandations. L'objectif est de formaliser les interactions entre les différents acteurs métier (Responsable Pédagogique, Responsable Financier et Directeur) et le système d'intelligence artificielle, en s'appuyant sur les modèles de Machine Learning retenus.
 
-\textbf{Amélioration du cas d'utilisation « Module Prédictif et Recommandations »:}
+\noindent\textbf{Amélioration du cas d'utilisation « Module Prédictif et Recommandations »:}
 
-La figure \ref{fig:use_case_ia} illustre le diagramme de cas d'utilisation présentant les interactions entre les acteurs métier et les fonctionnalités prédictives du système. Chaque cas d'utilisation repose sur le « Module IA » qui orchestre les algorithmes d'apprentissage automatique.
+\noindent La figure \ref{fig:use_case_ia} illustre le diagramme de cas d'utilisation présentant les interactions entre les acteurs métier et les fonctionnalités prédictives du système. Chaque cas d'utilisation repose sur le « Module IA » qui orchestre les algorithmes d'apprentissage automatique.
 
 \begin{figure}[H]
     \centering
@@ -343,7 +337,7 @@ La figure \ref{fig:use_case_ia} illustre le diagramme de cas d'utilisation prés
     \label{fig:use_case_ia}
 \end{figure}
 
-Le tableau \ref{tab:module_ia} présente la description textuelle structurée du cas d'utilisation global du module prédictif. Il détaille les scénarios nominaux pour chaque fonctionnalité, les scénarios alternatifs envisageables ainsi que les post-conditions associées.
+\noindent Le tableau \ref{tab:module_ia} présente la description textuelle structurée du cas d'utilisation global du module prédictif. Il détaille les scénarios nominaux pour chaque fonctionnalité, les scénarios alternatifs envisageables ainsi que les post-conditions associées.
 
 \begin{longtable}{|l|p{12cm}|}
 \caption{Cas d'utilisation – Module Prédictif et Recommandations}
@@ -400,7 +394,7 @@ Scénario de base &
 \item Le système affiche une liste des sessions planifiées avec leur probabilité de déficit et des recommandations.
 \end{enumerate}
 \\
-
+\hline
 & \textbf{Scénario 3: Prévoir les revenus pour le budget} 
 \begin{enumerate}[leftmargin=*]
 \item Le Responsable Financier accède à la page « Analyse intelligente » depuis son espace.
@@ -472,9 +466,10 @@ Post-conditions &
 
 La phase de conception traduit les exigences fonctionnelles du module prédictif en modèles techniques UML. Les diagrammes de séquence suivants détaillent les interactions dynamiques entre les acteurs métier, l'interface utilisateur (Frontend), la couche applicative (Backend), le moteur d'inférence IA et la base de données, pour les flux les plus critiques du sprint.
 
-\textbf{Diagramme de séquence: Génération des alertes d'abandon}
+\vspace{0.5cm}
+\noindent\textbf{Diagramme de séquence: Génération des alertes d'abandon}
 
-Ce diagramme illustre le flux de détection des risques d'abandon. Le Responsable Pédagogique sollicite l'analyse via l'interface. Le système orchestre la récupération des données comportementales, prépare les features et invoque le modèle de régression logistique. Les probabilités retournées sont traitées, classées par niveau de risque (critique, élevé, modéré, faible) et restituées sous forme d'alertes interactives.
+\noindent  La Figure \ref{fig:ds_alerte_abandon} traduit le mécanisme de détection des risques d'abandon. Le Responsable Pédagogique sollicite l'analyse via l'interface. Le système orchestre la récupération des données comportementales, prépare les features et invoque le modèle de régression logistique. Les probabilités retournées sont traitées, classées par niveau de risque (critique, élevé, modéré, faible) et restituées sous forme d'alertes interactives.
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{project/images/rep_ds.png}
@@ -484,9 +479,9 @@ Ce diagramme illustre le flux de détection des risques d'abandon. Le Responsabl
 
 \vspace{0.5cm}
 
-\textbf{Diagramme de séquence: Prévision des revenus}
+\noindent\textbf{Diagramme de séquence: Prévision des revenus}
 
-Ce diagramme modélise le processus de prévision budgétaire. Le Responsable Financier paramètre son horizon d'analyse. Le système extrait l'historique financier, exécute le modèle de régression linéaire et produit la projection de chiffre d'affaires avec ses intervalles de confiance. Le flux de prédiction des sessions déficitaires suit une architecture similaire avec extraction des coûts et calcul de rentabilité.
+\noindent Le processus de prévision budgétaire illustré dans la figure \ref{fig:ds_prevision_revenus} permet au Responsable Financier de paramétrer son horizon d’analyse. Le système extrait l’historique financier, exécute le modèle de régression linéaire et produit la projection de chiffre d’affaires avec ses intervalles de confiance
 
 \begin{figure}[H]
   \centering
@@ -497,9 +492,9 @@ Ce diagramme modélise le processus de prévision budgétaire. Le Responsable Fi
 
 \vspace{0.5cm}
 
-\textbf{Diagramme de séquence: Rapports stratégiques (Prévision des inscriptions et Recommandations)}
+\noindent\textbf{Diagramme de séquence: Rapports stratégiques (Prévision des inscriptions et Recommandations)}
 
-Ce diagramme représente le flux combiné de la page « Rapports stratégiques » accessible au Directeur. Deux traitements parallels opèrent sur le même tableau de bord : (a) la prévision des inscriptions sur 3 mois via le modèle de série temporelle, et (b) la génération de recommandations stratégiques par agrégation des indicateurs de performance et traitement par modèle de langage.
+\noindent Ce diagramme représente le flux combiné de la page « Rapports stratégiques » accessible au Directeur est exposé en Figure \ref{fig:ds_rapports_strategiques}. Deux traitements parallels opèrent sur le même tableau de bord : (a) la prévision des inscriptions sur 3 mois via le modèle de série temporelle, et (b) la génération de recommandations stratégiques par agrégation des indicateurs de performance et traitement par modèle de langage.
 
 \begin{figure}[H]
   \centering
@@ -516,19 +511,24 @@ Cette section détaille le processus d'intégration des modèles d'apprentissage
 Le module prédictif repose sur le paradigme de \textbf{l'apprentissage supervisé (Supervised Learning)}. Ce choix méthodologique est dicté par la nature de notre base de données: nous disposons de données historiques annotées (par exemple des historiques de paiements, les résultats obtenus par les apprenants, etc) qui constituent une "vérité terrain".
 L'objectif est d'entraîner nos algorithmes à généraliser la relation entre les caractéristiques d'entrée et la variable cible, permettant ainsi de formuler des prédictions précises sur de nouvelles données.
 
-Le choix de ces modèles par rapport à des modèles non-linéaires plus sophistiqués (comme les SVM ou le Deep Learning) s'appuie sur trois piliers fondamentaux:
-
-\textbf{Interprétabilité et Transparence:} L'un des défis majeurs des modèles complexes est l'opacité de leur processus de décision. À l'inverse, les modèles de régression offrent une interprétabilité intrinsèque exceptionnelle.
-
-\textbf{Robustesse face au Surapprentissage:} La complexité d'un modèle est souvent une arme à double tranchant. Les modèles très flexibles ont tendance à mémoriser le bruit présent dans les données d'entraînement (surapprentissage), ce qui dégrade leurs performances sur de nouvelles données.
-
-\textbf{Performance et Rapidité:} Les algorithmes de régression sont simples et consomment très peu de ressources techniques (mémoire, puissance de calcul). Ils sont beaucoup plus rapides à entraîner que des modèles complexes comme le Deep Learning.
-
+\noindent Le choix de ces modèles par rapport à des modèles non-linéaires plus sophistiqués (comme les SVM ou le Deep Learning) s'appuie sur trois piliers fondamentaux:
 
 \begin{itemize}[label=\textbullet]
-    \item \textbf{Pour la prévision du chiffre d’affaires:} Pour cette prévision, nous avons choisi la régression linéaire afin de prédire le chiffre d’affaires, car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d’affaires et les facteurs qui l’influencent, tels que les coûts ou le nombre de participations. Sa simplicité permet d’identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
-    \item \textbf{Pour la prévision des inscriptions mensuelles:} Pour cette prévision, nous avons opté pour le modèle Meta Prophet, reconnu pour sa performance dans l’analyse des séries temporelles. Ce modèle permet d’estimer l’évolution future des inscriptions sur une période de trois mois en se basant sur les données historiques. Grâce à ces prévisions, le directeur peut anticiper la demande, mieux planifier les ressources disponibles et prendre des décisions stratégiques afin d’optimiser la gestion du centre de formation.
-    \item \textbf{Pour la prédiction de l'abandon (Alerts IA) :} 
+\item \textbf{Interprétabilité et Transparence:} L'un des défis majeurs des modèles complexes est l'opacité de leur processus de décision. À l'inverse, les modèles de régression offrent une interprétabilité intrinsèque exceptionnelle.
+
+\item \textbf{Robustesse face au Surapprentissage:} La complexité d'un modèle est souvent une arme à double tranchant. Les modèles très flexibles ont tendance à mémoriser le bruit présent dans les données d'entraînement (surapprentissage), ce qui dégrade leurs performances sur de nouvelles données.
+
+\item\textbf{Performance et Rapidité:} Les algorithmes de régression sont simples et consomment très peu de ressources techniques (mémoire, puissance de calcul). Ils sont beaucoup plus rapides à entraîner que des modèles complexes comme le Deep Learning.
+\end{itemize}
+
+
+\noindent\textbf{Pour la prévision du chiffre d’affaires:} Pour cette prévision, nous avons choisi la régression linéaire afin de prédire le chiffre d’affaires, car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d’affaires et les facteurs qui l’influencent, tels que les coûts ou le nombre de participations. Sa simplicité permet d’identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
+\vspace{0.3cm}
+
+\noindent\textbf{Pour la prévision des inscriptions mensuelles:} Pour cette prévision, nous avons opté pour le modèle Meta Prophet, reconnu pour sa performance dans l’analyse des séries temporelles. Ce modèle permet d’estimer l’évolution future des inscriptions sur une période de trois mois en se basant sur les données historiques. Grâce à ces prévisions, le directeur peut anticiper la demande, mieux planifier les ressources disponibles et prendre des décisions stratégiques afin d’optimiser la gestion du centre de formation.
+\vspace{0.3cm}
+
+\noindent \textbf{Pour la prédiction de l'abandon (Alerts IA) :} 
     L'abandon est un phénomène binaire (un apprenant abandonne ou 
     ne le fait pas), ce qui correspond parfaitement à la nature de 
     la classification supervisée. Deux algorithmes sont candidats : 
@@ -544,8 +544,10 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
     pour la production, permettant ainsi au responsable 
     pédagogique d'intervenir de manière proactive auprès des 
     apprenants à risque.
-    \item \textbf{Pour la prédiction des sessions déficitaires:} Pour cette prédiction, nous avons utilisé la régression logistique car l'objectif ici est de répondre à une question binaire: la session sera-t-elle déficitaire ou non (Oui/Non) ? Contrairement à la régression classique, ce modèle est spécifiquement conçu pour la classification. Il permet de calculer la probabilité qu'une session tombe en déficit en fonction de certaines variables, ce qui en fait un outil parfait pour l'analyse des risques et l'anticipation des pertes.
-\end{itemize}
+\vspace{0.3cm}
+
+    \noindent \textbf{Pour la prédiction des sessions déficitaires:} Pour cette prédiction, nous avons utilisé la régression logistique car l'objectif ici est de répondre à une question binaire: la session sera-t-elle déficitaire ou non (Oui/Non) ? Contrairement à la régression classique, ce modèle est spécifiquement conçu pour la classification. Il permet de calculer la probabilité qu'une session tombe en déficit en fonction de certaines variables, ce qui en fait un outil parfait pour l'analyse des risques et l'anticipation des pertes.
+
 
 \subsubsection{Choix des paramètres}
  Cette section détaille l'ensemble des choix techniques et méthodologiques qui structurent notre solution, depuis la sélection des sources de données dans le Data Warehouse jusqu'à la mise en œuvre du processus de prédiction en temps réel
@@ -554,7 +556,7 @@ Le choix de ces modèles par rapport à des modèles non-linéaires plus sophist
 % ─────────────────────────────────────────────────────────────────
 % 1. RISK MODEL — ABANDON
 % ─────────────────────────────────────────────────────────────────
-\textbf{Pour la prédiction du risque d'abandon (Alerts IA) :}
+\noindent\textbf{Pour la prédiction du risque d'abandon (Alerts IA) :}
 
 \textbf{Tables utilisées:} Les données sont extraites des tables 
 opérationnelles PostgreSQL: \texttt{apprenants}, \texttt{users}, 
@@ -565,20 +567,20 @@ opérationnelles PostgreSQL: \texttt{apprenants}, \texttt{users},
 de vérité unique. L'absence d'une colonne \textit{abandon} impose la 
 construction d'un label proxy basé sur les comportements observés.
 
-\textbf{Attributs clés :}
+\noindent\textbf{Attributs clés:}
 \begin{itemize}[label=\textbullet]
-    \item \textbf{taux\_presence} : ratio de présences validées sur le 
-    nombre total de sessions ;
-    \item \textbf{absences\_consecutives} : longueur maximale d'une 
-    séquence d'absences consécutives ;
-    \item \textbf{moyenne\_notes} : moyenne des évaluations (0--20) ;
-    \item \textbf{tendance\_notes} : écart entre la dernière et la 
-    première note enregistrée ;
-    \item \textbf{moyenne\_satisfaction} : moyenne sur échelle 1--5 ;
-    \item \textbf{jours\_retard\_paiement} : ancienneté du dernier impayé.
+    \item \textbf{taux\_presence:} ratio de présences validées sur le 
+    nombre total de sessions;
+    \item \textbf{absences\_consecutives:} longueur maximale d'une 
+    séquence d'absences consécutives;
+    \item \textbf{moyenne\_notes:} moyenne des évaluations (0--20);
+    \item \textbf{tendance\_notes:} écart entre la dernière et la 
+    première note enregistrée;
+    \item \textbf{moyenne\_satisfaction:} moyenne sur échelle 1--5;
+    \item \textbf{jours\_retard\_paiement:} ancienneté du dernier impayé.
 \end{itemize}
 
-\textbf{Détails du modèle :}
+\textbf{Détails du modèle:}
 
 \begin{itemize}[label=\textbullet]
 
@@ -587,7 +589,7 @@ construction d'un label proxy basé sur les comportements observés.
     comportementales, en évitant l'apprentissage trivial des règles 
     métier fixes.
 
-    \textbf{Processus :}
+    \textbf{Processus:}
     \begin{enumerate}
     \item Calcul d'un score de risque $r$ par combinaison pondérée 
     des features, où le taux de présence et la moyenne des notes 
@@ -624,7 +626,7 @@ construction d'un label proxy basé sur les comportements observés.
     Cette étape prépare les données, entraîne les modèles candidats et 
     sélectionne le meilleur selon une métrique adaptée au contexte métier.
 
-    \textbf{Processus :}
+    \textbf{Processus:}
     \begin{enumerate}
         \item Séparation des variables explicatives ($X$) correspondant 
         aux 6 features comportementales, et de la variable cible ($y$) 
@@ -638,7 +640,7 @@ construction d'un label proxy basé sur les comportements observés.
         \item Division stratifiée 80/20 sur $y$ afin de préserver la 
         proportion des classes dans les deux ensembles et garantir une 
         évaluation représentative sur le jeu de test.
-        \item Entraînement de deux modèles candidats : la Régression 
+        \item Entraînement de deux modèles candidats: la Régression 
         Logistique et la Forêt Aléatoire, tous deux configurés avec 
         \texttt{class\_weight='balanced'} pour compenser un éventuel 
         déséquilibre entre apprenants stables et apprenants à risque.
@@ -652,7 +654,7 @@ construction d'un label proxy basé sur les comportements observés.
         dans un fichier \texttt{.pkl} pour éviter un réentraînement 
         systématique à chaque requête.
     \end{enumerate}
-    \textit{Résultat :} Un modèle entraîné et sélectionné avec ses 
+    \textit{Résultat:} Un modèle entraîné et sélectionné avec ses 
     statistiques d'évaluation complètes.
 
     \item \textbf{Prédiction (\texttt{predict\_risk}) :} Cette étape 
@@ -673,7 +675,7 @@ construction d'un label proxy basé sur les comportements observés.
         automatiquement en quatre niveaux d'alerte : critique 
         ($\geq 75$), élevé ($\geq 55$), modéré ($\geq 35$), faible.
     \end{enumerate}
-    \textit{Résultat :} Un score de risque et un niveau d'alerte 
+    \textit{Résultat:} Un score de risque et un niveau d'alerte 
     associé pour chaque apprenant, transmis au tableau de bord 
     pédagogique.
 
@@ -692,7 +694,7 @@ directe des inscriptions effectives: \texttt{sessions\_apprenants}
 enregistre les associations entre apprenants et sessions, tandis que 
 \texttt{sessions} fournit les dates nécessaires à l'agrégation mensuelle.
 
-\textbf{Attributs clés :}
+\textbf{Attributs clés:}
 \begin{itemize}[label=\textbullet]
     \item \textbf{ds} : mois au format \texttt{YYYY-MM}, constituant 
     l'axe temporel de la série ;
@@ -1074,46 +1076,40 @@ La qualité des conseils produits est évaluée selon deux critères:
 
 \subsection{Réalisation}
 
-
-\textbf{Interface de prediction du chiffre d'affaire et des sessions déficitaires}
-L'intégration utilisateur a été conçue pour être à la fois simple et rigoureuse, illustré dans les figures: \ref{cap:Interface de réinitialisation du mot de passe} et \ref{cap:Interface de réinitialisation:email invalide}
-
-\textbf{Accès Initial:} Par défaut, l'utilisateur consulte l'historique réel des données pour situer le contexte.
-
-\textbf{Filtres Obligatoires:} Le choix de l'horizon de prévision (1 ou 3 mois) est requis pour lancer le calcul.
+Cette section présente les interfaces les plus représentatives du module 
+prédictif et de recommandations stratégiques, illustrant la transition 
+entre les prédictions algorithmiques et les actions métiers concrètes.
 
 
-\textbf{Filtres Optionnels:} Le responsable peut affiner l'analyse par formateur ou par formation spécifique pour obtenir des prévisions segmentées.
+\noindent\textbf{Prévision du chiffre d'affaire:}
 
-
-
+\noindent La Figure  \ref{cap:Interface de prevision CA} synthétise la fonctionnalité de prédiction du chiffre d'affaires, où l'utilisateur peut interagir avec les résultats issus du modèle de série temporelle.
 
 \begin{figure}[H]
   \centering
     \centering
         \includegraphics[width=0.6\linewidth]{project/images/firstcap.png}
         \captionof{figure}{interface de prévison du chiffre d'affaire}
-        \label{cap:Interface de réinitialisation du mot de passe}
+        \label{cap:Interface de prevision CA}
 \end{figure}
 
 
+\noindent\textbf{Prévision des sessions déficitaires:}
+
+ La Figure  \ref{cap:Interface de prevision sessions deficitaires} traduit la mise en œuvre du suivi de rentabilité, où sont listées les sessions présentant un risque financier élevé selon les prévisions du système. 
 \begin{figure}[H]
     \centering
         \centering
         \includegraphics[width=0.6\linewidth]{project/images/2eme.png}
         \captionof{figure}{Interface de prevision des session déficitaire}
-        \label{cap:Interface de réinitialisation:email invalide}
+        \label{cap:Interface de prevision sessions deficitaires}
 \end{figure}
 
 
 
-Cette section présente les interfaces les plus représentatives du module 
-prédictif et de recommandations stratégiques, illustrant la transition 
-entre les prédictions algorithmiques et les actions métiers concrètes.
+\noindent\textbf{Alertes IA — Détection des risques d'abandon:}
 
-\textbf{Alertes IA — Détection des risques d'abandon:}
-
-La figure \ref{fig:alertes_ia} présente le tableau d'alertes généré par 
+\noindent La figure \ref{fig:alertes_ia} présente le tableau d'alertes généré par 
 le modèle de régression logistique.
 
 \begin{figure}[H]

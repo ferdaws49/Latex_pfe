@@ -22,7 +22,6 @@
 \usepackage{pslatex} % for times new roman,
 \usepackage{url} %pour les liens url
 \usepackage{adjustbox} %pour ajuster la taille des tableaux et des figures
-\usepackage{array} %  pour créer et personnaliser des tableaux dans votre document
 \usepackage{setspace} %pour controler l'espace entre les lignes \onehalfspacing \singlespacing \doublespacing
 \usepackage{enumerate}%listes à numéros
 \usepackage{longtable}%tableaux sur plusieurs pages(des tableaux twel yet9assmou ala des pages)
@@ -37,15 +36,16 @@
 \usepackage{makecell}  % Fel préambulee pour les tableaux
 \usepackage[font=small,labelfont=bf]{caption}%les caption seront en taille small et gras(figure1, table1) (kol tableau andou titre
 \onehalfspacing % basic elli dima nestamlou , teb3a el package setspace
+\raggedbottom
 
-\usepackage{float}
+
 \usepackage{amsmath}
 \usepackage{placeins}
 \usepackage{enumitem}
 \usepackage{makecell}
 
 % Définir la longueur de l'espacement entre les paragraphes
-\setlength{\parskip}{10pt} % Réglez la valeur selon vos préférences(9adeh el espaces bin les paragraphes)
+\setlength{\parskip}{0pt} % Réglez la valeur selon vos préférences(9adeh el espaces bin les paragraphes)
 %-------------------
 %pour choisir un style pour les chapitres
 %https://latex-tutorial.com/fancy-chapters-latex/
@@ -104,7 +104,7 @@
   \mtcaddchapter  %teb3a sommaire sghira bech tzidheli fi kol chapitre
   %La commande \mtcaddchapter est utilisée avec le package minitoc pour  créer un mini sommaire pour chaque chapitre, affichant les sections et sous-sections qu'il contient.0
  \clearpage
- \clearpage
+
  \input{project/Acronymes}
  \clearpage
  \pagenumbering{arabic}
