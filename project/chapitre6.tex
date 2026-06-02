@@ -40,7 +40,7 @@ Cette section présente l'analyse fonctionnelle et la conception technique des m
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=1\textwidth]{project/images/visualiser.png}
+ \includegraphics[width=1\textwidth]{project/images/sdbbs.png}
 \caption{Diagramme de cas d'utilisation « Visualisation et analyse des données »}
 \label{Diagramme de cas d'utilisation « visualiser »}
 \end{figure}
@@ -81,6 +81,7 @@ Scénario de base &
 &- L'utilisateur visualise les tendances et les évolutions des résultats du centre. \\
 &- L'utilisateur filtre les données (par date, formation, statut, etc.) pour affiner son analyse selon ses besoins spécifiques. \\
 &- Le système met à jour dynamiquement les visuels suite à l'application des filtres. \\
+\hline
 &- L'utilisateur analyse les résultats pour comprendre les performances des activités. \\
 &- L'utilisateur exporte un rapport (PDF/Excel/CSV) pour partager ses analyses avec d'autres parties prenantes. \\
 \hline
@@ -431,7 +432,7 @@ Scénario de base &
 &- Le système affiche automatiquement la courbe historique. \\
 &- Le Responsable Financier applique des filtres optionnels (date, formation, formateur, type). \\
 &- Le système recharge la courbe avec les critères sélectionnés. \\
-&- Le Responsable Financier clique sur l'option 1, 3 ou 6 mois. \\
+&- Le Responsable Financier clique sur l'option 1 ou 3 mois. \\
 &- Le modèle ML extrait l'historique et calcule les prévisions. \\
 &- Le système affiche historique et prévisions sous forme de courbe. \\
 \\
@@ -1161,7 +1162,7 @@ le modèle de régression logistique.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{project/images/alertsia.png}
-    \caption{Tableau d'alertes IA : risques d'abandon par apprenant}
+    \caption{Tableau d'alertes IA: risques d'abandon par apprenant}
     \label{fig:alertes_ia}
 \end{figure}
 

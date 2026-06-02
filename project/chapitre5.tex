@@ -100,7 +100,7 @@ Le responsable pédagogique est authentifié et dispose du rôle responsable pé
 
 Scénario de base &
 \textbf{Scénario 1 : Créer une session de formation} \\
-\hline
+
 
 &- Le responsable pédagogique accède à la page « Planning des Sessions ». \\
 &- Il clique sur le bouton « Nouvelle session ». \\
@@ -721,22 +721,24 @@ Dans cette partie, nous présentons le backlog du sprint 5, élaboré à partir 
 \endhead
 
 Cas d'utilisation & 
-\begin{itemize}
-    \item Importer des données
-\end{itemize} \\
+
+ Importer des données
+\\
 \hline
 Acteur & 
-\begin{itemize}
-    \item Administrateur
-\end{itemize} \\
+  Administrateur
+ \\
 \hline
 Préconditions & 
-\begin{itemize}
-    \item L'administrateur est authentifié et possède les droits d'import
-    \item Le système est fonctionnel et la base de données accessible
-    \item Au moins une entité d'import est configurée dans le système
-    \item Un fichier de données est disponible
-\end{itemize} \\
+
+    L'administrateur est authentifié et possède les droits d'import
+     
+    Le système est fonctionnel et la base de données accessible
+     
+     Au moins une entité d'import est configurée dans le système
+   
+     Un fichier de données est disponible
+ \\
 \hline
 Scénario de base & 
 \textbf{Scénario 1 : Sélection de l'entité cible} \\
@@ -802,11 +804,14 @@ Scénarios alternatifs &
 & \textbf{9.1 Échec technique durant l'import:} Si une erreur survient lors de l'insertion en base de données, le système effectue un rollback automatique de la transaction en cours. Toutes les données de l'import sont annulées et le statut passe à « Échoué ». \\
 \hline
 Post-conditions & 
-\begin{itemize}[leftmargin=*]
-    \item Les données validées sont intégrées dans la table de l'entité sélectionnée.
-    \item Le statut du job d'import est mis à jour dans la table \texttt{import\_job}
-    \item Les logs d'audit sont mis à jour avec les actions de l'administrateur.
-\end{itemize} \\
+
+
+Les données validées sont intégrées dans la table de l'entité sélectionnée.
+    
+Le statut du job d'import est mis à jour dans la table \texttt{import\_job}
+ 
+Les logs d'audit sont mis à jour avec les actions de l'administrateur.
+ \\
 \hline
 \end{longtable}
 
