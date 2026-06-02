@@ -14,6 +14,7 @@ Ce rapport de sprint détaille l'analyse fonctionnelle, la conception et les él
 \subsection{Le backlog du sprint 3}
 
 Le tableau \ref{tab:sprint3_backlog}  présente l'ensemble des éléments du backlog retenus pour ce sprint, classés par ordre de priorité décroissante. Chaque élément est formulé du point de vue du responsable pédagogique et décrit la fonctionnalité attendue ainsi que la valeur métier qu'elle apporte. Les fonctionnalités prioritaires portent sur les opérations essentielles de gestion des sessions et des formations, garantissant la livraison d'un module pleinement opérationnel à l'issue du sprint. Les fonctionnalités de suivi, telles que la consultation des participants et la gestion des présences, complètent le périmètre en apportant une valeur ajoutée au responsable pédagogique dans son pilotage quotidien de l'activité de formation.
+\vspace{0.2cm}
 \setlength{\LTpre}{0pt}
 \setlength{\LTpost}{0pt}
 {\interlinepenalty=10000
@@ -28,8 +29,6 @@ Le tableau \ref{tab:sprint3_backlog}  présente l'ensemble des éléments du bac
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
 \endhead
-\hline
-\multicolumn{4}{r}{\textit{Suite à la page suivante\ldots}} \\
 \endfoot
 \hline
 \endlastfoot
@@ -57,10 +56,11 @@ Le tableau \ref{tab:sprint3_backlog}  présente l'ensemble des éléments du bac
 \subsection{Analyse}
 
 La phase d'analyse de ce sprint porte sur l'identification et la formalisation des exigences fonctionnelles liées à la gestion de la page « Planning des Sessions ». Elle se concentre exclusivement sur les opérations CRUD appliquées aux entités Session et Formation, telles qu'elles sont manipulées par le responsable pédagogique. Pour chaque fonctionnalité identifiée, un cas d'utilisation structuré est élaboré, décrivant les acteurs impliqués, les préconditions nécessaires, le scénario nominal ainsi que les scénarios alternatifs envisageables, afin de couvrir l'ensemble des comportements attendus du système.
+\vspace{0.3cm}
 
 \noindent\textbf{Amélioration du cas d'utilisation « Gestion et Planification des Sessions de Formation »:}
 
-\noindent La figure \ref{Diagramme de cas d'utilisation « planning »} illustre le diagramme de cas d'utilisation présentant les interactions entre le responsable pédagogique et les fonctionnalités de gestion des sessions et des formations offertes par la plateforme.
+\noindent La figure \ref{tab:Gestion et Planification des Sessions de Formation} illustre le diagramme de cas d'utilisation présentant les interactions entre le responsable pédagogique et les fonctionnalités de gestion des sessions et des formations offertes par la plateforme.
 {\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
 \caption{Cas d'utilisation -- Gestion et Planification des Sessions de Formation}
@@ -175,10 +175,10 @@ Post-conditions &
 
 La phase de conception traduit les exigences fonctionnelles identifiées en phase d'analyse en modèles techniques exploitables par l'équipe de développement. Elle s'appuie sur des diagrammes de séquence UML pour représenter les interactions dynamiques entre le responsable pédagogique, l'interface utilisateur (Frontend), la logique métier (Backend) et la persistance des données (Base de Données), pour chacune des opérations CRUD du sprint. Ces modèles constituent le fil conducteur technique du développement et garantissent la cohérence entre les exigences métier et l'architecture applicative retenue.
 
-\vspace{2cm}
+\vspace{0.3cm}
 \noindent\textbf{Diagramme de séquence: Créer une formation}
 
-\noindent Comme le montre la figure \ref{cap:Diagramme de séquence <<Creation formation>>}, Ce diagramme de séquance illustre le processus de création d'une nouvelle formation. Les interactions principales incluent l'affichage du formulaire, la soumission des données, la validation côté serveur et la réponse du système.
+\noindent Comme le montre la figure \ref{cap:Diagramme de séquence <<Creation formation>>}, ce diagramme de séquance illustre le processus de création d'une nouvelle formation. Les interactions principales incluent l'affichage du formulaire, la soumission des données, la validation côté serveur et la réponse du système.
 \vspace{0.3cm}
 \begin{figure}[H]
   \centering
@@ -187,6 +187,7 @@ La phase de conception traduit les exigences fonctionnelles identifiées en phas
   \label{cap:Diagramme de séquence <<Creation formation>>}
 \end{figure}
 \vspace{0.3cm}
+\newpage
 \noindent \textbf{Diagramme de séquence: créer session}
 
 \noindent Le diagramme presenté dans la figure \ref{cap:Diagramme de séquence <<Créer session>>} représente la séquence des opérations nécessaires pour créer une session. Il détaille comment le Responsable Pédagogique interagit avec le Frontend pour saisir les informations de la session, comment ces données sont envoyées au Backend pour traitement (incluant la vérification de la disponibilité des ressources) et comment elles sont finalement stockées dans la Base de Données.
@@ -208,6 +209,7 @@ Le diagramme de la Figure \ref{cap:Diagramme de séquence <<modifier session>>} 
   \label{cap:Diagramme de séquence <<modifier session>>}
 \end{figure}
 
+\vspace{0.3cm}
 \noindent\textbf{Diagramme de séquence: Supprimer formation}
 
 \noindent La figure \ref{cap:Diagramme de séquence <<supprimer session>>} illustre le processus du suppression d'une formation. Le diagramme met en évidence les validations critiques (vérification des dépendances) avant d'autoriser l'annulation.\begin{figure}[H]
@@ -224,10 +226,14 @@ Le diagramme de la Figure \ref{cap:Diagramme de séquence <<modifier session>>} 
 
 
 Cette section propose une série de captures d'écran couvrent l’ensemble du parcours utilisateur, depuis la création et la modification d’une session jusqu’à la gestion des présences , en passant par la consultation des participants. Elles témoignent de la conformité du livrable par rapport aux cas d’utilisation définis en phase d’analyse, ainsi que de la qualité de l’expérience utilisateur mise en œuvre.
+\vspace{0.3cm}
 
 \noindent \textbf{Interface de planification des sessions:} 
 
-\noindent La figure \ref{fig:capture1} présente le tableau de bord de planification affichant l'ensemble des sessions programmées avec leurs dates, horaires et statuts.
+\noindent La figure~\ref{fig:capture1} présente l'interface de planification des sessions avec leurs dates, horaires et statuts.
+\noindent\textbf{Liste participants:}
+
+\noindent La figure~\ref{fig:capture2} illustre la liste des participants inscrits avec leurs informations essentielles et options de filtrage.
 
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
@@ -236,9 +242,7 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
     \label{fig:capture1}
 \end{figure}
 
-\noindent\textbf{Liste participants:}
 
-\noindent La figure~\ref{fig:capture2} illustre la liste des participants inscrits avec leurs informations essentielles et options de filtrage.
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
     \includegraphics[width=0.8\textwidth]{project/images/listeparticip.png}
@@ -246,7 +250,7 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
     \label{fig:capture2}
 
 \end{figure}
-
+\newpage
 \noindent\textbf{Gestion des présences:}
 
 \noindent La figure~\ref{fig:capture3} montre l'interface de marquage des présences.
@@ -353,8 +357,10 @@ Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regro
 
 Dans cette section, nous présentons l'analyse fonctionnelle de l'espace apprenant à travers une modélisation UML. L'objectif est d'identifier clairement les cas d'utilisation couverts, les acteurs impliqués et les interactions entre le système et l'apprenant. Cette analyse constitue le fondement de la conception et oriente les choix d'implémentation effectués lors du sprint.
 
+\vspace{3cm}
 \vspace{0.8cm}
-\textbf{Amélioration du cas d'utilisation « Espace apprenant»:}
+
+\noindent\textbf{Amélioration du cas d'utilisation « Espace apprenant»:}
 
 Le diagramme de cas d'utilisation de la figure \ref{Diagramme de cas d'utilisation « Espace apprenant »} illustre l'ensemble des fonctionnalités offertes à l'apprenant dans le cadre de cette plateforme. Il met en évidence les relations d'inclusion et d'extension entre les différents cas d'utilisation, permettant de structurer clairement les parcours fonctionnels disponibles. L'apprenant interagit directement avec six grandes familles de fonctionnalités : le tableau de bord, les formations, les inscriptions, l'emploi du temps, les résultats et les paiements.
 
@@ -518,25 +524,27 @@ Cette section détaille la mise en œuvre de l'espace apprenant, en présentant 
     \label{fig:vue-globale}
 \end{figure}
 
-\textbf{Interface Mes Formations:}
+\noindent\textbf{Interface Mes Formations:}
 
-\noindent Cette section regroupe toutes les formations auxquelles l'apprenant est actuellement inscrit (figure~\ref{fig:mes-formations}). En cliquant sur une formation, l'apprenant accède à une page dédiée présentant les sessions auxquelles il a participé, les formateurs et d'autres informations spécifiques (figure~\ref{fig:formation-details}).
+\noindent Cette section regroupe toutes les formations auxquelles l'apprenant est actuellement inscrit. Elle permet de consulter les détails de chaque formation ainsi que les sessions associées et les informations relatives aux formateurs (figure~\ref{fig:formations}).
+\begin{figure}[h!]
+    \centering
 
-\begin{center}
-    \begin{minipage}{0.45\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[scale=0.1]{project/images/mes-formations.png} 
-        \captionof{figure}{Liste des formations inscrites}
-        \label{fig:mes-formations}
-    \end{minipage}
+        \includegraphics[width=\linewidth]{project/images/mes-formations.png}
+        \caption{Liste des formations inscrites}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.45\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[scale=0.1]{project/images/formations details.png} 
-        \captionof{figure}{Détails d'une formation spécifique}
-        \label{fig:formation-details}
-    \end{minipage}
-\end{center}
+        \includegraphics[width=\linewidth]{project/images/formations details.png}
+        \caption{Détails d'une formation spécifique}
+    \end{subfigure}
+
+    \caption{Consultation des formations et leurs détails}
+    \label{fig:formations}
+\end{figure}
 
 \noindent Aprés avoir suivi une formation, l'apprenant a la possibilité de lui attribuer une note et de laisser un commentaire, contribuant ainsi à l'évaluation continue de la plateforme (figures~\ref{fig:evaluation-vide} et~\ref{fig:evaluation-remplie}). Une confirmation visuelle s'affiche une fois l'évaluation soumise (figure~\ref{fig:success-evaluation}).
 
@@ -574,31 +582,35 @@ Cette section détaille la mise en œuvre de l'espace apprenant, en présentant 
     \label{fig:mes-inscriptions}
 \end{figure}
 
+\vspace{0.3cm}
+
 \noindent \textbf{Interface Mes résultats:}
 
 \noindent Cette section fournit un aperçu des performances de l'apprenant pour les formations suivies. Elle présente la moyenne générale et le statut de réussite ou d'échec. En cliquant sur l'une des formations, les notes obtenues pour chaque évaluation et le statut final sont affichés. Si aucune donnée de résultat n'est disponible, un message informatif est affiché pour l'apprenant.
+\vspace{3cm}
 
 \noindent\textbf{Interface Planning des Sessions:}
 
-\noindent Cette interface offre une vue d'ensemble des sessions planifiées, permettant à l'apprenant de visualiser son emploi du temps en affichant les dates et horaires des sessions à venir. Deux vues sont proposées : une vue mensuelle (figure~\ref{fig:planning-mois}) et une vue hebdomadaire (figure~\ref{fig:planning-semaine}).
-
-\begin{center}
-   \begin{minipage}{0.7\textwidth}
+\noindent Cette interface offre une vue d'ensemble des sessions planifiées, permettant à l'apprenant de visualiser son emploi du temps en affichant les dates et horaires des sessions à venir. Deux modes de visualisation sont proposés : une vue mensuelle et une vue hebdomadaire (voire figure~\ref{fig:planning}).
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{project/images/emploi.png} 
-    \captionof{figure}{Vue mensuelle du planning des sessions}
-    \label{fig:planning-mois}
-    \end{minipage}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/emploi.png}
+        \caption{Vue mensuelle du planning des sessions}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.7\textwidth}
-    \centering
-    \includegraphics[width=0.5\textwidth]{project/images/emploi-week.png} 
-    \captionof{figure}{Vue hebdomadaire du planning des sessions}
-    \label{fig:planning-semaine}
-    \end{minipage}
-\end{center}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{project/images/emploi-week.png}
+        \caption{Vue hebdomadaire du planning des sessions}
+    \end{subfigure}
 
-\noindent \textbf{Interface \textit{Paiement}}
+    \caption{Planning des sessions (vue mensuelle et hebdomadaire)}
+    \label{fig:planning}
+\end{figure}
+
+\noindent \textbf{Interface Paiement}
 
 \noindent Cette section gère toutes les informations relatives aux transactions financières de l'apprenant (figure~\ref{fig:paiement}). Elle liste tous les paiements effectués avec les détails de chaque transaction, et affiche le total payé, le reste à payer ainsi que le nombre de sessions associées aux paiements.
 
@@ -780,7 +792,8 @@ La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présen
 \subsection{Réalisation}
 Dans cette section, nous présentons les interfaces réalisées pour le module d'importation des données, en mettant l'accent sur les différentes étapes du processus d'intégration. Les captures d'écran suivantes illustrent les écrans de sélection de l'entité cible, de mapping des colonnes, d'aperçu des données et de rapport d'import.
 
-\vspace{0.8cm}
+\vspace{0.3cm}
+
 \noindent \textbf{Aperçu de l’interface d’import:}
 
 \noindent La figure \ref{fig:admin_import} présente l'écran principal du module d'import avec la sélection de l'entité cible et l'historique des jobs d'importation.

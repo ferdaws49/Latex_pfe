@@ -152,24 +152,24 @@ L'avantage majeur de cette architecture est la \textbf{dénormalisation contrôl
 Les dimensions constituent les axes d’analyse. Elles permettent de "découper" les chiffres selon différents contextes métier: 
 
 \begin{itemize}[label=\textbullet]
-    \item \textbf{Dimension Temps (dim\_temps):} Axe temporel indispensable permettant de suivre l'évolution des indicateurs par jour, mois, trimestre ou année.
-    \item \textbf{Dimension Formation (dim\_formation):} Regroupe les informations sur les cours (titre, catégorie, statut) pour analyser la rentabilité par thématique.
-    \item \textbf{Dimension Session (dim\_session):} Détaille le cadre de réalisation (type, capacité), permettant d'évaluer l'efficacité de l'organisation.
-    \item \textbf{Dimension Formateur (dim\_formateur):} Identifie l'intervenant pour analyser l'impact des coûts d'animation sur la marge brute.
-    \item \textbf{Dimension Apprenant (dim\_apprenant):} Permet de segmenter les résultats par client et d'analyser les comportements de paiement.
-    \item \textbf{Dimension Type Finance (dim\_type\_finance):} Définit la nature du flux (paiement, dépense\_formateur, depense\_logistique) pour une classification précise.
+    \item \textbf{Dimension Temps (dim\_temps):} permet l’analyse temporelle des indicateurs financiers (jour, mois, trimestre, année) afin de suivre leur évolution dans le temps.
+    \item \textbf{Dimension Formation (dim\_formation):} décrit les formations (titre, catégorie, statut) et permet d’analyser la performance et la rentabilité par domaine.
+    \item \textbf{Dimension Session (dim\_session):} fournit des informations sur les sessions (type, capacité, prix), facilitant l’évaluation de leur organisation et de leur efficacité.
+    \item \textbf{Dimension Formateur (dim\_formateur):} identifie les intervenants afin d’analyser leur impact sur les coûts et la rentabilité des sessions.
+    \item \textbf{Dimension Apprenant (dim\_apprenant):} permet la segmentation des données par apprenant et l’étude des comportements de paiement.
+    \item \textbf{Dimension Type Finance (dim\_type\_finance):} décrit la nature des flux financiers (paiement, dépense\_formateur, dépense\_logistique) pour une classification claire des transactions.
 \end{itemize}
 
-\textbf{La Table de Faits: fact\_finance :}
+\textbf{La Table de Faits: fact\_finance:}
 
-La table de faits enregistre les événements quantitatifs liés à l'activité financière.
+La table de faits centralise les mesures quantitatives liées à l’activité financière. Elle enregistre chaque transaction financière avec son montant ainsi que les clés de liaison vers les différentes dimensions.
 
-\textbf{Les indicateurs (KPIs) stockés sont:}
+L’indicateur principal stocké est:
 \begin{itemize}[label=$\star$]
-    \item \textbf{Montant:} Flux financier réel enregistré (Cash-flow).
+    \item \textbf{Montant:} représente le flux financier (revenu ou dépense) enregistré dans le système.
 \end{itemize}
 
-\textbf{Liaison et Clés Techniques:} La liaison entre le centre (le fait) et les branches (les dimensions) s'effectue via des clés techniques générées (\textit{sk\_temps, sk\_session}, etc.). Cette méthode assure l'intégrité du référentiel analytique indépendamment des évolutions de la base de données de production.ccélère la génération des graphiques dans le dashboard final.
+\textbf{Liaison et Clés Techniques:} La liaison entre le centre (le fait) et les branches (les dimensions) s'effectue via des clés techniques générées (\textit{sk\_temps, sk\_session}, etc.). Cette méthode assure l'intégrité du référentiel analytique indépendamment des évolutions de la base de données de production. accélère la génération des graphiques dans le dashboard final.
 
 \item \textbf{Restitution et Analyse}
 \begin{itemize}[label=$\star$]
@@ -182,23 +182,23 @@ La table de faits enregistre les événements quantitatifs liés à l'activité 
 \subsection{Réalisation}
 
 Dans cette section, nous présentons les éléments de réalisation du sprint 6, en mettant l'accent sur les interfaces de visualisation des données, les fonctionnalités d'analyse et les options d'exportation.
+\vspace{0.3cm}
+\noindent\textbf{Espace Financier}
 
-\noindent\textbf{Dashboard Financier}
-
-\noindent Le tableau de bord financier offre une vue d'ensemble stratégique des indicateurs clés de performance (KPIs) et des tendances financières. La figure~\ref{fig:dashboard-financier} présente l'interface dédiée au responsable financier, tandis que la figure \ref{fig:interface-depense} illustre l'écran de gestion des dépenses.
+\noindent Le tableau de bord financier offre une vue d'ensemble stratégique des indicateurs clés de performance (KPIs) et des tendances financières. La figure~\ref{fig:dashboard-financier} présente l'interface dédiée au responsable financier, tandis que la figure \ref{fig:interface-depense} illustre l'analyse des dépenses du centre.
 
 \begin{center}
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.5\linewidth]{project/images/resp_finacier dashboars.png} 
-        \captionof{figure}{Interface de dashboard <<responsable financier>>}
+        \includegraphics[width=1\linewidth]{project/images/dash.png} 
+        \captionof{figure}{Tableau de bord <<responsable financier>>}
         \label{fig:dashboard-financier}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.5\linewidth]{project/images/cout-dashboard.png}
-        \captionof{figure}{Interface <<dépense>>}
+        \includegraphics[width=0.9\linewidth]{project/images/cout-dashboard.png}
+        \captionof{figure}{Analyse des dépenses}
         \label{fig:interface-depense}
     \end{minipage}
 \end{center}
@@ -301,13 +301,17 @@ Dans cette partie, nous présentons le backlog du sprint 7, qui se concentre sur
 
 Cette section présente l'analyse fonctionnelle et la conception technique du module prédictif et de recommandations. L'objectif est de formaliser les interactions entre les différents acteurs métier (Responsable Pédagogique, Responsable Financier et Directeur) et le système d'intelligence artificielle, en s'appuyant sur les modèles de Machine Learning retenus.
 
+
+
+\vspace{0.3cm}
+
 \noindent\textbf{Amélioration du cas d'utilisation « Module Prédictif et Recommandations »:}
 
 \noindent La figure \ref{fig:use_case_ia} illustre le diagramme de cas d'utilisation présentant les interactions entre les acteurs métier et les fonctionnalités prédictives du système. Chaque cas d'utilisation repose sur le « Module IA » qui orchestre les algorithmes d'apprentissage automatique.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/moduleIAUseCase.png}
+    \includegraphics[width=1\textwidth]{project/images/DG-IA.png}
     \caption{Diagramme de cas d'utilisation « Module Prédictif et Recommandations »}
     \label{fig:use_case_ia}
 \end{figure}
@@ -428,12 +432,23 @@ La phase de conception traduit les exigences fonctionnelles du module prédictif
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{project/images/DS-previsionCA.png}
+  \includegraphics[width=0.9\textwidth]{project/images/Dc12.png}
   \caption{Diagramme de séquence « Prévision des revenus »}
   \label{fig:ds_prevision_revenus}
 \end{figure}
 
 \vspace{0.5cm}
+
+\noindent\textbf{Diagramme de séquence: Prédiction des sessions déficitaires}
+
+Le mécanisme d'interaction entre les différents services, depuis la requête initiale jusqu'à la génération des recommandations stratégiques, est illustré et présenté en détail dans le diagramme de séquence de la Figure \ref{fig:ds_session_deficitaire}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{project/images/DS-session-deficitaire.png}
+  \caption{Diagramme de séquence « Rapports stratégiques »}
+  \label{fig:ds_session_deficitaire}
+\end{figure}
+
 
 \noindent\textbf{Diagramme de séquence: Rapports stratégiques (Prévision des inscriptions et Recommandations)}
 
@@ -465,14 +480,18 @@ L'objectif est d'entraîner nos algorithmes à généraliser la relation entre l
 \end{itemize}
 
 
-\noindent\textbf{Pour la prévision du chiffre d’affaires:} Pour cette prévision, nous avons choisi la régression linéaire afin de prédire le chiffre d’affaires, car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d’affaires et les facteurs qui l’influencent, tels que les coûts ou le nombre de participations. Sa simplicité permet d’identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
+\noindent\textbf{Pour la prévision du chiffre d’affaires:}
+\noindent Pour cette prévision, nous avons choisi la régression linéaire afin de prédire le chiffre d’affaires, car il s’agit d’une variable quantitative continue. Ce modèle est idéal pour établir une relation directe entre le chiffre d’affaires et les facteurs qui l’influencent, tels que les coûts ou le nombre de participations. Sa simplicité permet d’identifier clairement les tendances, offrant ainsi une prévision chiffrée précise et facile à interpréter pour la direction.
 \vspace{0.3cm}
 
-\noindent\textbf{Pour la prévision des inscriptions mensuelles:} Pour cette prévision, nous avons opté pour le modèle Meta Prophet, reconnu pour sa performance dans l’analyse des séries temporelles. Ce modèle permet d’estimer l’évolution future des inscriptions sur une période de trois mois en se basant sur les données historiques. Grâce à ces prévisions, le directeur peut anticiper la demande, mieux planifier les ressources disponibles et prendre des décisions stratégiques afin d’optimiser la gestion du centre de formation.
+\noindent\textbf{Pour la prévision des inscriptions mensuelles:} 
+
+\noindent Pour cette prévision, nous avons opté pour le modèle Meta Prophet, reconnu pour sa performance dans l’analyse des séries temporelles. Ce modèle permet d’estimer l’évolution future des inscriptions sur une période de trois mois en se basant sur les données historiques. Grâce à ces prévisions, le directeur peut anticiper la demande, mieux planifier les ressources disponibles et prendre des décisions stratégiques afin d’optimiser la gestion du centre de formation.
 \vspace{0.3cm}
 
-\noindent \textbf{Pour la prédiction de l'abandon (Alerts IA) :} 
-    L'abandon est un phénomène binaire (un apprenant abandonne ou 
+\noindent \textbf{Pour la prédiction de l'abandon (Alerts IA):}
+
+\noindent L'abandon est un phénomène binaire (un apprenant abandonne ou 
     ne le fait pas), ce qui correspond parfaitement à la nature de 
     la classification supervisée. Deux algorithmes sont candidats : 
     la \textbf{régression logistique}, privilégiée pour son 
@@ -489,7 +508,9 @@ L'objectif est d'entraîner nos algorithmes à généraliser la relation entre l
     apprenants à risque.
 \vspace{0.3cm}
 
-    \noindent \textbf{Pour la prédiction des sessions déficitaires:} Pour cette prédiction, nous avons utilisé la régression logistique car l'objectif ici est de répondre à une question binaire: la session sera-t-elle déficitaire ou non (Oui/Non) ? Contrairement à la régression classique, ce modèle est spécifiquement conçu pour la classification. Il permet de calculer la probabilité qu'une session tombe en déficit en fonction de certaines variables, ce qui en fait un outil parfait pour l'analyse des risques et l'anticipation des pertes.
+\noindent \textbf{Pour la prédiction des sessions déficitaires:} 
+
+\noindent Pour cette prédiction, nous avons utilisé la régression logistique car l'objectif ici est de répondre à une question binaire: la session sera-t-elle déficitaire ou non (Oui/Non) ? Contrairement à la régression classique, ce modèle est spécifiquement conçu pour la classification. Il permet de calculer la probabilité qu'une session tombe en déficit en fonction de certaines variables, ce qui en fait un outil parfait pour l'analyse des risques et l'anticipation des pertes.
 
 
 \subsubsection{Choix des paramètres}
@@ -499,18 +520,19 @@ L'objectif est d'entraîner nos algorithmes à généraliser la relation entre l
 % ─────────────────────────────────────────────────────────────────
 % 1. RISK MODEL — ABANDON
 % ─────────────────────────────────────────────────────────────────
-\noindent\textbf{Pour la prédiction du risque d'abandon (Alerts IA) :}
+\noindent\textbf{Pour la prédiction du risque d'abandon (Alerts IA):}
 
-\textbf{Tables utilisées:} Les données sont extraites des tables 
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Tables utilisées:} Les données sont extraites des tables 
 opérationnelles PostgreSQL: \texttt{apprenants}, \texttt{users}, 
 \texttt{presences}, \texttt{performance}, \texttt{satisfaction}, 
 \texttt{finances} et \texttt{sessions\_apprenants}.
-
-\textbf{Pourquoi ces tables ?} La base relationnelle constitue la source 
+     \begin{itemize}
+        \item \textbf{Pourquoi ces tables?} La base relationnelle constitue la source 
 de vérité unique. L'absence d'une colonne \textit{abandon} impose la 
 construction d'un label proxy basé sur les comportements observés.
-
-\noindent\textbf{Attributs clés:}
+     
+     \item \textbf{Attributs clés:}
 \begin{itemize}[label=\textbullet]
     \item \textbf{taux\_presence:} ratio de présences validées sur le 
     nombre total de sessions;
@@ -521,9 +543,9 @@ construction d'un label proxy basé sur les comportements observés.
     première note enregistrée;
     \item \textbf{moyenne\_satisfaction:} moyenne sur échelle 1--5;
     \item \textbf{jours\_retard\_paiement:} ancienneté du dernier impayé.
+     \end{itemize}
 \end{itemize}
-
-\textbf{Détails du modèle:}
+\item \textbf{Détails du modèle:}
 
 \begin{itemize}[label=\textbullet]
 
@@ -561,7 +583,7 @@ construction d'un label proxy basé sur les comportements observés.
         ce qui force le modèle à apprendre des patterns statistiques 
         plutôt que des règles déterministes.
     \end{enumerate}
-    \textit{Résultat :} Un DataFrame enrichi d'une colonne 
+    \textit{Résultat:} Un DataFrame enrichi d'une colonne 
     \texttt{abandon} binaire (0 / 1) avec une distribution équilibrée 
     entre les deux classes.
 
@@ -623,38 +645,42 @@ construction d'un label proxy basé sur les comportements observés.
     pédagogique.
 
 \end{itemize}
+\end{itemize}
+
+
+
+
 % ─────────────────────────────────────────────────────────────────
 % 2. FORECAST — INSCRIPTIONS
 % ─────────────────────────────────────────────────────────────────
-\textbf{Pour la prévision des inscriptions mensuelles :}
- 
-
-\textbf{Tables utilisées:} \texttt{sessions\_apprenants} et 
-\texttt{sessions}.
-
-\textbf{Pourquoi ces tables ?} Ces deux tables constituent la source 
+\vspace{0.3cm}
+\textbf{Pour la prévision des inscriptions mensuelles:}
+ \begin{itemize}[label=\textbullet]
+    \item \textbf{Tables utilisées:} \texttt{sessions\_apprenants} et \texttt{sessions}.
+    \begin{itemize}
+        \item \textbf{Pourquoi ces tables ?} Ces deux tables constituent la source 
 directe des inscriptions effectives: \texttt{sessions\_apprenants} 
 enregistre les associations entre apprenants et sessions, tandis que 
 \texttt{sessions} fournit les dates nécessaires à l'agrégation mensuelle.
-
-\textbf{Attributs clés:}
+        \item  \textbf{Attributs clés:}
 \begin{itemize}[label=\textbullet]
-    \item \textbf{ds} : mois au format \texttt{YYYY-MM}, constituant 
+    \item \textbf{ds:} mois au format \texttt{YYYY-MM}, constituant 
     l'axe temporel de la série ;
-    \item \textbf{y} : nombre d'inscriptions effectives agrégées 
+    \item \textbf{y:} nombre d'inscriptions effectives agrégées 
     pour chaque mois.
 \end{itemize}
-
-\textbf{Détails du modèle :}
+    \end{itemize} 
+    \item  
+\textbf{Détails du modèle:}
 
 \begin{itemize}[label=\textbullet]
 
     \item \textbf{Chargement des données 
-    (\texttt{load\_inscriptions\_data}) :} Cette étape agrège 
+    (\texttt{load\_inscriptions\_data:})} Cette étape agrège 
     les inscriptions mensuelles et prépare la série temporelle 
     pour l'entraînement.
 
-    \textbf{Processus :}
+    \textbf{Processus:}
     \begin{enumerate}
         \item Agrégation mensuelle des inscriptions effectives 
         en joignant \texttt{sessions\_apprenants} et 
@@ -675,15 +701,15 @@ enregistre les associations entre apprenants et sessions, tandis que
         moins de 20 jours écoulés, afin d'éviter un biais 
         de sous-estimation dû à des données incomplètes.
     \end{enumerate}
-    \textit{Résultat :} Une série temporelle mensuelle lissée, 
+    \textit{Résultat:} Une série temporelle mensuelle lissée, 
     prête à être utilisée par les deux modèles candidats.
 
     \item \textbf{Entraînement et sélection du modèle 
-    (\texttt{train\_forecast\_model}) :} Cette étape compare 
+    (\texttt{train\_forecast\_model}):} Cette étape compare 
     deux approches complémentaires sur un split chronologique 
     rigoureux et retient la plus performante selon le MAE.
 
-    \textbf{Processus :}
+    \textbf{Processus:}
     \begin{enumerate}
         \item Division chronologique 80/20 du jeu de données, 
         en respectant strictement l'ordre temporel pour éviter 
@@ -714,7 +740,7 @@ enregistre les associations entre apprenants et sessions, tandis que
         dans un fichier \texttt{.pkl}, incluant les données 
         d'historique et les métriques d'évaluation.
     \end{enumerate}
-    \textit{Résultat :} Un modèle principal sélectionné et 
+    \textit{Résultat:} Un modèle principal sélectionné et 
     un fallback sauvegardés, accompagnés de leurs métriques 
     de performance respectives.
 
@@ -722,7 +748,7 @@ enregistre les associations entre apprenants et sessions, tandis que
     Cette étape génère les prévisions mensuelles futures 
     à partir du modèle pré-entraîné.
 
-    \textbf{Processus :}
+    \textbf{Processus:}
     \begin{enumerate}
         \item Chargement du modèle principal depuis le fichier 
         \texttt{.pkl} sans réentraînement, garantissant des 
@@ -738,11 +764,16 @@ enregistre les associations entre apprenants et sessions, tandis que
         le fallback LinearTrend est automatiquement activé 
         pour garantir la continuité du service.
     \end{enumerate}
-    \textit{Résultat :} Une liste de prévisions mensuelles 
+    \textit{Résultat:} Une liste de prévisions mensuelles 
     datées avec leurs bornes de confiance et la tendance 
     globale détectée.
 
 \end{itemize}
+
+       
+\end{itemize}
+
+
 
 
  
@@ -753,7 +784,7 @@ Le système extrait les données financières agrégées par mois depuis le Data
 \begin{itemize}[label=\textbullet]
 \item\textbf{Les flux financiers:} Le Chiffre d'Affaires mensuel réel (somme des paiements encaissés) et le volume des impayés (factures émises mais non réglées).
 \item\textbf{Le volume d'activité:} Le nombre d'apprenants uniques ayant réalisé au moins une transaction (paiement ou impayé) durant le mois.
-\item\textbf{La planification pédagogique:} La capacité effictive du mois, c'est-à-dire le nombre total de places offertes par les sessions ayant effectivement généré des revenus. Cette donnée est extraite du calendrier pédagogique en croisant les flux financiers réels, afin d'exclure les sessions sans activité commerciale et garantir la cohérence entre l'offre et le chiffre d'affaires.
+\item\textbf{La planification pédagogique:} La capacité effictive du mois, c'est\-à\-dire le nombre total de places offertes par les sessions ayant effectivement généré des revenus. Cette donnée est extraite du calendrier pédagogique en croisant les flux financiers réels, afin d'exclure les sessions sans activité commerciale et garantir la cohérence entre l'offre et le chiffre d'affaires.
 \item\textbf{Le temps:} L'année et le mois pour situer chaque donnée chronologiquement.
 \end{itemize}
 \item \textbf{Feature Engineering}
@@ -791,10 +822,10 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
  \item \textbf{Entraînement et Modélisation:} Le modèle s'appuie sur un algorithme de Régression Logistique (\texttt{Scikit-Learn}) :
  \begin{enumerate}[label=\textbullet]
 \item \textbf{Pipeline:} Les données sont divisées chronologiquement en ensembles d'entraînement (80\%) et de test (20\%) pour valider la capacité de généralisation.
-\item \textbf{Évaluation:} Les performances sont mesurées via la précision, le rappel, le F1-score et l'AUC-ROC.
+\item \textbf{Évaluation:} Les performances sont mesurées via la précision, le rappel, le accuracy, le F1-score et l'AUC-ROC.
 \item \textbf{Sauvegarde:} Le modèle est sauvegardé au format \textbf{.pkl} via Joblib pour une utilisation en temps réel.
 \end{enumerate}
-\item \textbf{Prédiction:} Lors de la phase de prédiction, le système transforme chaque session en score de probabilité :
+\item \textbf{Prédiction:} Lors de la phase de prédiction, le système transforme chaque session en score de probabilité:
     \begin{enumerate}[label=\textbullet]
         \item \textbf{Niveaux de Risque:} Les probabilités sont classées en trois catégories: faible, modéré ou élevé, autour du seuil de 0,5.
         \item \textbf{Actions Correctives:} Le système génère automatiquement des recommandations basées sur le risque et le taux de remplissage (ex : promouvoir la session, réduire les coûts ou annuler la session).
@@ -815,58 +846,13 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
 
 \subsubsection{Évaluation des résultats}
 Les modèles intégrés au module prédictif ont été évalués selon des métriques adaptées à la nature de chaque tâche : des métriques de classification pour les modèles binaires, et des métriques de régression pour le modèle de série temporelle.
-
-
-
-\textbf{Évaluation du Modèle de Prédiction du Chiffre d'Affaires}
-Le modèle est évalué sur trois mois d'historique récent, jamais vus lors de l'entraînement. Trois indicateurs mesurent sa performance: le \textbf{coefficient $R^2$} DT (part de variance expliquée, de 0 à 1), la \textbf{MAE} (erreur moyenne) et le \textbf{MAPE} (erreur moyenne en pourcentage du CA réel).
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\textwidth]{project/images/evaluation1.png}
-    \caption{Performances du modèle — Ensemble de test}
-    \label{fig:metrics}
-\end{figure}
-
-Le modèle atteint un \textbf{$R^2$ DT de 0,8044}, une \textbf{MAE de 1\,960,63 DT} et un \textbf{MAPE de 16,96\,\%}. Il explique 80\,\% des variations du chiffre d'affaires et se trompe en moyenne de moins de 2\,000 DT, soit moins de 17\,\% du montant réel. Comparé à une baseline naïve qui recopie le dernier CA connu (MAE de 9\,602,53 DT), le modèle réduit l'erreur de \textbf{7\,641,90 DT par mois} — il divise par cinq l'incertitude.
-
-La précision s'améliore au fil des mois testés: 33\,\% d'écart sur le premier mois, puis 11,9\,\% et 5,7\,\% sur les deux suivants, traduisant une bonne adaptation aux régimes stables.
-
-Ces résultats s'appuient sur un historique de quinze mois. Ils sont encourageants mais nécessitent d'être consolidés à mesure que les données s'enrichissent. La fiabilité décroît avec l'horizon : le premier mois futur s'appuie sur des données réelles, les suivants sur des valeurs projetées. L'outil est donc limité à un horizon maximal de trois mois.
-
-
-
-
-\textbf{Évaluation du Modèle de Prédiction des Sessions Déficitaires}
-
-Le modèle est évalué sur 19 sessions de test (74 sessions d'entraînement). Les performances sont mesurées par quatre indicateurs presenté dans la figutre\ref{fig:metrics}:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{project/images/evaluation2.png}
-    \captionof{figure}{Performances du modèle — Ensemble de test}
-    \label{fig:metrics}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Précision:} Quand le modèle prédit un déficit, il a raison 94,1\% du temps.
-    \item \textbf{Rappel:} Le modèle trouve 88,9\% des vrais déficits.
-    \item \textbf{F1-score:} Moyenne harmonique entre précision et rappel (0,914).
-    \item \textbf{AUC-ROC:} Capacité à distinguer les sessions rentables des déficitaires (0,778).
-\end{itemize}
-
-
-Le modèle atteint une \textbf{précision de 94,1\%} et un \textbf{rappel de 88,9\%}. Il identifie correctement la plupart des sessions déficitaires tout en limitant les fausses alertes. L'AUC-ROC de 0,778 confirme une capacité discriminante satisfaisante.
-
-Ces résultats s'appuient sur un échantillon de 93 sessions. Ils sont encourageants mais nécessitent d'être consolidés à mesure que l'historique s'enrichit.
-
-
+\vspace{0.3cm}
 % ─────────────────────────────────────────────────────────────────
 % 1. MODÈLE RISQUE D'ABANDON
 % ─────────────────────────────────────────────────────────────────
-\textbf{Évaluation du modèle de prédiction du risque d'abandon :}
+\noindent\textbf{Évaluation du modèle de prédiction du risque d'abandon:}
 
-Les métriques retenues pour évaluer ce modèle de classification binaire sont présentées dans le tableau \ref{tab:metriques_abandon}.
+\noindent Les métriques retenues pour évaluer ce modèle de classification binaire sont présentées dans le tableau \ref{tab:metriques_abandon}.
 
 \begin{table}[H]
 \centering
@@ -887,7 +873,7 @@ Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & 
 \end{tabular}
 \end{table}
 
-Le modèle retenu est sélectionné automatiquement selon le critère de l'AUC-ROC :
+\noindent Le modèle retenu est sélectionné automatiquement selon le critère de l'AUC-ROC :
 \[
 \text{Modèle retenu} =
 \begin{cases}
@@ -895,9 +881,9 @@ Le modèle retenu est sélectionné automatiquement selon le critère de l'AUC-R
 \text{Random Forest} & \text{sinon}
 \end{cases}
 \]
- \textbf{Résultats d'évaluation:}
+ \noindent\textbf{Résultats d'évaluation:}
 
-La figure \ref{fig:eval_abandon} présente les résultats d'évaluation obtenus.
+\noindent La figure \ref{fig:eval_abandon} présente les résultats d'évaluation obtenus.
 
 \begin{figure}[H]
     \centering
@@ -906,7 +892,7 @@ La figure \ref{fig:eval_abandon} présente les résultats d'évaluation obtenus.
     \label{fig:eval_abandon}
 \end{figure}
 
-les matrices de confusion détaillées sont présentées dans la figure \ref{fig:cm_abandon}.
+\noindent les matrices de confusion détaillées sont présentées dans la figure \ref{fig:cm_abandon}.
 
 \begin{figure}[H]
     \centering
@@ -916,14 +902,41 @@ les matrices de confusion détaillées sont présentées dans la figure \ref{fig
 \end{figure}
 
 
-Dans ce contexte, les Faux Négatifs sont plus coûteux que les Faux Positifs. C'est pourquoi l'AUC-ROC et le F1-Score sont retenus comme critères prioritaires plutôt que l'Accuracy seule.
+\noindent Dans ce contexte, les Faux Négatifs sont plus coûteux que les Faux Positifs. C'est pourquoi l'AUC-ROC et le F1-Score sont retenus comme critères prioritaires plutôt que l'Accuracy seule.
 
+
+
+\vspace{0.3cm}
+
+\noindent\textbf{Évaluation du Modèle de Prédiction des Sessions Déficitaires:}
+
+\noindent Le modèle est évalué sur 19 sessions de test (74 sessions d'entraînement). Les performances sont mesurées par cinq indicateurs présentés dans la figure~\ref{fig:metrics1}:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{project/images/session-eval.png}
+    \captionof{figure}{Performances du modèle — Ensemble de test}
+    \label{fig:metrics1}
+\end{figure}
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Accuracy (Exactitude):} Le modèle se trompe globalement dans 15,8\% des cas. Il prédit correctement le statut (déficit ou non) dans 84,2\% des situations.
+    \item \textbf{Précision:} Quand le modèle prédit un déficit, il a raison 94,1\% du temps.
+    \item \textbf{Rappel:} Le modèle trouve 88,9\% des vrais déficits.
+    \item \textbf{F1-score:} Moyenne harmonique entre précision et rappel (0,914).
+    \item \textbf{AUC-ROC:} Le modèle distingue correctement une session déficitaire d'une session rentable dans 72,2\% des cas comparatifs.
+\end{itemize}
+
+\noindent Le modèle atteint une \textbf{précision de 94,1\%} et un \textbf{rappel de 88,9\%}. Il identifie correctement la plupart des sessions déficitaires tout en limitant les fausses alertes. L'AUC-ROC de \textbf{0,722} confirme une capacité discriminante satisfaisante, significativement supérieure au hasard (0,5).
+
+\noindent Ces résultats s'appuient sur un échantillon de 93 sessions. Ils sont encourageants mais nécessitent d'être consolidés à mesure que l'historique s'enrichit.
+\vspace{3cm}
 % ─────────────────────────────────────────────────────────────────
 % 2. MODÈLE PRÉVISION DES INSCRIPTIONS
 % ─────────────────────────────────────────────────────────────────
-\textbf{Évaluation du modèle de prévision des inscriptions mensuelles :}
+\noindent\textbf{Évaluation du modèle de prévision des inscriptions mensuelles:}
 
-Les métriques retenues pour évaluer ce modèle de série temporelle sont présentées dans le tableau \ref{tab:metriques_forecast}.
+\noindent Les métriques retenues pour évaluer ce modèle de série temporelle sont présentées dans le tableau \ref{tab:metriques_forecast}.
 
 \begin{table}[H]
 \centering
@@ -942,7 +955,7 @@ R² & $1 - \dfrac{SS_{res}}{SS_{tot}}$ & Part de variance expliquée par le mod�
 \end{tabular}
 \end{table}
 
-Le modèle retenu est sélectionné automatiquement selon le critère du MAE sur un split chronologique 80/20 :
+\noindent Le modèle retenu est sélectionné automatiquement selon le critère du MAE sur un split chronologique 80/20 :
 \[
 \text{Modèle retenu} =
 \begin{cases}
@@ -951,7 +964,7 @@ Le modèle retenu est sélectionné automatiquement selon le critère du MAE sur
 \end{cases}
 \]
 
-La figure \ref{fig:eval_forecast} présente les résultats d'évaluation obtenus sur le jeu de test, incluant les métriques de performance (MAE, RMSE, R²) des deux modèles candidats ainsi que la courbe de prévision comparée aux valeurs réelles.
+\noindent La figure \ref{fig:eval_forecast} présente les résultats d'évaluation obtenus sur le jeu de test, incluant les métriques de performance (MAE, RMSE, R²) des deux modèles candidats ainsi que la courbe de prévision comparée aux valeurs réelles.
 
 \begin{figure}[H]
     \centering
@@ -961,10 +974,28 @@ La figure \ref{fig:eval_forecast} présente les résultats d'évaluation obtenus
 \end{figure}
 
 
-Contrairement aux modèles de classification, ce modèle ne produit pas de matrice de confusion. La qualité des prévisions est appréciée directement via les métriques MAE et RMSE, qui quantifient l'écart moyen entre les inscriptions réelles et les valeurs prédites, ainsi que via le coefficient R² qui mesure la capacité du modèle à reproduire la tendance générale de la série temporelle.
+\noindent Contrairement aux modèles de classification, ce modèle ne produit pas de matrice de confusion. La qualité des prévisions est appréciée directement via les métriques MAE et RMSE, qui quantifient l'écart moyen entre les inscriptions réelles et les valeurs prédites, ainsi que via le coefficient R² qui mesure la capacité du modèle à reproduire la tendance générale de la série temporelle.
+
 % ─────────────────────────────────────────────────────────────────
-% 3. MODÈLE SESSIONS DÉFICITAIRES
+% 3. MODÈLE Chiffre d'Affaires
 % ─────────────────────────────────────────────────────────────────
+\vspace{0.3cm}
+\noindent\textbf{Évaluation du Modèle de Prédiction du Chiffre d'Affaires}
+
+\noindent Le modèle est évalué sur trois mois d'historique récent, jamais vus lors de l'entraînement. Trois indicateurs mesurent sa performance: le \textbf{coefficient $R^2$} DT (part de variance expliquée, de 0 à 1), la \textbf{MAE} (erreur moyenne) et le \textbf{MAPE} (erreur moyenne en pourcentage du CA réel).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{project/images/evaluation1.png}
+    \caption{Performances du modèle — Ensemble de test}
+    \label{fig:metrics}
+\end{figure}
+
+\noindent Le modèle atteint un \textbf{$R^2$  de 0,8044 DT}, une \textbf{MAE de 1\,960,63 DT} et un \textbf{MAPE de 16,96\,\%}. Il explique 80\,\% des variations du chiffre d'affaires et se trompe en moyenne de moins de 2\,000 DT, soit moins de 17\,\% du montant réel. Comparé à une baseline naïve qui recopie le dernier CA connu (MAE de 9\,602,53 DT), le modèle réduit l'erreur de \textbf{7\,641,90 DT par mois} — il divise par cinq l'incertitude.
+
+\noindent La précision s'améliore au fil des mois testés: 33\,\% d'écart sur le premier mois, puis 11,9\,\% et 5,7\,\% sur les deux suivants, traduisant une bonne adaptation aux régimes stables.
+
+\noindent Ces résultats s'appuient sur un historique de quinze mois. Ils sont encourageants mais nécessitent d'être consolidés à mesure que les données s'enrichissent. La fiabilité décroît avec l'horizon : le premier mois futur s'appuie sur des données réelles, les suivants sur des valeurs projetées. L'outil est donc limité à un horizon maximal de trois mois.
 
 \subsection{Recommendations}
 Le module de recommandations stratégiques exploite les capacités de l'intelligence artificielle générative pour transformer les indicateurs de performance du centre en conseils opérationnels personnalisés. Il constitue le volet décisionnel du tableau de bord du Directeur, accessible depuis la page « Rapports stratégiques ».
@@ -973,7 +1004,7 @@ Le module de recommandations stratégiques exploite les capacités de l'intellig
 
 Contrairement aux modèles prédictifs classiques qui estiment une valeur numérique, ce module produit des analyses textuelles structurées. Le système s'appuie sur un modèle de langage (LLM) \cite{llm_cloudflare} afin de générer automatiquement des fiches de recommandations à partir du contexte métier du centre.
 
-Le processus repose sur trois étapes successives:
+\noindent Le processus repose sur trois étapes successives:
 
 \begin{enumerate}[leftmargin=*]
     \item \textbf{Agrégation des indicateurs:} Le système collecte les KPI actuels du centre (taux d'abandon, taux de réussite, satisfaction moyenne, revenus, taux de remplissage des sessions) à partir de la base de données décisionnelle.
@@ -1023,7 +1054,7 @@ Cette section présente les interfaces les plus représentatives du module
 prédictif et de recommandations stratégiques, illustrant la transition 
 entre les prédictions algorithmiques et les actions métiers concrètes.
 
-
+\vspace{0.3cm}
 \noindent\textbf{Prévision du chiffre d'affaire:}
 
 \noindent La Figure  \ref{cap:Interface de prevision CA} synthétise la fonctionnalité de prédiction du chiffre d'affaires, où l'utilisateur peut interagir avec les résultats issus du modèle de série temporelle.
@@ -1031,8 +1062,8 @@ entre les prédictions algorithmiques et les actions métiers concrètes.
 \begin{figure}[H]
   \centering
     \centering
-        \includegraphics[width=0.6\linewidth]{project/images/firstcap.png}
-        \captionof{figure}{interface de prévison du chiffre d'affaire}
+        \includegraphics[width=0.9\linewidth]{project/images/dashboard.png}
+        \captionof{figure}{Interface de prévision du chiffre d’affaires}
         \label{cap:Interface de prevision CA}
 \end{figure}
 
@@ -1043,8 +1074,8 @@ entre les prédictions algorithmiques et les actions métiers concrètes.
 \begin{figure}[H]
     \centering
         \centering
-        \includegraphics[width=0.6\linewidth]{project/images/2eme.png}
-        \captionof{figure}{Interface de prevision des session déficitaire}
+        \includegraphics[width=0.9\linewidth]{project/images/2nddashboard.png}
+        \captionof{figure}{Interface de prédiction des sessions déficitaires}
         \label{cap:Interface de prevision sessions deficitaires}
 \end{figure}
 
@@ -1058,7 +1089,7 @@ le modèle de régression logistique.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{project/images/alertsia.png}
-    \caption{Tableau d'alertes IA : risques d'abandon par apprenant}
+    \caption{Tableau d'alertes IA: risques d'abandon par apprenant}
     \label{fig:alertes_ia}
 \end{figure}
 
@@ -1092,9 +1123,9 @@ générées par le LLM, classées par impact et facilité de mise en œuvre.
 
 Ce chapitre a présenté la troisième et dernière release du projet, dédiée à la dimension décisionnelle et prédictive de la plateforme.
 
-Le Sprint 6 a livré une architecture de Business Intelligence robuste, avec des tableaux de bord adaptés à chaque profil métier et des outils d'export de rapports. Le Sprint 7 a constitué l'aboutissement de la démarche analytique en intégrant des modèles de Machine Learning supervisés et un module de recommandations stratégiques basé sur l'intelligence artificielle générative.
+\noindent Le Sprint 6 a livré une architecture de Business Intelligence robuste, avec des tableaux de bord adaptés à chaque profil métier et des outils d'export de rapports. Le Sprint 7 a constitué l'aboutissement de la démarche analytique en intégrant des modèles de Machine Learning supervisés et un module de recommandations stratégiques basé sur l'intelligence artificielle générative.
 
-L'ensemble de ces développements positionne la plateforme comme un système d'information managérial complet, aligné sur les standards des outils décisionnels modernes.
+\noindent L'ensemble de ces développements positionne la plateforme comme un système d'information managérial complet, aligné sur les standards des outils décisionnels modernes.
 
 
 

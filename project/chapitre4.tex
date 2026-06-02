@@ -61,17 +61,17 @@ Le tableau \ref{tab:inscription_email} présente la description textuelle du cas
 \endhead
 
 Cas d’utilisation & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item inscription
 \end{itemize} \\
 \hline
 Acteur & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item apprenant
 \end{itemize} \\
 \hline
 Préconditions & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item L’utilisateur ne possède pas de compte
     \item L’utilisateur a accès à son email
 \end{itemize} \\
@@ -174,7 +174,7 @@ Scénarios alternatifs &
 & \textbf{Compte non autorisé:} Le système bloque l’accès et affiche un message indiquant que le compte n’est pas autorisé \\
 \hline
 Post-condition & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item Authentification réussie
     \item JWT généré
     \item Accès au dashboard selon le rôle
@@ -214,14 +214,14 @@ Acteur & Utilisateur \\
 \hline
 
 Précondition & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item L’utilisateur a oublié son mot de passe
     \item L’utilisateur possède un compte dans le système
 \end{itemize} \\
 \hline
 Scénario principal & 
 \textbf{ Scénario 1: Demande de réinitialisation}
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*]
     \item L’utilisateur clique sur « Mot de passe oublié »
     \item Il saisit son adresse email
     \item Le système vérifie la validité de l’email
@@ -231,7 +231,7 @@ Scénario principal &
 \end{enumerate}
 
 \textbf{Scénario 2: Réinitialisation du mot de passe}
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*]
     \item L’utilisateur ouvre le lien reçu par email
     \item Il saisit le nouveau mot de passe et sa confirmation
     \item Le système vérifie que les champs sont remplis
@@ -243,7 +243,7 @@ Scénario principal &
 \\
 \hline
 Scénarios alternatifs & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item \textbf{Email invalide ou vide:} le système affiche un message d’erreur et bloque l’envoi
     \item \textbf{Email inexistant:} affichage d’un message générique pour des raisons de sécurité
     \item \textbf{Mots de passe non identiques:} le système rejette la demande
@@ -253,7 +253,7 @@ Scénarios alternatifs &
 \hline
 
 Postcondition & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item Un lien de réinitialisation est généré
     \item Un email est envoyé à l’utilisateur
     \item L’utilisateur accède au formulaire de réinitialisation
@@ -269,13 +269,13 @@ La phase de conception modélise techniquement le fonctionnement de l'authentifi
 
 \noindent\textbf{Diagramme de séquence: Inscription de l'apprenant}
 
-\noindent Ce diagramme illustre le processus de création d'un nouveau compte sur la plateforme. L'utilisateur fournit ses donnés personnelles. La figure \ref{cap:Diagramme de séquence <<Inscription de l'apprenant>>} presente comment le système procède d'abord à une vérification du format des données et l'unicité de l'email. Une fois validé, le mot de passe est haché et le compte est créé avec un statut "non vérifié". Un lien de confirmation est alors envoyé par email à l'utilisateur pour confirmer l'identité de l'apprenant.
+\noindent Ce diagramme illustre le processus de création d'un nouveau compte sur la plateforme. L'utilisateur fournit ses donnés personnelles. La figure \ref{cap:inscription_apprenant} presente comment le système procède d'abord à une vérification du format des données et l'unicité de l'email. Une fois validé, le mot de passe est haché et le compte est créé avec un statut "non vérifié". Un lien de confirmation est alors envoyé par email à l'utilisateur pour confirmer l'identité de l'apprenant.
 
 \begin{figure}[p]
 \centering
-\includegraphics[height=0.95\textheight,keepaspectratio]{project/images/inscds.png}
+\includegraphics[height=0.80\textheight,keepaspectratio]{project/images/inscds.png}
 \caption{Diagramme de séquence <<Inscription de l'apprenant>>}
-\label{fig:inscription_apprenant}
+\label{cap:inscription_apprenant}
 \end{figure}
 
 \noindent \textbf{Diagramme de séquence: Vérification de l'adresse email}
@@ -297,10 +297,12 @@ La phase de conception modélise techniquement le fonctionnement de l'authentifi
 \noindent \textbf{Diagramme de séquence: Login -Apprenant}
 
 \noindent le diagramme décrit la procédure de connexion sécurisée pour le profil apprenant, qui est schématisé dans la Figure \ref{cap:Diagramme de séquence <<Login - Apprenant>>}.
+\vspace{0.3cm}
 
 \noindent \textbf{Diagramme de séquence: Login -Responsables et Administrateurs}
 
 \vspace{0.3cm}
+
 \noindent Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}, présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique , Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
 \begin{figure}[H]
   \centering
@@ -676,7 +678,6 @@ Le tableau \ref{tab:gestion_utilisateurs} présente la description textuelle du 
 
 Cas d'utilisation & Gestion des utilisateurs \\
 \hline
-
 Acteur & Administrateur \\
 \hline
 
@@ -765,7 +766,9 @@ Post-conditions &
 
 \subsection{Conception}
 La section Conception présente la modélisation dynamique des principaux scénarios fonctionnels du module de gestion des utilisateurs. Les diagrammes de séquence ci-dessous illustrent, de manière chronologique et détaillée, les interactions entre les différents acteurs du système (Administrateur, Frontend, Backend, Base de données et Serveur Email), en couvrant les flux nominaux ainsi que les cas alternatifs et d'erreur.
+
 \vspace{0.3cm}
+
 \noindent \textbf{Diagramme de séquence: Ajouter un utiliateur}
 
 \noindent Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Ajouter un utilisateur>>} illustre le processus d'ajout d'un nouvel utilisateur par l'administrateur, depuis la saisie du formulaire jusqu'à l'enregistrement en base de données.
@@ -776,7 +779,7 @@ La section Conception présente la modélisation dynamique des principaux scéna
   \label{cap:Diagramme de séquence <<Ajouter un utilisateur>>}
 \end{figure}
 \vspace*{\fill} % espace vertical sous
-
+\newpage
 \noindent\textbf{Diagramme de séquence: Réinitialisation du mot de passe}
 
 \noindent La Figure \ref{cap:Diagramme de séquence <<Réinitialisation du mot de passe>>} présente le diagramme de séquence relatif à la réinitialisation du mot de passe d'un utilisateur, initié par l'administrateur.
@@ -786,7 +789,9 @@ La section Conception présente la modélisation dynamique des principaux scéna
   \caption{Diagramme de séquence <<Réinitialisation du mot de passe>> }
   \label{cap:Diagramme de séquence <<Réinitialisation du mot de passe>>}
 \end{figure}
+\vspace*{\fill} 
 
+\newpage
 
 \noindent \textbf{Diagramme de séquence: Gestion des demandes des apprenants}
 
@@ -802,7 +807,7 @@ La section Conception présente la modélisation dynamique des principaux scéna
 \subsection{Réalisation}
 Cette section présente les interfaces de gestion des utilisateurs, en mettant l’accent sur les différentes fonctionnalités implémentées et l’expérience utilisateur offerte par ces interfaces.
 
-
+\vspace{0.3cm}
 \noindent \textbf{Interface de gestion des utilisateurs:} 
 
 \noindent La figure \ref{fig:capture_userstab} présente l'interface principale affichant la liste des utilisateurs sous forme de tableau structuré, avec barre de recherche et filtres par rôle.
