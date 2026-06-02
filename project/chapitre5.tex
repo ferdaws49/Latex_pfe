@@ -60,7 +60,20 @@ La phase d'analyse de ce sprint porte sur l'identification et la formalisation d
 
 \noindent\textbf{Amélioration du cas d'utilisation « Gestion et Planification des Sessions de Formation »:}
 
-\noindent La figure \ref{tab:Gestion et Planification des Sessions de Formation} illustre le diagramme de cas d'utilisation présentant les interactions entre le responsable pédagogique et les fonctionnalités de gestion des sessions et des formations offertes par la plateforme.
+
+
+
+\noindent La figure \ref{cap:DG-gestion-session} illustre le diagramme de cas d'utilisation présentant les interactions entre le responsable pédagogique et les fonctionnalités de gestion des sessions et des formations offertes par la plateforme.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.5]{project/images/UC-RP(planning).png}
+  \caption{Diagramme de cas d'utilisation  <<Gestion et Planification des Sessions de Formation>> }
+  \label{cap:DG-gestion-session}
+\end{figure}
+
+Le tableau \ref{tab:Gestion et Planification des Sessions de Formation} présente la description textuelle du cas d’utilisation « Gestion et Planification des
+Sessions de Formation ».
 {\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
 \caption{Cas d'utilisation -- Gestion et Planification des Sessions de Formation}
@@ -185,7 +198,7 @@ Post-conditions &
 
 La phase de conception traduit les exigences fonctionnelles identifiées en phase d'analyse en modèles techniques exploitables par l'équipe de développement. Elle s'appuie sur des diagrammes de séquence UML pour représenter les interactions dynamiques entre le responsable pédagogique, l'interface utilisateur (Frontend), la logique métier (Backend) et la persistance des données (Base de Données), pour chacune des opérations CRUD du sprint. Ces modèles constituent le fil conducteur technique du développement et garantissent la cohérence entre les exigences métier et l'architecture applicative retenue.
 
-\vspace{0.3cm}
+\newpage
 \noindent\textbf{Diagramme de séquence: Créer une formation}
 
 \noindent Comme le montre la figure \ref{cap:Diagramme de séquence <<Creation formation>>}, ce diagramme de séquance illustre le processus de création d'une nouvelle formation. Les interactions principales incluent l'affichage du formulaire, la soumission des données, la validation côté serveur et la réponse du système.
@@ -543,22 +556,28 @@ Cette section détaille la mise en œuvre de l'espace apprenant, en présentant 
 
 \noindent Cette section regroupe toutes les formations auxquelles l’apprenant est actuellement inscrit. Les informations relatives aux formations, aux sessions et aux formateurs sont accessibles depuis l’interface présentée à la figure \ref{fig:formations-part1} et la figure \ref{fig:formations-part2}.
 % --- PREMIÈRE IMAGE (sur la page actuelle ou la suivante) ---
+
+
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/mes-formations.png}
-    \caption{Espace apprenant-Interface <<Mes Formations>>(1/2)}
+    \includegraphics[width=0.8\textwidth]{project/images/mes-formations.png} 
+    \caption{Espace apprenant - Interface <<Mes Formations>> (1/2)}
     \label{fig:formations-part1}
 \end{figure}
 
-% --- DEUXIÈME IMAGE (sur la page d'après) ---
-\begin{figure}[H] % 't' pour qu'elle se mette en haut de la page suivante
-    \ContinuedFloat
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{project/images/formations details.png}
-    \caption{Espace apprenant-Interface <<Mes Formations>> (2/2)}
-    \label{fig:formations-part2} % Le label principal pour votre texte
-    \label{fig:formations}
+    \caption{Espace apprenant - Interface <<Mes Formations>> (2/2)}
+    \label{fig:formations-part2}
 \end{figure}
+
+
+
+
+
+
 
 \vspace{0.3cm}
 \noindent Après avoir suivi une formation, l’apprenant a la possibilité de lui attribuer une note et de laisser un commentaire, contribuant ainsi à l’évaluation continue de la plateforme, tel qu’illustré par les figures~\ref{fig:evaluation-vide} et~\ref{fig:evaluation-remplie}. Une confirmation visuelle s’affiche après la soumission de l’évaluation, comme présenté dans la figure~\ref{fig:success-evaluation}.
