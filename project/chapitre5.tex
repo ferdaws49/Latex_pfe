@@ -109,6 +109,7 @@ Scénario de base &
 \item  Le système vérifie que tous les champs sont remplis.
 \item  Le système valide les données et crée l'enregistrement en base de données.
 \item  Le système ferme la modale, rafraîchit la liste des sessions et met à jour les KPI.
+\item Le système confirme la mise à jour au responsable Pédagogique.
 \end{enumerate}
 \\
 
@@ -121,6 +122,7 @@ Scénario de base &
 \item  Le responsable pédagogique clique sur « Enregistrer ». 
 \item  Le systeme met à jour la session en base de données.
 \item  La modale se ferme et l’affichage est rafraîchi.
+\item Le système confirme la mise à jour au responsable Pédagogique.
 \end{enumerate}
 \\
 
@@ -132,6 +134,7 @@ Scénario de base &
 \item  Le responsable pédagogique confirme l’action.
 \item  Le système met à jour le statut de la session en base de données.
 \item  Le systeme met à jour Les KPI et l’interface.
+\item Le système confirme la mise à jour au responsable Pédagogique.
 \end{enumerate}\\
 \hline
 
@@ -144,6 +147,7 @@ Scénario de base &
 \item  Le responsable pédagogique met à jour les statuts de présence.
 \item  Le responsable pédagogique clique sur « Enregistrer ».
 \item  Le système met à jour les données en base et ferme la modale.
+\item Le système confirme la mise à jour au responsable Pédagogique.
 \end{enumerate}
 \\
 
@@ -154,7 +158,8 @@ Scénario de base &
 \item  Le responsable pédagogique saisit les informations de la formation.
 \item  Le responsable pédagogique clique sur « Enregistrer ».
 \item  Le système enregistre la formation en base de données.
-\item  Le système mettre à jour la liste des formations dans l’interface
+\item  Le système mettre à jour la liste des formations dans l’interface.
+\item Le système confirme la mise à jour au responsable Pédagogique.
 \end{enumerate}
 \\
 
@@ -167,6 +172,7 @@ Scénario de base &
 \item  Le système valide les nouvelles données
 \item  Le système met à jour l'enregistrement correspondant dans la base de données.
 \item  Le système ferme le modal et rafraîchit l'affichage pour refléter les changements.
+\item Le système confirme la mise à jour au responsable Pédagogique.
 \end{enumerate}\\
 \hline
 
@@ -179,6 +185,7 @@ Scénario de base &
 \item  Le système vérifie que la formation n'est associée à aucune session active ou planifiée
 \item  Le système modifie le statut de la formation en "Annulé" dans la base de données.
 \item  Le système ferme la boîte de dialogue et met à jour l'interface pour retirer la formation de la liste active.
+\item Le système confirme la mise à jour au responsable Pédagogique.
 \end{enumerate}
 \\
 
@@ -552,20 +559,21 @@ Scénario de base &
 \item Le système calcule la moyenne des notes pour chaque formation.
 \item Le système détermine le statut de réussite (passed/failed) pour chaque formation
 \item Le système calcule la moyenne générale de toutes les formations.
-\item Le système retourne une vue globale des résultats de l’apprenant
+\item Le système retourne une vue globale des résultats de l’apprenant.
+\item Le système envoie une notification à l’apprenant pour l’informer que ses résultats sont disponibles.
+
 \end{enumerate}
 \\
 
 \hline
 Scénarios alternatifs & 
 
-    Si toutes les places sont prises, le système affiche un message d'indisponibilité et empêche l'inscription.
+Si toutes les places sont prises, le système affiche un message d'indisponibilité et empêche l'inscription.
 
-    Si l'apprenant tente de s'inscrire une deuxième fois à la même session, le système retourne une erreur de doublon.
+Si l'apprenant tente de s'inscrire une deuxième fois à la même session, le système retourne une erreur de doublon.
 \\
 \hline
-Post-conditions &
-    
+Post-conditions & 
 L'apprenant est inscrit à au moins une session.
 
 Les statistiques du tableau de bord sont mises à jour.
@@ -881,7 +889,7 @@ Scénarios alternatifs &
 & \textbf{9.1 Échec technique durant l'import:} Si une erreur survient lors de l'insertion en base de données, le système effectue un rollback automatique de la transaction en cours. Toutes les données de l'import sont annulées et le statut passe à « Échoué ». \\
 \hline
 Post-conditions & 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item Les données validées sont intégrées dans la table de l'entité sélectionnée.
     \item Le statut du job d'import est mis à jour dans la table \texttt{import\_job}
     \item Les logs d'audit sont mis à jour avec les actions de l'administrateur.
