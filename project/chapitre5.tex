@@ -14,42 +14,45 @@ Ce rapport de sprint détaille l'analyse fonctionnelle, la conception et les él
 \subsection{Le backlog du sprint 3}
 
 Le tableau \ref{tab:sprint3_backlog}  présente l'ensemble des éléments du backlog retenus pour ce sprint, classés par ordre de priorité décroissante. Chaque élément est formulé du point de vue du responsable pédagogique et décrit la fonctionnalité attendue ainsi que la valeur métier qu'elle apporte. Les fonctionnalités prioritaires portent sur les opérations essentielles de gestion des sessions et des formations, garantissant la livraison d'un module pleinement opérationnel à l'issue du sprint. Les fonctionnalités de suivi, telles que la consultation des participants et la gestion des présences, complètent le périmètre en apportant une valeur ajoutée au responsable pédagogique dans son pilotage quotidien de l'activité de formation.
-
-\setlength{\LTpre}{0pt} % Espace avant le tableau
-\setlength{\LTpost}{0pt} % Espace après le tableau
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+{\interlinepenalty=10000
 \begin{longtable}{|c|p{3.5cm}|p{8.5cm}|c|}
-    \caption{Backlog du Sprint 3: Gestion et Planification des Sessions de Formation} \label{tab:sprint3_backlog} \\
-    \hline
-    \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
-    \hline
-    \endfirsthead
-    \hline
-    \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{4}{r}{\textit{Suite à la page suivante...}} \\
-    \endfoot
-    \hline
-    \endlastfoot
-    % Début des données
-    3 & \makecell[l]{Gestion\\et Planification\\des Sessions de\\Formation} 
-    &En tant que responsable pédagogique, je veux pouvoir créer une nouvelle session de formation afin de planifier et organiser les activités de formation de mon établissement. & M \\
-    \cline{3-4}
-    & & En tant que responsable pédagogique, je veux pouvoir modifier les informations d'une session existante afin de maintenir le planning à jour en cas de changement. & M \\
-    \cline{3-4}
-    & & En tant que responsable pédagogique, je veux pouvoir annuler une session de formation afin de refléter toute interruption imprévue dans le planning. & M \\
-    \cline{3-4}
-    & & En tant que responsable pédagogique, je veux pouvoir consulter la liste des participants inscrits à une session afin d'avoir une visibilité sur les effectifs concernés. & M \\
-    \cline{3-4}
-    & & En tant que responsable pédagogique, je veux pouvoir enregistrer les présences des apprenants pour chaque session afin d'assurer le suivi pédagogique et administratif des formations. & C \\
-    \cline{3-4}
-    & & En tant que responsable pédagogique, je veux pouvoir créer une nouvelle formation directement depuis le planning afin d'enrichir le catalogue sans interrompre mon flux de travail. & M \\
-    \cline{3-4}
-    & & En tant que responsable pédagogique, je veux pouvoir modifier les informations d'une formation existante afin de maintenir le catalogue de formations à jour et conforme aux évolutions pédagogiques. & S \\
-    \cline{3-4}
-    & & En tant que responsable pédagogique, je veux pouvoir supprimer une formation du catalogue afin d'éliminer les programmes obsolètes ou erronés et garantir la cohérence des données disponibles. & S \\
+\caption{Backlog du Sprint 3 : Gestion et Planification des Sessions de Formation}
+\label{tab:sprint3_backlog} \\
+\hline
+\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+\hline
+\endhead
+\hline
+\multicolumn{4}{r}{\textit{Suite à la page suivante\ldots}} \\
+\endfoot
+\hline
+\endlastfoot
+
+3 & \makecell[l]{Gestion\\et Planification\\des Sessions de\\Formation}
+& En tant que responsable pédagogique, je veux pouvoir créer une nouvelle session de formation afin de planifier et organiser les activités de formation de mon établissement. & M \\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir modifier les informations d'une session existante afin de maintenir le planning à jour en cas de changement. & M \\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir annuler une session de formation afin de refléter toute interruption imprévue dans le planning. & M \\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir consulter la liste des participants inscrits à une session afin d'avoir une visibilité sur les effectifs concernés. & M \\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir enregistrer les présences des apprenants pour chaque session afin d'assurer le suivi pédagogique et administratif des formations. & C \\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir créer une nouvelle formation directement depuis le planning afin d'enrichir le catalogue sans interrompre mon flux de travail. & M \\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir modifier les informations d'une formation existante afin de maintenir le catalogue de formations à jour et conforme aux évolutions pédagogiques. & S \\
+\cline{3-4}
+& & En tant que responsable pédagogique, je veux pouvoir supprimer une formation du catalogue afin d'éliminer les programmes obsolètes ou erronés et garantir la cohérence des données disponibles. & S \\
+\hline
 \end{longtable}
+}
 
 \subsection{Analyse}
 
@@ -58,18 +61,9 @@ La phase d'analyse de ce sprint porte sur l'identification et la formalisation d
 \noindent\textbf{Amélioration du cas d'utilisation « Gestion et Planification des Sessions de Formation »:}
 
 \noindent La figure \ref{Diagramme de cas d'utilisation « planning »} illustre le diagramme de cas d'utilisation présentant les interactions entre le responsable pédagogique et les fonctionnalités de gestion des sessions et des formations offertes par la plateforme.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{project/images/UC-RP(planning).png}
-    \caption{Diagramme de cas d'utilisation « Gestion et Planification des Sessions de Formation »}
-    \label{Diagramme de cas d'utilisation « planning »}
-\end{figure}
-
-\noindent Le tableau \ref{tab:Gestion et Planification des Sessions de Formation} présente la description textuelle du cas d'utilisation « Gestion et Planification des Sessions de Formation ».
-
+{\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
-\caption{Cas d'utilisation – Gestion et Planification des Sessions de Formation}
+\caption{Cas d'utilisation -- Gestion et Planification des Sessions de Formation}
 \label{tab:Gestion et Planification des Sessions de Formation} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
@@ -80,180 +74,102 @@ La phase d'analyse de ce sprint porte sur l'identification et la formalisation d
 \hline
 \endhead
 
+Cas d'utilisation & Gestion et Planification des Sessions de Formation \\
+\hline
 
-Cas d'utilisation & 
-\begin{itemize}[leftmargin=*]
-    \item Importer des données
-\end{itemize} \\
+Acteur & Responsable pédagogique \\
 \hline
-Acteur & 
-\begin{itemize}[leftmargin=*]
-    \item Responsable pédagogique
-\end{itemize} \\
-\hline
-Préconditions & 
-\begin{itemize}[leftmargin=*]
-    \item Le responsable pédagogique est authentifié et dispose du role responsable pédagogique.
-    \item Au moins une formation existe dans le système
-\end{itemize} \\
-\hline
-Scénario de base & 
 
-\textbf{Scenario 1: Créer une session de formation} 
-\begin{enumerate}[leftmargin=*]
-\item  Le responsable pédagogique accède à la page « Planning des Sessions ».
-\item  Il clique sur le bouton « Nouvelle session ». 
-\item  Le système affiche un modale de création.
-\item  Le responsable pédagogique renseigne les champs obligatoires: date, heure de début, heure de fin, formation associée, formateur, lieu, type, capacité maximale et prix.
-\item  Le responsable pédagogique clique sur « Enregistrer ».
-\item  Le système vérifie que tous les champs sont remplis.
-\item  Le système valide les données et crée l'enregistrement en base de données.
-\item  Le système ferme la modale, rafraîchit la liste des sessions et met à jour les KPI.
-\end{enumerate}
+Préconditions &
+Le responsable pédagogique est authentifié et dispose du rôle responsable pédagogique. \\
+& Au moins une formation existe dans le système. \\
+\hline
+
+Scénario de base &
+\textbf{Scénario 1 : Créer une session de formation} \\
+&- Le responsable pédagogique accède à la page « Planning des Sessions ». \\
+&- Il clique sur le bouton « Nouvelle session ». \\
+&- Le système affiche une modale de création. \\
+&- Le responsable pédagogique renseigne les champs obligatoires : date, heure de début, heure de fin, formation associée, formateur, lieu, type, capacité maximale et prix. \\
+&- Le responsable pédagogique clique sur « Enregistrer ». \\
+&- Le système vérifie que tous les champs sont remplis. \\
+&- Le système valide les données et crée l'enregistrement en base de données. \\
+&- Le système ferme la modale, rafraîchit la liste des sessions et met à jour les KPI. \\
 \\
-
- & \textbf{Scénario 2: Modifier une session de formation} 
-\begin{enumerate}[leftmargin=*]
-\item  Le responsable pédagogique sélectionne une session depuis le tableau ou le calendrier.
-\item  Le responsable pédagogique clique sur l’icône de modification. 
-\item  Le système affiche la fenêtre modale pré-remplie avec les données existantes de la session. 
-\item  Le responsable pédagogique modifie les champs souhaités 
-\item  Le responsable pédagogique clique sur « Enregistrer ». 
-\item  Le systeme met à jour la session en base de données.
-\item  La modale se ferme et l’affichage est rafraîchi.
-\end{enumerate}
+& \textbf{Scénario 2 : Modifier une session de formation} \\
+&- Le responsable pédagogique sélectionne une session depuis le tableau ou le calendrier. \\
+&- Le responsable pédagogique clique sur l'icône de modification. \\
+&- Le système affiche la fenêtre modale pré-remplie avec les données existantes de la session. \\
+&- Le responsable pédagogique modifie les champs souhaités. \\
+&- Le responsable pédagogique clique sur « Enregistrer ». \\
+&- Le système met à jour la session en base de données. \\
+&- La modale se ferme et l'affichage est rafraîchi. \\
 \\
-
-& \textbf{Scénario 3: Annuler une session de formation} 
-\begin{enumerate}[leftmargin=*]
-\item  Le responsable pédagogique sélectionne une session.
-\item  Le responsable pédagogique clique sur « Annuler ».
-\item  Le système affiche une boîte de confirmation.
-\item  Le responsable pédagogique confirme l’action.
-\item  Le système met à jour le statut de la session en base de données.
-\item  Le systeme met à jour Les KPI et l’interface.
-\end{enumerate}\\
+& \textbf{Scénario 3 : Annuler une session de formation} \\
+&- Le responsable pédagogique sélectionne une session. \\
+&- Le responsable pédagogique clique sur « Annuler ». \\
+&- Le système affiche une boîte de confirmation. \\
+&- Le responsable pédagogique confirme l'action. \\
+&- Le système met à jour le statut de la session en base de données. \\
+&- Le système met à jour les KPI et l'interface. \\
+\\
+& \textbf{Scénario 4 : Gérer les présences d'une session} \\
+&- Le responsable pédagogique sélectionne une session. \\
+&- Le responsable pédagogique clique sur « Marquer présence ». \\
+&- Le système récupère la liste des participants avec leur statut. \\
+&- Une modale s'ouvre avec la liste des apprenants. \\
+&- Le responsable pédagogique met à jour les statuts de présence. \\
+&- Le responsable pédagogique clique sur « Enregistrer ». \\
+&- Le système met à jour les données en base et ferme la modale. \\
+\\
+& \textbf{Scénario 5 : Créer une formation} \\
+&- Le responsable pédagogique clique sur « Nouvelle formation ». \\
+&- Le système affiche une modale de création. \\
+&- Le responsable pédagogique saisit les informations de la formation. \\
+&- Le responsable pédagogique clique sur « Enregistrer ». \\
+&- Le système enregistre la formation en base de données. \\
+&- Le système met à jour la liste des formations dans l'interface. \\
+\\
+& \textbf{Scénario 6 : Modifier une formation} \\
+&- Le responsable pédagogique sélectionne l'action « Modifier » sur une formation spécifique depuis la liste des formations. \\
+&- Le système ouvre le formulaire modal « Modifier Formation », pré-rempli avec les données actuelles de la formation. \\
+&- Le responsable pédagogique modifie les informations souhaitées (nom, description, durée, etc.). \\
+&- Le responsable pédagogique soumet les modifications. \\
+&- Le système valide les nouvelles données. \\
+&- Le système met à jour l'enregistrement correspondant dans la base de données. \\
+&- Le système ferme la modale et rafraîchit l'affichage pour refléter les changements. \\
+\\
+& \textbf{Scénario 7 : Supprimer une formation} \\
+&- Le responsable pédagogique sélectionne l'action « Annuler » pour une formation donnée. \\
+&- Le système vérifie que la formation ne contient pas de sessions actives. \\
+&- Le système affiche une boîte de dialogue demandant la confirmation de cette action irréversible. \\
+&- Le responsable pédagogique confirme l'annulation. \\
+&- Le système vérifie que la formation n'est associée à aucune session active ou planifiée. \\
+&- Le système modifie le statut de la formation en « Annulé » dans la base de données. \\
+&- Le système ferme la boîte de dialogue et met à jour l'interface pour retirer la formation de la liste active. \\
 \hline
 
-& \textbf{Scénario 4: Gérer les présences d'une session} 
-\begin{enumerate}[leftmargin=*]
-\item  Le responsable pédagogique sélectionne une session.
-\item  Le responsable pédagogique clique sur « Marquer présence ».
-\item  Le système récupère la liste des participants avec leur statut.
-\item  Une modale s’ouvre avec la liste des apprenants.
-\item  Le responsable pédagogique met à jour les statuts de présence.
-\item  Le responsable pédagogique clique sur « Enregistrer ».
-\item  Le système met à jour les données en base et ferme la modale.
-\end{enumerate}
-\\
-
-& \textbf{Scénario 5: Créer une formation} 
-\begin{enumerate}[leftmargin=*]
-\item  Le responsable pédagogique clique sur « Nouvelle formation ».
-\item  Le système affiche une modale de création.
-\item  Le responsable pédagogique saisit les informations de la formation.
-\item  Le responsable pédagogique clique sur « Enregistrer ».
-\item  Le système enregistre la formation en base de données.
-\item  Le système mettre à jour la liste des formations dans l’interface
-\end{enumerate}
-\\
-
-& \textbf{Scénario 6: Modifier une formation} 
-\begin{enumerate}[leftmargin=*]
-\item  Le Responsable Pédagogique sélectionne l'action "Modifier" sur une formation spécifique depuis la liste des formations.
-\item  Le système ouvre le formulaire modal "Modifier Formation", pré-rempli avec les données actuelles de la formation.
-\item  Le Responsable Pédagogique modifie les informations souhaitées (ex: nom, description, durée).
-\item  Le Responsable Pédagogique soumet les modifications.
-\item  Le système valide les nouvelles données
-\item  Le système met à jour l'enregistrement correspondant dans la base de données.
-\item  Le système ferme le modal et rafraîchit l'affichage pour refléter les changements.
-\end{enumerate}\\
+Scénarios alternatifs &
+\textbf{1.6, 5.5, 2.6 et 6.5 -- Données invalides :} Si des champs obligatoires sont manquants, le système affiche un message d'erreur et bloque la soumission. \\
+& \textbf{2.5, 4.6, 5.4 et 6.4 -- Annulation :} Si le responsable pédagogique ferme le formulaire avant la soumission, aucune donnée n'est enregistrée. \\
+& \textbf{1.7 -- Conflit de planning :} Le système affiche un avertissement et propose de modifier le créneau horaire. \\
+& \textbf{2.6 -- Conflit de ressources :} Si les nouvelles dates ou le nouveau lieu entrent en conflit avec une autre session, le système bloque la mise à jour et notifie l'utilisateur. \\
+& \textbf{3.4 et 6.4 -- Rétractation :} Si le responsable pédagogique annule l'action lors de la demande de confirmation, le statut de la session reste inchangé. \\
+& \textbf{5.5 -- Intitulé de formation déjà existant :} Si la formation existe déjà, le système affiche un avertissement de doublon et invite à modifier l'intitulé. \\
+& \textbf{7.5 -- Formation avec sessions actives :} Si le système détecte des sessions associées, il affiche un message d'erreur bloquant l'annulation. \\
 \hline
 
-& \textbf{Scénario 7: Supprimer une formation}
-\begin{enumerate}[leftmargin=*]
-\item  Le Responsable Pédagogique sélectionne l'action "Annuler" pour une formation donnée.
-\item  Le système vérifie que la formation ne contient pas de sessions actives.
-\item  Le système affiche une boîte de dialogue demandant la confirmation de cette action irréversible.
-\item  Le Responsable Pédagogique confirme l'annulation.
-\item  Le système vérifie que la formation n'est associée à aucune session active ou planifiée
-\item  Le système modifie le statut de la formation en "Annulé" dans la base de données.
-\item  Le système ferme la boîte de dialogue et met à jour l'interface pour retirer la formation de la liste active.
-\end{enumerate}
-\\
-
-\hline
-Scénarios alternatifs & 
-    \textbf{Scénarios 1.6, 5.5, 2.6 et 6.5: Données invalides} 
-    
-    Si des champs obligatoires sont manquants, le système affiche un message d'erreur et bloque la soumission.
-
-     \textbf{Scénarios 2.5, 4.6, 5.4 et 6.4: Annulation} 
-     
-     Si le Responsable Pédagogique ferme le formulaire/modal avant la soumission, aucune donnée n'est enregistrée.
-
-     \textbf{Scenario1: Créer une session de formation}
-
-     \textbf{1.7: Conflit de planning} 
-     
-     Le système affiche un avertissement et propose de modifier le créneau horaire.
-
-    \textbf{Scénario 2: Modifier une session de formation}
-
-    \textbf{2.6: Conflit de ressources} 
-    
-    Si les nouvelles dates ou le nouveau lieu entrent en conflit avec une autre session, le système bloque la mise à jour et notifie l'utilisateur.
-
-     \textbf{Scénarios 3.4 et 6.4: Rétractation} 
-     
-     Si le responsable pédagogique annule l'action lors de la demande de confirmation, le statut de la session reste inchangé.
-
-     \textbf{Scénario 5: Créer une formation} 
-
-     \textbf{5.5: Intitulé de formation déjà existant} 
-     
-     Si la formation existe déjà, le système affiche un avertissement de doublon et invite à modifier l'intitulé.
-
-     \textbf{Scénario 7: Supprimer une formation}
-
-    \textbf{7.5: Formation avec sessions actives} 
-    
-    Si le système détecte des sessions associées, il affiche un message d'erreur bloquant l'annulation.
-\\
-\hline
 Post-conditions &
-
-    \textbf{Scenario 1: Création d'une session} 
-    
-    Une nouvelle session de formation est planifiée, enregistrée dans le système et visible sur les interfaces de suivi.
-
-     \textbf{Scenario 2: Modification d'une session} 
-     
-     Les attributs de la session sont mis à jour dans le système et l'interface utilisateur est synchronisée.
-
-    \textbf{Scenario 3: Annulation d'une session de formation}
-    
-    La session est marquée comme annulée, elle n'est plus considérée comme active, et les indicateurs financiers et statistiques sont ajustés en conséquence.
-
-     \textbf{Scenario 4: Gestion des présences} 
-     
-     Les statuts de présence des apprenants sont mis à jour dans la base de données.
-
-     \textbf{Scenario 5: Création d'une formation} 
-     
-     Une nouvelle formation est créée dans le système et devient disponible lors de la création ou modification d'une session.
-
-     \textbf{Scenario 6: Modification d'une formation} 
-     
-     Les attributs de la formation sont mis à jour dans le système et l'interface utilisateur est synchronisée.
-
-     \textbf{Scenario 7: Suppression d'une formation} 
-     
-     La formation est marquée comme annulée ou supprimée du système et n'apparaît plus dans les listes actives.
-
-\\
+\textbf{Scénario 1 :} Une nouvelle session de formation est planifiée, enregistrée dans le système et visible sur les interfaces de suivi. \\
+& \textbf{Scénario 2 :} Les attributs de la session sont mis à jour dans le système et l'interface utilisateur est synchronisée. \\
+& \textbf{Scénario 3 :} La session est marquée comme annulée, elle n'est plus considérée comme active, et les indicateurs financiers et statistiques sont ajustés en conséquence. \\
+& \textbf{Scénario 4 :} Les statuts de présence des apprenants sont mis à jour dans la base de données. \\
+& \textbf{Scénario 5 :} Une nouvelle formation est créée dans le système et devient disponible lors de la création ou modification d'une session. \\
+& \textbf{Scénario 6 :} Les attributs de la formation sont mis à jour dans le système et l'interface utilisateur est synchronisée. \\
+& \textbf{Scénario 7 :} La formation est marquée comme annulée et n'apparaît plus dans les listes actives. \\
 \hline
 \end{longtable}
+}
 
 \subsection{Conception}
 
@@ -315,7 +231,7 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
 
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (6).png}
+    \includegraphics[width=0.8\textwidth]{project/images/plansess.png}
     \caption{Interface de planification des sessions}
     \label{fig:capture1}
 \end{figure}
@@ -325,7 +241,7 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
 \noindent La figure~\ref{fig:capture2} illustre la liste des participants inscrits avec leurs informations essentielles et options de filtrage.
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (11).png}
+    \includegraphics[width=0.8\textwidth]{project/images/listeparticip.png}
     \caption{Liste des participants}
     \label{fig:capture2}
 
@@ -333,71 +249,61 @@ Cette section propose une série de captures d'écran couvrent l’ensemble du p
 
 \noindent\textbf{Gestion des présences:}
 
-\noindent La figure~\ref{fig:capture3} montre l'interface de marquage des présences avec le taux de présence en temps réel.
+\noindent La figure~\ref{fig:capture3} montre l'interface de marquage des présences.
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_respedagogique_dashboard (12).png}
+    \includegraphics[width=0.7\textwidth]{project/images/presencem.png}
     \caption{Gestion des présences}
     \label{fig:capture3}
 \end{figure}
-
 \noindent\textbf{Interfaces de gestion sessions:}
 
-\noindent La figure \ref{fig:gestion_sessions} regroupe les interfaces de création (\ref{fig:creer_session}), modification (\ref{fig:modifier_session}) et annulation (\ref{fig:annuler_session}) d'une session.
+\noindent Les figures \ref{fig:creer_session}, \ref{fig:modifier_session} et \ref{fig:annuler_session} illustrent respectivement les interfaces de création, de modification et d'annulation d'une session.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{project/images/nsess1.png}
+    \caption{Création d'une session}
+    \label{fig:creer_session}
+\end{figure}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (9).png}
-        \caption{Création d'une session}
-        \label{fig:creer_session}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\linewidth]{project/images/modifier_session.png}
-        \caption{Modification d'une session}
-        \label{fig:modifier_session}
-    \end{subfigure}
-    
-    \vspace{0.5cm}  % espace bin les lignes
-    
-    \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\linewidth]{project/images/notificationsdelete.png}
-        \caption{Annulation d'une session}
-        \label{fig:annuler_session}
-    \end{subfigure}
-    \caption{Gestion des sessions}
-    \label{fig:gestion_sessions}
+    \includegraphics[width=0.7\linewidth]{project/images/Msession.png}
+    \caption{Modification d'une session}
+    \label{fig:modifier_session}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{project/images/notificationsdelete.png}
+    \caption{Annulation d'une session}
+    \label{fig:annuler_session}
 \end{figure}
 
 \noindent\textbf{interfaces de gestion formations:}
 
-\noindent La figure \ref{fig:gestion_formations} présente les écrans de création (\ref{fig:creer_formation}), modification (\ref{fig:modifier_formation}) et suppression (\ref{fig:supprimer_formation}) d'une formation.
-
+\noindent Les figures \ref{fig:creer_formation}, \ref{fig:modifier_formation} et \ref{fig:supprimer_formation} illustrent respectivement les interfaces de création, de modification et de suppression d'une formation au sein du module de gestion.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\linewidth]{project/images/localhost_3000_respedagogique_dashboard (10).png}
-        \caption{Création d'une formation}
-        \label{fig:creer_formation}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\linewidth]{project/images/modifier_formation.png}
-        \caption{Modifier une formation}
-        \label{fig:modifier_formation}
-    \end{subfigure}
-    
-    \vspace{0.5cm}  % espace bin les lignes
-    
-    \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\linewidth]{project/images/supprimer_formation.png}
-        \caption{supprimer une formation}
-        \label{fig:supprimer_formation}
-    \end{subfigure}
-    \caption{Gestion des formations}
-    \label{fig:gestion_formations}
+    \includegraphics[width=0.7\linewidth]{project/images/nformation.png}
+    \caption{Création d'une formation}
+    \label{fig:creer_formation}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{project/images/minfo.png}
+    \caption{Modifier une formation}
+    \label{fig:modifier_formation}
+\end{figure}
+
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{project/images/supprimer_formation.png}
+    \caption{Supprimer une formation}
+    \label{fig:supprimer_formation}
 \end{figure}
 
 \section{Sprint 4: Espace apprenant}
@@ -407,44 +313,47 @@ Ce rapport présente le travail réalisé au cours du sprint dédié à l'espace
 \subsection{Le backlog du sprint 4}
 Le tableau \ref{tab:sprint4_backlog}  présente le backlog du sprint, qui regroupe l'ensemble des fonctionnalités à implémenter au cours de cette itération. Chaque élément est décrit sous la forme d'une user story centrée sur les besoins de l'apprenant, accompagnée d'un niveau de priorité. 
 
-\begin{table}[H]
-    \centering
+\begin{longtable}{|c|p{3.5cm}|p{10cm}|c|}
     \caption{Backlog du Sprint 4: Espace apprenant}
-    \label{tab:sprint4_backlog}
-\begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
-\hline
-\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
-\hline
-\multirow{9}{*}{4} & \multirow{9}{*}{\makecell{Espace apprenant}}
-& En tant qu'apprenant, je veux être redirigé automatiquement vers la page d'inscription lors de ma première connexion, afin de rejoindre une session avant d'accéder aux autres modules. & M\\
-\cline{3-4}
-& & En tant qu'apprenant, je veux voir un résumé de mes statistiques (formations inscrites, sessions à venir, moyenne générale) afin d'avoir une vue d'ensemble de mon parcours. & S\\
-\cline{3-4}
-& & En tant qu'apprenant, je veux consulter la liste des formations auxquelles j'ai participé, afin de suivre mon avancement. & S\\
-\cline {3-4}
-& & En tant qu'apprenant, je veux consulter les formations disponibles auxquelles Je n’ai pas encore participé, afin de découvrir de nouvelles opportunités d'apprentissage. & S\\
-\cline {3-4}
-& &  En tant qu'apprenant, Je veux participer à une session disponible d’une formation, afin de rejoindre une promotion active. & M\\
-\cline {3-4}
-& &  En tant qu'apprenant, je veux annuler ma participation à une session, afin de me désinscrire si mes disponibilités changent. & S\\
-\cline{3-4}
-& & En tant qu'apprenant, je veux consulter l'historique de toutes mes inscriptions passées et actuelles, afin de garder une trace de mon parcours. & C\\
-\cline{3-4}
-&& En tant qu'apprenant, je veux consulter mon emploi du temps complet (filtrable par semaine ou par mois), afin d'organiser mon agenda. & S\\
-\cline{3-4}
-& & En tant qu'apprenant, je veux consulter la synthèse de toutes mes notes par formation, afin d'évaluer mes performances globales. & C\\
-\cline{3-4}
-&& En tant qu'apprenant, je veux consulter la liste paginée de tous mes paiements (filtrables par formation, session ou date), afin de suivre ma situation financière. & S\\
-\cline{3-4}
-&& En tant qu'apprenant, je veux attribuer une note et un commentaire à une formation que j'ai suivie, afin de partager mon retour d'expérience. & C\\
-\hline
-\end{tabular}
-\end{table}
+    \label{tab:sprint4_backlog}\\
+    \hline
+    \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+    \hline
+    \endhead
+    \multirow{11}{*}{4} & \multirow{11}{*}{\makecell{Espace apprenant}}
+    & En tant qu'apprenant, je veux être redirigé automatiquement vers la page d'inscription lors de ma première connexion, afin de rejoindre une session avant d'accéder aux autres modules. & M\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux voir un résumé de mes statistiques (formations inscrites, sessions à venir, moyenne générale) afin d'avoir une vue d'ensemble de mon parcours. & S\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux consulter la liste des formations auxquelles j'ai participé, afin de suivre mon avancement. & S\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux consulter les formations disponibles auxquelles Je n'ai pas encore participé, afin de découvrir de nouvelles opportunités d'apprentissage. & S\\
+    \cline{3-4}
+    & & En tant qu'apprenant, Je veux participer à une session disponible d'une formation, afin de rejoindre une promotion active. & M\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux annuler ma participation à une session, afin de me désinscrire si mes disponibilités changent. & S\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux consulter l'historique de toutes mes inscriptions passées et actuelles, afin de garder une trace de mon parcours. & C\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux consulter mon emploi du temps complet (filtrable par semaine ou par mois), afin d'organiser mon agenda. & S\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux consulter la synthèse de toutes mes notes par formation, afin d'évaluer mes performances globales. & C\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux consulter la liste paginée de tous mes paiements (filtrables par formation, session ou date), afin de suivre ma situation financière. & S\\
+    \cline{3-4}
+    & & En tant qu'apprenant, je veux attribuer une note et un commentaire à une formation que j'ai suivie, afin de partager mon retour d'expérience. & C\\
+    \hline
+\end{longtable}
 
 \subsection{Analyse}
 
 Dans cette section, nous présentons l'analyse fonctionnelle de l'espace apprenant à travers une modélisation UML. L'objectif est d'identifier clairement les cas d'utilisation couverts, les acteurs impliqués et les interactions entre le système et l'apprenant. Cette analyse constitue le fondement de la conception et oriente les choix d'implémentation effectués lors du sprint.
 
+\vspace{0.8cm}
 \textbf{Amélioration du cas d'utilisation « Espace apprenant»:}
 
 Le diagramme de cas d'utilisation de la figure \ref{Diagramme de cas d'utilisation « Espace apprenant »} illustre l'ensemble des fonctionnalités offertes à l'apprenant dans le cadre de cette plateforme. Il met en évidence les relations d'inclusion et d'extension entre les différents cas d'utilisation, permettant de structurer clairement les parcours fonctionnels disponibles. L'apprenant interagit directement avec six grandes familles de fonctionnalités : le tableau de bord, les formations, les inscriptions, l'emploi du temps, les résultats et les paiements.
@@ -457,11 +366,12 @@ Le diagramme de cas d'utilisation de la figure \ref{Diagramme de cas d'utilisati
     \label{Diagramme de cas d'utilisation « Espace apprenant »}
 \end{figure}
 
-\noindent Le tableau \ref{tab:Espace apprenant} présente la description textuelle structurée du diagramme de cas d'utilisation global, détaillant les acteurs, les préconditions, les scénarios de base et alternatifs, ainsi que les post-conditions associées.
+\noindent Le tableau~\ref{tab:espace_apprenant} présente la description textuelle structurée du diagramme de cas d'utilisation global, détaillant les acteurs, les préconditions, les scénarios de base et alternatifs, ainsi que les post-conditions associées.
 
+{\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
-\caption{Cas d'utilisation – Espace apprenant}
-\label{tab:Espace apprenant} \\
+\caption{Cas d'utilisation -- Espace apprenant}
+\label{tab:espace_apprenant} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
 \hline
@@ -471,114 +381,86 @@ Le diagramme de cas d'utilisation de la figure \ref{Diagramme de cas d'utilisati
 \hline
 \endhead
 
-Cas d'utilisation & 
-\begin{itemize}[leftmargin=*]
-\item Espace apprenant
-\end{itemize} \\
-\hline
-Acteur & 
-\begin{itemize}[leftmargin=*]
-\item Apprenant
-\end{itemize} \\
-\hline
-Préconditions & 
-\begin{itemize}[leftmargin=*]
-\item L'apprenant possède un compte.
-\item Il s'est authentifié et dispose du role apprenant.
-\item Le système récupère les données de l’apprenant à partir de l’identifiant utilisateur.
-\end{itemize} \\
-\hline
-Scénario de base & 
-
-\textbf{Scenario 1: Première connexion (accès conditionnel)} 
-\begin{enumerate}[leftmargin=*]
-\item L'apprenant se connecte pour la première fois.
-\item Le système récupère le profil apprenant lié à l’identifiant utilisateur.
-\item L'apprenant clique sur « nouvelle participation ».
-\item Le systeme affiche les formations actives.
-\item L'apprenant choisit une formation.
-\item Le système affiche un modale des sessions disponibles.
-\item L'apprenant clique sur « participer ».
-\item Le système vérifie l’existence de l’apprenant et de la session.
-\item Le système vérifie si l’apprenant n’est pas déjà inscrit à la session.
-\item Le système vérifie la capacité de la session (places disponibles).
-\item le système enregistre la participation.
-\item Le système confirme l’inscription et redirige vers son espace apprenant.
-\end{enumerate}
-\\
+Cas d'utilisation & Espace apprenant \\
 \hline
 
- & \textbf{Scénario 2: Consulter vue globale} 
-\begin{enumerate}[leftmargin=*]
-\item Le système récupère les sessions associées à l’apprenant.
-\item Le système calcule les indicateurs principaux (sessions suivies, sessions terminées, moyenne générale)
-\item Le système récupère et formate les notes récentes.
-\item Le système récupère les prochaines sessions à venir.
-\item  Le système génère et affiche les statistiques globales de l’apprenant (inscriptions, sessions à venir, moyenne générale et notes récentes).
-\end{enumerate}
-\\
+Acteur & Apprenant \\
 \hline
 
-& \textbf{Scénario 3: consulter mes formations} 
-\begin{enumerate}[leftmargin=*]
-\item L'apprenant accède à la section <<Mes formations>>.
-\item Le système récupère les formations associées à l’apprenant connecté.
-\item Le système affiche les informations des formations.
-\item L’apprenant filtre les formations selon leur statut.
-\item Le système affiche les résultats correspondants.
-\item L’apprennat saisit une note et un commentaire pour la formation sélectionnée.
-\item Le système enregistre ou met à jour la satisfaction de l’apprenant pour cette formation.
-\end{enumerate}
-\\
-
-& \textbf{Scénario 4: suivre ses participations} 
-\begin{enumerate}[leftmargin=*]
-\item L'apprenant accède à la section participations.
-\item Le système récupère les inscriptions associées à l’apprenant connecté.
-\item Le système affiche l’historique des participations avec les détails des sessions et formations.
-\item L’apprenant consulte les informations d’une participation.
-\item L’apprenant demande l’annulation d’une participation.
-\item Le système vérifie l’existence de l’inscription puis supprime la participation.
-\item Le système met à jour la liste des participations.
-\end{enumerate}
-\\
-
-& \textbf{Scénario 5: Consulter ses résultats} 
-\begin{enumerate}[leftmargin=*]
-\item L'apprenant accède à la section Résultats.
-\item Le système récupère toutes les performances de l’apprenant à partir de l’identifiant utilisateur.
-\item Le système charge les informations liées aux sessions et aux formations associées
-\item Le système regroupe les notes par formation.
-\item Le système calcule la moyenne des notes pour chaque formation.
-\item Le système détermine le statut de réussite (passed/failed) pour chaque formation
-\item Le système calcule la moyenne générale de toutes les formations.
-\item Le système retourne une vue globale des résultats de l’apprenant
-\end{enumerate}
-\\
-
+Préconditions &
+L'apprenant possède un compte. \\
+& Il s'est authentifié et dispose du rôle apprenant. \\
+& Le système récupère les données de l'apprenant à partir de l'identifiant utilisateur. \\
 \hline
-Scénarios alternatifs & 
 
-    Si toutes les places sont prises, le système affiche un message d'indisponibilité et empêche l'inscription.
-
-    Si l'apprenant tente de s'inscrire une deuxième fois à la même session, le système retourne une erreur de doublon.
+Scénario de base &
+\textbf{Scénario 1 : Première connexion (accès conditionnel)} \\
+&- L'apprenant se connecte pour la première fois. \\
+&- Le système récupère le profil apprenant lié à l'identifiant utilisateur. \\
+&- L'apprenant clique sur « nouvelle participation ». \\
+&- Le système affiche les formations actives. \\
+&- L'apprenant choisit une formation. \\
+&- Le système affiche une modale des sessions disponibles. \\
+&- L'apprenant clique sur « participer ». \\
+&- Le système vérifie l'existence de l'apprenant et de la session. \\
+&- Le système vérifie si l'apprenant n'est pas déjà inscrit à la session. \\
+&- Le système vérifie la capacité de la session (places disponibles). \\
+&- Le système enregistre la participation. \\
+&- Le système confirme l'inscription et redirige vers son espace apprenant. \\
 \\
+& \textbf{Scénario 2 : Consulter vue globale} \\
+&- Le système récupère les sessions associées à l'apprenant. \\
+&- Le système calcule les indicateurs principaux (sessions suivies, sessions terminées, moyenne générale). \\
+&- Le système récupère et formate les notes récentes. \\
+&- Le système récupère les prochaines sessions à venir. \\
+&- Le système génère et affiche les statistiques globales de l'apprenant. \\
+\\
+& \textbf{Scénario 3 : Consulter mes formations} \\
+&- L'apprenant accède à la section « Mes formations ». \\
+&- Le système récupère les formations associées à l'apprenant connecté. \\
+&- Le système affiche les informations des formations. \\
+&- L'apprenant filtre les formations selon leur statut. \\
+&- Le système affiche les résultats correspondants. \\
+&- L'apprenant saisit une note et un commentaire pour la formation sélectionnée. \\
+&- Le système enregistre ou met à jour la satisfaction de l'apprenant pour cette formation. \\
+\\
+& \textbf{Scénario 4 : Suivre ses participations} \\
+&- L'apprenant accède à la section « Participations ». \\
+&- Le système récupère les inscriptions associées à l'apprenant connecté. \\
+&- Le système affiche l'historique des participations avec les détails des sessions et formations. \\
+&- L'apprenant consulte les informations d'une participation. \\
+&- L'apprenant demande l'annulation d'une participation. \\
+&- Le système vérifie l'existence de l'inscription puis supprime la participation. \\
+&- Le système met à jour la liste des participations. \\
+\\
+& \textbf{Scénario 5 : Consulter ses résultats} \\
+&- L'apprenant accède à la section « Résultats ». \\
+&- Le système récupère toutes les performances de l'apprenant à partir de l'identifiant utilisateur. \\
+&- Le système charge les informations liées aux sessions et aux formations associées. \\
+&- Le système regroupe les notes par formation. \\
+&- Le système calcule la moyenne des notes pour chaque formation. \\
+&- Le système détermine le statut de réussite (passed/failed) pour chaque formation. \\
+&- Le système calcule la moyenne générale de toutes les formations. \\
+&- Le système retourne une vue globale des résultats de l'apprenant. \\
+\hline
+
+Scénarios alternatifs &
+\textbf{1.1 Places indisponibles :} Si toutes les places sont prises, le système affiche un message d'indisponibilité et empêche l'inscription. \\
+& \textbf{1.2 Doublon d'inscription :} Si l'apprenant tente de s'inscrire une deuxième fois à la même session, le système retourne une erreur de doublon. \\
 \hline
 Post-conditions &
-    
-L'apprenant est inscrit à au moins une session.
-
-Les statistiques du tableau de bord sont mises à jour.
-
-La note et le commentaire sont enregistrés ou mis à jour.
-
-\\
+L'apprenant est inscrit à au moins une session. \\
+& Les statistiques du tableau de bord sont mises à jour. \\
+& La note et le commentaire sont enregistrés ou mis à jour. \\
 \hline
-\end{longtable}
 
+\end{longtable}
+}
 \subsection{Conception}
 
 Cette section présente les diagrammes de séquence les plus représentatifs de l'espace apprenant. Nous avons retenu les deux flux les plus critiques en termes de logique métier et d'interactions multi-couches. Ces diagrammes illustrent la communication entre les différents composants de l'architecture (Frontend, Backend et Base de donnés) pour chacun de ces scénarios
+
+\vspace{0.8cm}
 
 \noindent\textbf{Diagramme de séquence: Première connexion et accès conditionnel}
 
@@ -588,7 +470,7 @@ Cette section présente les diagrammes de séquence les plus représentatifs de 
 
 \begin{figure}[H]
  \centering
-    \includegraphics[scale=0.5]{project/images/participe apprenant.png}
+ \includegraphics[scale=0.5]{project/images/participe apprenant.png}
   \caption{Diagramme de séquence << Première connexion >> }
   \label{cap:Diagramme de séquence <<Participer session>>}
 \end{figure}
@@ -625,7 +507,7 @@ Cette section détaille la mise en œuvre de l'espace apprenant, en présentant 
     \label{fig:session-modal}
 \end{figure}
 
-\noindent\textbf{Interface Vue Globale}
+\noindent\textbf{Interface Vue Globale:}
 
 \noindent Le tableau de bord principal de l'apprenant (figure~\ref{fig:vue-globale}), offre un accès rapide à toutes les fonctionnalités et informations pertinentes. Cette page présente un résumé des activités récentes (résultats, sessions à venir, formations suivies, etc.) et un accès direct aux différentes sections de l'espace apprenant.
 
@@ -692,7 +574,7 @@ Cette section détaille la mise en œuvre de l'espace apprenant, en présentant 
     \label{fig:mes-inscriptions}
 \end{figure}
 
-\noindent \textbf{Interface Mes résultats}
+\noindent \textbf{Interface Mes résultats:}
 
 \noindent Cette section fournit un aperçu des performances de l'apprenant pour les formations suivies. Elle présente la moyenne générale et le statut de réussite ou d'échec. En cliquant sur l'une des formations, les notes obtenues pour chaque évaluation et le statut final sont affichés. Si aucune donnée de résultat n'est disponible, un message informatif est affiché pour l'apprenant.
 
@@ -731,11 +613,11 @@ Cette section détaille la mise en œuvre de l'espace apprenant, en présentant 
 \section{Sprint 5: Alimentation des données}
 \label{sec:Sprint5:ETL}
 Dans le cadre de ce projet, le processus d'intégration des données repose sur une approche hybride. En effet, en l'absence de sources de données réelles, nous avons procédé à la génération de jeux de données simulés afin de reproduire un environnement proche de la réalité et de permettre le bon fonctionnement et la validation des différentes fonctionnalités de la plateforme. Cette génération de données a permis de modéliser plusieurs entités, garantissant ainsi la disponibilité d'un volume de données suffisant pour les traitements analytiques.
-Par ailleurs, la plateforme ne se limite pas à ces données statiques : l'administrateur dispose également d'un module d'importation lui permettant d'intégrer des données externes à travers plusieurs étapes structurées. Le processus se fait à travers plusieurs étapes afin d'assurer leur cohérence et leur conformité avec le modèle du système. Les données validées sont alors intégrées dans la base de données(OLTP) pour être exploitées par les différents modules analytiques.
+Par ailleurs, la plateforme ne se limite pas à ces données statiques : l'administrateur dispose également d'un module d'importation lui permettant d'intégrer des données externes à travers plusieurs étapes structurées. Le processus se fait à travers plusieurs étapes afin d'assurer leur cohérence et leur conformité avec le modèle du système. Les données validées sont alors intégrées dans la base de données (OLTP) pour être exploitées par les différents modules analytiques.
 Ainsi, cette approche combinant génération de données et import contrôlé permet d'assurer la flexibilité, la robustesse et l'évolutivité du système, tout en garantissant un environnement adapté aux besoins de test et de simulation de la plateforme.
 
 \subsection{Le backlog du sprint 5}
-Chaque user story est formulée selon le format « En tant que… je veux… afin de… ». Dans cette partie, nous présentons le backlog du sprint 5, élaboré à partir des besoins fonctionnels identifiés pour le module d'alimentation des données. Ce backlog comprend les user stories détaillées permettant de planifier et de prioriser les tâches de ce sprint, comme le montre le tableau \ref{tab:sprint5_backlog}.
+Dans cette partie, nous présentons le backlog du sprint 5, élaboré à partir des besoins fonctionnels identifiés pour le module d'alimentation des données. Ce backlog comprend les user stories détaillées permettant de planifier et de prioriser les tâches de ce sprint, comme le montre le tableau \ref{tab:sprint5_backlog}.
 
 \begin{table}[H]
 \centering
@@ -890,7 +772,7 @@ Dans cette partie, nous présentons la conception du cas d'utilisation « Import
 La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présentant les différentes interactions entre l'administrateur et le système lors du processus d'import.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{project/images/DigSeq1.png}
+    \includegraphics[width=0.8\textwidth]{project/images/DigSeq1.png}
     \caption{Diagramme de séquence « Importer des données »}
     \label{fig:seqdiagram_import}
 \end{figure}
@@ -898,39 +780,44 @@ La figure \ref{fig:seqdiagram_import} illustre le diagramme de séquence présen
 \subsection{Réalisation}
 Dans cette section, nous présentons les interfaces réalisées pour le module d'importation des données, en mettant l'accent sur les différentes étapes du processus d'intégration. Les captures d'écran suivantes illustrent les écrans de sélection de l'entité cible, de mapping des colonnes, d'aperçu des données et de rapport d'import.
 
+\vspace{0.8cm}
 \noindent \textbf{Aperçu de l’interface d’import:}
 
 \noindent La figure \ref{fig:admin_import} présente l'écran principal du module d'import avec la sélection de l'entité cible et l'historique des jobs d'importation.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_admin_resources.png}
-    \caption{interface d'importation des données}
+    \includegraphics[trim=3cm 0 3cm 0, clip, height=0.60\textheight, keepaspectratio]{project/images/localhost_3000_admin_resources.png}
+    \caption{Interface d'importation des données}
     \label{fig:admin_import}
 \end{figure}
+ 
+\newpage
+\noindent\textbf{Interfaces de l'étape upload et mapping :}
 
-\noindent\textbf{interface de l'étape upload et mapping:}
-
-\noindent Les figures \ref{fig:upload_mapping} illustrent respectivement l'écran de chargement du fichier (CSV/Excel) et l'interface de correspondance automatique et manuelle des colonnes avec les champs de l'entité sélectionnée.
+\noindent La figure \ref{fig:upload} illustre l'écran de chargement du fichier (CSV/Excel).
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/upload.png}
-        \caption{Première interface}
-        \label{fig:upload}
-    \end{subfigure}
-    \hfill                    % espace entre les 2
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/mapping.png}
-        \caption{Deuxième interface}
-        \label{fig:mapping}
-    \end{subfigure}
-    \caption{Étapes d'upload et de mapping des données}
-    \label{fig:upload_mapping}
+    \includegraphics[height=0.35\textheight, keepaspectratio]{project/images/upload.png}
+    \caption{Interface de chargement du fichier}
+    \label{fig:upload}
 \end{figure}
+
+\vspace{0.3cm}
+
+\noindent La figure \ref{fig:mapping} présente l'interface de correspondance automatique et manuelle des colonnes avec les champs de l'entité sélectionnée.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.35\textheight, keepaspectratio]{project/images/mapping.png}
+    \caption{Interface de mapping des colonnes}
+    \label{fig:mapping}
+\end{figure}
+
+
+
+\newpage
 
 \noindent\textbf{Interface de validation des données:}
 
