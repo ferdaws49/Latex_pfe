@@ -36,11 +36,13 @@ La section \ref{sec:sprint1-authentification} est consacrée à la sécurisation
 
   \noindent\textbf{Amélioration du cas d’utilisation « inscription »:} 
   
-  \noindent L’inscription représente la première étape pour les apprenants souhaitant accéder à la plateforme. En effet, contrairement aux autres acteurs dont les comptes sont créés par l’administrateur, seuls les apprenants passent par cette étape. La figure \ref{fig:usecase_inscription} illustre le comportement dynamique de ce processus à travers un diagramme de cas d’utilisation.
+  \noindent L’inscription représente la première étape pour les apprenants souhaitant accéder à la plateforme. En effet, contrairement aux autres acteurs dont les comptes sont créés par l’administrateur, seuls les apprenants passent par cette étape. La figure \ref{fig:usecase} illustre le comportement dynamique de ce processus à travers un diagramme de cas d’utilisation.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/VLBDIWCn4Bu7yWx3Ngg75hJjHSfIBJq82gBeFMHdQoG_Qp8fYFWkNdsElfWJkvQMYeU4PBxlc_zv8XKfEok551PR0WeGpUgPe34HDPdW2wGqXGYNNHVHAq-_1gWInhNH24kdZAqALOgYKtvb4QhRg-i5Ui9OmRiKEQ5MYSrBlmvl606B2Xg4jRAcKILQ1Ih1usAwnxv7rrdE1jeGNRQgF7}
-    \label{fig:usecase_inscription}
+    \includegraphics[width=1\textwidth]{project/images/abc.png}
+    \caption{Diagramme de cas d’utilisation - Inscription}
+    \label{fig:usecase}
+    
 \end{figure}
 Le tableau \ref{tab:inscription_email} présente la description textuelle du cas d’utilisation « s’inscrire ».
 \vspace{0.3cm} % petit espace avant le tableau
@@ -76,7 +78,7 @@ Préconditions &
 \end{itemize} \\
 \hline
 Scénario de base & 
-\textbf{Scénario 1: Inscription} \\
+\textbf{Scénario 1 : Inscription} \\
 & L’utilisateur saisit ses informations (nom, email, téléphone, mot de passe, confirmation, programme). \\
 & Le système vérifie que tous les champs obligatoires sont remplis. \\
 & Le système valide la conformité du mot de passe et sa correspondance avec la confirmation. \\
@@ -86,7 +88,7 @@ Scénario de base &
 
 \hline
 \vspace{0.3cm}
-& \textbf{Scénario 2: Vérification Email} \\
+& \textbf{Scénario 2 : Vérification Email} \\
 & -L’utilisateur clique sur le lien reçu. \\
 & -Le système vérifie la validité du lien et l’existence de l’utilisateur. \\
 & -Le système met à jour le statut vers \textit{En attente (Pending)}. \\
@@ -166,11 +168,11 @@ Scénario de base &
 & 8. Le système redirige l’utilisateur vers son espace selon son rôle\\
 \hline
 Scénarios alternatifs & 
-\textbf{Champs vides:}
+\textbf{Champs vides :}
  Le système affiche un message demandant de remplir tous les champs \\
-& \textbf{Email inexistant:} Le système affiche un message d’erreur et refuse l’authentification \\
-& \textbf{Mot de passe incorrect:} Le système affiche un message d’erreur et permet une nouvelle tentative \\
-& \textbf{Compte non autorisé:} Le système bloque l’accès et affiche un message indiquant que le compte n’est pas autorisé \\
+& \textbf{Email inexistant :} Le système affiche un message d’erreur et refuse l’authentification \\
+& \textbf{Mot de passe incorrect :} Le système affiche un message d’erreur et permet une nouvelle tentative \\
+& \textbf{Compte non autorisé :} Le système bloque l’accès et affiche un message indiquant que le compte n’est pas autorisé \\
 \hline
 Post-condition & 
 \begin{itemize}[leftmargin=*]
@@ -243,10 +245,10 @@ Scénario principal &
 \hline
 Scénarios alternatifs & 
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Email invalide ou vide:} le système affiche un message d’erreur et bloque l’envoi
-    \item \textbf{Email inexistant:} affichage d’un message générique pour des raisons de sécurité
-    \item \textbf{Mots de passe non identiques:} le système rejette la demande
-    \item \textbf{Lien expiré ou déjà utilisé:} le système affiche une erreur et demande une nouvelle réinitialisation
+    \item \textbf{Email invalide ou vide :} le système affiche un message d’erreur et bloque l’envoi
+    \item \textbf{Email inexistant :} affichage d’un message générique pour des raisons de sécurité
+    \item \textbf{Mots de passe non identiques :} le système rejette la demande
+    \item \textbf{Lien expiré ou déjà utilisé :} le système affiche une erreur et demande une nouvelle réinitialisation
 \end{itemize}
 \\
 \hline
@@ -267,17 +269,17 @@ Postcondition &
 La phase de conception modélise techniquement le fonctionnement de l'authentification à l'aide de diagrammes de séquence. Ils illustrent chronologiquement les interactions entre l'utilisateur et le système pour garantir la sécurité des flux, depuis l'inscription de l'apprenant jusqu'à sa validation finale par l'administration.
 \vspace{0.3cm}
 
-\noindent\textbf{Diagramme de séquence: Inscription de l'apprenant}
+\noindent\textbf{Diagramme de séquence : Inscription de l'apprenant}
 
 \noindent Ce diagramme illustre le processus de création d'un nouveau compte sur la plateforme. L'utilisateur fournit ses donnés personnelles. La figure \ref{cap:inscription_apprenant} presente comment le système procède d'abord à une vérification du format des données et l'unicité de l'email. Une fois validé, le mot de passe est haché et le compte est créé avec un statut "non vérifié". Un lien de confirmation est alors envoyé par email à l'utilisateur pour confirmer l'identité de l'apprenant.
 
 \vspace{0.3cm}
-\noindent \textbf{Diagramme de séquence: Vérification de l'adresse email}
+\noindent \textbf{Diagramme de séquence : Vérification de l'adresse email}
 
 \noindent Ce diagramme démontre la validation de l'email,comme il est représenté dans la Figure \ref{cap:usecase_seq_verif}, faisant passer le compte du statut "non vérifié" à "en attente". En cliquant sur le lien reçu, l'apprenant transmet un code de sécurité que le système vérifie (intégrité et validité). Une fois l'email confirmé, le profil est prêt pour l'étape finale : l'examen et la validation manuelle par l'administrateur.
 
 \vspace{0.3cm}
-\noindent\textbf{Diagramme de séquence: Login}
+\noindent\textbf{Diagramme de séquence : Login}
 
 \noindent Le processus d’authentification est  détaillé en deux scénarios spécifiques : le login de l’apprenant et celui du responsable, afin de distinguer les différents parcours d’accès selon le rôle de l’utilisateur.
 
@@ -316,7 +318,7 @@ La phase de conception modélise techniquement le fonctionnement de l'authentifi
   \label{cap:Diagramme de séquence <<Login - Apprenant>>}
 \end{figure}
 \newpage
-\noindent \textbf{Diagramme de séquence: Login -Responsables et Administrateurs}
+\noindent \textbf{Diagramme de séquence : Login -Responsables et Administrateurs}
 
 \noindent Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}, présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique , Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
 
@@ -341,7 +343,7 @@ La phase de conception modélise techniquement le fonctionnement de l'authentifi
   \label{cap:Diagramme de séquence <<Mot de passe oublié>>}
 \end{center}
 \newpage
-\noindent\textbf{Diagramme de séquence: Vérification de lien de réinitialisation}
+\noindent\textbf{Diagramme de séquence : Vérification de lien de réinitialisation}
 
 Ce diagramme décrit la validation automatique du lien envoyé par email. Avant d'autoriser tout changement, le système vérifie si le lien utilisé est toujours fonctionnel. Cela permet de bloquer la procédure si le lien a expiré, évitant ainsi à l'utilisateur de perdre du temps avec un lien expiré comme illustré dans la Figure \ref{cap:usecase_seq_linkReset}.
 
@@ -354,7 +356,7 @@ Ce diagramme décrit la validation automatique du lien envoyé par email. Avant 
 
 \vspace{0.3cm}
 
-\noindent\textbf{Diagramme de séquence: Réinitialisation du mot de passe}
+\noindent\textbf{Diagramme de séquence : Réinitialisation du mot de passe}
 
 \noindent Ce dernier diagramme schématisé dans la Figure \ref{cap:Diagramme de séquence:<<Réinitialisation du mot de passe>>} présente la mise à jour finale du mot de passe. L’utilisateur saisit ses nouvelles informations, qui sont envoyées de manière  sécurisée au système. Après une vérification finale de la demande, le système sécurise le nouveau mot de passe et l’enregistre dans la base de données.
 \newpage
@@ -383,21 +385,21 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
 \begin{minipage}{0.9\textwidth}
     \centering
     \includegraphics[width=1\linewidth]{project/images/register-cap.png}
-    \captionof{figure}{Interface d'inscription: standard}
+    \captionof{figure}{Interface d'inscription : standard}
     \label{cap:Interface d'inscription:standard}
 \end{minipage}
 
 \begin{minipage}{0.45\textwidth}
     \centering
     \includegraphics[width=0.9\linewidth]{project/images/register-empty.png}
-    \captionof{figure}{Interface d'inscription: champs vides}
+    \captionof{figure}{Interface d'inscription : champs vides}
     \label{cap:Interface d'inscription:champs-vide}
 \end{minipage}
 \hfill
 \begin{minipage}{0.45\textwidth}
     \centering
     \includegraphics[width=0.9\linewidth]{project/images/register-invalid.png}
-    \captionof{figure}{Interface d'inscription: champs invalides}
+    \captionof{figure}{Interface d'inscription : champs invalides}
     \label{cap:Interface d'inscription:champs-invalide}
 \end{minipage}
 
@@ -427,14 +429,14 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{project/images/confirme.png}
-        \captionof{figure}{interface d'inscription: vérifier email}
+        \captionof{figure}{interface d'inscription : vérifier email}
         \label{cap:interface d'inscription: vérifier email}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.8\linewidth]{project/images/email.verify.jpeg}
-        \captionof{figure}{interface d'inscription: email de vérification}
+        \captionof{figure}{interface d'inscription : email de vérification}
         \label{cap:interface d'inscription: email de vérification}
     \end{minipage}
     
@@ -444,14 +446,14 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{project/images/lien-invalide.png}
-        \captionof{figure}{interface d'inscription:lien non valide}
+        \captionof{figure}{interface d'inscription : lien non valide}
         \label{cap:interface d'inscription:lien non valide}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.8\linewidth]{project/images/validé.png}
-        \captionof{figure}{interface d'inscription:inscription vérifié}
+        \captionof{figure}{interface d'inscription : inscription vérifié}
         \label{cap:interface d'inscription:inscription vérifié}
     \end{minipage}
 
@@ -466,7 +468,7 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
 \begin{figure}[H]
   \centering
     \includegraphics[width=1\linewidth]{project/images/login.png}
-  \caption{ Interface login:état normale}
+  \caption{ Interface login : état normale}
   \label{fig:Interface login:état normale}
 \end{figure}
 
@@ -477,14 +479,14 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\linewidth]{project/images/Login-invalide.png}
-        \captionof{figure}{Interface login: données invalide}
+        \captionof{figure}{Interface login : données invalide}
         \label{cap:Interface login: données invalide}
     \end{minipage}
     \hfill
     \begin{minipage}{0.5\textwidth}
         \centering
         \includegraphics[width=0.79\linewidth]{project/images/en attente.png}
-        \captionof{figure}{Interface login:Apprenant en attente d'acceptation}
+        \captionof{figure}{Interface login : Apprenant en attente d'acceptation}
         \label{cap:Interface login:Apprenant ena attente d'acceptation}
     \end{minipage}
 \end{center}
@@ -495,14 +497,14 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\linewidth]{project/images/rejected.png}
-        \captionof{figure}{Interface login:Apprenant est refusé}
+        \captionof{figure}{Interface login : Apprenant est refusé}
         \label{cap:Interface login:Apprenant-est-refusé}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\linewidth]{project/images/compte-désactivé.png}
-        \captionof{figure}{Interface login: Utilisateur désactivé}
+        \captionof{figure}{Interface login : Utilisateur désactivé}
         \label{cap:Interface login: Utilisateur désactivé}
     \end{minipage}
 \end{center}
@@ -533,12 +535,12 @@ Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format es
     \centering
         \centering
         \includegraphics[width=0.5\linewidth]{project/images/pass-invalide.png}
-        \captionof{figure}{Interface de réinitialisation: email invalide}
+        \captionof{figure}{Interface de réinitialisation : email invalide}
         \label{cap:F_F}
 \end{figure}
 
 
-\noindent \textbf{interface de lien de vérification:}
+\noindent \textbf{interface de lien de vérification :}
 
 \noindent Une fois un email valide soumis comme le montre la figure \ref{cap:Interface réinitialisation: email }  , l'interface de la Figure \ref{cap:Interface de réinitialisation:email de réinitialisation} informe l'utilisateur qu'un lien de réinitialisation lui a été envoyé. Cette étape confirme la prise en compte de la demande par le serveur.
 
@@ -551,14 +553,14 @@ Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format es
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\linewidth]{project/images/pas-mail.png}
-        \captionof{figure}{Interface de réinitialisation: email envoyé}
+        \captionof{figure}{Interface de réinitialisation : email envoyé}
         \label{cap:Interface réinitialisation: email }
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[scale=0.23]{project/images/email-reset.jpeg}
-        \captionof{figure}{Interface de réinitialisation:email de réinitialisation}
+        \captionof{figure}{Interface de réinitialisation : email de réinitialisation}
         \label{cap:Interface de réinitialisation:email de réinitialisation}
     \end{minipage}
 \end{center}
@@ -572,14 +574,14 @@ Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format es
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{project/images/reset-pass.png}
-        \captionof{figure}{Interface de réinitialisation: etat normale}
+        \captionof{figure}{Interface de réinitialisation : état normale}
         \label{cap:Interface de réinitialisation:etat}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{project/images/invalid-link.png}
-        \captionof{figure}{Interface de réinitialisation: lien invalide}
+        \captionof{figure}{Interface de réinitialisation : lien invalide}
         \label{cap:Interface de réinitialisation: lien invalide}
     \end{minipage}
 
@@ -601,14 +603,14 @@ Le système applique également des règles de validation afin de garantir la ro
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{project/images/reset-empty.png}
-        \captionof{figure}{Interface de réinitialisation: changer le mot de passe}
+        \captionof{figure}{Interface de réinitialisation : changer le mot de passe}
         \label{cap:reset_form}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{project/images/ress-invalide.png}
-        \captionof{figure}{Interface de réinitialisation: mot de passe invalide}
+        \captionof{figure}{Interface de réinitialisation : mot de passe invalide}
         \label{cap:reset_invalid}
     \end{minipage}
     
@@ -618,7 +620,7 @@ Le système applique également des règles de validation afin de garantir la ro
     \begin{minipage}{0.7\textwidth}
         \centering
         \includegraphics[width=0.8\linewidth]{project/images/ress-success.png}
-        \captionof{figure}{Interface de réinitialisation: mot de passe réinitialisé avec succès}
+        \captionof{figure}{Interface de réinitialisation : mot de passe réinitialisé avec succès}
         \label{cap:reset_success}
     \end{minipage}
 \end{center}
@@ -782,7 +784,7 @@ La section Conception présente la modélisation dynamique des principaux scéna
 
 \vspace{0.3cm}
 
-\noindent \textbf{Diagramme de séquence: Ajouter un utiliateur}
+\noindent \textbf{Diagramme de séquence : Ajouter un utiliateur}
 
 \noindent Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Ajouter un utilisateur>>} illustre le processus d'ajout d'un nouvel utilisateur par l'administrateur, depuis la saisie du formulaire jusqu'à l'enregistrement en base de données.
 \begin{figure}[H]
@@ -793,7 +795,7 @@ La section Conception présente la modélisation dynamique des principaux scéna
 \end{figure}
 \vspace*{\fill} % espace vertical sous
 \newpage
-\noindent\textbf{Diagramme de séquence: Réinitialisation du mot de passe}
+\noindent\textbf{Diagramme de séquence : Réinitialisation du mot de passe}
 
 \noindent La Figure \ref{cap:Diagramme de séquence <<Réinitialisation du mot de passe>>} présente le diagramme de séquence relatif à la réinitialisation du mot de passe d'un utilisateur, initié par l'administrateur.
 \begin{figure}[H]
@@ -806,7 +808,7 @@ La section Conception présente la modélisation dynamique des principaux scéna
 
 \newpage
 
-\noindent \textbf{Diagramme de séquence: Gestion des demandes des apprenants}
+\noindent \textbf{Diagramme de séquence : Gestion des demandes des apprenants}
 
 
 \noindent Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Gestion des demandes des apprenants>>} décrit le flux de traitement des demandes d'inscription des apprenants par l'administrateur, en détaillant les deux chemins possibles: l'acceptation, qui declanche l'envoi d'une notification par email, et le refus, qui archive la demande et notifie l'apprenant.
@@ -821,7 +823,7 @@ La section Conception présente la modélisation dynamique des principaux scéna
 Cette section présente les interfaces de gestion des utilisateurs, en mettant l’accent sur les différentes fonctionnalités implémentées et l’expérience utilisateur offerte par ces interfaces.
 
 \vspace{0.3cm}
-\noindent \textbf{Interface de gestion des utilisateurs:} 
+\noindent \textbf{Interface de gestion des utilisateurs :} 
 
 \noindent La figure \ref{fig:capture_userstab} présente l'interface principale affichant la liste des utilisateurs sous forme de tableau structuré, avec barre de recherche et filtres par rôle.
 
@@ -832,7 +834,7 @@ Cette section présente les interfaces de gestion des utilisateurs, en mettant l
     \label{fig:capture_userstab}
 \end{figure}
 
-\noindent\textbf{Validation des comptes:} 
+\noindent\textbf{Validation des comptes :} 
 
 \noindent La figure \ref{fig:capture_learnersvalidated} illustre l'interface de traitement des demandes d'inscription, permettant à l'administrateur d'accepter ou de refuser les comptes en attente.
 
@@ -843,7 +845,7 @@ Cette section présente les interfaces de gestion des utilisateurs, en mettant l
     \label{fig:capture_learnersvalidated}
 \end{figure}
 
-\noindent \textbf{Ajout d’un utilisateur:} 
+\noindent \textbf{Ajout d’un utilisateur :} 
 
 \noindent La figure \ref{fig:capture_newuser} montre le modal d'ajout d'un nouvel utilisateur, comportant les champs nom, email, rôle et mot de passe.
 
@@ -853,7 +855,7 @@ Cette section présente les interfaces de gestion des utilisateurs, en mettant l
     \caption{Ajout d’un utilisateur}
     \label{fig:capture_newuser}
 \end{figure}
-\noindent \textbf{Modification des informations:} 
+\noindent \textbf{Modification des informations :} 
 
 \noindent Les figures \ref{fig:reset-password} et \ref{fig:modifier-user} présentent respectivement la sélection d'un utilisateur et le modal de modification pré-rempli avec ses données actuelles.
 \begin{figure}[H]
@@ -870,7 +872,7 @@ Cette section présente les interfaces de gestion des utilisateurs, en mettant l
     \label{fig:modifier-user}
 \end{figure}
 
-\textbf{Suppression d’un utilisateur:} 
+\textbf{Suppression d’un utilisateur :} 
 
 \noindent La figure \ref{fig:capture_del} montre le modal de confirmation de suppression, invitant l'administrateur à confirmer ou annuler la suppression définitive du compte.
 

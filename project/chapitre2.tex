@@ -3,7 +3,7 @@
  \newpage
  \counterwithin{figure}{chapter}
  \section{Introduction}
- Après avoir posé les bases et défini le cadre général de notre projet,ce deuxième chapitre constitue l'étape charnière de notre projet, dédiée à la compréhension approfondie des enjeux et à l'organisation du développement. Nous commençons par la capture des besoins dans la section \ref{cap:Capture des besoins}, en identifiant les acteurs clés du centre de formation ainsi que leurs attentes concrètes, tant sur le plan des fonctionnalités que de la fiabilité du système. Nous procédons ensuite à la modélisation des besoins dans la section \ref{cap:Modélisation des exigences} pour traduire ces attentes en une structure visuelle claire. Enfin, nous présentons le pilotage du projet avec Scrum dans la section \ref{cap:Pilotage du projet avec Scrum}, qui définit l’organisation des tâches à travers le backlog ainsi que le rythme de développement en sprints, afin de garantir une collaboration fluide et efficace.
+ Après avoir posé les bases et défini le cadre général de notre projet, ce deuxième chapitre constitue l'étape charnière de notre projet, dédiée à la compréhension approfondie des enjeux et à l'organisation du développement. Nous commençons par la capture des besoins dans la section \ref{cap:Capture des besoins}, en identifiant les acteurs clés du centre de formation ainsi que leurs attentes concrètes, tant sur le plan des fonctionnalités que de la fiabilité du système. Nous procédons ensuite à la modélisation des besoins dans la section \ref{cap:Modélisation des exigences} pour traduire ces attentes en une structure visuelle claire. Enfin, nous présentons le pilotage du projet avec Scrum dans la section \ref{cap:Pilotage du projet avec Scrum}, qui définit l’organisation des tâches à travers le backlog ainsi que le rythme de développement en sprints, afin de garantir une collaboration fluide et efficace.
 
 \section{Capture des besoins}
 \label{cap:Capture des besoins}
@@ -31,15 +31,18 @@ Administrateur Système &Assure l’administration globale du système, ainsi qu
 \hline
 Apprenant &Consulte ses propres résultats, suit l'avancement de son parcours et gérer ses inscriptions \\
 \hline
-
+Module IA &  Fournit des analyses prédictives et recommandations stratégiques pour anticiper les risques, optimiser la planification et soutenir la prise de décision des acteurs métier.  \\
+\hline
 \end{tabular}
 \end{table}
 \subsection{Spécifications des besoins fonctionnels}
 Cette section présente les besoins fonctionnels de la plateforme en fonction des différents acteurs, en mettant en évidence les fonctionnalités attendues pour chaque utilisateur. 
-\newpage
-\textbf{Besoins fonctionnels de l’acteur « Directeur »}
 
-Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Directeur »} présente les besoins du Directeur, orientés vers l’analyse stratégique de l'établissement.
+\vspace{0.3cm}
+\noindent\textbf{Besoins fonctionnels de l’acteur « Directeur »}
+
+
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Directeur »} présente les besoins du Directeur, orientés vers l’analyse stratégique de l'établissement.
 \begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Directeur »}
@@ -57,11 +60,13 @@ Analyse multicritère & Analyse des performances selon différents critères.\\
 \end{tabular}
 \end{table}
 
-\textbf{Besoins fonctionnels de l’acteur « Responsable pédagogique »}
+
+\noindent\textbf{Besoins fonctionnels de l’acteur « Responsable pédagogique »}
 
 \vspace{0.3cm}
 
-Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable pédagogique »} présente les besoins du Responsable Pédagogique.
+
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable pédagogique »} présente les besoins du Responsable Pédagogique.
 
 \begin{table}[H]
 \centering
@@ -96,7 +101,7 @@ Consulter les alertes liées aux anomalies ou aux situations critiques. \\
 
 \vspace{0.3cm}
 
-\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable financier »} présente les besoins du Responsable Financier
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable financier »} présente les besoins du Responsable Financier.
 
 
 \begin{table}[H]
@@ -121,7 +126,7 @@ Analyse de la rentabilité  &  évaluer la rentabilité des formations et des se
 \newpage
 \noindent \textbf{Besoins fonctionnels de l’acteur « Administrateur système »}
 
-\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Administrateur »} présente les besoins de l’Administrateur, centrés sur la gestion des utilisateurs et la maintenance technique du système 
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Administrateur »} présente les besoins de l’Administrateur, centrés sur la gestion des utilisateurs et la maintenance technique du système. 
 \begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Administrateur système  »}
@@ -143,11 +148,13 @@ Traitement des données  & Supervision du nettoyage, validation et structuration
 \end{tabular}
 \end{table}
 
-\textbf{Besoins fonctionnels de l'Apprenant}
+
+\noindent\textbf{Besoins fonctionnels de l'Apprenant}
 
 \vspace{0.3cm}
 
-Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Apprenant »} présente les besoins de l’Apprenant. Bien que la plateforme soit principalement orientée décisionnel pour les responsables, l’intégration d’un espace apprenant permet d’améliorer l’engagement, la transparence et le suivi individuel des performances.
+
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Apprenant »} présente les besoins de l’Apprenant. Bien que la plateforme soit principalement orientée décisionnel pour les responsables, l’intégration d’un espace apprenant permet d’améliorer l’engagement, la transparence et le suivi individuel des performances.
 
 \begin{table}[H]
 \centering
@@ -168,11 +175,13 @@ Accès aux résultats  & Consulter ses notes et ses évaluations finales de mani
 
 
 
-\textbf{Besoins fonctionnels du module IA}
+
+\noindent\textbf{Besoins fonctionnels du module IA}
 
 \vspace{0.3cm}
 
-Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Module IA »} synthétise les besoins fonctionnels du module Intelligence Artificielle, associant chaque fonctionnalité prédictive à son acteur métier, sa description et ses flux de données.
+
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Module IA »} synthétise les besoins fonctionnels du module Intelligence Artificielle, associant chaque fonctionnalité prédictive à son acteur métier, sa description et ses flux de données.
 \begin{longtable}{|p{4.5cm}|p{11cm}|}
 \caption{Besoins fonctionnels de l’acteur « Module IA »}
 \label{tab:Besoins fonctionnels de l’acteur « Module IA »} \\
@@ -225,22 +234,22 @@ Afin d’assurer la protection des données et fournir un service robuste, le re
 \noindent\textbf{Performance:} Assurer des temps de réponse rapides pour les tableaux de bord et un traitement efficace des données, tout en supportant un nombre élevé d’utilisateurs simultanés.
 \vspace{0.3cm}
 
-\noindent\textbf{Sécurité:} Garantir un haut niveau de sécurité grâce à un mécanisme d’authentification robuste, un contrôle d’accès basé sur les rôles et une protection des données sensibles.
+\noindent\textbf{Sécurité :} Garantir un haut niveau de sécurité grâce à un mécanisme d’authentification robuste, un contrôle d’accès basé sur les rôles et une protection des données sensibles.
 
 \vspace{0.3cm}
-\noindent\textbf{Évolutivité:} Concevoir une solution capable de s’adapter à l’augmentation du volume de données et du nombre d’utilisateurs, tout en facilitant l’ajout de nouvelles fonctionnalités.
+\noindent\textbf{Évolutivité :} Concevoir une solution capable de s’adapter à l’augmentation du volume de données et du nombre d’utilisateurs, tout en facilitant l’ajout de nouvelles fonctionnalités.
 
 \vspace{0.3cm}
-\noindent\textbf{Ergonomie:} Offrir une interface intuitive, simple à utiliser et facile à comprendre, assurant une expérience utilisateur fluide.
+\noindent\textbf{Ergonomie :} Offrir une interface intuitive, simple à utiliser et facile à comprendre, assurant une expérience utilisateur fluide.
 
 \vspace{0.3cm}
-\noindent\textbf{Compatibilité:} Assurer la compatibilité avec les principaux navigateurs web et permettre une intégration fluide avec les autres systèmes via des APIs standardisées.
+\noindent\textbf{Compatibilité :} Assurer la compatibilité avec les principaux navigateurs web et permettre une intégration fluide avec les autres systèmes via des APIs standardisées.
 
 \vspace{0.3cm}
-\noindent\textbf{Maintenabilité:} Garantir un code propre, structuré et bien documenté, accompagné de mécanismes de journalisation pour faciliter la maintenance et les évolutions.
+\noindent\textbf{Maintenabilité :} Garantir un code propre, structuré et bien documenté, accompagné de mécanismes de journalisation pour faciliter la maintenance et les évolutions.
 
 \vspace{0.3cm}
-\noindent\textbf{Fiabilité:} Assurer un fonctionnement stable et continu du système grâce à une gestion efficace des erreurs et des mécanismes de sauvegarde.
+\noindent\textbf{Fiabilité :} Assurer un fonctionnement stable et continu du système grâce à une gestion efficace des erreurs et des mécanismes de sauvegarde.
 \section{Modélisation des exigences}
 \label{cap:Modélisation des exigences}
 La modélisation des exigences constitue une étape essentielle pour comprendre le fonctionnement du système et la manière dont les différents acteurs interagissent avec ses fonctionnalités. Pour cela, un diagramme de cas d’utilisation global est utilisé afin de représenter de manière synthétique ces interactions et de structurer visuellement les exigences identifiées. Ce diagramme offre une vue d’ensemble claire, facilitant la compréhension des rôles de chaque utilisateur et du flux des actions, tout en préparant efficacement la conception technique à venir.
@@ -265,7 +274,7 @@ Le bon déroulement et la réussite du projet dépendent d’une répartition ef
 \begin{itemize}[label=\textbullet]
   \item \textbf{Product Owner}: Mme Taycir Chouk
   \item \textbf{Scrum Master}: Mme Leila Bayoudhi
-  \item \textbf{Development Team }: Mme Mariem khlifi, Mme ferdaws maraach
+  \item \textbf{Development Team }: Mariem khlifi, ferdaws maraach
 \end{itemize}
 
 
