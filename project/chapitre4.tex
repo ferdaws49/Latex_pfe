@@ -22,11 +22,11 @@ La section \ref{sec:sprint1-authentification} est consacrée à la sécurisation
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
 \multirow{3}{*}{1} & \multirow{3}{*}{Login / S'inscrire} 
-& En tant qu’utilisateur, je veux me connecter de manière sécurisée pour accéder à mon espace selon mon rôle. & Must \\
+& En tant qu’utilisateur, je veux me connecter de manière sécurisée pour accéder à mon espace selon mon rôle. & M \\
 \cline{3-4}
-& & En tant qu’étudiant, je veux pouvoir créer un compte sur la plateforme afin que mon accès soit validé par l’administrateur. & Must \\
+& & En tant qu’étudiant, je veux pouvoir créer un compte sur la plateforme afin que mon accès soit validé par l’administrateur. & M \\
 \cline{3-4}
-& & En tant qu’utilisateur, je veux pouvoir réinitialiser mon mot de passe oublié afin de retrouver l’accès à mon espace personnel. & Must \\
+& & En tant qu’utilisateur, je veux pouvoir réinitialiser mon mot de passe oublié afin de retrouver l’accès à mon espace personnel. & M\\
 \hline
 \end{tabular}
 \end{table}
@@ -81,10 +81,12 @@ Scénario de base &
 & L’utilisateur saisit ses informations (nom, email, téléphone, mot de passe, confirmation, programme). \\
 & Le système vérifie que tous les champs obligatoires sont remplis. \\
 & Le système valide la conformité du mot de passe et sa correspondance avec la confirmation. \\
-& Le système vérifie que l’email n’existe pas déjà dans la base de données. \\
+& Le système vérifie que l'email n'existe pas déjà dans la base de données. \\
 & Le système chiffre le mot de passe et enregistre les données avec statut \textit{Non vérifié}. \\
 & Le système envoie un email de vérification contenant un lien. \\
+
 \hline
+\vspace{0.3cm}
 & \textbf{Scénario 2: Vérification Email} \\
 & -L’utilisateur clique sur le lien reçu. \\
 & -Le système vérifie la validité du lien et l’existence de l’utilisateur. \\
@@ -264,23 +266,34 @@ Postcondition &
 
 \subsection{Conception}
 La phase de conception modélise techniquement le fonctionnement de l'authentification à l'aide de diagrammes de séquence. Ils illustrent chronologiquement les interactions entre l'utilisateur et le système pour garantir la sécurité des flux, depuis l'inscription de l'apprenant jusqu'à sa validation finale par l'administration.
+\vspace{0.3cm}
 
 \noindent\textbf{Diagramme de séquence: Inscription de l'apprenant}
+
+\noindent Ce diagramme illustre le processus de création d'un nouveau compte sur la plateforme. L'utilisateur fournit ses donnés personnelles. La figure \ref{cap:inscription_apprenant} presente comment le système procède d'abord à une vérification du format des données et l'unicité de l'email. Une fois validé, le mot de passe est haché et le compte est créé avec un statut "non vérifié". Un lien de confirmation est alors envoyé par email à l'utilisateur pour confirmer l'identité de l'apprenant.
+
 \vspace{0.3cm}
-\noindent Ce diagramme illustre le processus de création d'un nouveau compte sur la plateforme. L'utilisateur fournit ses donnés personnelles. La figure \ref{cap:Diagramme de séquence <<Inscription de l'apprenant>>} presente comment le système procède d'abord à une vérification du format des données et l'unicité de l'email. Une fois validé, le mot de passe est haché et le compte est créé avec un statut "non vérifié". Un lien de confirmation est alors envoyé par email à l'utilisateur pour confirmer l'identité de l'apprenant.
-
-\begin{figure}[H]
-  \centering
-   \includegraphics[width=1.1\textwidth,height=0.9\textheight,keepaspectratio]{project/images/inscds.png}
-  \caption{Diagramme de séquence <<Inscription de l'apprenant>> }
-  \label{cap:Diagramme de séquence <<Inscription de l'apprenant>>}
-\end{figure}
-\vspace*{\fill}
-
-
 \noindent \textbf{Diagramme de séquence: Vérification de l'adresse email}
 
 \noindent Ce diagramme démontre la validation de l'email,comme il est représenté dans la Figure \ref{cap:usecase_seq_verif}, faisant passer le compte du statut "non vérifié" à "en attente". En cliquant sur le lien reçu, l'apprenant transmet un code de sécurité que le système vérifie (intégrité et validité). Une fois l'email confirmé, le profil est prêt pour l'étape finale : l'examen et la validation manuelle par l'administrateur.
+
+\vspace{0.3cm}
+\noindent\textbf{Diagramme de séquence: Login}
+
+\noindent Le processus d’authentification est  détaillé en deux scénarios spécifiques : le login de l’apprenant et celui du responsable, afin de distinguer les différents parcours d’accès selon le rôle de l’utilisateur.
+
+\newpage
+\thispagestyle{empty}
+
+\begin{figure}[H]
+\centering
+
+\includegraphics[height=0.45\textheight,keepaspectratio]{project/images/inscds.png}
+
+\caption{Diagramme de séquence <<Inscription de l'apprenant>>}
+\label{cap:inscription_apprenant}
+
+\end{figure}
 
 \begin{figure}[H]
   \centering
@@ -289,9 +302,7 @@ La phase de conception modélise techniquement le fonctionnement de l'authentifi
   \label{cap:usecase_seq_verif}
 \end{figure}
 
-\noindent\textbf{Diagramme de séquence: Login}
 
-\noindent Le processus d’authentification est  détaillé en deux scénarios spécifiques : le login de l’apprenant et celui du responsable, afin de distinguer les différents parcours d’accès selon le rôle de l’utilisateur.
 \vspace{0.3cm}
 
 \noindent \textbf{Diagramme de séquence: Login -Apprenant}
@@ -299,17 +310,18 @@ La phase de conception modélise techniquement le fonctionnement de l'authentifi
 \noindent le diagramme décrit la procédure de connexion sécurisée pour le profil apprenant, qui est schématisé dans la Figure \ref{cap:Diagramme de séquence <<Login - Apprenant>>}.
 \vspace{0.3cm}
 
-\noindent \textbf{Diagramme de séquence: Login -Responsables et Administrateurs}
-\vspace{0.3cm}
-
-\noindent Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}, présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique , Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.8]{project/images/loginds.png}
+    \includegraphics[scale=0.9]{project/images/loginds.png}
   \caption{Diagramme de séquence <<Login - Apprenant>> }
   \label{cap:Diagramme de séquence <<Login - Apprenant>>}
 \end{figure}
 \newpage
+\noindent \textbf{Diagramme de séquence: Login -Responsables et Administrateurs}
+
+\noindent Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}, présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique , Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
+
+
 
 \begin{figure}[H]
   \centering
@@ -341,14 +353,15 @@ Ce diagramme décrit la validation automatique du lien envoyé par email. Avant 
   \label{cap:usecase_seq_linkReset}
 \end{figure}
 
-\newpage
+\vspace{0.3cm}
+
 \noindent\textbf{Diagramme de séquence: Réinitialisation du mot de passe}
 
 \noindent Ce dernier diagramme schématisé dans la Figure \ref{cap:Diagramme de séquence:<<Réinitialisation du mot de passe>>} présente la mise à jour finale du mot de passe. L’utilisateur saisit ses nouvelles informations, qui sont envoyées de manière  sécurisée au système. Après une vérification finale de la demande, le système sécurise le nouveau mot de passe et l’enregistre dans la base de données.
-
+\newpage
 \begin{figure}[H]
   \centering
-    \includegraphics[width=1.1\textwidth,height=0.9\textheight,keepaspectratio]{project/images/newpassds.png}
+    \includegraphics[width=1.1\textwidth,height=1\textheight,keepaspectratio]{project/images/newpassds.png}
   \caption{Diagramme de séquence <<Réinitialisation du mot de passe>> }
   \label{cap:Diagramme de séquence:<<Réinitialisation du mot de passe>>}
 \end{figure}
@@ -360,6 +373,7 @@ Ce diagramme décrit la validation automatique du lien envoyé par email. Avant 
 \subsection{Réalisation}
 Cette section présente les interfaces de l'authentification. Nous allons détailler les différents modules en mettant l’accent sur l’expérience utilisateur et les fonctionnalités implémentées.
 
+\vspace{0.3cm}
 \noindent\textbf{Interface d'inscription}
 
 \noindent La première étape pour l'apprenant est de renseigner ses informations de base via une interface intuitive. Comme l'illustre la Figure \ref{cap:Interface d'inscription:standard}, le formulaire comprend des champs obligatoires avec une aide à la saisie pour guider l'apprenant. La figure \ref{cap:Interface d'inscription:champs-vide} montre comment l'interface réagit lorsque les données ne respectent pas le format attendu (par exemple, un mot de passe trop simple ou un email mal formé). Si un utilisateur tente de s'inscrire avec un email déjà existant, une alerte spécifique est déclenchée comme le montre la figure \ref{cap:Interface d'inscription:champs-invalide}.
@@ -505,7 +519,7 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
 \noindent L’interface illustrée en Figure \ref{cap:R_mp} permet à l'utilisateur de saisir son adresse email pour initier la procédure.
 Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format est incorrect, l'interface de la Figure \ref{cap:F_F} s'affiche.
 
-
+\vspace{0.8cm}
 
 \begin{figure}[H]
   \centering
@@ -617,9 +631,7 @@ Le sprint 2 est consacré au développement du module de gestion des utilisateur
 Ce module permet aux administrateurs de gérer efficacement l’ensemble des utilisateurs de la plateforme, notamment à travers la consultation, la validation (acceptation ou refus), la suppression ainsi que la mise à jour de leurs informations.
 L’objectif de ce sprint est de mettre en place une interface intuitive, ergonomique et sécurisée, offrant une gestion complète et centralisée des comptes utilisateurs, afin de répondre aux besoins d’administration du système.
 \subsection{Le backlog du sprint 2}
-
-Le Tableau \ref{tab:backlog_sprint2} détaille le backlog du Sprint 2, centré sur les fonctionnalités de gestion des utilisateurs. Cette structure permet de planifier et de hiérarchiser efficacement les tâches à accomplir tout au long de cette itération.
-
+Le backlog du Sprint 2, consigné dans le Tableau \ref{tab:backlog_sprint2}, recense les fonctionnalités de gestion des utilisateurs à développer. Il fournit ainsi un cadre structuré pour l'ordonnancement et le suivi des tâches de cette itération.
 \nopagebreak
 
 \begin{table}[H]
@@ -664,11 +676,10 @@ L'analyse du module de gestion des utilisateurs nous a permis d'identifier les b
 \end{figure}
 
 Le tableau \ref{tab:gestion_utilisateurs} présente la description textuelle du cas d'utilisation « gestion des utilisateurs ».
-
-\small % optionnel : réduit légèrement la taille du texte du tableau
+{\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
-\caption{Cas d’utilisation –Gestion des utilisateurs}
- \label{tab:gestion_utilisateurs} \\
+\caption{Cas d'utilisation -- Gestion des utilisateurs}
+\label{tab:gestion_utilisateurs} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
 \hline
@@ -678,103 +689,100 @@ Le tableau \ref{tab:gestion_utilisateurs} présente la description textuelle du 
 \hline
 \endhead
 
-Cas d’utilisation & 
-\begin{itemize}[leftmargin=*]
-    \item Gestion des utilisateurs
-\end{itemize} \\
+Cas d'utilisation & Gestion des utilisateurs \\
 \hline
-Acteur & 
-\begin{itemize}[leftmargin=*]
-    \item administrateur
-\end{itemize} \\
+Acteur & Administrateur \\
 \hline
-Préconditions & 
-\begin{itemize}[leftmargin=*]
-    \item L'administrateur est connecté au système "authentifié"
-    \item Le système est fonctionnel
-    \item la base de données est accessible
 
-\end{itemize} \\
+Préconditions &
+L'administrateur est connecté au système (authentifié). \\
+& Le système est fonctionnel. \\
+& La base de données est accessible. \\
 \hline
-Scénario de base & 
-\textbf{Scénario 1: Consulter la liste des utilisateurs} \\
-&-L’administrateur accède à l’interface Gestion des Utilisateurs. \\
-&-Le système vérifie la validité du token.\\
-&-le système contrôle que l’utilisateur possède bien le rôle ADMIN.\\
-&-Le système renvoie la liste complète des utilisateurs.\\
-&\textbf{Scénario 2:Filtrage des utilisateurs}\\
-&-L’administrateur applique un filtre (exemple : Rôle : directeur).\\
-&-Le système met à jour dynamiquement le tableau sans rechargement de la page.\\
-&-Le système affiche la liste filtrée.\\
-&\textbf{Scénario 3: Rechercher d’un utilisateur}\\
-&-L’administrateur saisit un nom ou un email dans le champ de recherche.\\
-&-Le système effectue une recherche en temps réel et met à jour la liste des utilisateurs.\\
-&-Le système affiche les résultats correspondants.\\
-&\textbf{Scénario 4: Modifier les informations d’un utilisateur}\\
-&-L’administrateur sélectionne un utilisateur dans la liste.\\
-&-Le système affiche les détails de l’utilisateur.\\
-&-L’administrateur modifie les informations souhaitées.\\
-&-Le système met à jour les données de l’utilisateur.\\
-&\textbf{Scénario 5 : Ajouter un utilisateur}\\
-&-L’administrateur clique sur « Nouveau utilisateur ».\\
-&-Le système affiche le formulaire d’ajout.\\
-&-L’administrateur renseigne les informations nécessaires (nom, prénom, email, rôle).\\
-&-L’administrateur valide la création.\\
-&-Le système vérifie la validité des données et l’unicité de l’email.\\
-&-Le système hache le mot de passe (bcrypt).\\
-&-Le système enregistre le nouvel utilisateur.\\
-&\textbf{Scénario 6: Supprimer un utilisateur}\\
-&-L’administrateur sélectionne un utilisateur dans la liste.\\
-&-Le système affiche une confirmation de suppression.\\
-&-L’administrateur confirme la suppression.\\
-&-Le système supprime l’utilisateur de la base de données.\\
+
+Scénario de base &
+\textbf{Scénario 1 : Consulter la liste des utilisateurs} \\
+&- L'administrateur accède à l'interface Gestion des Utilisateurs. \\
+&- Le système vérifie la validité du token. \\
+&- Le système contrôle que l'utilisateur possède bien le rôle ADMIN. \\
+&- Le système renvoie la liste complète des utilisateurs. \\
+\\
+& \textbf{Scénario 2 : Filtrage des utilisateurs} \\
+&- L'administrateur applique un filtre (exemple : Rôle : directeur). \\
+&- Le système met à jour dynamiquement le tableau sans rechargement de la page. \\
+&- Le système affiche la liste filtrée. \\
+\\
+& \textbf{Scénario 3 : Rechercher un utilisateur} \\
+&- L'administrateur saisit un nom ou un email dans le champ de recherche. \\
+&- Le système effectue une recherche en temps réel et met à jour la liste des utilisateurs. \\
+&- Le système affiche les résultats correspondants. \\
+\\
+& \textbf{Scénario 4 : Modifier les informations d'un utilisateur} \\
+&- L'administrateur sélectionne un utilisateur dans la liste. \\
+&- Le système affiche les détails de l'utilisateur. \\
+&- L'administrateur modifie les informations souhaitées. \\
+&- Le système met à jour les données de l'utilisateur. \\
+\\
+& \textbf{Scénario 5 : Ajouter un utilisateur} \\
+&- L'administrateur clique sur « Nouvel utilisateur ». \\
+&- Le système affiche le formulaire d'ajout. \\
+&- L'administrateur renseigne les informations nécessaires (nom, prénom, email, rôle). \\
+&- L'administrateur valide la création. \\
+&- Le système vérifie la validité des données et l'unicité de l'email. \\
+&- Le système hache le mot de passe (bcrypt). \\
+&- Le système enregistre le nouvel utilisateur. \\
+\\
+& \textbf{Scénario 6 : Supprimer un utilisateur} \\
+&- L'administrateur sélectionne un utilisateur dans la liste. \\
+&- Le système affiche une confirmation de suppression. \\
+&- L'administrateur confirme la suppression. \\
 \hline
-&\textbf{Scénario 7: Réinitialiser le mot de passe}\\
-&-L’administrateur sélectionne un utilisateur.\\
-&-Le système envoie un email de réinitialisation à l’utilisateur.\\
-&-L’utilisateur saisit un nouveau mot de passe\\
-&-Le système vérifie la validité du mot de passe.\\
-&-Le système hache le nouveau mot de passe (bcrypt).\\
-&-Le système met à jour les données de l’utilisateur.\\
-&-Le système confirme la réussite de l’opération.\\
-& \textbf{scénario 8: Gérer les demandes des apprenants}\\
-&-L’administrateur accède à la section « Apprenants ».\\
-&-Le système affiche la liste des apprenants en attente de validation.\\
-&-L’administrateur accède à la liste des demandes d’inscription.\\
-&-L’administrateur traite la demande (acceptation ou refus).\\
-&-Le système met à jour le statut de la demande.\\
-&-En cas d’acceptation, le système crée un compte utilisateur pour l’apprenant.\\
-&-Le système envoie une notification à l’apprenant.\\
-&-En cas de refus, le système archive la demande.\\
+&- Le système supprime l'utilisateur de la base de données. \\
+\\
+& \textbf{Scénario 7 : Réinitialiser le mot de passe} \\
+&- L'administrateur sélectionne un utilisateur. \\
+&- Le système envoie un email de réinitialisation à l'utilisateur. \\
+&- L'utilisateur saisit un nouveau mot de passe. \\
+&- Le système vérifie la validité du mot de passe. \\
+&- Le système hache le nouveau mot de passe (bcrypt). \\
+&- Le système met à jour les données de l'utilisateur. \\
+&- Le système confirme la réussite de l'opération. \\
+\\
+& \textbf{Scénario 8 : Gérer les demandes des apprenants} \\
+&- L'administrateur accède à la section « Apprenants ». \\
+&- Le système affiche la liste des apprenants en attente de validation. \\
+&- L'administrateur accède à la liste des demandes d'inscription. \\
+&- L'administrateur traite la demande (acceptation ou refus). \\
+&- Le système met à jour le statut de la demande. \\
+&- En cas d'acceptation, le système crée un compte utilisateur pour l'apprenant. \\
+&- Le système envoie une notification à l'apprenant. \\
+&- En cas de refus, le système archive la demande. \\
 \hline
+
 Scénarios alternatifs &
-\textbf{Cas 1: Échec d’authentification}\\
-& Le système détecte un token invalide ou expiré et refuse l’accès.\\
-
-&\textbf{Cas 2: Données invalides lors de l’ajout ou modification}\\
-& Le système détecte des informations incorrectes ou incomplètes et affiche un message d’erreur.\\
-
-&\textbf{Cas 3: Échec d’envoi de l’email de réinitialisation}\\
-& Le système ne parvient pas à envoyer l’email et informe l’administrateur de l’échec.\\
-
+\textbf{Cas 1 -- Échec d'authentification :} Le système détecte un token invalide ou expiré et refuse l'accès. \\
+& \textbf{Cas 2 -- Données invalides lors de l'ajout ou modification :} Le système détecte des informations incorrectes ou incomplètes et affiche un message d'erreur. \\
+& \textbf{Cas 3 -- Échec d'envoi de l'email de réinitialisation :} Le système ne parvient pas à envoyer l'email et informe l'administrateur de l'échec. \\
 \hline
-Postcondition &
-\textbf{Scénarios 1, 2 \& 3 (Consultation, Filtrage, Recherche)} : La liste des utilisateurs (complète, filtrée ou recherchée) est affichée à l'administrateur.\\
-&\textbf{Scénario 4 (Modification)} : Les informations de l'utilisateur sélectionné sont mises à jour dans le système.\\
-&\textbf{Scénario 5 (Ajout)} : Un nouveau compte utilisateur est créé, le mot de passe est haché et les données sont enregistrées dans la base de données.\\
-&\textbf{Scénario 6 (Suppression)} : L'utilisateur sélectionné est définitivement supprimé de la base de données.\\
-&\textbf{Scénario 7 (Réinitialisation)} : Un email de réinitialisation est envoyé et le nouveau mot de passe haché est mis à jour dans le système.\\
-&\textbf{Scénario 8 (Demandes apprenants)} : Le statut de la demande est mis à jour, un compte est créé en cas d'acceptation et une notification est envoyée à l'apprenant.\\
-    
+
+Post-conditions &
+\textbf{Scénarios 1, 2 et 3 :} La liste des utilisateurs (complète, filtrée ou recherchée) est affichée à l'administrateur. \\
+& \textbf{Scénario 4 :} Les informations de l'utilisateur sélectionné sont mises à jour dans le système. \\
+& \textbf{Scénario 5 :} Un nouveau compte utilisateur est créé, le mot de passe est haché et les données sont enregistrées dans la base de données. \\
+& \textbf{Scénario 6 :} L'utilisateur sélectionné est définitivement supprimé de la base de données. \\
+& \textbf{Scénario 7 :} Un email de réinitialisation est envoyé et le nouveau mot de passe haché est mis à jour dans le système. \\
+& \textbf{Scénario 8 :} Le statut de la demande est mis à jour, un compte est créé en cas d'acceptation et une notification est envoyée à l'apprenant. \\
 \hline
 \end{longtable}
+}
 
 \vspace{0.2cm}
 
 \subsection{Conception}
 La section Conception présente la modélisation dynamique des principaux scénarios fonctionnels du module de gestion des utilisateurs. Les diagrammes de séquence ci-dessous illustrent, de manière chronologique et détaillée, les interactions entre les différents acteurs du système (Administrateur, Frontend, Backend, Base de données et Serveur Email), en couvrant les flux nominaux ainsi que les cas alternatifs et d'erreur.
 
-\newpage
+\vspace{0.3cm}
+
 \noindent \textbf{Diagramme de séquence: Ajouter un utiliateur}
 
 \noindent Le diagramme de séquence de la Figure \ref{cap:Diagramme de séquence <<Ajouter un utilisateur>>} illustre le processus d'ajout d'un nouvel utilisateur par l'administrateur, depuis la saisie du formulaire jusqu'à l'enregistrement en base de données.
@@ -785,7 +793,7 @@ La section Conception présente la modélisation dynamique des principaux scéna
   \label{cap:Diagramme de séquence <<Ajouter un utilisateur>>}
 \end{figure}
 \vspace*{\fill} % espace vertical sous
-
+\newpage
 \noindent\textbf{Diagramme de séquence: Réinitialisation du mot de passe}
 
 \noindent La Figure \ref{cap:Diagramme de séquence <<Réinitialisation du mot de passe>>} présente le diagramme de séquence relatif à la réinitialisation du mot de passe d'un utilisateur, initié par l'administrateur.
@@ -795,7 +803,9 @@ La section Conception présente la modélisation dynamique des principaux scéna
   \caption{Diagramme de séquence <<Réinitialisation du mot de passe>> }
   \label{cap:Diagramme de séquence <<Réinitialisation du mot de passe>>}
 \end{figure}
+\vspace*{\fill} 
 
+\newpage
 
 \noindent \textbf{Diagramme de séquence: Gestion des demandes des apprenants}
 
@@ -829,7 +839,7 @@ Cette section présente les interfaces de gestion des utilisateurs, en mettant l
 
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_admin_learners.png}
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_admin_learners.png}
     \caption{Gestion des demandes d'inscription des apprenants}
     \label{fig:capture_learnersvalidated}
 \end{figure}
@@ -840,31 +850,25 @@ Cette section présente les interfaces de gestion des utilisateurs, en mettant l
 
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_admin_users (1).png}
+    \includegraphics[width=0.8\textwidth]{project/images/newusers.png}
     \caption{Ajout d’un utilisateur}
     \label{fig:capture_newuser}
 \end{figure}
-
 \noindent \textbf{Modification des informations:} 
 
-\noindent Les figures \ref{fig:interfaces} présentent respectivement la sélection d'un utilisateur et le modal de modification pré-rempli avec ses données actuelles.
+\noindent Les figures \ref{fig:reset-password} et \ref{fig:modifier-user} présentent respectivement la sélection d'un utilisateur et le modal de modification pré-rempli avec ses données actuelles.
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/localhost_3000_admin_users (2).png}
-        \caption{Réinitialisation du mot de passe}
-        \label{fig:reset-password}      % <-- Label 1ère image
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/localhost_3000_admin_users3.png}
-        \caption{Modifier d'un utilisateur}
-        \label{fig:modifier-user}         % <-- Label 2ème image
-    \end{subfigure}
-    \caption{Interfaces modification des informations}
-    \label{fig:interfaces}               % <-- Label globale (optionnel)
+    \includegraphics[width=0.6\textwidth]{project/images/resetPassword.png}
+    \caption{Réinitialisation du mot de passe}
+    \label{fig:reset-password}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{project/images/ModfierUSERS.png}
+    \caption{Modification d'un utilisateur}
+    \label{fig:modifier-user}
 \end{figure}
 
 \textbf{Suppression d’un utilisateur:} 
@@ -873,7 +877,7 @@ Cette section présente les interfaces de gestion des utilisateurs, en mettant l
 
 \begin{figure}[H]  % [H] bech t7otha houni just
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_admin_users4.png}
+    \includegraphics[width=0.8\textwidth]{project/images/deleteUsers.png}
     \caption{Suppression d'un utilisateur}
     \label{fig:capture_del}
 \end{figure}

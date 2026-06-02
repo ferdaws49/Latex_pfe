@@ -168,4 +168,11 @@ SFEIR, ``Événements scrum,'' 2026, consulté le 25 avril 2026. [Online].
   \url{https://www.postgresql.org/docs/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{llm_cloudflare}
+\BIBentryALTinterwordspacing
+{Cloudflare}, ``What is a large language model (llm)?'' 2026, consulté en
+  2026. [Online]. Available:
+  \url{https://www.cloudflare.com/learning/ai/what-is-large-language-model/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

@@ -1,6 +1,6 @@
 %12pt: taille de police (recommandé)
 %a4paper: type de papier
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper,twoside]{report}
 
 %entre \begin[document] et \end{document} est le contenu principale de la page
 %======creer preambule=====
@@ -56,6 +56,7 @@
 % ======Configuration des en-têtes et des pieds de page
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\setlength{\headheight}{30pt}
 \fancyhf{}
 
 %\fancyhead[R]{\rightmark} %pour les sections en haut de l'ntête

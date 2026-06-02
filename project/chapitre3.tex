@@ -233,19 +233,24 @@ Il représente les interfaces de l'application, c'est-à-dire les éléments ave
 \noindent\textbf{Tier 2: Couche Application (Back-end)}\newline
 Il englobe les fonctionnalités de l'application et leur implémentation. Il est invisible pour les utilisateurs de l'application, mais il assure le dynamisme de celle-ci.
 
-\noindent\textbf{communication et securité:} La communication entre le frontend et le backend se fait via des API REST, utilisant des requêtes HTTP pour échanger des données au format JSON. Pour garantir la sécurité de ces échanges, nous avons mis en place une couche de sécurité qui valide les jetons d'authentification (JWT) et vérifie les droits d'accès (RBAC) avant de permettre l'accès aux ressources protégées du backend.
+\noindent\textbf{Communication et securité:} La communication entre le frontend et le backend se fait via des API REST, utilisant des requêtes HTTP pour échanger des données au format JSON. Pour garantir la sécurité de ces échanges, nous avons mis en place une couche de sécurité qui valide les jetons d'authentification (JWT) et vérifie les droits d'accès (RBAC) avant de permettre l'accès aux ressources protégées du backend.
+
+\vspace{0.3cm}
 
 \noindent\textbf{Couche logique:} 
 représente la partie centrale de l'application où sont implémentées les règles métier. Elle est responsable du traitement des données, de l'exécution des opérations et de la prise de décisions en fonction des besoins fonctionnels.
-\vspace{3cm}
+
+\vspace{0.3cm}
+
 \noindent\textbf{Couche persistence:} Utilise un ORM (Object-Relational Mapping) pour faire le pont entre le code et la base de données, assurant une manipulation fluide des Entities.\newline
+
 \noindent\textbf{Tier 3: Couche de Données (Database)}\newline
 Elle englobe la base de données ainsi que les différents mécanismes permettant de manipuler les données de façon sécurisée et efficace.
 \newline
 
 \section{Conception technique et modélisation multidimensionnelle}
 \label{sec:Conception technique et modélisation multidimensionnelle}
-Cette section présente la conception technique du système à travers deux aspects complémentaires. 
+Cette section détaille la conception technique du système selon deux axes complémentaires : l'architecture applicative et la modélisation multidimensionnelle des données.
 \subsection{Diagramme de classes}
 Dans cette section, nous allons explorer la structure logique de MBICenter à travers son diagramme de classes. Ce diagramme permet de visualiser les principales entités du système, leurs attributs et méthodes essentiels, ainsi que les relations qui les lient, offrant ainsi une vue d'ensemble claire de l'architecture du projet.
 
@@ -269,7 +274,7 @@ avant leur développement s'est révélée cruciale. Cette approche a permis de 
 les besoins essentiels. Cette sous-section détaille ces deux aspects
 distincts, en s'appuyant sur des bases théoriques et pratiques adaptées au projet.
 \subsection{Conception UI/UX:}
-\noindent\textbf{Interface Utilisateur (UI): }
+\noindent\textbf{Interface Utilisateur (UI) }
 
 \noindent L'interface utilisateur (UI) constitue le principal point d'interaction avec la plateforme décisionnelle, conçue pour offrir une visualisation claire et intuitive des KPIs. Une hiérarchisation efficace met en avant les indicateurs clés sous forme de cartes, complétées par des graphiques interactifs pour analyser les tendances. la typographie a été définie avec la police Inter, largement utilisée dans le projet pour sa modernité et sa lisibilité, garantissant une présentation claire des
 texte, Le choix de la palette de couleurs s'est orienté vers des tons \textit{sage} et \textit{cream}, comme illustré dans la Figure \ref{fig:placeholder4}. Ces couleurs ont été sélectionnées pour leur aspect apaisant et professionnel, favorisant une meilleure lisibilité des informations. Toutefois, ce choix reste évolutif et pourra faire l'objet d'ajustements lors de la phase de réalisation, afin d'améliorer davantage l'expérience utilisateur et l'ergonomie de l'interface.
@@ -280,7 +285,7 @@ texte, Le choix de la palette de couleurs s'est orienté vers des tons \textit{s
      \label{fig:placeholder4}
  \end{figure}
  \vspace{0.8cm}
-\noindent \textbf{Expérience Utilisateur (UX):}
+\noindent \textbf{Expérience Utilisateur (UX)}
 
 \noindent L'expérience utilisateur (UX) se focalise sur la manière dont les utilisateurs perçoivent et interagissent avec la plateforme décisionnelle, dans le but d'optimiser leur satisfaction et l'efficacité de leur travail. L'organisation de l'information a été pensée pour présenter le contenu et les options de navigation de façon claire et logique, facilitant un accès rapide aux fonctionnalités essentielles. Les interactions sont fluides et cohérentes entre les différents écrans, tandis que les parcours utilisateurs sont conçus pour guider intuitivement l'exploration des données et des KPIs. Ces choix ergonomiques contribuent à une expérience agréable, efficace et adaptée aux besoins d'analyse et de suivi des performances.
 \newline

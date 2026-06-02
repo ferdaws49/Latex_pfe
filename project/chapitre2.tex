@@ -33,11 +33,10 @@ Apprenant &Consulte ses propres résultats, suit l'avancement de son parcours et
 \hline
 
 \end{tabular}
-
 \end{table}
 \subsection{Spécifications des besoins fonctionnels}
-Cette section présente les besoins fonctionnels de la plateforme en fonction des différents acteurs, en mettant en évidence les fonctionnalités attendues pour chaque utilisateur selon son rôle. 
-
+Cette section présente les besoins fonctionnels de la plateforme en fonction des différents acteurs, en mettant en évidence les fonctionnalités attendues pour chaque utilisateur. 
+\newpage
 \textbf{Besoins fonctionnels de l’acteur « Directeur »}
 
 Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Directeur »} présente les besoins du Directeur, orientés vers l’analyse stratégique de l'établissement.
@@ -93,11 +92,11 @@ Consulter les alertes liées aux anomalies ou aux situations critiques. \\
 \end{tabular}
 \end{table}
 
-\textbf{Besoins fonctionnels de l’acteur «Responsable financier »}
+\noindent\textbf{Besoins fonctionnels de l’acteur «Responsable financier »}
 
 \vspace{0.3cm}
 
-Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable financier »} présente les besoins du Responsable Financier
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Responsable financier »} présente les besoins du Responsable Financier
 
 
 \begin{table}[H]
@@ -119,12 +118,10 @@ Analyse de la rentabilité  &  évaluer la rentabilité des formations et des se
 \end{tabular}
 \end{table}
 
+\newpage
+\noindent \textbf{Besoins fonctionnels de l’acteur « Administrateur système »}
 
-\textbf{Besoins fonctionnels de l’acteur « Administrateur système »}
-
-\vspace{0.3cm}
-
-Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Administrateur »} présente les besoins de l’Administrateur, centrés sur la gestion des utilisateurs et la maintenance technique du système 
+\noindent Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Administrateur »} présente les besoins de l’Administrateur, centrés sur la gestion des utilisateurs et la maintenance technique du système 
 \begin{table}[H]
 \centering
 \caption{Besoins fonctionnels de l’acteur « Administrateur système  »}
@@ -176,26 +173,41 @@ Accès aux résultats  & Consulter ses notes et ses évaluations finales de mani
 \vspace{0.3cm}
 
 Le tableau \ref{tab:Besoins fonctionnels de l’acteur « Module IA »} synthétise les besoins fonctionnels du module Intelligence Artificielle, associant chaque fonctionnalité prédictive à son acteur métier, sa description et ses flux de données.
-\begin{table}[H]
-\centering
+\begin{longtable}{|p{4.5cm}|p{11cm}|}
 \caption{Besoins fonctionnels de l’acteur « Module IA »}
-\label{tab:Besoins fonctionnels de l’acteur « Module IA »}
-\begin{tabular}{|p{4.5cm}| p{11cm}|}
+\label{tab:Besoins fonctionnels de l’acteur « Module IA »} \\
+
 \hline
 \textbf{Fonctionnalité} & \textbf{Description} \\
 \hline
- Alertes sur risques d'abandon &  Analyse prédictive des profils apprenants pour détecter les risques d'abandon et notifier le responsable pédagogique en temps utile.\\
+\endfirsthead
+
 \hline
-Prévision des revenus  & Projection budgétaire basée sur l'historique financier et les tendances d'inscription pour accompagner la planification du responsable financier.\\
+\textbf{Fonctionnalité} & \textbf{Description} \\
 \hline
-  Prévision des inscriptions & Estimation du volume futur des inscriptions pour permettre au directeur d'anticiper les besoins en ressources.\\
+\endhead
+
+Alertes sur risques d'abandon &
+Analyse prédictive des profils apprenants pour détecter les risques d'abandon et notifier le responsable pédagogique en temps utile.\\
 \hline
-  Prédiction des sessions déficitaires & Prédit les sessions susceptibles d’être déficitaires . Cette analyse permet au responsable financier d’anticiper les pertes et de prendre des décisions financières plus éclairées.\\
+
+Prévision des revenus &
+Projection budgétaire basée sur l'historique financier et les tendances d'inscription pour accompagner la planification du responsable financier.\\
 \hline
-Recommandations stratégiques & Synthèse intelligente des données multi-sources pour proposer au directeur des actions prioritaires et améliorer la performance globale.\\
+
+Prévision des inscriptions &
+Estimation du volume futur des inscriptions pour permettre au directeur d'anticiper les besoins en ressources.\\
 \hline
-\end{tabular}
-\end{table}
+
+Prédiction des sessions déficitaires &
+Prédit les sessions susceptibles d’être déficitaires. Cette analyse permet au responsable financier d’anticiper les pertes et de prendre des décisions financières plus éclairées.\\
+\hline
+
+Recommandations stratégiques &
+Synthèse intelligente des données multi-sources pour proposer au directeur des actions prioritaires et améliorer la performance globale.\\
+\hline
+
+\end{longtable}
 
 
 
@@ -237,7 +249,7 @@ La modélisation des exigences constitue une étape essentielle pour comprendre 
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.3]{project/images/XLNBRjD05Dr7oZzSkWb8f6fIAIeeYcgI097wW9PqWIf5KtkIZZGUcvbnH4MHsF89x5WshFa3_mbVmXaxiLCdRRE8VEyzz_sOGsEPjaaewODabayZ7VB9cz5av4twKHXBRdczzinUyv1JB9bGzLgz9ldKaer8YzcrfK1exbiHPQ863TB5L2ZX61HmGyotFD46tpHZYNyDUs15cdREk8aZPT.png}
+    \includegraphics[scale=0.4]{project/images/XLNBRjD05Dr7oZzSkWb8f6fIAIeeYcgI097wW9PqWIf5KtkIZZGUcvbnH4MHsF89x5WshFa3_mbVmXaxiLCdRRE8VEyzz_sOGsEPjaaewODabayZ7VB9cz5av4twKHXBRdczzinUyv1JB9bGzLgz9ldKaer8YzcrfK1exbiHPQ863TB5L2ZX61HmGyotFD46tpHZYNyDUs15cdREk8aZPT.png}
   \caption{ Diagramme de cas d'utilisation globale}
   \label{fig:diagrammme de cas d'utilisation globale}
 \end{figure}
@@ -313,7 +325,8 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 & &  En tant qu'apprenant, je veux annuler ma participation à une session, afin de me désinscrire si mes disponibilités changent. & S\\
 \cline{3-4}
 & & En tant qu'apprenant, je veux consulter l'historique de toutes mes inscriptions passées et actuelles, afin de garder une trace de mon parcours. & C\\
-\cline{3-4}
+\hline
+
 && En tant qu'apprenant, je veux consulter mon emploi du temps complet (filtrable par semaine ou par mois), afin d'organiser mon agenda. & S\\
 \cline{3-4}
 & & En tant qu'apprenant, je veux consulter la synthèse de toutes mes notes par formation, afin d'évaluer mes performances globales. & C\\
@@ -346,7 +359,7 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 % --- US07 : Module prédictif et recommandations ---
 \multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandations}}}
 & En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des apprenants en difficulté. & C \\
-\cline{3-4}
+\hline
 & & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
 \cline{3-4}
 && je veux pouvoir prédire la probabilité de survenue de sessions déficitaires afin d'anticiper les risques financiers pour optimiser la rentabilité de l'entreprise. & C\\
@@ -404,6 +417,5 @@ nous avons défini 3 versions principales.
 \end{table}
 
 \section{Conclusion} 
-
 
 Ce chapitre nous a permis de définir précisément "pour qui" et "comment" nous allons construire cette solution. En comprenant les besoins des utilisateurs et en structurant notre méthode de travail agile, nous avons désormais une vision claire du projet. Forts de ces bases solides, nous pouvons maintenant aborder, dans le chapitre suivant, le choix des technologies et la conception technique qui permettront de transformer ces besoins en une plateforme réelle.

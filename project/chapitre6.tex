@@ -45,9 +45,10 @@ Cette section présente l'analyse fonctionnelle et la conception technique des m
 \label{Diagramme de cas d'utilisation « visualiser »}
 \end{figure}
 
-\noindent Le tableau \ref{tab:Visualiser} présente le backlog du sprint
+\noindent Le tableau \ref{tab:Visualiser} présente la description textuelle structurée du cas d'utilisation <<visualiser>>.
+{\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
-\caption{Cas d'utilisation – Visualiser}
+\caption{Cas d'utilisation -- Visualiser}
 \label{tab:Visualiser} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
@@ -58,56 +59,50 @@ Cette section présente l'analyse fonctionnelle et la conception technique des m
 \hline
 \endhead
 
-Cas d'utilisation & 
-\begin{itemize}[leftmargin=*]
-    \item Visualiser
-\end{itemize} \\
+Cas d'utilisation & Visualiser \\
 \hline
-Acteur & 
-\begin{itemize}[leftmargin=*]
-    \item Responsable pédagogique
-    \item Responsable financier
-    \item Directeur
-    \item Administrateur
-\end{itemize} \\
-\hline
-Préconditions & 
-\begin{itemize}[leftmargin=*]
-    \item L'utilisateur est authentifié.
-    \item L'utilisateur possède les droits d'accès à son espace spécifique.
-    \item Les données sources ont été préalablement traitées/synchronisées.
-\end{itemize} \\
-\hline
-Scénario de base & 
-\begin{enumerate}[leftmargin=*]
 
-\item L'utilisateur accède à son espace.
-\item Le système affiche les indicateurs de performance (KPIs) et les graphiques correspondants au rôle de l'utilisateur.
-\item L'utilisateur visualise les tendances et les évolutions des résultats du centre.
-\item L'utilisateur filtre les données (par date, formation, statut, etc.) pour affiner son analyse selon ses besoins spécifiques
-\item Le système met à jour dynamiquement les visuels suite à l'application des filtres.
-\item L'utilisateur analyse les résultats pour comprendre les performances des activités.
-\item L'utilisateur exporte un rapport (PDF/Excel/csv) pour partager ses analyses avec d'autres parties prenantes.
-\end{enumerate}
-\\
+Acteur &
+Responsable pédagogique \\
+& Responsable financier \\
+& Directeur \\
+& Administrateur \\
 \hline
-Scénarios alternatifs & 
-   \textbf{Alertes en temps réel:} Le système affiche une notification prioritaire si un seuil critique ou un événement important est détecté (lié au fonctionnement du centre).
 
-   \textbf{Absence de données:} Si aucun enregistrement ne correspond aux filtres, le système affiche un message "Aucune donnée disponible" au lieu d'un graphique vide.\\
+Préconditions &
+L'utilisateur est authentifié. \\
+& L'utilisateur possède les droits d'accès à son espace spécifique. \\
+& Les données sources ont été préalablement traitées et synchronisées. \\
 \hline
-Post-conditions & 
-\begin{itemize}[leftmargin=*]
-    \item L'utilisateur a une vision claire de ses indicateurs.
-    \item Un rapport a été généré et sauvegardé ou partagé.
-    \item L'utilisateur a pris connaissance des dernières alertes via les notifications.
-\end{itemize} \\
+
+Scénario de base &
+- L'utilisateur accède à son espace. \\
+&- Le système affiche les indicateurs de performance (KPIs) et les graphiques correspondants au rôle de l'utilisateur. \\
+&- L'utilisateur visualise les tendances et les évolutions des résultats du centre. \\
+&- L'utilisateur filtre les données (par date, formation, statut, etc.) pour affiner son analyse selon ses besoins spécifiques. \\
+&- Le système met à jour dynamiquement les visuels suite à l'application des filtres. \\
+&- L'utilisateur analyse les résultats pour comprendre les performances des activités. \\
+&- L'utilisateur exporte un rapport (PDF/Excel/CSV) pour partager ses analyses avec d'autres parties prenantes. \\
+\hline
+
+Scénarios alternatifs &
+\textbf{Alertes en temps réel :} Le système affiche une notification prioritaire si un seuil critique ou un événement important est détecté (lié au fonctionnement du centre). \\
+& \textbf{Absence de données :} Si aucun enregistrement ne correspond aux filtres, le système affiche un message « Aucune donnée disponible » au lieu d'un graphique vide. \\
+\hline
+
+Post-conditions &
+L'utilisateur a une vision claire de ses indicateurs. \\
+& Un rapport a été généré et sauvegardé ou partagé. \\
+& L'utilisateur a pris connaissance des dernières alertes via les notifications. \\
 \hline
 \end{longtable}
+}
 
+\vspace{0.8cm}
 \noindent\textbf{Diagramme de séquence:}
 
 \noindent Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance « visualiser »} décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
+
 
 \begin{figure}[H]
  \centering
@@ -136,14 +131,13 @@ L'architecture de Business Intelligence (BI) est conçue pour collecter, transfo
 \item \textbf{Chargement:} La dernière étape consiste à charger les données transformées dans la destination finale, entrepôt de données (Data Warehouse). Le Data Warehouse est optimisé pour les requêtes analytiques et le reporting, offrant une vue historique et consolidée des informations.
 \end{itemize}
 
-
 \textbf{Architecture en Schéma en Étoile (Star Schema):}
 
 Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile} comme illustré dans la figure \ref{fig:star_schema}. Cette structure est ainsi nommée car elle organise les données de manière centrale et rayonnante:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{project/images/dw.png}
+    \includegraphics[width=0.8  \textwidth]{project/images/dw1.png}
     \caption{Schéma en Étoile}
     \label{fig:star_schema}
 \end{figure}
@@ -190,15 +184,15 @@ L’indicateur principal stocké est:
 \subsection{Réalisation}
 
 Dans cette section, nous présentons les éléments de réalisation du sprint 6, en mettant l'accent sur les interfaces de visualisation des données, les fonctionnalités d'analyse et les options d'exportation.
+
 \vspace{0.3cm}
 \noindent\textbf{Espace Financier}
 
-\noindent La figure illustre le tableau de bord du responsable financier, offrant une vue globale des principaux indicateurs financiers du centre de formation.
-
+\noindent Les figures \ref{fig:dashboard-financier} et \ref{fig:dashboard-financier2} illustrent le tableau de bord du responsable financier, offrant une vue globale des principaux indicateurs financiers du centre de formation et facilitant le suivi de la situation financière de l'établissement.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_revenue (4).png}
-    \caption{Interface du tableau de bord << Responsable financier >>}
+    \caption{Espace Financier-Interface du tableau de bord(1/2)}
     \label{fig:dashboard-financier}
 \end{figure}
 
@@ -206,17 +200,17 @@ Dans cette section, nous présentons les éléments de réalisation du sprint 6,
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_dashboard (5).png}
-    \caption{Interface du tableau de bord << Responsable financier >>}
+    \caption{Espace Financier-Interface du tableau de bord(2/2)}
     \label{fig:dashboard-financier2}
 \end{figure}
 
 
-La figure présente le tableau de bord des revenus, permettant de visualiser le chiffre d’affaires généré par les formations et les sessions ainsi que la répartition des paiements.
+Les figures \ref{fig:dashboard-financier3} et \ref{fig:dashboard-financier4} illustrent l’interface du tableau de bord des revenus, offrant une vue synthétique du chiffre d’affaires, de l’état des paiements et des performances financières des formations et des sessions.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_revenue (2).png}
-    \caption{Interface d'analyse des revenus pour le Responsable financier}
+    \caption{Espace Financier-Interface d'analyse des revenus (1/2)}
     \label{fig:dashboard-financier3}
 \end{figure}
 
@@ -224,18 +218,18 @@ La figure présente le tableau de bord des revenus, permettant de visualiser le 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_revenue (3).png}
-    \caption{Interface d'analyse des revenus pour le Responsable financier}
+    \caption{Espace Financier-Interface d'analyse des revenus (2/2)}
     \label{fig:dashboard-financier4}
 \end{figure}
 
 
 
-La figure montre le tableau de bord des dépenses, détaillant les coûts liés aux formateurs et aux sessions afin d’analyser la structure des charges.
+Les figures \ref{fig:dashboard-financier3} et \ref{fig:dashboard-financier4} présentent l'interface du tableau de bord des dépenses, en détaillant les coûts liés aux formateurs et aux sessions afin de faciliter l’analyse et le suivi de la structure des charges financières.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_cout (5).png}
-    \caption{Interface d'analyse des dépenses pour le Responsable financier}
+    \caption{Espace Financier-Interface d'analyse des dépenses (1/2)}
     \label{fig:dashboard-financier3}
 \end{figure}
 
@@ -243,7 +237,7 @@ La figure montre le tableau de bord des dépenses, détaillant les coûts liés 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_cout (8).png}
-    \caption{Interface d'analyse des dépenses pour le Responsable financier}
+    \caption{Espace Financier-Interface d'analyse des dépenses (2/2)}
     \label{fig:dashboard-financier4}
 \end{figure}
 
@@ -262,61 +256,44 @@ La figure montre le tableau de bord des dépenses, détaillant les coûts liés 
 \noindent \textbf{Espace directeur:}
 
 
-\noindent Le directeur bénéficie d'une vue stratégique consolidée sur l'ensemble 
-de l'activité du centre, couvrant à la fois les indicateurs globaux 
-et les dimensions qualité. La figure \ref{fig:dash_dir} présente le 
-tableau de bord des KPIs stratégiques et la vue qualité associée.
+\noindent La figure \ref{fig:dash_dir_kpi} présente le tableau de bord des KPIs stratégiques, offrant une vue consolidée des indicateurs clés de performance du centre de formation. La figure \ref{fig:dash_dir_qualite} illustre quant à elle la vue dédiée à l'analyse qualité et aux performances associées.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{project/images/directeurdash.png}
+    \caption{Tableau de bord des KPIs}
+    \label{fig:dash_dir_kpi}
+\end{figure}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/dashboard_dircteur.png}
-        \caption{tableau de bord des KPIs }
-        \label{fig:dash_dir_kpi}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/qualité.png}
-        \caption{Analyse qualité et performance}
-        \label{fig:dash_dir_qualite}
-    \end{subfigure}
-    \caption{Tableaux de bord du Directeur}
-    \label{fig:dash_dir}
+    \includegraphics[width=0.85\textwidth]{project/images/qaluited.png}
+    \caption{Analyse qualité et performance}
+    \label{fig:dash_dir_qualite}
 \end{figure}
 
 \noindent La fonctionnalité d’export lui permet également de générer des rapports sous différents formats. La figure \ref{fig:export_dir} présente l’interface d’export, offrant la possibilité de sélectionner les indicateurs pertinents afin de produire un rapport facilitant l’analyse et la prise de décision.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/export dir.png}
+    \includegraphics[width=0.7\textwidth]{project/images/exportd.png}
     \caption{Interface d'export de rapports pour le Directeur}
     \label{fig:export_dir}
 \end{figure}
 
 \noindent \textbf{Espace responsable pédagogique:}
 
-\noindent Le responsable pédagogique dispose de plusieurs vues dédiées au pilotage 
-de l'activité de formation. La figure \ref{fig:dash_rp} présente deux 
-interfaces représentatives: le tableau de bord pédagogique et 
-la vue de suivi des performances des apprenants.
+\noindent Le responsable pédagogique dispose de plusieurs vues dédiées au pilotage de l'activité de formation. La figure \ref{fig:dash_rp_sessions} présente le tableau de bord pédagogique, tandis que la figure \ref{fig:dash_rp_apprenants} illustre la vue de suivi des performances des apprenants.
+
 \begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/resp_dash.png}
-        \caption{Tableau de bord pédagogique}
-        \label{fig:dash_rp_sessions}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{project/images/dashb_app.png}
-        \caption{Suivi des performances des apprenants}
-        \label{fig:dash_rp_apprenants}
-    \end{subfigure}
-    \caption{Tableaux de bord du Responsable Pédagogique}
-    \label{fig:dash_rp}
+    \centering 
+    \includegraphics[width=0.85\textwidth]{project/images/dashboardresp.png}
+    \caption{Tableau de bord pédagogique}
+    \label{fig:dash_rp_sessions}
+    
+    \vspace{0.8cm}
+    
+    \includegraphics[width=0.85\textwidth]{project/images/respapp.png}
+    \caption{Suivi des performances des apprenants}
+    \label{fig:dash_rp_apprenants}
 \end{figure}
 
 \noindent\textbf{Espace admin:}
@@ -345,15 +322,30 @@ Dans ce sprint, nous avons développé un module prédictif et de recommandation
 \subsection{Le backlog produit}
 Dans cette partie, nous présentons le backlog du sprint 7, qui se concentre sur le développement du module prédictif et des recommandations stratégiques. Ce backlog est structuré autour de plusieurs fonctionnalités clés, chacune accompagnée d'une user story spécifique et d'une priorité associée. Ces fonctionnalités visent à offrir aux utilisateurs internes des outils avancés pour anticiper les risques et optimiser les performances du centre de formation, comme le montre le tableau \ref{tab:sprint7_backlog}.
 
-\begin{table}[H]
-\centering
+
+
+
+\begin{longtable}{|c|p{3.5cm}|p{10cm}|c|}
 \caption{Backlog du Sprint 7: Module prédictif et recommandations}
-\label{tab:sprint7_backlog}
-\begin{tabular}{|c|p{3.5cm}|p{10cm}|c|}
+\label{tab:sprint7_backlog} \\
+
 \hline
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
-\multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandations}}}
+\endfirsthead
+
+\hline
+\textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+\multirow{5}{*}{\textbf{7}} & \multirow{5}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandations}}}
 & En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des apprenants en difficulté. & C \\
 \cline{3-4}
 & & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
@@ -364,8 +356,8 @@ Dans cette partie, nous présentons le backlog du sprint 7, qui se concentre sur
 \cline{3-4}
 & & En tant que Directeur, je veux accéder à des recommandations stratégiques basées sur l'analyse des données, afin de mieux prioriser les actions, déléguer les responsabilités et améliorer les performances globales de l'établissement. & C \\
 \hline
-\end{tabular}
-\end{table}
+
+\end{longtable}
 
 \subsection{Analyse et conception}
 
@@ -381,16 +373,16 @@ Cette section présente l'analyse fonctionnelle et la conception technique du mo
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{project/images/DG-IA.png}
+    \includegraphics[width=0.6\textwidth]{project/images/DG-IA.png}
     \caption{Diagramme de cas d'utilisation « Module Prédictif et Recommandations »}
     \label{fig:use_case_ia}
 \end{figure}
 
 \noindent Le tableau \ref{tab:module_ia} présente la description textuelle structurée du cas d'utilisation global du module prédictif. Il détaille les scénarios nominaux pour chaque fonctionnalité, les scénarios alternatifs envisageables ainsi que les post-conditions associées.
 
-
+{\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
-\caption{Cas d'utilisation – Module Prédictif et Recommandations}
+\caption{Cas d'utilisation -- Module Prédictif et Recommandations}
 \label{tab:module_ia} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
@@ -401,117 +393,84 @@ Cette section présente l'analyse fonctionnelle et la conception technique du mo
 \hline
 \endhead
 
-Cas d'utilisation & 
-\begin{itemize}[leftmargin=*]
-    \item Module Prédictif et Recommandations
-\end{itemize} \\
+Cas d'utilisation & Module Prédictif et Recommandations \\
 \hline
-Acteur & 
-\begin{itemize}[leftmargin=*]
-    \item Responsable Pédagogique
-    \item Responsable Financier
-    \item Directeur
-\end{itemize} \\
+
+Acteur &
+-Responsable Pédagogique \\
+&-Responsable Financier \\
+&-Directeur \\
 \hline
-Préconditions & 
-\begin{itemize}[leftmargin=*]
-    \item L'utilisateur est authentifié et dispose des droits d'accès à son espace spécifique.
-    \item Les données historiques nécessaires ont été préalablement intégrées et synchronisées dans le système.
-    \item Les modèles de Machine Learning sont entraînés et déployés sur le serveur d'inférence.
-\end{itemize} \\
+
+Préconditions &
+L'utilisateur est authentifié et dispose des droits d'accès à son espace spécifique. \\
+& Les données historiques nécessaires ont été préalablement intégrées et synchronisées dans le système. \\
+& Les modèles de Machine Learning sont entraînés et déployés sur le serveur d'inférence. \\
 \hline
-Scénario de base & 
 
-\textbf{Scénario 1: Recevoir des alertes sur les risques d'abandon} 
-\begin{enumerate}[leftmargin=*]
-\item Le Responsable Pédagogique accède au « Alerts IA ».
-\item Le système récupère les données comportementales et académiques des apprenants.
-\item Le système prépare et normalise le jeu de données pour l'inférence.
-\item Le système invoque le modèle de régression logistique entraîné pour estimer la probabilité d'abandon de chaque apprenant.
-\item Le système classe les apprenants par niveau de risque (\textbf{critique}, \textbf{élevé}, \textbf{modéré}, \textbf{faible}) et génère les alertes correspondantes.
-\item Le Responsable Pédagogique visualise le tableau d'alertes avec les scores de risque et les indicateurs explicatifs.
-\item Le Responsable Pédagogique sélectionne un apprenant à risque et consulte le détail des facteurs contributifs.
-\item Le Responsable Pédagogique peut contacter l’apprenant à risque afin d’assurer un suivi pédagogique.
-\end{enumerate}
+Scénario de base &
+\textbf{Scénario 1 : Recevoir des alertes sur les risques d'abandon} \\
+&- Le Responsable Pédagogique accède au « Alerts IA ». \\
+&- Le système récupère les données comportementales et académiques des apprenants. \\
+&- Le système prépare et normalise le jeu de données pour l'inférence. \\
+&- Le système invoque le modèle de régression logistique entraîné pour estimer la probabilité d'abandon de chaque apprenant. \\
+&- Le système classe les apprenants par niveau de risque (\textbf{critique}, \textbf{élevé}, \textbf{modéré}, \textbf{faible}) et génère les alertes correspondantes. \\
+&- Le Responsable Pédagogique visualise le tableau d'alertes avec les scores de risque et les indicateurs explicatifs. \\
+&- Le Responsable Pédagogique sélectionne un apprenant à risque et consulte le détail des facteurs contributifs. \\
+&- Le Responsable Pédagogique peut contacter l'apprenant à risque afin d'assurer un suivi pédagogique. \\
 \\
-
-& \textbf{Scénario 2: Prédire la probabilité de sessions déficitaires} 
-\begin{enumerate}[leftmargin=*]
-\item Le Responsable Financier accède à la page « Analyse intelligente » depuis son espace.
-\item L'utilisateur applique des filtres optionnels (date, formation, formateur, type)
-\item Le système récupère les sessions filtrées depuis le Data Warehouse.
-\item Le système applique le modèle ML pour estimer la probabilité qu'une session future soit déficitaire.
-\item Le système affiche une liste des sessions planifiées avec leur probabilité de déficit et des recommandations.
-\end{enumerate}
+& \textbf{Scénario 2 : Prédire la probabilité de sessions déficitaires} \\
+&- Le Responsable Financier accède à la page « Analyse intelligente » depuis son espace. \\
+&- L'utilisateur applique des filtres optionnels (date, formation, formateur, type). \\
+&- Le système récupère les sessions filtrées depuis le Data Warehouse. \\
+&- Le système applique le modèle ML pour estimer la probabilité qu'une session future soit déficitaire. \\
+&- Le système affiche une liste des sessions planifiées avec leur probabilité de déficit et des recommandations. \\
 \\
+& \textbf{Scénario 3 : Prévoir les revenus pour le budget} \\
+&- Le Responsable Financier accède à la page « Analyse intelligente » depuis son espace. \\
+&- Le système affiche automatiquement la courbe historique. \\
+&- Le Responsable Financier applique des filtres optionnels (date, formation, formateur, type). \\
+&- Le système recharge la courbe avec les critères sélectionnés. \\
+&- Le Responsable Financier clique sur l'option 1, 3 ou 6 mois. \\
+&- Le modèle ML extrait l'historique et calcule les prévisions. \\
+&- Le système affiche historique et prévisions sous forme de courbe. \\
+\\
+& \textbf{Scénario 4 : Prévoir les inscriptions} \\
+&- Le Directeur accède à la page « Rapports stratégiques » depuis son espace. \\
+&- Le système affiche automatiquement le widget de prévision des inscriptions intégré au tableau de bord stratégique. \\
+&- Le système collecte la série chronologique historique des inscriptions mensuelles sans intervention du Directeur. \\
+&- Le système paramètre et exécute le modèle ML sur un horizon fixe de 3 mois, en intégrant les saisonnalités et les effets de tendance. \\
+&- Le système produit la prévision des inscriptions pour les 3 prochains mois. \\
+&- Le Directeur consulte les résultats sous forme de courbe prévisionnelle. \\
+&- Le Directeur utilise ces prévisions pour anticiper les besoins en ressources pédagogiques et logistiques. \\
+\\
+& \textbf{Scénario 5 : Accéder aux recommandations stratégiques} \\
+&- Le Directeur accède à la page « Rapports stratégiques ». \\
+&- Le système agrège les résultats des différents KPI actuels du centre de formation (revenus, abandons, satisfaction, etc.) et les problèmes détectés. \\
+&- Le système compile ces données dans un prompt structuré et sollicite un modèle de langage (LLM) afin de générer dynamiquement des conseils stratégiques personnalisés et actionnables. \\
+&- Le système reçoit les recommandations générées, les classe par impact et par facilité de mise en œuvre, puis les affiche dans la section inférieure de la page. \\
+&- Le Directeur visualise la liste des recommandations stratégiques classées par impact et par facilité de mise en œuvre. \\
 \hline
-& \textbf{Scénario 3: Prévoir les revenus pour le budget} 
-\begin{enumerate}[leftmargin=*]
-\item Le Responsable Financier accède à la page « Analyse intelligente » depuis son espace.
-\item Le système affiche automatiquement la courbe historique.
-\item Le Responsable Financier applique des filtres optionnels (date, formation, formateur, type).
-\item Le système recharge la courbe avec les critères sélectionnés.
-\item Le Responsable Financier clique sur l'option 1, 3 ou 6 mois.
-\item Le modèle ML extrait l'historique et calcule les prévisions.
-\item Le système affiche historique + prévisions sous forme de courbe.
-\end{enumerate}
-\\
 
-& \textbf{Scénario 4: prévoir les inscriptions} 
-\begin{enumerate}[leftmargin=*]
-\item Le Directeur accède à la page « Rapports stratégiques » depuis son espace.
-\item Le système affiche automatiquement le widget de prévision des inscriptions intégré au tableau de bord stratégique.
-\item Le système collecte la série chronologique historique des inscriptions mensuelles sans intervention du Directeur.
-\item Le système paramètre et exécute le modèle ML sur un horizon fixe de 3 mois, en intégrant les saisonnalités et les effets de tendance.
-\item Le système produit la prévision des inscriptions pour les 3 prochains mois.
-\item Le Directeur consulte les résultats sous forme de courbe prévisionelle.
-\item Le Directeur utilise ces prévisions pour anticiper les besoins en ressources pédagogiques et logistiques.
-\end{enumerate}
-\\
-
-& \textbf{Scénario 5: Accéder aux recommandations stratégiques} 
-\begin{enumerate}[leftmargin=*]
-\item Le Directeur accède à la page « Rapports stratégiques ».
-\item Le système agrège les résultats des différents KPI actuels du centre de formation (revenus, abandons, satisfaction, etc.) et les problèmes détectés.
-\item Le système compile ces données chiffrées dans un prompt structuré et sollicite un modèle de langage (LLM) afin de générer dynamiquement des conseils stratégiques personnalisés et actionnables.
-\item Le système reçoit les recommandations générées, les classe par impact et par facilité de mise en œuvre, puis les affiche dans la section inférieure de la page.
-\item Le Directeur visualise la liste des recommandations stratégiques classées par impact et par facilité de mise en œuvre.
-\end{enumerate}
-\\
-
+Scénarios alternatifs &
+\textbf{Données insuffisantes :} Si l'historique d'un apprenant ou des inscriptions est trop fragmentaire (moins de 3 mois), le système affiche un avertissement et exclut l'élément concerné du calcul prédictif. \\
+& \textbf{Indisponibilité du moteur prédictif :} Si le service de calcul IA est inaccessible, le système bascule sur une méthode de secours locale tout en signalant à l'utilisateur le mode de dégradation contrôlée. \\
+& \textbf{Paramètres invalides :} Si l'utilisateur sélectionne une période de prévision non supportée ou antérieure à la date du jour, le système affiche une erreur de validation et bloque le traitement. \\
+& \textbf{Données désynchronisées :} Si les indicateurs des autres modules ne sont pas à jour, le système signale la date de dernière mise à jour et avertit que les recommandations peuvent être obsolètes. \\
+& \textbf{Défaillance d'un composant :} Si un widget graphique ou le service de conseils est indisponible, le système affiche un message informatif dans la zone concernée sans bloquer le reste de la page. \\
 \hline
-Scénarios alternatifs & 
 
-\textbf{Données insuffisantes:} Si l'historique d'un apprenant ou des inscriptions est trop fragmentaire (moins de 3 mois), le système affiche un avertissement et exclut l'élément concerné du calcul prédictif.
-
-\textbf{Indisponibilité du moteur prédictif:} Si le service de calcul IA est inaccessible, le système bascule sur une méthode de secours locale (règles métier pondérées pour l'abandon, projection linéaire pour les inscriptions, indicateurs réels pour les recommandations) tout en signalant à l'utilisateur le mode de dégradation contrôlée.
-
-\textbf{Paramètres invalides:} Si l'utilisateur sélectionne une période de prévision non supportée ou antérieure à la date du jour, le système affiche une erreur de validation et bloque le traitement.
-
-\textbf{Données désynchronisées:} Si les indicateurs des autres modules ne sont pas à jour, le système signale la date de dernière mise à jour et avertit que les recommandations peuvent être obsolètes.
-
-\textbf{Défaillance d'un composant:} Si un widget graphique ou le service de conseils est indisponible, le système affiche un message informatif dans la zone concernée sans bloquer le reste de la page.
-
-\\
-
-\hline
 Post-conditions &
-
-\textbf{Scénario 1:} Les alertes d'abandon sont générées, stockées dans la base de données et consultables par le Responsable Pédagogique. Les apprenants à risque sont identifiés.
-
-\textbf{Scénario 2:} Les probabilités de déficit par session sont calculées et stockées. Le Responsable Financier dispose d'une vision des risques financiers futurs.
-
-\textbf{Scénario 3:} La prévision de chiffre d'affaires est enregistrée et peut être comparée aux réalisations ultérieures. Le rapport est exportable.
-
-\textbf{Scénario 4:} La série prévisionnelle des inscriptions est disponible et exploitable pour la planification des ressources.
-
-\textbf{Scénario 5:} Les recommandations stratégiques sont générées.
-
-\\
-
+\textbf{Scénario 1 :} Les alertes d'abandon sont générées, stockées dans la base de données et consultables par le Responsable Pédagogique. \\
+& \textbf{Scénario 2 :} Les probabilités de déficit par session sont calculées et stockées. Le Responsable Financier dispose d'une vision des risques financiers futurs. \\
+& \textbf{Scénario 3 :} La prévision de chiffre d'affaires est enregistrée et peut être comparée aux réalisations ultérieures. Le rapport est exportable. \\
+& \textbf{Scénario 4 :} La série prévisionnelle des inscriptions est disponible et exploitable pour la planification des ressources. \\
+& \textbf{Scénario 5 :} Les recommandations stratégiques sont générées. \\
 \hline
 \end{longtable}
+}
 
+\vspace{0.3cm}
 \textbf{Conception}
 
 La phase de conception traduit les exigences fonctionnelles du module prédictif en modèles techniques UML. Les diagrammes de séquence suivants détaillent les interactions dynamiques entre les acteurs métier, l'interface utilisateur (Frontend), la couche applicative (Backend), le moteur d'inférence IA et la base de données, pour les flux les plus critiques du sprint.
@@ -520,18 +479,28 @@ La phase de conception traduit les exigences fonctionnelles du module prédictif
 \noindent\textbf{Diagramme de séquence: Génération des alertes d'abandon}
 
 \noindent  La Figure \ref{fig:ds_alerte_abandon} traduit le mécanisme de détection des risques d'abandon. Le Responsable Pédagogique sollicite l'analyse via l'interface. Le système orchestre la récupération des données comportementales, prépare les features et invoque le modèle de régression logistique. Les probabilités retournées sont traitées, classées par niveau de risque (critique, élevé, modéré, faible) et restituées sous forme d'alertes interactives.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1\textwidth]{project/images/rep_ds.png}
-  \caption{Diagramme de séquence « Génération des alertes d'abandon »}
-  \label{fig:ds_alerte_abandon}
-\end{figure}
+
 
 \vspace{0.5cm}
 
 \noindent\textbf{Diagramme de séquence: Prévision des revenus}
 
 \noindent Le processus de prévision budgétaire illustré dans la figure \ref{fig:ds_prevision_revenus} permet au Responsable Financier de paramétrer son horizon d’analyse. Le système extrait l’historique financier, exécute le modèle de régression linéaire et produit la projection de chiffre d’affaires avec ses intervalles de confiance
+
+\clearpage
+\vspace*{\fill}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth,height=0.85\textheight,keepaspectratio]{project/images/rep_ds.png}
+  \caption{Diagramme de séquence « Génération des alertes d'abandon »}
+  \label{fig:ds_alerte_abandon}
+\end{figure}
+
+
+\vspace*{\fill}
+
+\clearpage
+
 
 \begin{figure}[H]
   \centering
@@ -757,7 +726,7 @@ construction d'un label proxy basé sur les comportements observés.
 % 2. FORECAST — INSCRIPTIONS
 % ─────────────────────────────────────────────────────────────────
 \vspace{0.3cm}
-\textbf{Pour la prévision des inscriptions mensuelles:}
+\noindent\textbf{Pour la prévision des inscriptions mensuelles:}
  \begin{itemize}[label=\textbullet]
     \item \textbf{Tables utilisées:} \texttt{sessions\_apprenants} et \texttt{sessions}.
     \begin{itemize}
@@ -880,7 +849,7 @@ enregistre les associations entre apprenants et sessions, tandis que
 
 
  
-\textbf{Pour la prédiction du Chiffre d'affaire:} pour la prédiction du CA, nous utilisons:
+\noindent\textbf{Pour la prédiction du Chiffre d'affaire:} pour la prédiction du CA, nous utilisons:
 \begin{itemize}
 \item \textbf{Préparation des données:}
 Le système extrait les données financières agrégées par mois depuis le Data Warehouse. Nous récupérons quatre types d'informations essentielles:
@@ -907,7 +876,7 @@ Pour que l'algorithme comprenne l'évolution du business, nous créons des indic
 \end{itemize}
 
 
-\textbf{Pour la prédiction des sessions déficitaires:}
+\noindent\textbf{Pour la prédiction des sessions déficitaires:}
 
 Les données utilisées pour la prédiction des sessions déficitaires proviennent du Data Warehouse et sont obtenues via des requêtes SQL, en croisant la table de faits financière (\texttt{dw.fact\_finance}) avec les dimensions sessions, formations, formateurs et temps.
 
@@ -915,7 +884,7 @@ Les données utilisées pour la prédiction des sessions déficitaires provienne
   \item \textbf{Attributs extraits:} Identifiants, nombre d'inscrits, capacité maximale, prix de session, revenus, coûts (formateur et logistique), impayés et dates.
 
 \item \textbf{Détails du modèle}
-\begin{enumerate}[label=\textbullet]
+\begin{enumerate}[label=$\star$]
     \item \textbf{Prétraitement:} Le système effectue un nettoyage automatique (gestion des nuls, conversion de types) et filtre les sessions non exploitables.
     \item \textbf{Feature Engineering:} Pour enrichir l'apprentissage, des indicateurs métiers sont calculés:
     \begin{enumerate}[label=\textbullet]
@@ -990,7 +959,7 @@ Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/riskeval.png}
+    \includegraphics[width=0.5\textwidth]{project/images/riskeval.png}
     \caption{Résultats d'évaluation — Prédiction du risque d'abandon}
     \label{fig:eval_abandon}
 \end{figure}
@@ -1013,13 +982,13 @@ Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & 
 
 \noindent\textbf{Évaluation du Modèle de Prédiction des Sessions Déficitaires:}
 
-\noindent Le modèle est évalué sur 19 sessions de test (74 sessions d'entraînement). Les performances sont mesurées par cinq indicateurs présentés dans la figure~\ref{fig:metrics}:
+\noindent Le modèle est évalué sur 19 sessions de test (74 sessions d'entraînement). Les performances sont mesurées par cinq indicateurs présentés dans la figure~\ref{fig:metrics1}:
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{project/images/session-eval.png}
     \captionof{figure}{Performances du modèle — Ensemble de test}
-    \label{fig:metrics}
+    \label{fig:metrics1}
 \end{figure}
 
 \begin{itemize}[label=\textbullet]
@@ -1033,7 +1002,7 @@ Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & 
 \noindent Le modèle atteint une \textbf{précision de 94,1\%} et un \textbf{rappel de 88,9\%}. Il identifie correctement la plupart des sessions déficitaires tout en limitant les fausses alertes. L'AUC-ROC de \textbf{0,722} confirme une capacité discriminante satisfaisante, significativement supérieure au hasard (0,5).
 
 \noindent Ces résultats s'appuient sur un échantillon de 93 sessions. Ils sont encourageants mais nécessitent d'être consolidés à mesure que l'historique s'enrichit.
-\vspace{3cm}
+\vspace{0.3cm}
 % ─────────────────────────────────────────────────────────────────
 % 2. MODÈLE PRÉVISION DES INSCRIPTIONS
 % ─────────────────────────────────────────────────────────────────
@@ -1105,7 +1074,7 @@ Le module de recommandations stratégiques exploite les capacités de l'intellig
 
 \subsubsection{Principe de fonctionnement}
 
-Contrairement aux modèles prédictifs classiques qui estiment une valeur numérique, ce module produit des analyses textuelles structurées. Le système s'appuie sur un modèle de langage (LLM) afin de générer automatiquement des fiches de recommandations à partir du contexte métier du centre.
+Contrairement aux modèles prédictifs classiques qui estiment une valeur numérique, ce module produit des analyses textuelles structurées. Le système s'appuie sur un modèle de langage (LLM) \cite{llm_cloudflare} afin de générer automatiquement des fiches de recommandations à partir du contexte métier du centre.
 
 \noindent Le processus repose sur trois étapes successives:
 
@@ -1173,7 +1142,7 @@ entre les prédictions algorithmiques et les actions métiers concrètes.
 
 \noindent\textbf{Prévision des sessions déficitaires:}
 
- La Figure  \ref{cap:Interface de prevision sessions deficitaires} traduit la mise en œuvre du suivi de rentabilité, où sont listées les sessions présentant un risque financier élevé selon les prévisions du système. 
+ \noindent La Figure  \ref{cap:Interface de prevision sessions deficitaires} traduit la mise en œuvre du suivi de rentabilité, où sont listées les sessions présentant un risque financier élevé selon les prévisions du système. 
 \begin{figure}[H]
     \centering
         \centering
@@ -1183,7 +1152,7 @@ entre les prédictions algorithmiques et les actions métiers concrètes.
 \end{figure}
 
 
-
+\newpage
 \noindent\textbf{Alertes IA — Détection des risques d'abandon:}
 
 \noindent La figure \ref{fig:alertes_ia} présente le tableau d'alertes généré par 
@@ -1191,14 +1160,14 @@ le modèle de régression logistique.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{project/images/alertsia.png}
+    \includegraphics[width=1\textwidth]{project/images/alertsia.png}
     \caption{Tableau d'alertes IA: risques d'abandon par apprenant}
     \label{fig:alertes_ia}
 \end{figure}
 
-\textbf{Prévision des inscriptions mensuelles:}
+\noindent\textbf{Prévision des inscriptions mensuelles:}
 
-La figure \ref{fig:prevision_insc} illustre la courbe prévisionnelle 
+\noindent La figure \ref{fig:prevision_insc} illustre la courbe prévisionnelle 
 des inscriptions sur trois mois (modèle Prophet), accessible au directeur.
 
 \begin{figure}[H]
@@ -1211,7 +1180,7 @@ des inscriptions sur trois mois (modèle Prophet), accessible au directeur.
 
 \textbf{Recommandations stratégiques — IA générative:}
 
-La figure \ref{fig:recommandations_llm} illustre les recommandations 
+\noindent La figure \ref{fig:recommandations_llm} illustre les recommandations 
 générées par le LLM, classées par impact et facilité de mise en œuvre.
 
 
