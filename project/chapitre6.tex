@@ -40,7 +40,7 @@ Cette section présente l'analyse fonctionnelle et la conception technique des m
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=1\textwidth]{project/images/visualiser.png}
+ \includegraphics[width=1\textwidth]{project/images/sdbbs.png}
 \caption{Diagramme de cas d'utilisation « Visualisation et analyse des données »}
 \label{Diagramme de cas d'utilisation « visualiser »}
 \end{figure}
@@ -81,6 +81,7 @@ Scénario de base &
 &- L'utilisateur visualise les tendances et les évolutions des résultats du centre. \\
 &- L'utilisateur filtre les données (par date, formation, statut, etc.) pour affiner son analyse selon ses besoins spécifiques. \\
 &- Le système met à jour dynamiquement les visuels suite à l'application des filtres. \\
+\hline
 &- L'utilisateur analyse les résultats pour comprendre les performances des activités. \\
 &- L'utilisateur exporte un rapport (PDF/Excel/CSV) pour partager ses analyses avec d'autres parties prenantes. \\
 \hline
@@ -191,7 +192,7 @@ Dans cette section, nous présentons les éléments de réalisation du sprint 6,
 \noindent Les figures \ref{fig:dashboard-financier} et \ref{fig:dashboard-financier2} illustrent le tableau de bord du responsable financier, offrant une vue globale des principaux indicateurs financiers du centre de formation et facilitant le suivi de la situation financière de l'établissement.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{project/images/localhost_3000_financier_revenue (4).png}
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_financier_revenue (4).png}
     \caption{Espace Financier - Interface du tableau de bord(1/2)}
     \label{fig:dashboard-financier}
 \end{figure}
@@ -199,17 +200,18 @@ Dans cette section, nous présentons les éléments de réalisation du sprint 6,
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{project/images/localhost_3000_financier_dashboard (5).png}
+    \includegraphics[width=0.1\textwidth]{project/images/localhost_3000_financier_dashboard (5).png}
     \caption{Espace Financier - Interface du tableau de bord(2/2)}
     \label{fig:dashboard-financier2}
 \end{figure}
 
+\vspace{0.3cm}
 
 Les figures \ref{fig:dashboard-financier3.} et \ref{fig:dashboard-financier4.} illustrent l’interface du tableau de bord des revenus, offrant une vue synthétique du chiffre d’affaires, de l’état des paiements et des performances financières des formations et des sessions.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_financier_revenue (2).png}
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_financier_revenue (2).png}
     \caption{Espace Financier - Interface d'analyse des revenus (1/2)}
     \label{fig:dashboard-financier3.}
 \end{figure}
@@ -217,7 +219,7 @@ Les figures \ref{fig:dashboard-financier3.} et \ref{fig:dashboard-financier4.} i
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_financier_revenue (3).png}
+    \includegraphics[width=0.9\textwidth]{project/images/localhost_3000_financier_revenue (3).png}
     \caption{Espace Financier - Interface d'analyse des revenus (2/2)}
     \label{fig:dashboard-financier4.}
 \end{figure}
@@ -263,24 +265,27 @@ Les figures \ref{fig:dashboard-financier3} et \ref{fig:dashboard-financier4} pr�
 \noindent La fonctionnalité d’export lui permet également de générer des rapports sous différents formats. La figure \ref{fig:export_dir} présente l’interface d’export, offrant la possibilité de sélectionner les indicateurs pertinents afin de produire un rapport facilitant l’analyse et la prise de décision.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{project/images/directeurdash.png}
+    \includegraphics[width=0.9\textwidth]{project/images/directeurdash.png}
     \caption{Tableau de bord des KPIs}
     \label{fig:dash_dir_kpi}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{project/images/qaluited.png}
+    \includegraphics[width=0.9\textwidth]{project/images/qaluited.png}
     \caption{Analyse qualité et performance}
     \label{fig:dash_dir_qualite}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/exportd.png}
+    \includegraphics[width=1\textwidth]{project/images/exportd.png}
     \caption{Interface d'export de rapports pour le Directeur}
     \label{fig:export_dir}
 \end{figure}
+
+
+\vspace{0.8cm}
 
 \noindent \textbf{Espace responsable pédagogique :}
 
@@ -434,7 +439,7 @@ Scénario de base &
 &- Le système affiche automatiquement la courbe historique. \\
 &- Le Responsable Financier applique des filtres optionnels (date, formation, formateur, type). \\
 &- Le système recharge la courbe avec les critères sélectionnés. \\
-&- Le Responsable Financier clique sur l'option 1, 3 ou 6 mois. \\
+&- Le Responsable Financier clique sur l'option 1 ou 3 mois. \\
 &- Le modèle ML extrait l'historique et calcule les prévisions. \\
 &- Le système affiche historique et prévisions sous forme de courbe. \\
 \\
@@ -1165,7 +1170,7 @@ le modèle de régression logistique.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{project/images/alertsia.png}
-    \caption{Tableau d'alertes IA : risques d'abandon par apprenant}
+    \caption{Tableau d'alertes IA: risques d'abandon par apprenant}
     \label{fig:alertes_ia}
 \end{figure}
 
