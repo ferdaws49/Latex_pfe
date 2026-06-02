@@ -198,8 +198,9 @@ Elle comprend la soumission d’une demande de réinitialisation, la réception 
 \end{figure}
 \noindent Le tableau \ref{tab:password_modification} présente la description textuelle du cas d’utilisation «modification du mot de passe».
 
+{\interlinepenalty=10000
 \begin{longtable}{|l|p{12cm}|}
-\caption{cas d'utilisation-modification du mot de passe}
+\caption{Cas d'utilisation -- Modification du mot de passe}
 \label{tab:password_modification} \\
 \hline
 \textbf{Élément} & \textbf{Description} \\
@@ -209,61 +210,53 @@ Elle comprend la soumission d’une demande de réinitialisation, la réception 
 \textbf{Élément} & \textbf{Description} \\
 \hline
 \endhead
-Cas d’utilisation & Mot de passe oublié (Forgot Password) \\
+
+Cas d'utilisation & Mot de passe oublié (Forgot Password) \\
 \hline
+
 Acteur & Utilisateur \\
 \hline
 
-Précondition & 
-\begin{itemize}[leftmargin=*]
-    \item L’utilisateur a oublié son mot de passe
-    \item L’utilisateur possède un compte dans le système
-\end{itemize} \\
-\hline
-Scénario principal & 
-\textbf{ Scénario 1: Demande de réinitialisation}
-\begin{enumerate}[leftmargin=*]
-    \item L’utilisateur clique sur « Mot de passe oublié »
-    \item Il saisit son adresse email
-    \item Le système vérifie la validité de l’email
-    \item Le système vérifie l’existence de l’email en base
-    \item Le système envoie un lien de réinitialisation unique et temporaire
-    \item Le système affiche un message de confirmation
-\end{enumerate}
-
-\textbf{Scénario 2: Réinitialisation du mot de passe}
-\begin{enumerate}[leftmargin=*]
-    \item L’utilisateur ouvre le lien reçu par email
-    \item Il saisit le nouveau mot de passe et sa confirmation
-    \item Le système vérifie que les champs sont remplis
-    \item Le système vérifie que les mots de passe sont identiques
-    \item Le système vérifie la validité du lien (token non expiré)
-    \item Le système met à jour le mot de passe (hash)
-    \item Le système affiche un message de succès et redirige vers login
-\end{enumerate}
-\\
-\hline
-Scénarios alternatifs & 
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Email invalide ou vide :} le système affiche un message d’erreur et bloque l’envoi
-    \item \textbf{Email inexistant :} affichage d’un message générique pour des raisons de sécurité
-    \item \textbf{Mots de passe non identiques :} le système rejette la demande
-    \item \textbf{Lien expiré ou déjà utilisé :} le système affiche une erreur et demande une nouvelle réinitialisation
-\end{itemize}
-\\
+Préconditions &
+L'utilisateur a oublié son mot de passe. \\
+& L'utilisateur possède un compte dans le système. \\
 \hline
 
-Postcondition & 
-\begin{itemize}[leftmargin=*]
-    \item Un lien de réinitialisation est généré
-    \item Un email est envoyé à l’utilisateur
-    \item L’utilisateur accède au formulaire de réinitialisation
-    \item Le mot de passe est mis à jour dans la base de données
-    \item L’utilisateur peut se reconnecter avec le nouveau mot de passe
-\end{itemize}
+Scénario principal &
+\textbf{Scénario 1 : Demande de réinitialisation} \\
+&- L'utilisateur clique sur « Mot de passe oublié ». \\
+&- Il saisit son adresse email. \\
+&- Le système vérifie la validité de l'email. \\
+&- Le système vérifie l'existence de l'email en base. \\
+&- Le système envoie un lien de réinitialisation unique et temporaire. \\
+&- Le système affiche un message de confirmation. \\
 \\
+& \textbf{Scénario 2 : Réinitialisation du mot de passe} \\
+&- L'utilisateur ouvre le lien reçu par email. \\
+&- Il saisit le nouveau mot de passe et sa confirmation. \\
+&- Le système vérifie que les champs sont remplis. \\
+&- Le système vérifie que les mots de passe sont identiques. \\
+&- Le système vérifie la validité du lien (token non expiré). \\
+&- Le système met à jour le mot de passe (hash). \\
+&- Le système affiche un message de succès et redirige vers login. \\
 \hline
+
+Scénarios alternatifs &
+\textbf{Email invalide ou vide :} Le système affiche un message d'erreur et bloque l'envoi. \\
+& \textbf{Email inexistant :} Affichage d'un message générique pour des raisons de sécurité. \\
+& \textbf{Mots de passe non identiques :} Le système rejette la demande. \\
+& \textbf{Lien expiré ou déjà utilisé :} Le système affiche une erreur et demande une nouvelle réinitialisation. \\
+\hline
+
+Post-conditions &
+Un lien de réinitialisation est généré. \\
+& Un email est envoyé à l'utilisateur. \\
+& L'utilisateur accède au formulaire de réinitialisation. \\
+& Le mot de passe est mis à jour dans la base de données. \\
+& L'utilisateur peut se reconnecter avec le nouveau mot de passe. \\
+
 \end{longtable}
+}
 
 \subsection{Conception}
 La phase de conception modélise techniquement le fonctionnement de l'authentification à l'aide de diagrammes de séquence. Ils illustrent chronologiquement les interactions entre l'utilisateur et le système pour garantir la sécurité des flux, depuis l'inscription de l'apprenant jusqu'à sa validation finale par l'administration.
@@ -320,7 +313,7 @@ La phase de conception modélise techniquement le fonctionnement de l'authentifi
 \newpage
 \noindent \textbf{Diagramme de séquence : Login -Responsables et Administrateurs}
 
-\noindent Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}, présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique , Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
+\noindent Le diagramme exposé dans la Figure \ref{cap:Diagramme de séquence <<Login -Responsables et Administrateurs>>}, présente le flux d’authentification pour les profils administratifs, tels que le Directeur, le Responsable pédagogique, Responsable financier ou l’Administrateur. Bien que ces utilisateurs possèdent des niveaux d’accès différents, leurs étapes de connexion sont identiques, ce qui justifie la conception d’un diagramme unifié.
 
 
 
@@ -460,7 +453,7 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
 \end{center}
 
 \newpage
-\noindent\textbf{Interface Login:}
+\noindent\textbf{Interface Login}
 
 \noindent L’interface de connexion dans la Figure \ref{fig:Interface login:état normale}  constitue le point d’entrée unique pour tous les utilisateurs. Afin de sécuriser l'accès, un message d’erreur s’affiche en cas d’identifiants incorrects comme la montre Figure \ref{cap:Interface login: données invalide}. Le système vérifie également le statut du compte : les profils en attente de validation illustré dans la Figure \ref{cap:Interface login:Apprenant ena attente d'acceptation} ou rejetés, représenté dans la Figure \ref{cap:Interface login:Apprenant-est-refusé} sont informés par des interfaces spécifiques. Par ailleurs, si le compte est désactivé, l’accès est refusé et un message d’erreur dédié est affiché, comme le montre la Figure \ref{cap:Interface login: Utilisateur désactivé}. Une fois l'authentification réussie, la plateforme redirige automatiquement l'utilisateur vers un espace selon son rôle.
 
@@ -515,7 +508,7 @@ Cette section présente les interfaces de l'authentification. Nous allons détai
 
 
 
-\noindent \textbf{Interface Réinitialisation du mot de passe:}
+\noindent \textbf{Interface Réinitialisation du mot de passe}
 
 \noindent L’interface illustrée en Figure \ref{cap:R_mp} permet à l'utilisateur de saisir son adresse email pour initier la procédure.
 Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format est incorrect, l'interface de la Figure \ref{cap:F_F} s'affiche.
@@ -540,9 +533,9 @@ Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format es
 \end{figure}
 
 
-\noindent \textbf{interface de lien de vérification :}
+\noindent \textbf{Interface de lien de vérification }
 
-\noindent Une fois un email valide soumis comme le montre la figure \ref{cap:Interface réinitialisation: email }  , l'interface de la Figure \ref{cap:Interface de réinitialisation:email de réinitialisation} informe l'utilisateur qu'un lien de réinitialisation lui a été envoyé. Cette étape confirme la prise en compte de la demande par le serveur.
+\noindent Une fois un email valide soumis comme le montre la figure \ref{cap:Interface réinitialisation: email }, l'interface de la Figure \ref{cap:Interface de réinitialisation:email de réinitialisation} informe l'utilisateur qu'un lien de réinitialisation lui a été envoyé. Cette étape confirme la prise en compte de la demande par le serveur.
 
 \noindent En accédant à ce lien, l’utilisateur est redirigé vers une interface dédiée à la réinitialisation du mot de passe, comme le montre la figure \ref{cap:Interface de réinitialisation:etat}, où il peut saisir un nouveau mot de passe.
 
@@ -588,7 +581,7 @@ Si l'adresse saisie ne correspond à aucun compte enregistré ou si le format es
 \end{center}
 
 \vspace{0.5cm}
-\noindent \textbf{Interface de création du nouvelle mot de passe:}
+\noindent \textbf{Interface de création du nouvelle mot de passe}
 
 \noindent Si le lien est valide, l'utilisateur accède au formulaire de la Figure \ref{cap:reset_form}. Cette interface sécurisée permet de saisir et de confirmer le nouveau mot de passe.
 Le système applique également des règles de validation afin de garantir la robustesse du mot de passe. Ainsi, si le mot de passe saisi ne respecte pas les contraintes définies, un message d’erreur s’affiche à l’écran, comme illustré dans la figure \ref{cap:reset_invalid}, invitant l’utilisateur à corriger sa saisie.

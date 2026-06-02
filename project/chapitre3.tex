@@ -218,11 +218,12 @@ Cette section présente les principaux langages de programmation utilisés dans 
 
  \section{Architecture générale de l'application}
   \label{sec:Architecture générale de l'application}
- L'architecture désigne la structure technique qui organise les différents composants de l'application (frontend, backend, base de données, services externes) ainsi que leurs interactions. Elle définit la circulation des données, les modalités de communication entre les composants et l'emplacement ou le mode d'exécution de chaque élément. Dans cette section, nous présentons l'architecture logicielle de notre application. La figure \ref{fig:placeholder} illustre l'architecture générale retenue, laquelle est structurée en trois parties principales. \newline
+ L'architecture désigne la structure technique qui organise les différents composants de l'application (frontend, backend, base de données, services externes) ainsi que leurs interactions. Elle définit la circulation des données, les modalités de communication entre les composants et l'emplacement ou le mode d'exécution de chaque élément. Dans cette section, nous présentons l'architecture logicielle de notre application.
+La figure \ref{fig:placeholder} illustre l'architecture générale retenue, laquelle est structurée en trois parties principales. \newline
 
 \begin{figure}[H]
      \centering
-     \includegraphics[width=0.8\linewidth]{project/images/Gemini_Generated_Image_jsvpksjsvpksjsvp.png}
+     \includegraphics[width=1\linewidth]{project/images/Gemini_Generated_Image_jsvpksjsvpksjsvp.png}
      \caption{architecture generale}
      \label{fig:placeholder}
  \end{figure}
@@ -230,8 +231,13 @@ Cette section présente les principaux langages de programmation utilisés dans 
  
 \noindent\textbf{Tier 1 : Couche de Présentation (Front-end)}\newline
 Il représente les interfaces de l'application, c'est-à-dire les éléments avec lesquels l'utilisateur peut interagir. \newline
+
+\vspace{0.3cm}
+
 \noindent\textbf{Tier 2 : Couche Application (Back-end)}\newline
 Il englobe les fonctionnalités de l'application et leur implémentation. Il est invisible pour les utilisateurs de l'application, mais il assure le dynamisme de celle-ci.
+
+\vspace{0.3cm}
 
 \noindent\textbf{Communication et securité:} La communication entre le frontend et le backend se fait via des API REST, utilisant des requêtes HTTP pour échanger des données au format JSON. Pour garantir la sécurité de ces échanges, nous avons mis en place une couche de sécurité qui valide les jetons d'authentification (JWT) et vérifie les droits d'accès (RBAC) avant de permettre l'accès aux ressources protégées du backend.
 
@@ -254,6 +260,7 @@ Cette section détaille la conception technique du système selon deux axes comp
 \subsection{Diagramme de classes}
 Dans cette section, nous allons explorer la structure logique de MBICenter à travers son diagramme de classes. Ce diagramme permet de visualiser les principales entités du système, leurs attributs et méthodes essentiels, ainsi que les relations qui les lient, offrant ainsi une vue d'ensemble claire de l'architecture du projet.
 
+
 \noindent La figure \ref{fig:diagramme de classe} présente cette modélisation et illustre comment les différentes classes interagissent pour assurer le fonctionnement cohérent de la plateforme.
 
 \begin{figure}[H]
@@ -273,7 +280,7 @@ l'utilisation de Figma pour concevoir les interfaces
 avant leur développement s'est révélée cruciale. Cette approche a permis de prototyper rapidement les flux utilisateur, tester les interactions, et optimiser le temps de livraison en identifiant
 les besoins essentiels. Cette sous-section détaille ces deux aspects
 distincts, en s'appuyant sur des bases théoriques et pratiques adaptées au projet.
-\subsection{Conception UI/UX :}
+\subsection{Conception UI/UX }
 \noindent\textbf{Interface Utilisateur (UI) }
 
 \noindent L'interface utilisateur (UI) constitue le principal point d'interaction avec la plateforme décisionnelle, conçue pour offrir une visualisation claire et intuitive des KPIs. Une hiérarchisation efficace met en avant les indicateurs clés sous forme de cartes, complétées par des graphiques interactifs pour analyser les tendances. la typographie a été définie avec la police Inter, largement utilisée dans le projet pour sa modernité et sa lisibilité, garantissant une présentation claire des

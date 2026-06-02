@@ -103,14 +103,7 @@ L'utilisateur a une vision claire de ses indicateurs. \\
 
 \noindent Le diagramme de séquence illustré dans la figure \ref{Diagramme de séquance « visualiser »} décrit le flux d'échanges entre l'utilisateur, l'interface de visualisation et le système, mettant en évidence les étapes de récupération des KPIs, l'application des filtres et la génération de rapports exportables. 
 
-
-\begin{figure}[H]
- \centering
- \includegraphics[width=1\textwidth]{project/images/seqdig_vis.png}
- \caption{Diagramme de séquence « Visualisation et analyse des données »}
- \label{Diagramme de séquance « visualiser »}
-
-\end{figure}
+\vspace{0.3cm}
 
 \subsection{L'architecture BI}
 L'architecture de Business Intelligence (BI) est conçue pour collecter, transformer, stocker et analyser les données afin de fournir des informations exploitables aux différents utilisateurs. Elle repose sur un processus structuré garantissant la qualité et la pertinence des données.
@@ -133,7 +126,14 @@ L'architecture de Business Intelligence (BI) est conçue pour collecter, transfo
 
 \textbf{Architecture en Schéma en Étoile (Star Schema) :}
 
-Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile} comme illustré dans la figure \ref{fig:star_schema}. Cette structure est ainsi nommée car elle organise les données de manière centrale et rayonnante:
+Le cœur de notre modélisation repose sur un \textbf{Schéma en Étoile} comme illustré dans la figure \ref{fig:star_schema}. Cette structure est ainsi nommée car elle organise les données de manière centrale et rayonnante.
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.8\textwidth]{project/images/seqdig_vis.png}
+ \caption{Diagramme de séquence « Visualisation et analyse des données »}
+ \label{Diagramme de séquance « visualiser »}
+
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -191,7 +191,7 @@ Dans cette section, nous présentons les éléments de réalisation du sprint 6,
 \noindent Les figures \ref{fig:dashboard-financier} et \ref{fig:dashboard-financier2} illustrent le tableau de bord du responsable financier, offrant une vue globale des principaux indicateurs financiers du centre de formation et facilitant le suivi de la situation financière de l'établissement.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_revenue (4).png}
+    \includegraphics[width=0.85\textwidth]{project/images/localhost_3000_financier_revenue (4).png}
     \caption{Espace Financier - Interface du tableau de bord(1/2)}
     \label{fig:dashboard-financier}
 \end{figure}
@@ -199,7 +199,7 @@ Dans cette section, nous présentons les éléments de réalisation du sprint 6,
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_dashboard (5).png}
+    \includegraphics[width=0.85\textwidth]{project/images/localhost_3000_financier_dashboard (5).png}
     \caption{Espace Financier - Interface du tableau de bord(2/2)}
     \label{fig:dashboard-financier2}
 \end{figure}
@@ -209,7 +209,7 @@ Les figures \ref{fig:dashboard-financier3.} et \ref{fig:dashboard-financier4.} i
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_revenue (2).png}
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_financier_revenue (2).png}
     \caption{Espace Financier - Interface d'analyse des revenus (1/2)}
     \label{fig:dashboard-financier3.}
 \end{figure}
@@ -217,7 +217,7 @@ Les figures \ref{fig:dashboard-financier3.} et \ref{fig:dashboard-financier4.} i
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_revenue (3).png}
+    \includegraphics[width=0.8\textwidth]{project/images/localhost_3000_financier_revenue (3).png}
     \caption{Espace Financier - Interface d'analyse des revenus (2/2)}
     \label{fig:dashboard-financier4.}
 \end{figure}
@@ -228,7 +228,7 @@ Les figures \ref{fig:dashboard-financier3} et \ref{fig:dashboard-financier4} pr�
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_cout (5).png}
+    \includegraphics[width=0.85\textwidth]{project/images/localhost_3000_financier_cout (5).png}
     \caption{Espace Financier - Interface d'analyse des dépenses (1/2)}
     \label{fig:dashboard-financier3}
 \end{figure}
@@ -236,7 +236,7 @@ Les figures \ref{fig:dashboard-financier3} et \ref{fig:dashboard-financier4} pr�
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{project/images/localhost_3000_financier_cout (8).png}
+    \includegraphics[width=0.85\textwidth]{project/images/localhost_3000_financier_cout (8).png}
     \caption{Espace Financier - Interface d'analyse des dépenses (2/2)}
     \label{fig:dashboard-financier4}
 \end{figure}
@@ -257,6 +257,10 @@ Les figures \ref{fig:dashboard-financier3} et \ref{fig:dashboard-financier4} pr�
 
 
 \noindent La figure \ref{fig:dash_dir_kpi} présente le tableau de bord des KPIs stratégiques, offrant une vue consolidée des indicateurs clés de performance du centre de formation. La figure \ref{fig:dash_dir_qualite} illustre quant à elle la vue dédiée à l'analyse qualité et aux performances associées.
+
+\vspace{0.3cm}
+
+\noindent La fonctionnalité d’export lui permet également de générer des rapports sous différents formats. La figure \ref{fig:export_dir} présente l’interface d’export, offrant la possibilité de sélectionner les indicateurs pertinents afin de produire un rapport facilitant l’analyse et la prise de décision.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{project/images/directeurdash.png}
@@ -271,7 +275,6 @@ Les figures \ref{fig:dashboard-financier3} et \ref{fig:dashboard-financier4} pr�
     \label{fig:dash_dir_qualite}
 \end{figure}
 
-\noindent La fonctionnalité d’export lui permet également de générer des rapports sous différents formats. La figure \ref{fig:export_dir} présente l’interface d’export, offrant la possibilité de sélectionner les indicateurs pertinents afin de produire un rapport facilitant l’analyse et la prise de décision.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{project/images/exportd.png}
@@ -922,7 +925,7 @@ Les modèles intégrés au module prédictif ont été évalués selon des métr
 % ─────────────────────────────────────────────────────────────────
 % 1. MODÈLE RISQUE D'ABANDON
 % ─────────────────────────────────────────────────────────────────
-\noindent\textbf{Évaluation du modèle de prédiction du risque d'abandon :}
+\noindent\textbf{Évaluation du modèle de prédiction du risque d'abandon }
 
 \noindent Les métriques retenues pour évaluer ce modèle de classification binaire sont présentées dans le tableau \ref{tab:metriques_abandon}.
 
@@ -964,11 +967,11 @@ Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & 
     \label{fig:eval_abandon}
 \end{figure}
 
-\noindent les matrices de confusion détaillées sont présentées dans la figure \ref{fig:cm_abandon}.
+\noindent Les matrices de confusion détaillées sont présentées dans la figure \ref{fig:cm_abandon}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{project/images/metrics_risk.png}
+    \includegraphics[width=0.8\textwidth]{project/images/metrics_risk.png}
     \caption{Matrices de confusion — Prédiction du risque d'abandon}
     \label{fig:cm_abandon}
 \end{figure}
@@ -980,7 +983,7 @@ Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & 
 
 \vspace{0.3cm}
 
-\noindent\textbf{Évaluation du Modèle de Prédiction des Sessions Déficitaires :}
+\noindent\textbf{Évaluation du Modèle de Prédiction des Sessions Déficitaires}
 
 \noindent Le modèle est évalué sur 19 sessions de test (74 sessions d'entraînement). Les performances sont mesurées par cinq indicateurs présentés dans la figure~\ref{fig:metrics1}:
 
@@ -1002,11 +1005,12 @@ Matrice de confusion & TP, TN, FP, FN & Détail des erreurs de classification & 
 \noindent Le modèle atteint une \textbf{précision de 94,1\%} et un \textbf{rappel de 88,9\%}. Il identifie correctement la plupart des sessions déficitaires tout en limitant les fausses alertes. L'AUC-ROC de \textbf{0,722} confirme une capacité discriminante satisfaisante, significativement supérieure au hasard (0,5).
 
 \noindent Ces résultats s'appuient sur un échantillon de 93 sessions. Ils sont encourageants mais nécessitent d'être consolidés à mesure que l'historique s'enrichit.
+
 \vspace{0.3cm}
 % ─────────────────────────────────────────────────────────────────
 % 2. MODÈLE PRÉVISION DES INSCRIPTIONS
 % ─────────────────────────────────────────────────────────────────
-\noindent\textbf{Évaluation du modèle de prévision des inscriptions mensuelles :}
+\noindent\textbf{Évaluation du modèle de prévision des inscriptions mensuelles}
 
 \noindent Les métriques retenues pour évaluer ce modèle de série temporelle sont présentées dans le tableau \ref{tab:metriques_forecast}.
 
@@ -1127,7 +1131,7 @@ prédictif et de recommandations stratégiques, illustrant la transition
 entre les prédictions algorithmiques et les actions métiers concrètes.
 
 \vspace{0.3cm}
-\noindent\textbf{Prévision du chiffre d'affaire :}
+\noindent\textbf{Prévision du chiffre d'affaire}
 
 \noindent La Figure  \ref{cap:Interface de prevision CA} synthétise la fonctionnalité de prédiction du chiffre d'affaires, où l'utilisateur peut interagir avec les résultats issus du modèle de série temporelle.
 
@@ -1140,7 +1144,7 @@ entre les prédictions algorithmiques et les actions métiers concrètes.
 \end{figure}
 
 
-\noindent\textbf{Prévision des sessions déficitaires :}
+\noindent\textbf{Prévision des sessions déficitaires}
 
  \noindent La Figure  \ref{cap:Interface de prevision sessions deficitaires} traduit la mise en œuvre du suivi de rentabilité, où sont listées les sessions présentant un risque financier élevé selon les prévisions du système. 
 \begin{figure}[H]
@@ -1153,7 +1157,7 @@ entre les prédictions algorithmiques et les actions métiers concrètes.
 
 
 \newpage
-\noindent\textbf{Alertes IA — Détection des risques d'abandon :}
+\noindent\textbf{Alertes IA — Détection des risques d'abandon }
 
 \noindent La figure \ref{fig:alertes_ia} présente le tableau d'alertes généré par 
 le modèle de régression logistique.
@@ -1165,10 +1169,18 @@ le modèle de régression logistique.
     \label{fig:alertes_ia}
 \end{figure}
 
-\noindent\textbf{Prévision des inscriptions mensuelles :}
+\noindent\textbf{Prévision des inscriptions mensuelles }
 
 \noindent La figure \ref{fig:prevision_insc} illustre la courbe prévisionnelle 
 des inscriptions sur trois mois (modèle Prophet), accessible au directeur.
+
+\vspace{0.3cm}
+
+\noindent\textbf{Recommandations stratégiques — IA générative }
+
+\noindent La figure \ref{fig:recommandations_llm} illustre les recommandations 
+générées par le LLM, classées par impact et facilité de mise en œuvre.
+
 
 \begin{figure}[H]
     \centering
@@ -1177,11 +1189,6 @@ des inscriptions sur trois mois (modèle Prophet), accessible au directeur.
     \label{fig:prevision_insc}
 \end{figure}
 
-
-\textbf{Recommandations stratégiques — IA générative :}
-
-\noindent La figure \ref{fig:recommandations_llm} illustre les recommandations 
-générées par le LLM, classées par impact et facilité de mise en œuvre.
 
 
 \begin{figure}[H]
