@@ -276,8 +276,10 @@ Le bon déroulement et la réussite du projet dépendent d’une répartition ef
 \subsection{Le Backlog du produit}
 Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme sous forme de User Stories comme indiqué par le tableau \ref{tab:backlog_produit}. Chaque User Story décrit une fonctionnalité du point de vue de l’utilisateur final et est classée par priorité  selon la méthode MoSCoW, qui classe les éléments indispensables (Must), importantes (Should), optionnelles (Could) et non prévues pour cette version (Won’t), afin de réaliser d’abord les éléments les plus importants.
  
-\small
-\begin{longtable}{|p{1cm}|p{4cm}|p{10cm}|p{1.5cm}|}
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+{\interlinepenalty=10000
+\begin{longtable}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|p{10cm}|>{\centering\arraybackslash}p{1.5cm}|}
 \caption{Backlog produit}
 \label{tab:backlog_produit} \\
 \hline
@@ -288,9 +290,11 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \textbf{ID} & \textbf{Fonctionnalité} & \textbf{User Story} & \textbf{Priorité} \\
 \hline
 \endhead
+\endfoot
+\hline
+\endlastfoot
 
-% --- US01 : Authentification ---
-\multirow{3}{*}{\textbf{1}} & \multirow{3}{*}{\textbf{Authentification}}
+\multirow{3}{=}{\centering\textbf{1}} & \multirow{3}{=}{\centering\textbf{Authentification}}
 & En tant qu'utilisateur, je veux m'authentifier de manière sécurisée pour accéder aux données selon mon rôle. & M \\
 \cline{3-4}
 & & En tant qu'apprenant, je veux pouvoir créer un compte sur la plateforme afin de m'inscrire à une formation. & M \\
@@ -298,8 +302,7 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 & & En tant qu'utilisateur, je veux pouvoir réinitialiser mon mot de passe oublié afin de retrouver l'accès à mon espace personnel en toute sécurité. & M \\
 \hline
 
-% --- US02 : Gestion des utilisateurs ---
-\multirow{3}{*}{\textbf{2}} & \multirow{3}{*}{\textbf{Gestion des utilisateurs}}
+\multirow{3}{=}{\centering\textbf{2}} & \multirow{3}{=}{\centering\textbf{Gestion des utilisateurs}}
 & En tant qu'administrateur, je veux gérer les utilisateurs (activer, désactiver, modifier) et traiter les inscriptions. & M \\
 \cline{3-4}
 & & En tant qu'administrateur, je veux attribuer et gérer les rôles et permissions pour contrôler les accès. & M \\
@@ -307,38 +310,35 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 & & En tant qu'administrateur, je veux modifier et configurer les profils personnels des utilisateurs. & M \\
 \hline
 
-% --- US03 : Gestion des sessions de formation---
-\multirow{4}{*}{\textbf{3}} & \multirow{4}{*}{\textbf{\shortstack[1]{Gestion des sessions \\ de formation}}}
+\multirow{1}{=}{\centering\textbf{3}} & \multirow{1}{=}{\centering\textbf{\shortstack{Gestion des sessions \\ de formation}}}
 & En tant que responsable pédagogique, je veux organiser et gérer les sessions de formation afin d'assurer le suivi et le bon déroulement des formations. & M \\
 \hline
 
-% --- US04 : Espace apprenant ---
-\multirow{4}{*}{\textbf{4}} & \multirow{4}{*}{\textbf{Espace apprenant}}
-& En tant qu'apprenant, je veux être redirigé automatiquement vers la page d'inscription lors de ma première connexion, afin de rejoindre une session avant d'accéder aux autres modules. & M\\
+\multirow{11}{=}{\centering\textbf{4}} & \multirow{11}{=}{\centering\textbf{Espace apprenant}}
+& En tant qu'apprenant, je veux être redirigé automatiquement vers la page d'inscription lors de ma première connexion, afin de rejoindre une session avant d'accéder aux autres modules. & M \\
 \cline{3-4}
-& & En tant qu'apprenant, je veux voir un résumé de mes statistiques (formations inscrites, sessions à venir, moyenne générale) afin d'avoir une vue d'ensemble de mon parcours. & S\\
+& & En tant qu'apprenant, je veux voir un résumé de mes statistiques (formations inscrites, sessions à venir, moyenne générale) afin d'avoir une vue d'ensemble de mon parcours. & S \\
 \cline{3-4}
-& & En tant qu'apprenant, je veux consulter la liste des formations auxquelles j'ai participé, afin de suivre mon avancement. & S\\
-\cline {3-4}
-& & En tant qu'apprenant, je veux consulter les formations disponibles auxquelles Je n’ai pas encore participé, afin de découvrir de nouvelles opportunités d'apprentissage. & S\\
-\cline {3-4}
-& &  En tant qu'apprenant, Je veux participer à une session disponible d’une formation, afin de rejoindre une promotion active. & M\\
-\cline {3-4}
-& &  En tant qu'apprenant, je veux annuler ma participation à une session, afin de me désinscrire si mes disponibilités changent. & S\\
+& & En tant qu'apprenant, je veux consulter la liste des formations auxquelles j'ai participé, afin de suivre mon avancement. & S \\
 \cline{3-4}
-& & En tant qu'apprenant, je veux consulter l'historique de toutes mes inscriptions passées et actuelles, afin de garder une trace de mon parcours. & C\\
+& & En tant qu'apprenant, je veux consulter les formations disponibles auxquelles je n'ai pas encore participé, afin de découvrir de nouvelles opportunités d'apprentissage. & S \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux participer à une session disponible d'une formation, afin de rejoindre une promotion active. & M \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux annuler ma participation à une session, afin de me désinscrire si mes disponibilités changent. & S \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux consulter l'historique de toutes mes inscriptions passées et actuelles, afin de garder une trace de mon parcours. & C \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux consulter mon emploi du temps complet (filtrable par semaine ou par mois), afin d'organiser mon agenda. & S \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux consulter la synthèse de toutes mes notes par formation, afin d'évaluer mes performances globales. & C \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux consulter la liste paginée de tous mes paiements (filtrables par formation, session ou date), afin de suivre ma situation financière. & S \\
+\cline{3-4}
+& & En tant qu'apprenant, je veux attribuer une note et un commentaire à une formation que j'ai suivie, afin de partager mon retour d'expérience. & C \\
 \hline
 
-&& En tant qu'apprenant, je veux consulter mon emploi du temps complet (filtrable par semaine ou par mois), afin d'organiser mon agenda. & S\\
-\cline{3-4}
-& & En tant qu'apprenant, je veux consulter la synthèse de toutes mes notes par formation, afin d'évaluer mes performances globales. & C\\
-\cline{3-4}
-&& En tant qu'apprenant, je veux consulter la liste paginée de tous mes paiements (filtrables par formation, session ou date), afin de suivre ma situation financière. & S\\
-\cline{3-4}
-&& En tant qu'apprenant, je veux attribuer une note et un commentaire à une formation que j'ai suivie, afin de partager mon retour d'expérience. & C \\
-\hline
-% --- US05 : Alimentation des données ---
-\multirow{4}{*}{\textbf{5}} & \multirow{4}{*}{\textbf{Alimentation des données}}
+\multirow{4}{=}{\centering\textbf{5}} & \multirow{4}{=}{\centering\textbf{\shortstack{Alimentation \\ des données}}}
 & En tant qu'administrateur, je veux importer les données brutes (raw data) pour centraliser les informations. & M \\
 \cline{3-4}
 & & En tant qu'administrateur, je souhaite que le système détecte automatiquement les erreurs dans les données importées afin de garantir leur qualité. & M \\
@@ -347,31 +347,34 @@ Le Backlog produit regroupe l’ensemble des fonctionnalités de la plateforme s
 \cline{3-4}
 & & En tant qu'administrateur, je souhaite charger les données validées dans la base de données afin qu'elles puissent être utilisées pour l'analyse et la production de rapports. & S \\
 \hline
-% --- US06 : Visualisation et analyse des données --- 
-\multirow{6}{*}{\textbf{6}} & \multirow{6}{*}{\textbf{\shortstack[l]{Visualisation et \\ analyse des données}}} & En tant qu’utilisateur interne, je veux analyser les données du centre afin de comprendre les performances des activités. & M \\
- \cline{3-4}
-& & En tant qu’utilisateur interne, je veux visualiser les indicateurs de performance sous forme de graphiques afin de suivre l’évolution des résultats. & M \\
-\cline{3-4} & & En tant qu’utilisateur interne, je veux consulter des tableaux de bord afin de suivre les KPIs du centre. & M \\
-\cline{3-4} & & En tant qu’utilisateur interne, je veux filtrer les données afin d’affiner mes analyses selon différents critères. & S \\ 
-\cline{3-4} & & En tant que utilisateur interne, je veux exporter des rapports afin de partager les analyses et les résultats du centre. & M \\
-\cline{3-4} & & En tant qu'utilisateur interne, je veux recevoir des notifications et alertes afin d'être informé en temps réel de tout événement important lié au fonctionnement du centre. & S \\ 
+
+\multirow{6}{=}{\centering\textbf{6}} & \multirow{6}{=}{\centering\textbf{\shortstack{Visualisation et \\ analyse des données}}}
+& En tant qu'utilisateur interne, je veux analyser les données du centre afin de comprendre les performances des activités. & M \\
+\cline{3-4}
+& & En tant qu'utilisateur interne, je veux visualiser les indicateurs de performance sous forme de graphiques afin de suivre l'évolution des résultats. & M \\
+\cline{3-4}
+& & En tant qu'utilisateur interne, je veux consulter des tableaux de bord afin de suivre les KPIs du centre. & M \\
+\cline{3-4}
+& & En tant qu'utilisateur interne, je veux filtrer les données afin d'affiner mes analyses selon différents critères. & S \\
+\cline{3-4}
+& & En tant qu'utilisateur interne, je veux exporter des rapports afin de partager les analyses et les résultats du centre. & M \\
+\cline{3-4}
+& & En tant qu'utilisateur interne, je veux recevoir des notifications et alertes afin d'être informé en temps réel de tout événement important lié au fonctionnement du centre. & S \\
 \hline
 
-
-% --- US07 : Module prédictif et recommandations ---
-\multirow{4}{*}{\textbf{7}} & \multirow{4}{*}{\textbf{\shortstack[l]{Module prédictif \\ et recommandations}}}
+\multirow{5}{=}{\centering\textbf{7}} & \multirow{5}{=}{\centering\textbf{\shortstack{Module prédictif \\ et recommandations}}}
 & En tant que responsable pédagogique, je veux recevoir des alertes sur les risques d'abandon générées par l'IA afin d'intervenir rapidement auprès des apprenants en difficulté. & C \\
-\hline
+\cline{3-4}
 & & En tant que responsable financier, je veux prévoir les revenus afin de planifier le budget. & C \\
 \cline{3-4}
-&& je veux pouvoir prédire la probabilité de survenue de sessions déficitaires afin d'anticiper les risques financiers pour optimiser la rentabilité de l'entreprise. & C\\
+& & En tant que responsable financier, je veux pouvoir prédire la probabilité de survenue de sessions déficitaires afin d'anticiper les risques financiers pour optimiser la rentabilité de l'entreprise. & C \\
 \cline{3-4}
 & & En tant que directeur, je veux des capacités d'analyse prédictive (prévision des inscriptions) afin d'anticiper les besoins futurs. & C \\
 \cline{3-4}
-& & En tant que Directeur, je veux accéder à des recommandations stratégiques basées sur l'analyse des données, afin de mieux prioriser les actions, déléguer les responsabilités et améliorer les performances globales de l'établissement. & C \\
-\hline
-\end{longtable}
+& & En tant que directeur, je veux accéder à des recommandations stratégiques basées sur l'analyse des données, afin de mieux prioriser les actions, déléguer les responsabilités et améliorer les performances globales de l'établissement. & C \\
 
+\end{longtable}
+}
 \subsection{Planification des sprints}
 Après avoir finalisé et ordonné le backlog produit, nous avons procédé à une estimation précise
 des durées prévisionnelles de chaque sprint. Suite à une évaluation détaillée de la charge de travail,
